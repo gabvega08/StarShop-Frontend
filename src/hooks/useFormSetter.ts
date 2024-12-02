@@ -16,7 +16,6 @@ const useFormSetter = <T extends Record<string, any>>(initialState: T) => {
   
             setFormState(() => newFormState);
         };
-  
         return setter;
     };
   
