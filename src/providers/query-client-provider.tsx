@@ -13,7 +13,7 @@ type ProvidersProps = {
   children: ReactNode;
 };
 
-const Providers: React.FC<ProvidersProps> = ({ children }) => {
+const ReactQueryProvider: React.FC<ProvidersProps> = ({ children }) => {
   return (
     <QueryClientProvider client={queryClient}>
       {children}
@@ -21,4 +21,4 @@ const Providers: React.FC<ProvidersProps> = ({ children }) => {
   );
 };
 
-export default Providers;
+export default ReactQueryProvider;
