@@ -1,7 +1,7 @@
-import LadingPageComponent from "@/components/landing-page/LadingComponet";
+import LandingPageComponent from "@/components/landing-page/landingComponent";
 
 export default function LadingPage() {
   return (
-    <LadingPageComponent />
+    <LandingPageComponent />
   );
 }
