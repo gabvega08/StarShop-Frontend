@@ -1,4 +1,4 @@
-import LadingPageComponent from "app/components/landing-page/lading-page";
+import LadingPageComponent from "@/components/landing-page/LadingComponet";
 
 export default function LadingPage() {
   return (

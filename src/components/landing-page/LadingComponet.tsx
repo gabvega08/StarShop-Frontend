@@ -1,7 +1,11 @@
-export default function LadingPageComponent() {
-    return (
-        <>
-            <h1>This is the component for the lading page</h1>
-        </>
-    )
-}
+import React from 'react';
+
+const LadingPageComponent: React.FC = () => {
+  return (
+    <>
+      <h1>profile</h1>
+    </>
+  );
+};
+
+export default LadingPageComponent;
