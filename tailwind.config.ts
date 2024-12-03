@@ -9,6 +9,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        "custom-dark-purple": "#09092f"
       },
     },
   },
