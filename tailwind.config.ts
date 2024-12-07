@@ -11,6 +11,9 @@ export default {
       colors: {
         "custom-dark-purple": "#09092f"
       },
+      backgroundImage: {
+        starshopBackground: "url('/background-image-starshop.svg')",
+      },
     },
   },
   plugins: [],
