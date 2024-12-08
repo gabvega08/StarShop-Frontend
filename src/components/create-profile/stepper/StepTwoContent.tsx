@@ -7,8 +7,8 @@ export default function StepTwoContent(): JSX.Element {
     return (
         <>
         <h1 className='text-3xl font-bold text-white text-center mb-8'>Choose your profile</h1>
-        <div className="w-full max-w-3xl mx-auto p-8 rounded-3xl bg-[#0E0D2E] border-[4px] border-[#3E3A77]">
-            <div className="grid grid-cols-2 gap-8">
+        <div className="w-full max-w-3xl mx-auto px-[5rem] py-[4rem] rounded-3xl bg-[#0E0D2E] border-[4px] border-[#3E3A77]">
+            <div className="grid grid-cols-2 gap-[4rem]">
                 <button
                     className="flex flex-col items-center p-8 rounded-2xl bg-[#312E56] border-[3px] border-[#7f4fd2] transition-all" >
                     <div className="w-16 h-16 flex items-center justify-center rounded-xl bg-[#312E56]">
