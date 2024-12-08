@@ -1,7 +1,11 @@
-export default function CreateProfilePage(){
-    return(
+import Stepper from "@/components/ui/CreateProfileStepper"
+
+export default function CreateProfilePage() {
+    return (
         <>
-        <h1 className="text-2xl text-white">Create Profile</h1>
+            <section className="mt-[3rem]">
+                <Stepper />
+            </section>
         </>
     )
 }
