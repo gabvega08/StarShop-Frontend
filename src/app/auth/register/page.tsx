@@ -1,9 +1,9 @@
-import CreateProfileComponent from "@/components/create-profile/CreateProfileComponent"
+import RegisterComponent from "@/components/create-profile/RegisterComponent"
 import Link from 'next/link'
 import Image from "next/image"
 import StarShop from "../../../../public/starshop-logos/StarShop-Logo.svg"
 
-export default function CreateProfilePage() {
+export default function RegisterPage() {
     return (
         <>
             <header className="mt-2">
@@ -18,7 +18,7 @@ export default function CreateProfilePage() {
                     </Link>
                 </div>
             </header>
-            <CreateProfileComponent />
+            <RegisterComponent />
         </>
     )
 }

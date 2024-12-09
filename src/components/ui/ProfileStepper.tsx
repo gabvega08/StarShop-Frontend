@@ -14,7 +14,7 @@ const stepContent = [
   <StepThreeContent />
 ];
 
-const StepperComponent = () => {
+const RegisterStepper = () => {
   const [currentStep, setCurrentStep] = useState(1);
 
   const handleNext = () => {
@@ -86,5 +86,5 @@ const StepperComponent = () => {
   );
 };
 
-export default StepperComponent;
+export default RegisterStepper;
 
