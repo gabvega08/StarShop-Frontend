@@ -1,10 +1,8 @@
-"use client"
-
 import React, { useState } from "react";
 import { ArrowRight, ArrowLeft } from 'lucide-react';
-import StepOneContent from "../create-profile/stepper/StepOneContent";
-import StepTwoContent from "../create-profile/stepper/StepTwoContent";
-import StepThreeContent from "../create-profile/stepper/StepThreeContent";
+import StepOneContent from "./steps/StepOneContent";
+import StepTwoContent from "./steps/StepTwoContent";
+import StepThreeContent from "./steps/StepThreeContent";
 
 const steps = ["Step 1", "Step 2", "Step 3"];
 

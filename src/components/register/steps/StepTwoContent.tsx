@@ -1,4 +1,3 @@
-"use client"
 
 import { ShoppingBasket, Store } from 'lucide-react'
 
