@@ -1,4 +1,6 @@
-import RegisterStepper from "../ui/ProfileStepper"
+"use client"
+
+import RegisterStepper from "./RegisterStepper"
 
 export default function RegisterComponent() {
     return (

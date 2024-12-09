@@ -1,4 +1,4 @@
-import RegisterComponent from "@/components/create-profile/RegisterComponent"
+import RegisterComponent from '@/components/register/RegisterComponent'
 import Link from 'next/link'
 import Image from "next/image"
 import StarShop from "../../../../public/starshop-logos/StarShop-Logo.svg"
