@@ -1,9 +1,11 @@
-import SettingsComponent from "@/components/settings/SettingsComponent"
-
+"use client";
+import SettingsComponent from "@/components/settings/SettingsComponent";
+import LoadingSpinner from "@/components/ui/LoadingSpinner";
 export default function ProfilePage() {
-    return (
-        <>
-            <SettingsComponent />
-        </>
-    )
+  return (
+    <>
+      <LoadingSpinner />
+      <SettingsComponent />
+    </>
+  );
 }
