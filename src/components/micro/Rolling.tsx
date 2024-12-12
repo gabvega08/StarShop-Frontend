@@ -5,7 +5,7 @@ interface IProps {
   size?: number | string;
 }
 
-const Eclipse = ({ size = 100, color = "#6b46c1" }: IProps) => {
+const Rolling = ({ size = 50, color = "#6b46c1" }: IProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14,27 +14,30 @@ const Eclipse = ({ size = 100, color = "#6b46c1" }: IProps) => {
       style={{ shapeRendering: "auto", display: "block", background: "none" }}
       width={size}
       height={size}
-      //   xmlns:xlink="http://www.w3.org/1999/xlink"
     >
       <g>
-        <path
-          stroke="none"
-          fill={color}
-          d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50"
+        <circle
+          stroke-dasharray="164.93361431346415 56.97787143782138"
+          r="35"
+          stroke-width="10"
+          stroke={color}
+          fill={"none"}
+          cy="50"
+          cx="50"
         >
           <animateTransform
-            values="0 50 51;360 50 51"
             keyTimes="0;1"
-            repeatCount="indefinite"
+            values="0 50 50;360 50 50"
             dur="1s"
+            repeatCount="indefinite"
             type="rotate"
             attributeName="transform"
           ></animateTransform>
-        </path>
+        </circle>
         <g></g>
       </g>
     </svg>
   );
 };
 
-export default Eclipse;
+export default Rolling;

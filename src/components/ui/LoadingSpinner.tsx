@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Eclipse from "../micro/Eclipse";
+import Rolling from "../micro/Rolling";
 
 export default function LoadingSpinner(): React.ReactNode {
   const [isLoading, setIsLoading] = useState(true);
@@ -13,5 +13,5 @@ export default function LoadingSpinner(): React.ReactNode {
     return () => clearTimeout(timer);
   }, []);
 
-  return isLoading ? <Eclipse /> : null;
+  return isLoading ? <Rolling /> : null;
 }
