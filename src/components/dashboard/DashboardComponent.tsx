@@ -8,6 +8,7 @@ import { TopProducts } from "./components/TopProducts";
 import { Statistics } from "./components/Statistics";
 import { SellsPerMonth } from "./components/SellsPerMonth";
 import Bounded from "../ui/Bounded";
+import Wrapper from "../ui/Wrapper";
 
 const DashboardComponent = () => {
   return (
@@ -21,21 +22,21 @@ const DashboardComponent = () => {
             </h3>
           </div>
 
-          <div className="flex flex-col items-center px-4 pb-4 border-4 border-custom-light-card-border rounded-[20px] sm:rounded-[24px] lg:rounded-[28px] max-h-[254px] h-screen">
+          <Wrapper>
             <h4 className="text-center text-lg sm:text-xl lg:text-2xl font-semibold mt-2">
               STRAB
             </h4>
             <AboutStore />
-          </div>
+          </Wrapper>
         </CardContainer>
 
         <CardContainer>
-          <div className="flex flex-col items-center px-4 pb-4 border-4 border-custom-light-card-border rounded-[20px] sm:rounded-[24px] lg:rounded-[28px] max-h-[254px] h-screen">
+          <Wrapper>
             <h4 className="text-center text-lg sm:text-xl lg:text-2xl font-semibold mt-2">
               TOP PRODUCTS
             </h4>
             <TopProducts />
-          </div>
+          </Wrapper>
         </CardContainer>
       </section>
 
@@ -48,21 +49,21 @@ const DashboardComponent = () => {
             </h3>
           </div>
 
-          <div className="flex flex-col items-center px-4 pb-4 border-4 border-custom-light-card-border rounded-[20px] sm:rounded-[24px] lg:rounded-[28px] max-h-[254px] h-screen">
+          <Wrapper>
             <h4 className="text-center text-lg sm:text-xl lg:text-2xl font-semibold mt-2 uppercase">
               Store statistics
             </h4>
             <Statistics />
-          </div>
+          </Wrapper>
         </CardContainer>
 
         <CardContainer>
-          <div className="flex flex-col items-center px-4 pb-4 border-4 border-custom-light-card-border rounded-[20px] sm:rounded-[24px] lg:rounded-[28px] max-h-[254px] h-screen">
+          <Wrapper>
             <h4 className="text-center text-lg sm:text-xl lg:text-2xl font-semibold mt-2">
               SELLS PER MONTH
             </h4>
             <SellsPerMonth />
-          </div>
+          </Wrapper>
         </CardContainer>
       </section>
     </Bounded>
