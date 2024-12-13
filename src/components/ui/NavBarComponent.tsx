@@ -60,6 +60,12 @@ const NavbarComponent: FC = () => {
                     </Link>
                 ))}
             </div>
+            <div className="hidden md:flex items-center">
+                <button className="flex items-center border border-white rounded-full px-4 py-2">
+                    <CircleUserRound className="text-white" />
+                    <span className="text-white ml-2">aguilar1x</span>
+                </button>
+            </div>
         </nav>
     );
 };
