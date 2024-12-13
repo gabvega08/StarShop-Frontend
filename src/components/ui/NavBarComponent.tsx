@@ -4,7 +4,7 @@ import { FC, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { CircleUserRound, Menu, X } from 'lucide-react'
-
+import Image from 'next/image';
 const navItems = [
     {
         name: "Dashboard",
@@ -28,7 +28,7 @@ const NavbarComponent: FC = () => {
         <nav className="flex items-center justify-between sm:px-10 lg:px-16">
             <div className="flex items-center px-4">
                 <Link href="/">
-                    <img src="/starshop-logos/StarShop-Logo.svg" alt="Logo" width={120} height={120} />
+                    <Image src="/starshop-logos/StarShop-Logo.svg" alt="Logo" width={120} height={120} />
                 </Link>
             </div>
             <div className={`
