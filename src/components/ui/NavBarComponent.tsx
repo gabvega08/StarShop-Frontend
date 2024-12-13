@@ -20,3 +20,15 @@ const navItems = [
     },
 ]
 
+const NavbarComponent: FC = () => {
+    const pathname = usePathname();
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    
+    return (
+        <nav className="flex items-center justify-between sm:px-10 lg:px-16">
+            
+        </nav>
+    );
+};
+
+export default NavbarComponent;
