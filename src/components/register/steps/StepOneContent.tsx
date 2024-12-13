@@ -6,10 +6,10 @@ export default function StepOneContent(): JSX.Element {
         <div className="flex flex-col items-center justify-center w-full space-y-6">
             <UploadPhotoProfile />
 
-            <div className="flex flex-col items-center justify-center w-full p-12 bg-[#0F102C] rounded-[3rem] shadow-lg border-4 border-[#3D3C75]">
-                <div className="w-full space-y-6">
+            <div className="flex flex-col items-center justify-center w-full px-14 pt-8 pb-14 bg-[#0F102C] rounded-[3rem] shadow-lg border-4 border-[#3D3C75]">
+                <div className="w-full space-y-4">
                     <div className="flex flex-col w-full mt-0">
-                        <label className="text-white text-lg text-center font-bold italic mb-4">USERNAME</label>
+                        <label className="text-white text-lg text-center font-bold italic mb-2">USERNAME</label>
                         <div className="flex items-center w-full px-4 py-2 bg-[#302F54] rounded-md relative">
                             <User className="w-5 h-5 text-white" />
                             <input
@@ -22,7 +22,7 @@ export default function StepOneContent(): JSX.Element {
                     </div>
 
                     <div className="flex flex-col w-full">
-                        <label className="text-white text-lg text-center font-bold italic mb-4">EMAIL</label>
+                        <label className="text-white text-lg text-center font-bold italic mb-2">EMAIL</label>
                         <div className="flex items-center w-full px-4 py-2 bg-[#302F54] rounded-md relative">
                             <Mail className="w-5 h-5 text-white" />
                             <input
@@ -34,8 +34,8 @@ export default function StepOneContent(): JSX.Element {
                         </div>
                     </div>
 
-                    <div className="flex flex-col w-full">
-                        <label className="text-white text-lg text-center font-bold italic mb-4">LOCATION</label>
+                    <div className="flex flex-col w-full mb-16">
+                        <label className="text-white text-lg text-center font-bold italic mb-2">LOCATION</label>
                         <div className="flex items-center w-full px-4 py-2 bg-[#302F54] rounded-md relative">
                             <MapPin className="w-5 h-5 text-white" />
                             <input
