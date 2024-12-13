@@ -46,7 +46,7 @@ const Header: FC<CardContainerHeaderProps> = ({ icon, title }) => {
     >
       {icon && <div className="">{icon}</div>}
       {title && (
-        <h3 className="text-[30px] font-bold text-center text-background">
+        <h3 className="text-[20px] sm:text-[24px] lg:text-[30px] font-bold text-center text-background">
           {title}
         </h3>
       )}
@@ -56,7 +56,7 @@ const Header: FC<CardContainerHeaderProps> = ({ icon, title }) => {
 
 const Body: FC<CardContainerSectionProps> & { SubTitle: FC<CardBodySectionProps> } = ({ children }) => {
   return (
-    <div className="flex flex-col items-center px-4 pb-4 border-4 border-custom-light-card-border rounded-[28px]">
+    <div className="flex flex-col items-center px-4 pb-4 border-4 border-custom-light-card-border rounded-[20px] sm:rounded-[24px] lg:rounded-[28px] max-h-[254px] h-screen">
       {children}
     </div>
   );
@@ -64,7 +64,9 @@ const Body: FC<CardContainerSectionProps> & { SubTitle: FC<CardBodySectionProps>
 
 const SubTitle: FC<CardBodySectionProps> = ({ children }) => {
   return (
-    <h4 className="text-center text-xl font-semibold mt-2">{children}</h4>
+    <h4 className="text-center text-lg sm:text-xl lg:text-2xl font-semibold mt-2">
+      {children}
+    </h4>
   );
 };
 

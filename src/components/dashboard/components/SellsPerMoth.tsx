@@ -20,7 +20,7 @@ export const SellsPerMoth: React.FC = () => {
     ],
     options: {
       chart: {
-        height: 100,
+        height: 300,
         width: 300,
         type: "line",
         zoom: {
@@ -109,7 +109,7 @@ export const SellsPerMoth: React.FC = () => {
           options={state.options}
           series={state.series}
           type="line"
-          height={150}
+          height={200}
         />
       </div>
       <div id="html-dist"></div>
