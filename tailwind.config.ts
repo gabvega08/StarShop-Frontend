@@ -12,6 +12,7 @@ export default {
   		colors: {
 			  'custom-light-purple': '#9354FF',
   			'custom-dark-purple': '#09092f',
+			'custom-light-card-border': '#3E3A77',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
 				'primary-purple': '#9150D1', 
@@ -64,5 +65,6 @@ export default {
   		}
   	}
   },
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
