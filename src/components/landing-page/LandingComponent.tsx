@@ -5,12 +5,8 @@ import Image from "next/image"
 
 const LandingPageComponent: React.FC = () => {
   return (
-    <>
-      <div className='text-white h-[120px]'>
-        Add header here
-      </div>
-
-      <div className='p-0 flex flex-col-reverse md:flex-row w-full xl:my-[35px] xl:pl-[100px] px-[10px] md:px-[50px] pb-[100px] text-white max-w-[1600px] m-auto'>
+    <main role="main">
+      <section className='p-0 flex flex-col-reverse md:flex-row w-full xl:my-[35px] xl:pl-[100px] px-[10px] md:px-[50px] pb-[100px] text-white max-w-[1600px] m-auto'>
         <div className='w-full md:w-1/2 xl:max-w-[700px]'>
           <h1 className='uppercase text-white text-[50px] md:text-[64px] font-extrabold leading-[50px] md:leading-[64px]'>
             Marketplace built on stellar blockchain
@@ -20,6 +16,7 @@ const LandingPageComponent: React.FC = () => {
           </p>
           <Link
             href="/register"
+            aria-label="Register for StarShop marketplace"
             className='mt-[30px] md:mt-[50px] font-bold inline-block bg-white text-primary-purple px-[10px] md:px-[40px] py-[15px] rounded-[25px] hover:bg-purple-100 leading-[22.72px] text-left cursor-pointer'
           >
             Register Now
@@ -49,8 +46,8 @@ const LandingPageComponent: React.FC = () => {
             height={20}
           />
         </div>
-      </div>
-    </>
+      </section>
+    </main>
   );
 };
 
