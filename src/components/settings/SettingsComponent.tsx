@@ -20,7 +20,7 @@ const SettingsComponent: React.FC = () => {
           </h2>
 
           <Wrapper className="p-10 w-96">
-            <div className="flex w-4/5 flex-col gap-10 py-5">
+            <form className="flex w-4/5 flex-col gap-10 py-5">
               <Input
                 label="Name"
                 placeholder="Enter your store name"
@@ -60,7 +60,7 @@ const SettingsComponent: React.FC = () => {
                 type="text"
                 icon={MapPinned}
               />
-            </div>
+            </form>
           </Wrapper>
         </section>
       </Bounded>
