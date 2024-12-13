@@ -7,44 +7,44 @@ interface ChartState {
   options: ApexOptions;
 }
 
-export const SellsPerMoth: React.FC = () => {
+export const SellsPerMonth: React.FC = () => {
   const [state] = React.useState<ChartState>({
-    series: [25, 15, 30, 20, 10], // Datos para cada medida
+    series: [25, 15, 30, 20, 10],
     options: {
       chart: {
-        type: "donut", // Cambiar a gráfico tipo donut
+        type: "donut",
         height: 400,
         width: 400,
         zoom: {
           enabled: false,
         },
         toolbar: {
-          show: false, // Ocultar el menú de opciones
+          show: false,
         },
       },
-      colors: ["#3E3A77", "#FF7F50", "#3BB9FF", "#9C27B0", "#FFEB3B"], // Colores personalizados
-      labels: ["Trustless Work", "SotNet", "Safetrust", "ScanGuard", "Other"], // Las 5 medidas
+      colors: ["#3E3A77", "#FF7F50", "#3BB9FF", "#9C27B0", "#FFEB3B"],
+      labels: ["Trustless Work", "SotNet", "Safetrust", "ScanGuard", "Other"],
       dataLabels: {
-        enabled: false, // Desactivar los porcentajes sobre el gráfico
+        enabled: false,
       },
       stroke: {
-        width: 0, // Eliminar borde entre las secciones
+        width: 0,
       },
       legend: {
-        position: "right", // Colocar la leyenda al lado derecho
+        position: "right",
         labels: {
-          colors: "#fff", // Color de la leyenda
+          colors: "#fff",
         },
       },
       tooltip: {
         y: {
           formatter: function (val) {
-            return `${val}`; // Mostrar el valor sin porcentaje
+            return `${val}`;
           },
         },
       },
       grid: {
-        show: false, // Desactivar la cuadrícula
+        show: false,
       },
     },
   });
