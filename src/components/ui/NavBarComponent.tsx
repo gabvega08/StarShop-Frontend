@@ -26,11 +26,13 @@ const NavbarComponent: FC = () => {
     
     return (
         <nav className="flex items-center justify-between sm:px-10 lg:px-16">
+            {/* Logo */}
             <div className="flex items-center px-4">
                 <Link href="/">
                     <Image src="/starshop-logos/StarShop-Logo.svg" alt="Logo" width={120} height={120} />
                 </Link>
             </div>
+            {/* Menu */}
             <div className={`
                 fixed md:relative
                 top-0 md:top-auto 
@@ -60,12 +62,14 @@ const NavbarComponent: FC = () => {
                     </Link>
                 ))}
             </div>
+            {/* User */}
             <div className="hidden md:flex items-center">
                 <button className="flex items-center border border-white rounded-full px-4 py-2">
                     <CircleUserRound className="text-white" />
                     <span className="text-white ml-2">aguilar1x</span>
                 </button>
             </div>
+            {/* Menu Button */}
             <button 
                 className="md:hidden p-2 text-white z-50"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
