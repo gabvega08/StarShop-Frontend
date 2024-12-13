@@ -21,31 +21,31 @@ const LandingPageComponent: React.FC = () => {
           >
             Register Now
           </Link>
-          <div className='flex flex-col md:flex-row mt-[50px] !text-center'>
-            <div className='mb-6'>
+          <section className='flex flex-col md:flex-row mt-[50px] !text-center'>
+            <article className='mb-6'>
               <div className="text-4xl sm:text-4xl font-semibold md:mb-2">200+</div>
               <div className="text-lg sm:text-sm">Sellers</div>
-            </div>
+            </article>
             <div className='h-16 min-w-[2px] bg-white mx-[50px] hidden md:block'></div>
-            <div className='mb-6'>
+            <article className='mb-6'>
               <div className="text-4xl sm:text-4xl font-semibold md:mb-2">2000+</div>
               <div className="text-lg sm:text-sm">High-Quality<br className="hidden sm:block" /> products</div>
-            </div>
+            </article>
             <div className='h-16 min-w-[2px] bg-white mx-[50px] hidden md:block'></div>
-            <div>
+            <article>
               <div className="text-4xl sm:text-4xl font-semibold md:mb-2">30,000+</div>
               <div className="text-lg sm:text-sm">Happy Customers</div>
-            </div>
-          </div>
+            </article>
+          </section>
         </div>
-        <div className='mx-auto xl:m-0 w-[400px] md:w-1/2 flex justify-center items-center px-4 my-[0px] '>
+        <section className='mx-auto xl:m-0 w-[400px] md:w-1/2 flex justify-center items-center px-4 my-[0px] '>
           <Image
             src={StarShopLanding}
             alt="StarShop Logo"
             width={700}
             height={20}
           />
-        </div>
+        </section>
       </section>
     </main>
   );
