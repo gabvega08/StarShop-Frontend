@@ -26,7 +26,11 @@ const NavbarComponent: FC = () => {
     
     return (
         <nav className="flex items-center justify-between sm:px-10 lg:px-16">
-            
+            <div className="flex items-center px-4">
+                <Link href="/">
+                    <img src="/starshop-logos/StarShop-Logo.svg" alt="Logo" width={120} height={120} />
+                </Link>
+            </div>
         </nav>
     );
 };
