@@ -66,6 +66,12 @@ const NavbarComponent: FC = () => {
                     <span className="text-white ml-2">aguilar1x</span>
                 </button>
             </div>
+            <button 
+                className="md:hidden p-2 text-white z-50"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
         </nav>
     );
 };
