@@ -16,7 +16,7 @@ export const ConnectWalletButton = () => {
               onClick={handleDisconnect}
               className="mt-[30px] md:mt-[50px] font-bold inline-block bg-white text-primary-purple px-[10px] md:px-[40px] py-[15px] rounded-[25px] hover:bg-purple-100 leading-[22.72px] text-left cursor-pointer"
             >
-              Disconnect
+              Disconnect Wallet
             </button>
           </div>
         </>
@@ -27,7 +27,7 @@ export const ConnectWalletButton = () => {
             onClick={handleConnect}
             className="mt-[30px] md:mt-[50px] font-bold inline-block bg-white text-primary-purple px-[10px] md:px-[40px] py-[15px] rounded-[25px] hover:bg-purple-100 leading-[22.72px] text-left cursor-pointer"
           >
-            Connect
+            Connect Wallet
           </button>
         </div>
       )}
