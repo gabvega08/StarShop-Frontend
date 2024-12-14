@@ -1,7 +1,7 @@
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
-<div align="center" style="margin-top:5px">
-  <img src="public/starshop-logos/StarShop-Logo.svg" height="300">
+<div align="center">
+  <img src="public/starshop-logos/StarShop-Logo.svg" height="200">
 </div>
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
