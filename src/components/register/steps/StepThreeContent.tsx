@@ -16,11 +16,11 @@ import { Store, Newspaper, ShoppingCart, MapPinnedIcon } from "lucide-react";
 export default function StepThreeContent(): JSX.Element {
   return (
     <>
-      <div className="flex flex-col items-center mt-2">
+      <div className="flex flex-col items-center">
         <UploadPhotoProfile />
-        <div className="flex flex-col items-center justify-center w-[428px] px-14 pt-8 pb-14 bg-[#0F102C] rounded-[3rem] shadow-lg border-4 border-[#3D3C75]">
+        <div className="flex mt-4 flex-col items-center justify-center w-[428px] px-14 pt-8 pb-14 bg-[#0F102C] rounded-[3rem] shadow-lg border-4 border-[#3D3C75]">
           <div className="w-full space-y-4">
-            <div className="flex flex-col w-full mt-0">
+            <div className="flex flex-col w-full mt-[4rem]">
               <label className="text-white text-lg text-center font-bold italic mb-2">
                 NAME
               </label>
