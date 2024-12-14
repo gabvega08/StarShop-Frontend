@@ -28,7 +28,7 @@ const Input: FC<InputProps> = ({
           <Icon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white" />
         )}
         <input
-          className={`w-full bg-custom-light-card-border text-gray-200 text-sm p-3 pl-14 rounded-lg border-b-4 border-primary-purple`}
+          className={`w-full bg-custom-light-card-border text-white text-base p-3 pl-14 rounded-lg border-b-4 border-primary-purple placeholder:text-white `}
           id={id}
           type={type}
           placeholder={placeholder}
