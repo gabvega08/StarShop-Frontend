@@ -28,7 +28,7 @@ const Select: FC<SelectProps> = ({
           <Icon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white" />
         )}
         <select
-          className="w-full bg-custom-light-card-border text-gray-200 text-sm p-3 pl-14 pr-3 rounded-lg appearance-none border-b-4 border-primary-purple focus:outline-none"
+          className="w-full bg-custom-light-card-border text-white text-base p-3 pl-14 pr-3 rounded-lg appearance-none border-b-4 border-primary-purple focus:outline-none"
           id={id}
           name={name}
           defaultValue=""
@@ -40,7 +40,7 @@ const Select: FC<SelectProps> = ({
             <option
               key={option.value}
               value={option.value}
-              className="text-gray-800 bg-white"
+              className="text-white"
             >
               {option.label}
             </option>
