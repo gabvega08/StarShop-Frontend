@@ -19,8 +19,8 @@ const SettingsComponent: React.FC = () => {
             Edit your store information
           </h2>
 
-          <Wrapper className="p-10 w-96">
-            <form className="flex w-4/5 flex-col gap-10 py-5">
+          <Wrapper className="p-10 w-5/12 bg-custom-light-wrapper-background">
+            <form className="flex w-4/5 flex-col gap-5 py-5">
               <Input
                 label="Name"
                 placeholder="Enter your store name"
