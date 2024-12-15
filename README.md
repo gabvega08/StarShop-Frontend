@@ -34,21 +34,21 @@ StarShop is an innovative platform designed to empower small businesses and entr
 git clone https://github.com/<your-username>/StarShop-Frontend.git
 ```
 
-4️⃣ Navigate to the project directory:
+3️⃣ Navigate to the project directory:
 ```bash
 cd StarShop-Frontend
 ```
-5️⃣ Add the remote repository upstream:
+4️⃣ Add the remote repository upstream:
 
 ```bash
 git remote add upstream https://github.com/StarShopCr/StarShop-Frontend.git
 ```
-6️⃣ Run this command to install dependencies.
+5️⃣ Run this command to install dependencies.
 
 ```bash
 npm install
 ```
-7️⃣ Edit Envirionment Variables
+6️⃣ Edit Envirionment Variables
 ```bash
 cp .env.example .env
 ```
