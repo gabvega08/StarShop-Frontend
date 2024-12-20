@@ -17,7 +17,7 @@ const LandingPageComponent: React.FC = () => {
           </p>
           <div className='flex justify-start items-center gap-4'>
             <Link
-              href="/register"
+              href="/auth/register"
               aria-label="Register for StarShop marketplace"
               className='mt-[30px] md:mt-[50px] font-bold inline-block bg-white text-primary-purple px-[10px] md:px-[40px] py-[15px] rounded-[25px] hover:bg-purple-100 leading-[22.72px] text-left cursor-pointer'
             >
