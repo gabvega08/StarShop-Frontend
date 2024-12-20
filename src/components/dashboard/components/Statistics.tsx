@@ -20,11 +20,11 @@ const STATIC_DATA = [
 
 export const Statistics = () => {
   return (
-    <div className="flex flex-col justify-start items-start py-6 gap-6 w-full">
+    <div className="flex flex-col justify-center gap-6 w-full mt-4">
       {STATIC_DATA.map((data) => (
         <p key={data.id}>
-          {data.title}{" "}
-          <span className="ml-10 border rounded-[6px] px-2 py-0 border-custom-light-purple text-custom-light-purple">
+          {data.title}
+          <span className="ml-5 border rounded-[6px] px-2 border-custom-light-purple text-custom-light-purple">
             {data.value}
           </span>
         </p>

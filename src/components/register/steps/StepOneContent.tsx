@@ -1,53 +1,54 @@
-import { User, Mail, MapPin } from "lucide-react";
+"use client";
+
+import React from "react";
 import UploadPhotoProfile from "@/components/ui/UploadPhotoProfile";
+import Input from "@/components/ui/Input";
+import StarShopCard from "@/components/ui/StarShopCard";
+import Select from "@/components/ui/Select";
+import { User, Mail, MapPin } from "lucide-react";
 
-export default function StepOneContent(): JSX.Element {
-    return (
-        <div className="flex flex-col items-center justify-center w-full space-y-6">
-            <UploadPhotoProfile />
+const StepOneContent: React.FC = () => {
+  return (
+    <>
+      <section className="flex flex-col justify-center items-center gap-5">
+        <UploadPhotoProfile />
+        <h2 className="uppercase font-bold italic text-2xl">
+          Complete your profile information
+        </h2>
 
-            <div className="flex flex-col items-center justify-center w-full px-14 pt-8 pb-14 bg-[#0F102C] rounded-[3rem] shadow-lg border-4 border-[#3D3C75]">
-                <div className="w-full space-y-4">
-                    <div className="flex flex-col w-full mt-0">
-                        <label className="text-white text-lg text-center font-bold italic mb-2">USERNAME</label>
-                        <div className="flex items-center w-full px-4 py-2 bg-[#302F54] rounded-md relative">
-                            <User className="w-5 h-5 text-white" />
-                            <input
-                                type="text"
-                                placeholder="Enter your username"
-                                className="flex-1 ml-4 text-sm text-white placeholder-white bg-transparent text-center focus:outline-none"
-                            />
-                            <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#7649CB] rounded-b-md"></div>
-                        </div>
-                    </div>
+        <StarShopCard className="p-10 w-full">
+          <form className="flex w-4/5 flex-col gap-5 py-5">
+            <Input
+              label="Username"
+              placeholder="Enter your username"
+              id="username"
+              name="username"
+              type="text"
+              icon={User}
+            />
 
-                    <div className="flex flex-col w-full">
-                        <label className="text-white text-lg text-center font-bold italic mb-2">EMAIL</label>
-                        <div className="flex items-center w-full px-4 py-2 bg-[#302F54] rounded-md relative">
-                            <Mail className="w-5 h-5 text-white" />
-                            <input
-                                type="email"
-                                placeholder="Enter your email"
-                                className="flex-1 ml-4 text-sm text-white placeholder-white bg-transparent text-center focus:outline-none"
-                            />
-                            <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#7649CB] rounded-b-md"></div>
-                        </div>
-                    </div>
+            <Input
+              label="Email"
+              placeholder="Enter your email"
+              id="email"
+              name="email"
+              type="email"
+              icon={Mail}
+            />
 
-                    <div className="flex flex-col w-full mb-16">
-                        <label className="text-white text-lg text-center font-bold italic mb-2">LOCATION</label>
-                        <div className="flex items-center w-full px-4 py-2 bg-[#302F54] rounded-md relative">
-                            <MapPin className="w-5 h-5 text-white" />
-                            <input
-                                type="text"
-                                placeholder="Enter your location"
-                                className="flex-1 ml-4 text-sm text-white placeholder-white bg-transparent text-center focus:outline-none"
-                            />
-                            <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#7649CB] rounded-b-md"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-}
+            <Input
+              label="Location"
+              placeholder="Enter your location"
+              id="location"
+              name="location"
+              type="text"
+              icon={MapPin}
+            />
+          </form>
+        </StarShopCard>
+      </section>
+    </>
+  );
+};
+
+export default StepOneContent;

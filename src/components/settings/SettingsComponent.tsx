@@ -1,9 +1,8 @@
 "use client";
 
 import React from "react";
-import Bounded from "../ui/Bounded";
 import UploadPhotoProfile from "../ui/UploadPhotoProfile";
-import Wrapper from "../ui/Wrapper";
+import Wrapper from "../ui/StarShopCard";
 import Input from "../ui/Input";
 import { MapPinned, ShoppingCart, Store } from "lucide-react";
 import { NotebookText } from "lucide-react";
@@ -12,10 +11,9 @@ import Select from "../ui/Select";
 const SettingsComponent: React.FC = () => {
   return (
     <>
-      <Bounded>
         <section className="flex flex-col justify-center items-center gap-5">
           <UploadPhotoProfile />
-          <h2 className="uppercase font-bold italic text-2xl">
+          <h2 className="uppercase text-white font-bold italic text-2xl">
             Edit your store information
           </h2>
 
@@ -63,7 +61,6 @@ const SettingsComponent: React.FC = () => {
             </form>
           </Wrapper>
         </section>
-      </Bounded>
     </>
   );
 };

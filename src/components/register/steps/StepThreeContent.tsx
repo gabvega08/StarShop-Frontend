@@ -1,100 +1,68 @@
 "use client";
 
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-
+import React from "react";
 import UploadPhotoProfile from "@/components/ui/UploadPhotoProfile";
-import { Store, Newspaper, ShoppingCart, MapPinnedIcon } from "lucide-react";
+import StarShopCard from "@/components/ui/StarShopCard";
+import Input from "@/components/ui/Input";
+import Select from "@/components/ui/Select";
+import { MapPinned, ShoppingCart, Store } from "lucide-react";
+import { NotebookText } from "lucide-react";
 
-export default function StepThreeContent(): JSX.Element {
+const SettingsComponent: React.FC = () => {
   return (
     <>
-      <div className="flex flex-col items-center">
-        <UploadPhotoProfile />
-        <div className="flex mt-4 flex-col items-center justify-center w-[428px] px-14 pt-8 pb-14 bg-[#0F102C] rounded-[3rem] shadow-lg border-4 border-[#3D3C75]">
-          <div className="w-full space-y-4">
-            <div className="flex flex-col w-full mt-[4rem]">
-              <label className="text-white text-lg text-center font-bold italic mb-2">
-                NAME
-              </label>
-              <div className="flex items-center w-full px-4 py-2 bg-[#302F54] rounded-md relative">
-                <Store className="w-5 h-5 text-white" />
-                <input
-                  type="text"
-                  placeholder="Enter your store name"
-                  className="flex-1 ml-4 text-sm text-white placeholder-white bg-transparent text-center focus:outline-none"
-                />
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#7649CB] rounded-b-md"></div>
-              </div>
-            </div>
+        <section className="flex flex-col justify-center items-center gap-5">
+          <UploadPhotoProfile />
+          <h2 className="uppercase font-bold italic text-2xl">
+            Edit your store information
+          </h2>
 
-            <div className="flex flex-col w-full">
-              <label className="text-white text-lg text-center font-bold italic mb-2">
-                DESCRIPTION
-              </label>
-              <div className="flex items-center w-full px-4 py-2 bg-[#302F54] rounded-md relative">
-                <Newspaper className="w-5 h-5 text-white" />
-                <input
-                  type="email"
-                  placeholder="Enter your store description"
-                  className="flex-1 ml-4 text-sm text-white placeholder-white bg-transparent text-center focus:outline-none"
-                />
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#7649CB] rounded-b-md"></div>
-              </div>
-            </div>
+          <StarShopCard className="p-10 w-full">
+            <form className="flex w-4/5 flex-col gap-5 py-5">
+              <Input
+                label="Name"
+                placeholder="Enter your store name"
+                id="name"
+                name="name"
+                type="text"
+                icon={Store}
+              />
 
-            <div className="flex flex-col w-full mb-16">
-              <label className="text-white text-lg text-center font-bold italic mb-2">
-                PRODUCT
-              </label>
-              <div className="flex items-center w-full px-4 py-2 bg-[#302F54] rounded-md relative">
-                <ShoppingCart className="w-5 h-5 text-white" />
+              <Input
+                label="Description"
+                placeholder="Enter your store description"
+                id="description"
+                name="description"
+                type="text"
+                icon={NotebookText}
+              />
 
-                <div className="flex w-full items-center justify-center ml-4 text-sm text-white placeholder-white bg-transparent text-center focus:outline-none">
-                  <Select>
-                    <SelectTrigger className="w-[180px]">
-                      <SelectValue placeholder="Product Type" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectGroup>
-                        <SelectLabel>Product Type</SelectLabel>
-                        <SelectItem value="Convinience">Convinience</SelectItem>
-                        <SelectItem value="Shopping">Shopping</SelectItem>
-                        <SelectItem value="Specialty">Specialty</SelectItem>
-                        <SelectItem value="Unsort">Unsort</SelectItem>
-                      </SelectGroup>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#7649CB] rounded-b-md"></div>
-              </div>
-            </div>
+              <Select
+                label="Product"
+                placeholder="Product Type"
+                id="product"
+                name="product"
+                options={[
+                  { value: "electronics", label: "Electronics" },
+                  { value: "clothing", label: "Clothing" },
+                  { value: "groceries", label: "Groceries" },
+                ]}
+                icon={ShoppingCart}
+              />
 
-            <div className="flex flex-col w-full mb-16">
-              <label className="text-white text-lg text-center font-bold italic mb-2">
-                LOCATION
-              </label>
-              <div className="flex items-center w-full px-4 py-2 bg-[#302F54] rounded-md relative">
-                <MapPinnedIcon className="w-5 h-5 text-white" />
-
-                <input
-                  type="text"
-                  placeholder="Enter your location"
-                  className="flex-1 ml-4 text-sm text-white placeholder-white bg-transparent text-center focus:outline-none"
-                />
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#7649CB] rounded-b-md"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+              <Input
+                label="Location"
+                placeholder="Enter your location"
+                id="location"
+                name="location"
+                type="text"
+                icon={MapPinned}
+              />
+            </form>
+          </StarShopCard>
+        </section>
     </>
   );
-}
+};
+
+export default SettingsComponent;
