@@ -19,8 +19,9 @@ StarShop is an innovative platform designed to empower small businesses and entr
 
 ## ⚙ Technologies
 * ⚡ [Next.js](https://nextjs.org/) (TypeScript): Framework for building the user interface.
-* 🎨 [TailwindCSS](https://tailwindcss.com/): Utility-first CSS framework for rapid UI development.
+* 🎨[TailwindCSS](https://tailwindcss.com/): Utility-first CSS framework for rapid UI development.
 * 🧩 [ShadCn](https://shadcn.dev/): Pre-built components for a consistent and polished UI.
+* 🌠 [Lucide-React](https://lucide.dev/): We use Lucide for icons.
 * 🌐 [Zustand](https://zustand-demo.pmnd.rs/): State management for predictable data flow.
 * 📡 [Axios](https://axios-http.com/): Promise-based HTTP client for API requests.
 * 📊 [React Query](https://tanstack.com/query/latest): Efficient data fetching and caching.
@@ -65,7 +66,7 @@ If you encounter installation issues, try these steps:
 * Delete node_modules: `rm -rf node_modules`
 * Delete package-lock.json: `rm package-lock.json`
 * Retry installation: `npm i`
-* If issues persist, you can try npm i --legacy-peer-deps or npm i --force as a last resort.
+* If issues persist, you can try npm i --legacy-peer-deps.
 
 
 ## Contribute to StarShop
