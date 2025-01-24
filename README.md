@@ -49,7 +49,7 @@ git remote add upstream https://github.com/StarShopCr/StarShop-Frontend.git
 ```bash
 npm install
 ```
-6️⃣ Edit Envirionment Variables
+6️⃣ Edit Environment Variables
 ```bash
 cp .env.example .env
 ```
