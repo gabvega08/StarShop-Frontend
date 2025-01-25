@@ -10,11 +10,11 @@ const NotFound = () => {
         <Image
           src={StarShopLanding}
           alt="StarShop Logo"
-          width={100}
-          height={20}
+          width={200}
+          height={100}
         />
       </div>
-      <h1 className="text-4xl md:text-6xl">Oops! Page not found.</h1>
+      <h1 className="text-4xl">Oops! Page not found.</h1>
       <p>Sorry, we couldn’t find the page you’re looking for.</p>
       <div className="mt-10  px-8 md:px-0">
         <Link
