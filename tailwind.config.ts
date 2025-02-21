@@ -58,7 +58,7 @@ export default {
         },
       },
       backgroundImage: {
-        starshopBackground: "url('/background-image-starshop.svg')",
+        starshopBackground: "url('/background-image-starshop.png')",
       },
       borderRadius: {
         lg: "var(--radius)",
