@@ -67,7 +67,6 @@ const Transactions = () => {
             Transactions
           </h2>
   
-          {/* Resumen */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
             <TransactionSummary title="Total Revenue" amount={12567.89} color="text-green-400" />
             <TransactionSummary title="Pending Payouts" amount={890.00} color="text-blue-400" />
