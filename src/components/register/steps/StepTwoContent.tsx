@@ -1,6 +1,6 @@
 "use client"
 
-import { Check, ShoppingBasket, Store, User, StoreIcon } from "lucide-react"
+import { Check, Store, User} from "lucide-react"
 import { useState } from "react"
 import Image from "next/image"
 import StarShopLanding from "../../../../public/starshop-logos/StarShop-Logo.svg"
