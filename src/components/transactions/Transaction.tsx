@@ -74,7 +74,6 @@ const Transactions = () => {
             <TransactionSummary title="Available Balance" amount={3456.78} color="text-purple-400" />
           </div>
   
-          {/* Contenedor de transacciones con borde y sombra reducida */}
           <div className="bg-transparent border border-white/20 shadow-[0px_2px_8px_2px_rgba(255,255,255,0.15)] p-4 rounded-lg">
             <h3 className="text-lg sm:text-xl font-semibold mb-4 text-white">
               Recent Transactions
