@@ -1,5 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Paperclip, Send } from "lucide-react";
+import { Paperclip, Send, User } from "lucide-react";
 import Input from "@/components/ui/Input";
 
 export default function ChatInterface() {
@@ -7,10 +6,9 @@ export default function ChatInterface() {
     <div className="w-full max-w-7xl mx-auto rounded-lg overflow-hidden text-zinc-100 shadow-[0_0_10px_rgba(255,255,255,0.2)] bg-opacity-80 border border-zinc-800">
       <div className="p-4 border-b border-zinc-900">
         <div className="flex items-center gap-3">
-          <Avatar className="h-8 w-8 bg-zinc-700">
-            <AvatarImage src="/placeholder.svg" />
-            <AvatarFallback className="text-zinc-300">JD</AvatarFallback>
-          </Avatar>
+          <div className="h-8 w-8 bg-zinc-700 rounded-full flex items-center justify-center">
+            <User className="h-5 w-5 text-zinc-300" />
+          </div>
           <div>
             <div className="font-medium">John Doe</div>
             <div className="text-xs text-zinc-400">Online</div>

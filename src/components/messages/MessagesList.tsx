@@ -1,5 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Search } from "lucide-react";
+import { Search, User } from "lucide-react";
 import Input from "@/components/ui/Input";
 
 interface Conversation {
@@ -8,7 +7,6 @@ interface Conversation {
   lastMessage: string;
   timeAgo: string;
   isOnline?: boolean;
-  avatar?: string;
 }
 
 const conversations: Conversation[] = [
@@ -18,21 +16,18 @@ const conversations: Conversation[] = [
     lastMessage: "Thanks for the quick deliv...",
     timeAgo: "2m ago",
     isOnline: true,
-    avatar: "/placeholder.svg",
   },
   {
     id: "2",
     name: "Sarah Smith",
     lastMessage: "Is this item still available?",
     timeAgo: "1h ago",
-    avatar: "/placeholder.svg",
   },
   {
     id: "3",
     name: "Mike Johnson",
     lastMessage: "Perfect, I'll place the order",
     timeAgo: "3h ago",
-    avatar: "/placeholder.svg",
   },
 ];
 
@@ -62,11 +57,8 @@ export default function ChatConversations() {
                 : "hover:bg-zinc-800/50"
             }`}
           >
-            <div className="relative">
-              <Avatar className="h-10 w-10">
-                <AvatarImage src={conversation.avatar} />
-                <AvatarFallback>{conversation.name[0]}</AvatarFallback>
-              </Avatar>
+            <div className="relative flex items-center justify-center h-10 w-10 bg-zinc-700 rounded-full">
+              <User className="h-6 w-6 text-zinc-300" />
             </div>
             <div className="flex-1 min-w-0">
               <div className="flex items-center justify-between">
