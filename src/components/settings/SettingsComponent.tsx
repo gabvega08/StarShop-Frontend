@@ -6,7 +6,7 @@ import Wrapper from "../ui/StarShopCard";
 import Input from "../ui/Input";
 import { MapPinned, ShoppingCart, Store } from "lucide-react";
 import { NotebookText } from "lucide-react";
-import Select from "@/components/ui/select";
+import Select from "@/components/ui/Select";
 
 const SettingsComponent: React.FC = () => {
   return (

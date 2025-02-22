@@ -4,7 +4,7 @@ import React from "react";
 import UploadPhotoProfile from "@/components/ui/UploadPhotoProfile";
 import StarShopCard from "@/components/ui/StarShopCard";
 import Input from "@/components/ui/Input";
-import Select from "@/components/ui/select";
+import Select from "@/components/ui/Select";
 import { MapPinned, ShoppingCart, Store } from "lucide-react";
 import { NotebookText } from "lucide-react";
 
