@@ -47,7 +47,7 @@ const TransactionCard = ({ product, title, amount,state, status }: TransactionPr
     },
   };
 
-  const { bg, icon, text } = statusColors[status] || statusColors.Processing;
+  const { bg, icon } = statusColors[status] || statusColors.Processing;
 
   return (
  
