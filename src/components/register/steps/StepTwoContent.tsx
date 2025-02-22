@@ -3,14 +3,14 @@
 import { Check, Store, User} from "lucide-react"
 import { useState } from "react"
 import Image from "next/image"
-import StarShopLanding from "../../../../public/starshop-logos/StarShop-Logo.svg"
+import StarShopLanding from "../../../../public/starshop-logos/StarShop-Logo-Landing.svg"
 
 export default function StepTwoContent(): JSX.Element {
     const [activeProfile, setActiveProfile] = useState<"buyer" | "seller" | null>(null)
 
   return (
     <div className="w-full  flex flex-col items-center justify-center p-6">
-    <Image src={StarShopLanding} alt="StarShop Logo" width={60} height={60} className="" />
+    <Image src={StarShopLanding} alt="StarShop Logo" width={70} height={70} className="" />
 
       <h1 className="text-3xl font-bold text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.8)] text-center mb-2">Choose your profile</h1>
       <p className="text-gray-400 text-center mb-8">Select how you want to use StarShop marketplace</p>
@@ -20,22 +20,21 @@ export default function StepTwoContent(): JSX.Element {
           onClick={() => setActiveProfile("buyer")}
           className={`group 
             p-6 
-            rounded-2xl 
-            bg-[#0c0b1d]  
+            max-w-[1345px] mx-auto
+            rounded-xl 
+            bg-[black]  
             shadow-[0_0_15px_-3px_rgba(127,79,210,0.2),0_8px_25px_-5px_rgba(127,79,210,0.3)] 
-            hover:shadow-[0_0_15px_-3px_rgba(127,79,210,0.3),0_12px_30px_-5px_rgba(127,79,210,0.4)] 
-            border border-purple-500/60 
-            hover:border-purple-500 
+            hover:shadow-[0_0_15px_-3px_rgba(127,79,210,0.9),0_12px_30px_-5px_rgba(127,79,210,0.4)] 
+            border-2 border-[#A855f7] 
             transition-all 
             duration-300 
             backdrop-blur-sm 
             relative overflow-hidden ${
             activeProfile === "buyer" 
             ? 
-            `opacity-100 
-            border-purple-500 
-            shadow-[0_0_15px_-3px_rgba(127,79,210,0.3),0_12px_30px_-5px_rgba(127,79,210,0.4)]` 
-            : `opacity-70`
+            `border-purple-300 
+            shadow-[0_0_15px_-3px_rgba(127,79,210,0.9),0_12px_30px_-5px_rgba(127,79,210,0.4)]` 
+            : `border-purple-500 `
           }`}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-purple-600/10 transition-opacity duration-300" />
@@ -70,23 +69,23 @@ export default function StepTwoContent(): JSX.Element {
         <button
           onClick={() => setActiveProfile("seller")}
           className={`group 
-            p-6 
-            rounded-2xl 
-            bg-[#0c0b1d]  
+             p-6 
+            max-w-[1345px] mx-auto
+            rounded-xl 
+            bg-[black]  
             shadow-[0_0_15px_-3px_rgba(127,79,210,0.2),0_8px_25px_-5px_rgba(127,79,210,0.3)] 
-            hover:shadow-[0_0_15px_-3px_rgba(127,79,210,0.3),0_12px_30px_-5px_rgba(127,79,210,0.4)] 
-            border border-purple-500/60 
-            hover:border-purple-500 
+            hover:shadow-[0_0_15px_-3px_rgba(127,79,210,0.9),0_12px_30px_-5px_rgba(127,79,210,0.4)] 
+            border-2 border-[#A855f7] 
             transition-all 
             duration-300 
             backdrop-blur-sm 
             relative overflow-hidden ${
             activeProfile === "seller" 
             ? 
-            `opacity-100 
-            border-purple-500 
-            shadow-[0_0_15px_-3px_rgba(127,79,210,0.3),0_12px_30px_-5px_rgba(127,79,210,0.4)]` 
-            : `opacity-70`
+            `
+            border-purple-300 
+            shadow-[0_0_15px_-3px_rgba(127,79,210,0.9),0_12px_30px_-5px_rgba(127,79,210,0.4)]` 
+            : `border-purple-500 `
           }`}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-purple-600/10 transition-opacity duration-300" />
