@@ -20,7 +20,6 @@ export default function StepTwoContent(): JSX.Element {
           onClick={() => setActiveProfile("buyer")}
           className={`group 
             p-6 
-            max-w-[1345px] mx-auto
             rounded-xl 
             bg-[black]  
             shadow-[0_0_15px_-3px_rgba(127,79,210,0.2),0_8px_25px_-5px_rgba(127,79,210,0.3)] 
@@ -46,7 +45,7 @@ export default function StepTwoContent(): JSX.Element {
 
             <h3 className="text-xl text-left font-bold text-white mb-2">Buyer</h3>
             <p className="text-sm text-gray-400 mb-6 min-w-[280px] text-left">
-              Shop from unique stores and collect NFTs with every purchase
+              Shop from unique stores and collect NFTs with <br></br> every purchase
             </p>
 
             <div className="space-y-3">
@@ -70,7 +69,6 @@ export default function StepTwoContent(): JSX.Element {
           onClick={() => setActiveProfile("seller")}
           className={`group 
              p-6 
-            max-w-[1345px] mx-auto
             rounded-xl 
             bg-[black]  
             shadow-[0_0_15px_-3px_rgba(127,79,210,0.2),0_8px_25px_-5px_rgba(127,79,210,0.3)] 
@@ -97,7 +95,7 @@ export default function StepTwoContent(): JSX.Element {
 
             <h3 className="text-xl text-left font-bold text-white mb-2">Seller</h3>
             <p className="text-sm text-gray-400 mb-6 min-w-[280px] text-left">
-              Open your store and start selling to crypto-savvy customers
+              Open your store and start selling to crypto-savvy <br></br> customers
             </p>
 
             <div className="space-y-3">
