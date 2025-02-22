@@ -53,11 +53,6 @@ const transactions: TransactionItemProps[] = [
   }
 ];
 
-const summaryData = {
-  totalRevenue: 12567.89,
-  pendingPayouts: 890.00,
-  availableBalance: 3456.78,
-};
 
 const Transactions = () => {
     return (
