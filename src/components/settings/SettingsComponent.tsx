@@ -1,5 +1,6 @@
 "use client";
 
+
 import React, { useEffect, useState } from "react";
 import { Store, NotebookText, Mail } from "lucide-react";
 
@@ -11,6 +12,14 @@ const NewSettings: React.FC = () => {
       setIsVisible(true);
     }, 300);
   }, []);
+
+import React from "react";
+import UploadPhotoProfile from "../ui/UploadPhotoProfile";
+import Wrapper from "../ui/StarShopCard";
+import Input from "../ui/Input";
+import { MapPinned, Store } from "lucide-react";
+import { NotebookText } from "lucide-react";
+
 
   return (
     <section className="flex flex-col items-center justify-center min-h-screen pt-10 bg-[url('/path-to-your-background-image.png')] bg-cover bg-no-repeat">
@@ -57,6 +66,7 @@ const NewSettings: React.FC = () => {
             </div>
           </div>
 
+
           <div className="flex flex-col gap-2">
             <label className="text-xl text-white font-semibold">
               Contact Email
@@ -81,6 +91,20 @@ const NewSettings: React.FC = () => {
         </form>
       </div>
     </section>
+
+              <Input
+                label="Location"
+                placeholder="Enter your location"
+                id="location"
+                name="location"
+                type="text"
+                icon={MapPinned}
+              />
+            </form>
+          </Wrapper>
+        </section>
+    </>
+
   );
 };
 

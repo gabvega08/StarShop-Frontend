@@ -4,8 +4,7 @@ import React from "react";
 import UploadPhotoProfile from "@/components/ui/UploadPhotoProfile";
 import StarShopCard from "@/components/ui/StarShopCard";
 import Input from "@/components/ui/Input";
-import Select from "@/components/ui/Select";
-import { MapPinned, ShoppingCart, Store } from "lucide-react";
+import { MapPinned, Store } from "lucide-react";
 import { NotebookText } from "lucide-react";
 
 const SettingsComponent: React.FC = () => {
@@ -35,19 +34,6 @@ const SettingsComponent: React.FC = () => {
                 name="description"
                 type="text"
                 icon={NotebookText}
-              />
-
-              <Select
-                label="Product"
-                placeholder="Product Type"
-                id="product"
-                name="product"
-                options={[
-                  { value: "electronics", label: "Electronics" },
-                  { value: "clothing", label: "Clothing" },
-                  { value: "groceries", label: "Groceries" },
-                ]}
-                icon={ShoppingCart}
               />
 
               <Input

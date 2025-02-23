@@ -4,17 +4,15 @@ type FormState<T> = {
   [K in keyof T]: T[K];
 };
 
-const useFormSetter = <T extends Record<string, any>>(initialState: T) => {
+const useFormSetter = <T extends Record<string, unknown>>(initialState: T) => {
     const [formState, setFormState] = useState<FormState<T>>(initialState);
   
-    const createFormSetter = (fieldName: keyof T) => {
-        const setter = (fieldValue: T[keyof T]) => {
-            const newFormState: FormState<T> = {
-                ...formState,
+    const createFormSetter = <K extends keyof T>(fieldName: K) => {
+        const setter = (fieldValue: T[K]) => {
+            setFormState((prevState) => ({
+                ...prevState,
                 [fieldName]: fieldValue,
-            };
-  
-            setFormState(() => newFormState);
+            }));
         };
   
         return setter;
