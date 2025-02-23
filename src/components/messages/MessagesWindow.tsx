@@ -27,7 +27,7 @@ export default function ChatInterface() {
 
         <div className="space-y-1 text-right">
           <div className="max-w-[80%] ml-auto rounded-lg bg-opacity-60 bg-[#2A1B47] p-3">
-            You're welcome! We're glad you received your order. How do you like
+            You&apos;re welcome! We&apos;re glad you received your order. How do you like
             the product?
           </div>
           <div className="text-xs text-zinc-500 pr-2">2:31 PM</div>
@@ -35,14 +35,14 @@ export default function ChatInterface() {
 
         <div className="space-y-1">
           <div className="max-w-[80%] rounded-lg bg-opacity-30 bg-zinc-800 p-3">
-            It's perfect! Exactly what I was looking for.
+            It&apos;s perfect! Exactly what I was looking for.
           </div>
           <div className="text-xs text-zinc-500 pl-2">2:32 PM</div>
         </div>
 
         <div className="space-y-1 text-right">
           <div className="max-w-[80%] ml-auto rounded-lg bg-opacity-60 bg-[#2A1B47] p-3">
-            That's great to hear! Don't forget to leave a review if you're
+            That&apos;s great to hear! Don&apos;t forget to leave a review if you&apos;re
             satisfied with your purchase.
           </div>
           <div className="text-xs text-zinc-500 pr-2">2:33 PM</div>

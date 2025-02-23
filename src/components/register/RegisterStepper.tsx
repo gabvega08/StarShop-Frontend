@@ -6,11 +6,18 @@ import StepThreeContent from "./steps/StepThreeContent";
 
 const steps = ["Step 1", "Step 2", "Step 3"];
 
-const stepContent = [
-  <StepOneContent />,
-  <StepTwoContent />,
-  <StepThreeContent />
-];
+const renderStepContent = (step: number) => {
+  switch (step) {
+    case 1:
+      return <StepOneContent />;
+    case 2:
+      return <StepTwoContent />;
+    case 3:
+      return <StepThreeContent />;
+    default:
+      return null;
+  }
+};
 
 const RegisterStepper = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -53,7 +60,7 @@ const RegisterStepper = () => {
         ))}
       </div>
       <div className="text-lg text-white/90 font-medium">
-        {stepContent[currentStep - 1]}
+        {renderStepContent(currentStep)}
       </div>
       <div className="flex space-x-6">
         <button
@@ -85,4 +92,3 @@ const RegisterStepper = () => {
 };
 
 export default RegisterStepper;
-

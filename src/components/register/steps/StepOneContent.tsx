@@ -4,7 +4,6 @@ import React from "react";
 import UploadPhotoProfile from "@/components/ui/UploadPhotoProfile";
 import Input from "@/components/ui/Input";
 import StarShopCard from "@/components/ui/StarShopCard";
-import Select from "@/components/ui/Select";
 import { User, Mail, MapPin } from "lucide-react";
 
 const StepOneContent: React.FC = () => {
