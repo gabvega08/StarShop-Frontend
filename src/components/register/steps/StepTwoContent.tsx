@@ -21,7 +21,7 @@ export default function StepTwoContent(): JSX.Element {
           className={`group 
             p-6 
             rounded-xl 
-            bg-[black]  
+            bg-[#0c0b1d]  
             shadow-[0_0_15px_-3px_rgba(127,79,210,0.2),0_8px_25px_-5px_rgba(127,79,210,0.3)] 
             hover:shadow-[0_0_15px_-3px_rgba(127,79,210,0.9),0_12px_30px_-5px_rgba(127,79,210,0.4)] 
             border-2 border-[#A855f7] 
@@ -33,7 +33,7 @@ export default function StepTwoContent(): JSX.Element {
             ? 
             `border-purple-300 
             shadow-[0_0_15px_-3px_rgba(127,79,210,0.9),0_12px_30px_-5px_rgba(127,79,210,0.4)]` 
-            : `border-purple-500 `
+            : `border-[#A855f7] `
           }`}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-purple-600/10 transition-opacity duration-300" />
@@ -43,23 +43,23 @@ export default function StepTwoContent(): JSX.Element {
               <User size={24} className="text-purple-400" />
             </div>
 
-            <h3 className="text-xl text-left font-bold text-white mb-2">Buyer</h3>
-            <p className="text-sm text-gray-400 mb-6 min-w-[280px] text-left">
+            <h3 className="text-xl text-left font-bold text-[#E9D5FF] mb-2">Buyer</h3>
+            <p className="text-sm text-[#D1D5DB] mb-6 min-w-[280px] text-left">
               Shop from unique stores and collect NFTs with <br></br> every purchase
             </p>
 
             <div className="space-y-3">
               <div className="flex items-center gap-2">
                 <Check size={16} className="text-purple-400" />
-                <span className="text-sm text-gray-300">Browse thousands of products</span>
+                <span className="text-sm text-[#D1D5DB]">Browse thousands of products</span>
               </div>
               <div className="flex items-center gap-2">
                 <Check size={16} className="text-purple-400" />
-                <span className="text-sm text-gray-300">Earn collectible NFTs</span>
+                <span className="text-sm text-[#D1D5DB]">Earn collectible NFTs</span>
               </div>
               <div className="flex items-center gap-2">
                 <Check size={16} className="text-purple-400" />
-                <span className="text-sm text-gray-300">Secure blockchain payments</span>
+                <span className="text-sm text-[#D1D5DB]">Secure blockchain payments</span>
               </div>
             </div>
           </div>
@@ -70,7 +70,7 @@ export default function StepTwoContent(): JSX.Element {
           className={`group 
              p-6 
             rounded-xl 
-            bg-[black]  
+            bg-[#0c0b1d]  
             shadow-[0_0_15px_-3px_rgba(127,79,210,0.2),0_8px_25px_-5px_rgba(127,79,210,0.3)] 
             hover:shadow-[0_0_15px_-3px_rgba(127,79,210,0.9),0_12px_30px_-5px_rgba(127,79,210,0.4)] 
             border-2 border-[#A855f7] 
@@ -83,7 +83,7 @@ export default function StepTwoContent(): JSX.Element {
             `
             border-purple-300 
             shadow-[0_0_15px_-3px_rgba(127,79,210,0.9),0_12px_30px_-5px_rgba(127,79,210,0.4)]` 
-            : `border-purple-500 `
+            : `border-[#a855f7] `
           }`}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-purple-600/10 transition-opacity duration-300" />
@@ -93,23 +93,23 @@ export default function StepTwoContent(): JSX.Element {
               <Store size={24} className="text-purple-400" />
             </div>
 
-            <h3 className="text-xl text-left font-bold text-white mb-2">Seller</h3>
-            <p className="text-sm text-gray-400 mb-6 min-w-[280px] text-left">
+            <h3 className="text-xl text-left font-bold text-[#E9D5FF] mb-2">Seller</h3>
+            <p className="text-sm text-[#D1D5DB] mb-6 min-w-[280px] text-left">
               Open your store and start selling to crypto-savvy <br></br> customers
             </p>
 
             <div className="space-y-3">
               <div className="flex items-center gap-2">
                 <Check size={16} className="text-purple-400" />
-                <span className="text-sm text-gray-300">Create your own store</span>
+                <span className="text-sm text-[#D1D5DB]">Create your own store</span>
               </div>
               <div className="flex items-center gap-2">
                 <Check size={16} className="text-purple-400" />
-                <span className="text-sm text-gray-300">Manage products & orders</span>
+                <span className="text-sm text-[#D1D5DB]">Manage products & orders</span>
               </div>
               <div className="flex items-center gap-2">
                 <Check size={16} className="text-purple-400" />
-                <span className="text-sm text-gray-300">Milestone NFT rewards</span>
+                <span className="text-sm text-[#D1D5DB]">Milestone NFT rewards</span>
               </div>
             </div>
           </div>
