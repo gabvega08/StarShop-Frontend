@@ -51,7 +51,7 @@ const TransactionCard = ({ product, title, amount,state, status }: TransactionPr
 
   return (
  
-<div className="flex items-center bg-[#1e1c38]/60 p-4 border-[#242332] border-y backdrop-blur-sm opacity-60">
+<div className="flex items-center  p-4 border-[#242332] border-y z-50">
   
     <div className={`flex items-center justify-center w-10 h-10 rounded-lg ${bg}`}>
       <Cuboid className={`${icon} w-5 h-5`} />

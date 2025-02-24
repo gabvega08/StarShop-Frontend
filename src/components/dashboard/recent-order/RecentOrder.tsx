@@ -69,10 +69,10 @@ const RecentOrders = () => {
               <span className="text-gray-500 text-sm">Today</span>
             </div>
     
-            <div className="md:border md:rounded-2xl overflow-hidden border-[#1e1c38] backdrop-blur-sm">
-              <div className="bg-[#1e1c38]/30">
+            <div className="md:border md:rounded-2xl overflow-hidden border-[#1e1c38] ">
+              <div className="bg-white/5">
                 {transactions.map((tx) => (
-                  <TransactionCard key={tx.id} {...tx} />
+                   <TransactionCard key={tx.id} {...tx} />
                 ))}
               </div>
     
