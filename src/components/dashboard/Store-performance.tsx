@@ -37,7 +37,7 @@ const StorePerformance: React.FC = () => {
   return (
     <>
       <section className="text-white">
-        <h3 className="font-medium text-[28px]  ">Store Performance</h3>
+        <h3 className="font-medium text-[28px] mb-4  ">Store Performance</h3>
         <article className="flex gap-4 md:flex-row flex-col flex-wrap ">
           {salesData.map((data, index) => (
             <SalesGoalCard key={index} {...data} />
