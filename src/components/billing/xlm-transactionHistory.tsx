@@ -4,7 +4,7 @@ interface Transaction {
   title: string
   date: string
   amount: string
-  status: "Confirmed" | "Pending" | "Failed"
+  status: "Confirmed"
 }
 
 const transactions: Transaction[] = [
