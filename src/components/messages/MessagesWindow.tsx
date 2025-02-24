@@ -27,8 +27,8 @@ export default function ChatInterface() {
 
         <div className="space-y-1 text-right">
           <div className="max-w-[80%] ml-auto rounded-lg bg-opacity-60 bg-[#2A1B47] p-3">
-            You&apos;re welcome! We&apos;re glad you received your order. How do you like
-            the product?
+            You&apos;re welcome! We&apos;re glad you received your order. How do
+            you like the product?
           </div>
           <div className="text-xs text-zinc-500 pr-2">2:31 PM</div>
         </div>
@@ -42,8 +42,8 @@ export default function ChatInterface() {
 
         <div className="space-y-1 text-right">
           <div className="max-w-[80%] ml-auto rounded-lg bg-opacity-60 bg-[#2A1B47] p-3">
-            That&apos;s great to hear! Don&apos;t forget to leave a review if you&apos;re
-            satisfied with your purchase.
+            That&apos;s great to hear! Don&apos;t forget to leave a review if
+            you&apos;re satisfied with your purchase.
           </div>
           <div className="text-xs text-zinc-500 pr-2">2:33 PM</div>
         </div>
@@ -61,6 +61,7 @@ export default function ChatInterface() {
               type="text"
               placeholder="Type a message..."
               name="message"
+              className=" border-b-4 border-primary-purple placeholder:text-white"
             />
           </div>
           <button className="flex-shrink-0 bg-[#9039E4] p-3 rounded-lg text-white hover:bg-purple-700 transition">
