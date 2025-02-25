@@ -6,6 +6,8 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
+import { Button } from '@/components/ui/button'
+
 export default function CreateUserForm() {
   const [formData, setFormData] = useState({
     email: '',
@@ -62,7 +64,15 @@ export default function CreateUserForm() {
                {/* <Input */}
             </div>
 
-            {/* <Button */}
+           
+            <Button
+            variant="light"
+            size="lg"
+            onClick={handleSubmit}
+          >
+            
+            Create Account
+          </Button>
           </form>
 
           <p className="text-center text-muted mt-3">
