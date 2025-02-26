@@ -20,14 +20,13 @@ export default function StepTwoContent(): JSX.Element {
           onClick={() => setActiveProfile("buyer")}
           className={`group 
             p-6 
-            rounded-xl 
-            bg-[#0c0b1d]  
+            bg-[#0c0b1d]
+            rounded-xl      
             shadow-[0_0_15px_-3px_rgba(127,79,210,0.2),0_8px_25px_-5px_rgba(127,79,210,0.3)] 
             hover:shadow-[0_0_15px_-3px_rgba(127,79,210,0.9),0_12px_30px_-5px_rgba(127,79,210,0.4)] 
             border-2 border-[#A855f7] 
             transition-all 
             duration-300 
-            backdrop-blur-sm 
             relative overflow-hidden ${
             activeProfile === "buyer" 
             ? 
@@ -36,7 +35,6 @@ export default function StepTwoContent(): JSX.Element {
             : `border-[#A855f7] `
           }`}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-purple-600/10 transition-opacity duration-300" />
 
           <div className="relative z-10">
             <div className="w-12 h-12 flex items-center justify-center rounded-full bg-purple-500/10 mb-4">
@@ -67,16 +65,15 @@ export default function StepTwoContent(): JSX.Element {
 
         <button
           onClick={() => setActiveProfile("seller")}
-          className={`group 
+          className={`
              p-6 
+             bg-[#0c0b1d]
             rounded-xl 
-            bg-[#0c0b1d]  
             shadow-[0_0_15px_-3px_rgba(127,79,210,0.2),0_8px_25px_-5px_rgba(127,79,210,0.3)] 
             hover:shadow-[0_0_15px_-3px_rgba(127,79,210,0.9),0_12px_30px_-5px_rgba(127,79,210,0.4)] 
             border-2 border-[#A855f7] 
             transition-all 
             duration-300 
-            backdrop-blur-sm 
             relative overflow-hidden ${
             activeProfile === "seller" 
             ? 
@@ -86,7 +83,6 @@ export default function StepTwoContent(): JSX.Element {
             : `border-[#a855f7] `
           }`}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-purple-600/10 transition-opacity duration-300" />
 
           <div className="relative z-10">
             <div className="w-12 h-12 flex items-center justify-center rounded-full bg-purple-500/10 mb-4">
