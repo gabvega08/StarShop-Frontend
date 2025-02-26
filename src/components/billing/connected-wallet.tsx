@@ -3,26 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Copy, ExternalLink, Wallet } from "lucide-react";
 
 const ConnectedWallet = () => {
-  //   {
-  //     date: "Mar 1, 2024",
-  //     type: "Premium Store Subscription",
-  //     amount: "50 XLM",
-  //     status: "Confirmed",
-  //   },
-  //   {
-  //     date: "Feb 1, 2024",
-  //     type: "Premium Store Subscription",
-  //     amount: "50 XLM",
-  //     status: "Confirmed",
-  //   },
-  //   {
-  //     date: "Jan 1, 2024",
-  //     type: "Premium Store Subscription",
-  //     amount: "50 XLM",
-  //     status: "Confirmed",
-  //   },
-  // ];
-
+  
   return (
     <div className="space-y-6 p-3 sm:p-6 bg-starshopBackground">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0">
