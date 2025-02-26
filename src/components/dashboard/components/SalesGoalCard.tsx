@@ -10,7 +10,6 @@ interface SalesGoalProps {
   subtitle: string;
   target: string;
   progress: number;
-
   thisMonth: string;
 }
 
@@ -22,7 +21,6 @@ const SalesGoalCard: React.FC<SalesGoalProps> = ({
   subtitle,
   target,
   progress,
-
   thisMonth,
 }) => {
   const [progressWidth, setProgressWidth] = useState(0);
