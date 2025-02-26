@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import Sidebar from './sidebar';
 
-const SIDEBAR_ROUTES = [
+const sidebarRoutes = [
   '/profile',
   '/dashboard',
   '/analytics',
@@ -13,7 +13,7 @@ const SIDEBAR_ROUTES = [
   '/invoices',
   '/billing',
   '/chat',
-  '/support-tickets',
+  '/supportTickets',
   '/faq',
   '/settings',
   '/help'
@@ -21,7 +21,7 @@ const SIDEBAR_ROUTES = [
 
 export default function ClientSidebar() {
   const pathname = usePathname();
-  const shouldShowSidebar = SIDEBAR_ROUTES.includes(pathname);
+  const shouldShowSidebar = sidebarRoutes.includes(pathname);
   const [isOpen, setIsOpen] = useState(false);
   
   if (!shouldShowSidebar) return null;
@@ -42,7 +42,6 @@ export default function ClientSidebar() {
         </svg>
       </button>
       
-      {/* Overlay para cerrar el sidebar */}
       {isOpen && (
         <div 
           className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
