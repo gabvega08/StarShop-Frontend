@@ -2,10 +2,9 @@
 
 import SettingsComponent from "@/components/settings/SettingsComponent";
 
-export default function ProfilePage() {
+export default function SettingsPage() {
   return (
-    <>
-      <SettingsComponent />
-    </>
+
+    <SettingsComponent />
   );
 }
