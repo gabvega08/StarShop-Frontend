@@ -4,7 +4,8 @@ import RecentOrders from "@/components/dashboard/components/RecentOrder";
 export default function LadingPage() {
   return (
     <>
-      <RecentOrders/>
+      <LandingPageComponent />
+     
     </>
   );
 }
