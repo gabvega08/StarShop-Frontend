@@ -6,6 +6,7 @@ import { ConnectWalletButton } from '../ui';
 
 const LandingPageComponent: React.FC = () => {
   return (
+    <>
     <main className="flex mt-[4rem] h-[100vh] w-full justify-center items-center">
       <section className='p-0 flex flex-col-reverse md:flex-row w-full xl:my-[35px] xl:pl-[100px] px-[10px] md:px-[50px] pb-[100px] text-white max-w-[1600px] m-auto'>
         <section className='w-full md:w-1/2 xl:max-w-[700px]'>
@@ -52,6 +53,9 @@ const LandingPageComponent: React.FC = () => {
         </section>
       </section>
     </main>
+    
+      
+      </>
   );
 };
 
