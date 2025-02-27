@@ -8,6 +8,10 @@ interface InputProps {
   placeholder?: string;
   name: string;
   icon?: LucideIcon;
+  className?: string;
+  labelClassName?: string;
+  centered?: boolean;
+  containerClassName?: string;
 }
 
 const Input: FC<InputProps> = ({
@@ -17,18 +21,34 @@ const Input: FC<InputProps> = ({
   placeholder,
   name,
   icon: Icon,
+  className = "",
+  labelClassName = "text-lg text-white",
+  centered = true,
+  containerClassName = "",
 }) => {
   return (
-    <div className="flex flex-col items-center text-center space-y-2">
-      <label className="uppercase font-bold text-white text-lg" htmlFor={id}>
+    <div
+      className={`
+        flex flex-col 
+        ${centered ? "items-center text-center" : "items-start text-left"} 
+        space-y-2
+        ${containerClassName}
+      `}
+    >
+      <label
+        htmlFor={id}
+        className={`block mb-2 uppercase font-bold ${labelClassName}`}
+      >
         {label}
       </label>
-      <div className="relative w-full">
+      <div className={`relative ${centered ? "w-full" : "w-full"}`}>
         {Icon && (
           <Icon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white" />
         )}
         <input
-          className={`w-full bg-custom-light-card-background text-white text-base p-3 pl-14 rounded-lg border-b-4 border-primary-purple placeholder:text-white `}
+          className={`w-full bg-custom-light-card-background text-white text-base p-3 ${
+            Icon ? "pl-14" : "pl-3"
+          } rounded-lg  ${className}`}
           id={id}
           type={type}
           placeholder={placeholder}

@@ -43,6 +43,7 @@ export default function ChatConversations() {
             placeholder="Search conversations..."
             name="search"
             icon={Search}
+            className=" border-b-4 border-primary-purple placeholder:text-white"
           />
         </div>
       </div>
