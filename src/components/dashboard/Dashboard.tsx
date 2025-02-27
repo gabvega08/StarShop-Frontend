@@ -1,9 +1,9 @@
-import StoreOverview from "@/components/dashboard/store-overview/StoreOverview";
+import StoreOverViewComponent from "@/components/dashboard/store-overview/StoreOverViewComponent";
 
 export default function DashboardPage() {
   return (
     <div>
-      <StoreOverview />
+      <StoreOverViewComponent />
     </div>
   );
 }
