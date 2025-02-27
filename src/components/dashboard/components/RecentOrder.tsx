@@ -133,17 +133,17 @@ const RecentOrders = () => {
       <div className="relative p-4 rounded-lg shadow-md bg-transparent">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-3xl font-normal text-white">Recent Orders</h2>
-          <span className="text-gray-500 text-sm md:text-lg">Today</span>
+          <span className="text-gray-500 text-lg md:text-2xl">Today</span>
         </div>
 
-        <div className="md:border md:rounded-2xl overflow-hidden border-[#1e1c38] ">
-          <div className="bg-white/5">
+        <div className="md:border md:rounded-2xl overflow-hidden border-[#1e1c38] shadow-2xl">
+          <div className="bg-yellow-900/5">
             {transactions.map((tx) => (
               <TransactionCard key={tx.id} {...tx} />
             ))}
           </div>
 
-          <div className="w-full flex justify-center items-end p-4 bg-white/5">
+          <div className="w-full flex justify-center items-end p-4 bg-yellow-900/5">
             <button className="text-white flex flex-row font-thin justify-between items-center p-2 rounded-2xl w-40 hover:bg-[#1e1c38] transition-all duration-200">
               View All Orders
               <ArrowRight className="font-thin h-5" />
