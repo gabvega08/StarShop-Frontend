@@ -18,14 +18,14 @@ const CreateStorePage: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
   const [filePreview, setFilePreview] = useState<string | null>(null);
 
-  // Manejar cambios en los inputs
+  
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setStoreData({ ...storeData, [e.target.name]: e.target.value });
   };
 
-  // Manejo de carga de archivos
+
   const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
     const uploadedFile = event.dataTransfer.files[0];
@@ -41,7 +41,7 @@ const CreateStorePage: React.FC = () => {
     }
   };
 
-  // Crear una URL de vista previa de la imagen
+  
   useEffect(() => {
     if (file) {
       const objectUrl = URL.createObjectURL(file);
@@ -58,14 +58,14 @@ const CreateStorePage: React.FC = () => {
         {/* Logo */}
         <Image src={StarShopLanding} alt="StarShop Logo" width={128} height={98} />
 
-        {/* Título */}
+        
         <h1 className="text-3xl font-bold mt-2 text-center">Create your store</h1>
 
         <p className="text-gray-400 text-sm md:text-base opacity-70 text-center mb-8">
           Set up your store profile and start selling
         </p>
 
-        {/* Formulario */}
+        
         <div className="w-full space-y-6">
           {/* Store Name */}
           <Input

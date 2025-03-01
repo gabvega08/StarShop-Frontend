@@ -27,7 +27,7 @@ const Input: FC<InputProps> = ({
   icon: Icon,
   className = "",
   labelClassName = "text-xs font-semibold tracking-wide text-white uppercase",
-  centered = false, // 🔹 Se cambia a false para alinearlo a la izquierda
+  centered = false, 
   containerClassName = "",
 }) => {
   return (
