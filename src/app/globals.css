@@ -1,3 +1,5 @@
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -61,6 +63,7 @@
     @apply border-border;
   }
   body {
+    
     @apply bg-background text-foreground;
   }
 }
@@ -72,4 +75,10 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.custom-white-shadow {
+  -webkit-box-shadow: -1px 1px 30px -13px rgba(255,255,255,1);
+  -moz-box-shadow: -1px 1px 30px -13px rgba(255,255,255,1);
+  box-shadow: -1px 1px 30px -13px rgba(255,255,255,1);
 }
