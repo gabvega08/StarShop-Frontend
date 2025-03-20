@@ -7,7 +7,6 @@ export const metadata: Metadata = {
   title: "StarShop",
   description: "Empowering users to buy and sell unique digital assets on a blockchain-based marketplace, fostering transparency and trust through NFTs.",
   keywords: "NFT, Blockchain, Digital Assets, Marketplace",
-  author: "StarShop Team",
 };
 
 export default function RootLayout({ children }: {

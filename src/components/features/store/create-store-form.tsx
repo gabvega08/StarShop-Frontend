@@ -5,7 +5,7 @@ import Input from "@/components/ui/Input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import Image from "next/image";
-import { UploadCloud, ImagePlus } from "lucide-react";
+import { ImagePlus } from "lucide-react";
 
 const CreateStorePage: React.FC = () => {
   const [storeData, setStoreData] = useState({

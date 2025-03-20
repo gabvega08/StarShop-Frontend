@@ -1,4 +1,4 @@
-import { Calendar, Clock, LucideIcon } from 'lucide-react';
+import { Calendar, Clock } from 'lucide-react';
 
 interface DeliveryCalendarProps {
   type: string;

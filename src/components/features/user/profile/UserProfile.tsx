@@ -7,7 +7,7 @@ import StatCard from './StatCard';
 import DeliveryCalendar from './DeliveryCalendar';
 import UserInfoCard from './UserInfoCard';
 import GlowCard from './GlowCard';
-import Header from '@/components/user/profile/Header';
+import Header from './Header';
 
 interface UserData {
   name: string;
