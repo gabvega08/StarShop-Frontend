@@ -1,7 +1,7 @@
-import { StoreAchievements } from "@/components/store/store-profile/StoreAchievements";
-import { StoreCategories } from "@/components/store/store-profile/StoreCategories";
-import { StoreHeader } from "@/components/store/store-profile/StoreHeader";
-import { StoreStats } from "@/components/store/store-profile/StoreStats";
+import { StoreAchievements } from "@/components/features/store/store-profile/StoreAchievements";
+import { StoreCategories } from "@/components/features/store/store-profile/StoreCategories";
+import { StoreHeader } from "@/components/features/store/store-profile/StoreHeader";
+import { StoreStats } from "@/components/features/store/store-profile/StoreStats";
 
 export default function StoreProfilePage() {
   return (
