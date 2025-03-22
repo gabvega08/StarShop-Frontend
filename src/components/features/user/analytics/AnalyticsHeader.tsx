@@ -99,7 +99,7 @@ const AnalyticsHeader: React.FC<AnalyticsHeaderProps> = ({
                         className="w-full sm:w-auto px-3 py-2 bg-gray-700 rounded-lg text-white border border-gray-600 focus:outline-none focus:border-purple-500 [color-scheme:dark]"
                         style={{
                           colorScheme: 'dark',
-                          backgroundColor: '#374151',
+                          backgroundColor: 'bg-gray-700',
                           color: 'white'
                         }}
                       />
@@ -111,7 +111,7 @@ const AnalyticsHeader: React.FC<AnalyticsHeaderProps> = ({
                         className="w-full sm:w-auto px-3 py-2 bg-gray-700 rounded-lg text-white border border-gray-600 focus:outline-none focus:border-purple-500 [color-scheme:dark]"
                         style={{
                           colorScheme: 'dark',
-                          backgroundColor: '#374151',
+                          backgroundColor: 'bg-gray-700',
                           color: 'white'
                         }}
                       />
