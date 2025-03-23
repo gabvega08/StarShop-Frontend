@@ -24,7 +24,7 @@ const NFTCollection: React.FC = () => {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Mock data for demonstration
+ 
   const nftItems: NFTItem[] = [
     {
       id: "1",
@@ -64,10 +64,7 @@ const NFTCollection: React.FC = () => {
 
   return (
     <div className=" text-white">
-      <Head>
-        <title>My NFT Collection</title>
-        <meta name="description" content="View your NFT collection" />
-      </Head>
+     
 
       <div className="container mx-auto px-4 py-6">
         {/* Header */}
