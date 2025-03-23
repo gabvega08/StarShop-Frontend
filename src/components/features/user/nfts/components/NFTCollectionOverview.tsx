@@ -1,16 +1,21 @@
 // pages/nft-collection.tsx
 import React, { useState } from "react";
-import Head from "next/head";
+
 import StatsCard from "./StatsCard ";
-import { IoGridOutline, IoListOutline } from "react-icons/io5";
-import { FaFilter } from "react-icons/fa";
-import { FaArrowLeft } from "react-icons/fa6";
-import {
-  RiVipDiamondLine,
-  RiTShirtLine,
-  RiCoupon3Line,
-  RiMoneyDollarCircleLine,
-} from "react-icons/ri";
+
+import { 
+  Diamond, 
+  Shirt, 
+  Tag, 
+  DollarSign,
+  Calculator, 
+  ArrowLeft, 
+  Filter,
+  LayoutGrid,
+   List,
+   Gem
+} from "lucide-react";
+
 
 interface NFTItem {
   id: string;
@@ -70,7 +75,7 @@ const NFTCollection: React.FC = () => {
         {/* Header */}
         <div className="flex items-center mb-6">
           <button className="flex items-center text-white/80 hover:text-white">
-            <FaArrowLeft className="w-3 h-6" />
+            <ArrowLeft className="w-3 h-6" />
             <span className="ml-2 text-lg font-medium">My NFT Collection</span>
           </button>
         </div>
@@ -78,30 +83,30 @@ const NFTCollection: React.FC = () => {
         {/* Stats Cards */}
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
           <StatsCard
-            icon={<RiVipDiamondLine className="w-5 h-5 text-purple-400" />}
+            icon={<Gem size={24}  strokeWidth={1.5} className="w-5 h-5 text-purple-400" />}
             title="Total NFTs"
             value={`${totalNFTs}`}
-            bgColor="bg-gray-900"
+            bgColor="bg-[#1a1b1e]/30"
           />
           <StatsCard
-            icon={<RiTShirtLine className="w-5 h-5 text-blue-400" />}
+            icon={<Shirt className="w-5 h-5 text-blue-400" />}
             title="Clothing Rewards"
             value={`${clothingRewards}`}
-            bgColor="bg-gray-900"
+            bgColor="bg-[#1a1b1e]/30"
           />
           <StatsCard
-            icon={<RiCoupon3Line className="w-5 h-5 text-yellow-400" />}
+            icon={<Tag className="w-5 h-5 text-yellow-400" />}
             title="Redeemable Coupons"
             value={`${redeemableCoupons}`}
-            bgColor="bg-gray-900"
+            bgColor="bg-[#1a1b1e]/30"
           />
           <StatsCard
             icon={
-              <RiMoneyDollarCircleLine className="w-5 h-5 text-green-400" />
+              <Calculator className="w-5 h-5 text-green-400" />
             }
             title="Estimated Value"
             value={`${estimatedValue} XLM`}
-            bgColor="bg-gray-900"
+            bgColor="bg-[#1a1b1e]/30"
           />
         </div>
 
@@ -140,7 +145,7 @@ const NFTCollection: React.FC = () => {
               }`}
               onClick={() => setViewMode("grid")}
             >
-              <IoGridOutline className="w-6 h-6" />
+              <LayoutGrid className="w-6 h-6" />
             </button>
             <button
               className={`p-2 rounded-lg ${
@@ -148,10 +153,11 @@ const NFTCollection: React.FC = () => {
               }`}
               onClick={() => setViewMode("list")}
             >
-              <IoListOutline className="w-6 h-6" />
+              <List
+               className="w-6 h-6" />
             </button>
             <button className="flex items-center  space-x-2 border  border-gray-400 border-1 px-4 py-2 rounded-lg">
-              <FaFilter className="w-4 h-4" />
+              <Filter className="w-4 h-4" />
               <span>Filter</span>
             </button>
           </div>
