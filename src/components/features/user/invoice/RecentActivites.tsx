@@ -5,6 +5,7 @@ import Link from "next/link";
 import { formatTimeAgo } from "@/utils/timeUtils";
 import { ActivityEvent } from "@/types/activity";
 import { ChevronRight, Mail } from "lucide-react";
+import Image from "next/image";
 
 interface RecentActivityProps {
   events: ActivityEvent[];
@@ -13,7 +14,7 @@ interface RecentActivityProps {
 
 export default function RecentActivity({
   events,
-  maxDisplay = 2,
+  maxDisplay = 3,
 }: RecentActivityProps) {
   const [displayCount, setDisplayCount] = useState(maxDisplay);
   const displayedEvents = events.slice(0, displayCount);
@@ -22,62 +23,35 @@ export default function RecentActivity({
     switch (type) {
       case "INVOICE_PAID":
         return (
-          <div className="h-8 w-8 rounded-full bg-emerald-950 flex items-center justify-center">
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M13.3334 4L6.00008 11.3333L2.66675 8"
-                stroke="#10B981"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+          <div className="h-8 w-8 rounded-full flex items-center justify-center">
+            <Image
+              alt="Checkmark"
+              src="/icons/Overlay.png"
+              width={24}
+              height={24}
+            />
           </div>
         );
       case "INVOICE_CREATED":
         return (
-          <div className="h-8 w-8 rounded-full bg-indigo-950 flex items-center justify-center">
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M13.3334 7.33333V4.66667C13.3334 3.93029 12.7365 3.33333 12.0001 3.33333H4.00008C3.2637 3.33333 2.66675 3.93029 2.66675 4.66667V11.3333C2.66675 12.0697 3.2637 12.6667 4.00008 12.6667H12.0001C12.7365 12.6667 13.3334 12.0697 13.3334 11.3333V8.66667"
-                stroke="#818CF8"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M5.33325 6.66667H10.6666"
-                stroke="#818CF8"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M5.33325 9.33333H8.66659"
-                stroke="#818CF8"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+          <div className="h-8 w-8 rounded-full flex items-center justify-center">
+            <Image
+              alt="Checkmark"
+              src="/icons/Overlay (1).png"
+              width={24}
+              height={24}
+            />
           </div>
         );
       case "PAYMENT_REMINDER_SENT":
         return (
-          <div className="h-8 w-8 rounded-full bg-amber-950 flex items-center justify-center">
-            <Mail className="h-4 w-4 text-amber-400" />
+          <div className="h-8 w-8 rounded-full flex items-center justify-center">
+            <Image
+              alt="Checkmark"
+              src="/icons/Overlay (2).png"
+              width={24}
+              height={24}
+            />
           </div>
         );
     }
@@ -106,7 +80,7 @@ export default function RecentActivity({
   };
 
   return (
-    <div className="w-full rounded-lg p-6 bg-[#dfaaca11] border border-gray-800 shadow-lg">
+    <div className="w-full rounded-lg p-6 bg-[#de73ff09] border border-gray-800  shadow-sm shadow-[#FFFFFF1A]">
       <div className="mb-2">
         <h2 className="text-xl font-semibold text-white">Recent Activity</h2>
         <p className="text-gray-400 text-sm">Latest invoice actions</p>
