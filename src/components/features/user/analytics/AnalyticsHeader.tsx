@@ -45,7 +45,7 @@ const AnalyticsHeader: React.FC<AnalyticsHeaderProps> = ({
           <div className="flex items-center gap-2 w-full sm:w-auto">
             <label className="relative inline-flex items-center cursor-pointer">
               <input type="checkbox" className="sr-only peer" />
-              <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600"></div>
+              <div className="w-11 h-6 bg-gray-800 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-800 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600"></div>
             </label>
             <span className="text-sm text-gray-300">Compare with previous period</span>
           </div>
@@ -54,14 +54,14 @@ const AnalyticsHeader: React.FC<AnalyticsHeaderProps> = ({
             <div className="relative flex-1 sm:flex-none">
               <button 
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="flex items-center justify-between gap-2 px-4 py-2 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors w-full sm:min-w-[180px]"
+                className="flex items-center justify-between gap-2 px-4 py-2 bg-transparent rounded-lg hover:bg-gray-800 transition-colors w-full sm:min-w-[180px] border border-white/20"
               >
                 <span className="truncate">{selectedPeriod}</span>
                 <ChevronDown className={`w-4 h-4 flex-shrink-0 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
 
               {isDropdownOpen && (
-                <div className="absolute top-full left-0 mt-2 w-full bg-gray-800 rounded-lg shadow-lg overflow-hidden z-10">
+                <div className="absolute top-full left-0 mt-2 w-full bg-gray-900 rounded-lg shadow-lg overflow-hidden z-10">
                   {periods.map((period) => (
                     <button
                       key={period}
@@ -79,17 +79,17 @@ const AnalyticsHeader: React.FC<AnalyticsHeaderProps> = ({
               )}
             </div>
 
-            <div className="relative flex-1 sm:flex-none">
+            <div className="relative flex-1 sm:flex-none border border-white/20 rounded-lg">
               <button
                 onClick={() => setIsDatePickerOpen(!isDatePickerOpen)}
-                className="flex items-center justify-center gap-2 px-4 py-2 bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors w-full"
+                className="flex items-center justify-center gap-2 px-4 py-2 bg-transparent rounded-lg hover:bg-gray-800/30 transition-colors w-full"
               >
                 <Calendar className="w-4 h-4" />
                 <span>Custom Range</span>
               </button>
 
               {isDatePickerOpen && (
-                <div className="absolute top-full right-0 mt-2 p-4 bg-gray-800 rounded-lg shadow-lg z-10 w-full sm:w-auto">
+                <div className="absolute top-full right-0 mt-2 p-4 bg-gray-900 rounded-lg shadow-lg z-10 w-full sm:w-auto">
                   <div className="flex flex-col gap-4">
                     <div className="flex flex-col sm:flex-row items-center gap-2">
                       <input
@@ -129,7 +129,7 @@ const AnalyticsHeader: React.FC<AnalyticsHeaderProps> = ({
               
             <button 
               onClick={onExport}
-              className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors"
+              className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-800/30 transition-colors border border-white/20"
             >
               <Download className="w-4 h-4" />
               <span>Export</span>
@@ -137,7 +137,7 @@ const AnalyticsHeader: React.FC<AnalyticsHeaderProps> = ({
 
             <button
               onClick={onRefresh}
-              className="p-2 bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors"
+              className="p-2 rounded-lg hover:bg-gray-900 transition-colors"
             >
               <RefreshCw className="w-4 h-4" />
             </button>
