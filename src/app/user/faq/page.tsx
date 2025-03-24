@@ -1,4 +1,5 @@
-import { FAQSupportSection } from "@/components/features/faq/FAQSupportSection";
+import { FAQSupportSection } from "@/components/features/user/faq/FAQSupportSection";
+
 
 export default function FaqPage() {
   return (
@@ -10,7 +11,6 @@ export default function FaqPage() {
             <p className="text-gray-300">
               Find answers to common questions below. If you need further assistance, our support team is here to help.
             </p>
-            {/* Add your FAQ content here*/}
           </div>
 
           <div className="mt-auto">
