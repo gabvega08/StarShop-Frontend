@@ -75,58 +75,79 @@ export const InvoiceDetails: React.FC<InvoiceDetailsProps> = ({
         </div>
       </div>
 
-      <div className="bg-white/5 rounded-lg overflow-hidden">
+      <div className="rounded-lg overflow-hidden">
+        <div className="space-y-5">
 
-      <div className="flex justify-between items-center p-4 mb-4">
-        <p className="text-white/60">Items</p>
-        <p className="text-white/60">Amount</p>
-      </div>    
+          <div className='space-y-2'>
+            {/* Header */}
+            <div className="px-4 py-4 bg-white/5 rounded-lg">
+              <div className="flex justify-between items-center">
+                <span className="text-white">Item</span>
+                <span className="text-white">Amount</span>
+              </div>
+            </div>
 
-        <table className="w-full">
-          <tbody>
+            {/* Items */}
             {invoice.items.map((item, index) => (
-              <tr key={index} className="border-t border-white/10">
-                <td className="p-4 text-white">
+              <div key={index} className="bg-white/5 rounded-lg py-4 px-4">
+                <div className="flex justify-between items-start">
                   <div>
-                    <p>{item.name}</p>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-white">{item.name}</p>
+                    <p className="text-sm text-white/60">
                       Size: {item.size} • Qty: {item.quantity}
                     </p>
                   </div>
-                </td>
-                <td className="p-4 text-right text-white">
-                  {item.amount} {item.currency}
-                </td>
-              </tr>
+                  <p className="text-white">
+                    {item.amount} {item.currency}
+                  </p>
+                </div>
+              </div>
             ))}
-            <tr className="border-t border-white/10">
-              <td className="p-4 text-white/60">Shipping</td>
-              <td className="p-4 text-right text-white">
-                {invoice.shipping.cost} {invoice.currency}
-              </td>
-            </tr>
-          </tbody>
-          <tfoot className="bg-white/5">
-            <tr>
-              <td className="p-4 text-white/60">Subtotal</td>
-              <td className="p-4 text-right text-white">
-                {invoice.subtotal} {invoice.currency}
-              </td>
-            </tr>
-            <tr>
-              <td className="p-4 text-white/60">Tax</td>
-              <td className="p-4 text-right text-white">
-                {invoice.tax} {invoice.currency}
-              </td>
-            </tr>
-            <tr>
-              <td className="p-4 font-semibold text-white">Total</td>
-              <td className="p-4 text-right font-semibold text-white">
-                {invoice.total} {invoice.currency}
-              </td>
-            </tr>
-          </tfoot>
-        </table>
+
+            {/* Shipping */}
+            <div className="bg-white/5 rounded-lg py-4 px-4">
+              <div className="flex justify-between items-start">
+                <div className='flex flex-col gap-1'>
+                <span className="text-white">Shipping</span>
+                <span className="text-white/60">Standard Delivery</span>
+                </div>
+                <span className="text-white">
+                  {invoice.shipping.cost} {invoice.currency}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Summary */}
+          <div className="bg-white/5 rounded-lg py-4 px-4">
+            <div className="space-y-2">
+              <div className="flex justify-between items-center">
+                <span className="text-white/60">Subtotal</span>
+                <span className="text-white">
+                  {invoice.subtotal} {invoice.currency}
+                </span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-white/60">Shipping</span>
+                <span className="text-white">
+                  {invoice.shipping.cost} {invoice.currency}
+                </span>
+              </div>
+              <div className="flex justify-between items-center border-b border-white/20 pb-2">
+                <span className="text-white/60">Tax</span>
+                <span className="text-white">
+                  {invoice.tax} {invoice.currency}
+                </span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-white">Total</span>
+                <span className="text-white">
+                  {invoice.total} {invoice.currency}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {invoice.paymentDetails.received && (
