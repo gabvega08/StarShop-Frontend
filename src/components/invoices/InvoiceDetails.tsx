@@ -36,7 +36,7 @@ export const InvoiceDetails: React.FC<InvoiceDetailsProps> = ({
       <div className="flex justify-between items-start">
         <div>
           <h2 className="text-2xl font-semibold text-white">Invoice Details</h2>
-          <p className="text-gray-400">{invoice.invoiceNumber}</p>
+          <p className="text-gray-400">{invoice.id}</p>
         </div>
         <div className="flex gap-4">
           <button
@@ -46,7 +46,7 @@ export const InvoiceDetails: React.FC<InvoiceDetailsProps> = ({
             <DownloadIcon className="w-5 h-5" />
             <span>Download PDF</span>
           </button>
-          {invoice.status !== 'paid' && (
+          {invoice.status.toLowerCase() !== 'paid' && (
             <button
               onClick={() => onMarkAsPaid(invoice.id)}
               className="flex items-center gap-3 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700"
@@ -58,14 +58,14 @@ export const InvoiceDetails: React.FC<InvoiceDetailsProps> = ({
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="bg-white/5 p-4 rounded-lg">
           <p className="text-white/60">Invoice Date</p>
-          <p className="text-white">{formatDate(invoice.invoiceDate)}</p>
+          <p className="text-white">{formatDate(invoice.date)}</p>
         </div>
         <div className="bg-white/5 p-4 rounded-lg">
-          <p className="text-white/60">Due Date</p>
-          <p className="text-white">{formatDate(invoice.dueDate)}</p>
+          <p className="text-white/60">Store</p>
+          <p className="text-white">{invoice.store}</p>
         </div>
         <div className="bg-white/5 p-4 rounded-lg">
           <p className="text-white/60">Status</p>
@@ -77,7 +77,6 @@ export const InvoiceDetails: React.FC<InvoiceDetailsProps> = ({
 
       <div className="rounded-lg overflow-hidden">
         <div className="space-y-5">
-
           <div className='space-y-2'>
             {/* Header */}
             <div className="px-4 py-4 bg-white/5 rounded-lg">
@@ -88,7 +87,7 @@ export const InvoiceDetails: React.FC<InvoiceDetailsProps> = ({
             </div>
 
             {/* Items */}
-            {invoice.items.map((item, index) => (
+            {invoice.details.items.map((item, index) => (
               <div key={index} className="bg-white/5 rounded-lg py-4 px-4">
                 <div className="flex justify-between items-start">
                   <div>
@@ -108,11 +107,11 @@ export const InvoiceDetails: React.FC<InvoiceDetailsProps> = ({
             <div className="bg-white/5 rounded-lg py-4 px-4">
               <div className="flex justify-between items-start">
                 <div className='flex flex-col gap-1'>
-                <span className="text-white">Shipping</span>
-                <span className="text-white/60">Standard Delivery</span>
+                  <span className="text-white">Shipping</span>
+                  <span className="text-white/60">{invoice.details.shipping.method}</span>
                 </div>
                 <span className="text-white">
-                  {invoice.shipping.cost} {invoice.currency}
+                  {invoice.details.shipping.cost} {invoice.details.shipping.currency}
                 </span>
               </div>
             </div>
@@ -124,25 +123,19 @@ export const InvoiceDetails: React.FC<InvoiceDetailsProps> = ({
               <div className="flex justify-between items-center">
                 <span className="text-white/60">Subtotal</span>
                 <span className="text-white">
-                  {invoice.subtotal} {invoice.currency}
+                  {invoice.details.items.reduce((sum, item) => sum + (item.amount * item.quantity), 0)} {invoice.details.items[0].currency}
                 </span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-white/60">Shipping</span>
                 <span className="text-white">
-                  {invoice.shipping.cost} {invoice.currency}
+                  {invoice.details.shipping.cost} {invoice.details.shipping.currency}
                 </span>
               </div>
-              <div className="flex justify-between items-center border-b border-white/20 pb-2">
-                <span className="text-white/60">Tax</span>
-                <span className="text-white">
-                  {invoice.tax} {invoice.currency}
-                </span>
-              </div>
-              <div className="flex justify-between items-center">
-                <span className="text-white">Total</span>
-                <span className="text-white">
-                  {invoice.total} {invoice.currency}
+              <div className="flex justify-between items-center border-t border-white/10 pt-2 mt-2">
+                <span className="text-white font-medium">Total</span>
+                <span className="text-white font-medium">
+                  {invoice.details.items.reduce((sum, item) => sum + (item.amount * item.quantity), 0) + invoice.details.shipping.cost} {invoice.details.items[0].currency}
                 </span>
               </div>
             </div>
@@ -150,16 +143,16 @@ export const InvoiceDetails: React.FC<InvoiceDetailsProps> = ({
         </div>
       </div>
 
-      {invoice.paymentDetails.received && (
+      {invoice.details.paymentDetails.received && (
         <div className="bg-green-900/20 border border-green-500/20 rounded-lg p-4">
           <div className="flex items-center gap-2 text-green-500">
             <CheckCircleIcon className="w-5 h-5" />
             <span>Payment Received</span>
           </div>
           <p className="text-gray-400 mt-2">
-            Payment was received on {formatDate(invoice.paymentDetails.date || '')} via{' '}
-            {invoice.paymentDetails.method}. Transaction ID:{' '}
-            {invoice.paymentDetails.transactionId}
+            Payment was received on {formatDate(invoice.details.paymentDetails.date || '')} via{' '}
+            {invoice.details.paymentDetails.method}. Transaction ID:{' '}
+            {invoice.details.paymentDetails.transactionId}
           </p>
         </div>
       )}
@@ -167,14 +160,14 @@ export const InvoiceDetails: React.FC<InvoiceDetailsProps> = ({
       <div className="bg-white/5 rounded-lg p-4">
         <h3 className="text-white font-semibold mb-2">Billing Information</h3>
         <div className="text-white/60">
-          <p>{invoice.billingInformation.name}</p>
-          <p>{invoice.billingInformation.address}</p>
+          <p>{invoice.details.billingInformation.name}</p>
+          <p>{invoice.details.billingInformation.address}</p>
           <p>
-            {invoice.billingInformation.city}, {invoice.billingInformation.state}{' '}
-            {invoice.billingInformation.zipCode}
+            {invoice.details.billingInformation.city}, {invoice.details.billingInformation.state}{' '}
+            {invoice.details.billingInformation.zipCode}
           </p>
           <p className="mt-2">
-            Stellar Address: {invoice.billingInformation.stellarAddress}
+            Stellar Address: {invoice.details.billingInformation.stellarAddress}
           </p>
         </div>
       </div>

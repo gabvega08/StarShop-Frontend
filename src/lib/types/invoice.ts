@@ -6,13 +6,10 @@ export interface InvoiceItem {
   currency: string;
 }
 
-export interface BillingInformation {
-  name: string;
-  address: string;
-  city: string;
-  state: string;
-  zipCode: string;
-  stellarAddress: string;
+export interface ShippingInfo {
+  method: string;
+  cost: number;
+  currency: string;
 }
 
 export interface PaymentDetails {
@@ -22,22 +19,28 @@ export interface PaymentDetails {
   method?: string;
 }
 
-export interface Invoice {
-  id: string;
-  invoiceNumber: string;
-  invoiceDate: string;
-  dueDate: string;
-  status: 'paid' | 'pending' | 'overdue';
+export interface BillingInformation {
+  name: string;
+  address: string;
+  city: string;
+  state: string;
+  zipCode: string;
+  stellarAddress: string;
+}
+
+export interface InvoiceDetails {
   items: InvoiceItem[];
-  shipping: {
-    method: string;
-    cost: number;
-    currency: string;
-  };
-  subtotal: number;
-  tax: number;
-  total: number;
-  currency: string;
+  shipping: ShippingInfo;
   paymentDetails: PaymentDetails;
   billingInformation: BillingInformation;
+}
+
+export interface Invoice {
+  id: string;
+  item: string;
+  store: string;
+  date: string;
+  status: string;
+  statusColor: string;
+  details: InvoiceDetails;
 } 

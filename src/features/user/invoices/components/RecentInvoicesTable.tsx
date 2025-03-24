@@ -1,47 +1,13 @@
 "use client"
 import { CheckCircle, Clock, AlertCircle, Eye, Download, ChevronDown } from "lucide-react"
+import { Invoice } from "@/lib/types/invoice"
 
-const RecentInvoicesTable = () => {
-  // Sample invoice data
-  const invoices = [
-    {
-      id: "INV-2024-001",
-      item: "Premium Hoodie (Black)",
-      store: "Urban Style Store",
-      date: "March 15, 2024",
-      amount: "85",
-      status: "Paid",
-      statusColor: "green",
-    },
-    {
-      id: "INV-2024-002",
-      item: "Urban Sneakers (Gray)",
-      store: "Sneaker Haven",
-      date: "March 10, 2024",
-      amount: "120",
-      status: "Paid",
-      statusColor: "green",
-    },
-    {
-      id: "INV-2024-003",
-      item: "Wireless Earbuds",
-      store: "Tech Gadgets",
-      date: "March 5, 2024",
-      amount: "75",
-      status: "Pending",
-      statusColor: "yellow",
-    },
-    {
-      id: "INV-2024-004",
-      item: "Sustainable Water Bottle",
-      store: "Eco Friendly Shop",
-      date: "February 28, 2024",
-      amount: "25",
-      status: "Overdue",
-      statusColor: "red",
-    },
-  ]
+interface RecentInvoicesTableProps {
+  invoices: Invoice[];
+  onInvoiceClick: (invoice: Invoice) => void;
+}
 
+const RecentInvoicesTable = ({ invoices, onInvoiceClick }: RecentInvoicesTableProps) => {
   // Function to render status icon based on status
   const renderStatusIcon = (status: string) => {
     switch (status) {
@@ -105,6 +71,7 @@ const RecentInvoicesTable = () => {
                 e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.05)"
                 e.currentTarget.style.border = "1px solid transparent"
               }}
+              onClick={() => onInvoiceClick(invoice)}
             >
               <div className="flex items-start md:items-center gap-4 mb-4 md:mb-0">
                 <div
@@ -124,7 +91,9 @@ const RecentInvoicesTable = () => {
               </div>
               <div className="flex justify-between items-center gap-4 md:gap-10">
                 <div className="text-right">
-                  <p className="text-white font-semibold text-lg">{invoice.amount} XLM</p>
+                  <p className="text-white font-semibold text-lg">
+                    {invoice.details.items.reduce((sum, item) => sum + (item.amount * item.quantity), 0) + invoice.details.shipping.cost} {invoice.details.items[0].currency}
+                  </p>
                   <p className={getStatusTextColor(invoice.status)}>{invoice.status}</p>
                 </div>
                 <div className="flex gap-6">
@@ -142,7 +111,7 @@ const RecentInvoicesTable = () => {
           ))}
         </div>
         <div className="flex justify-center mt-6">
-          <button className="py-3 px-6 bg-transparent text-white font-medium rounded-xl flex items-center justify-center gap-2 transition-colors hover:bg-white/5" style={{ borderColor: "#FFFFFF4D", borderWidth: "1px" }}>
+          <button className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
             Load More Invoices
             <ChevronDown size={16} />
           </button>
