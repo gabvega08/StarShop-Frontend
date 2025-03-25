@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Truck, CheckCircle, Clock } from "lucide-react"
+import { Truck, CheckCircle, Clock, Filter, Search } from "lucide-react"
 import OrderCard from "./OrderCard"
 
 const orders = [
@@ -67,8 +67,44 @@ export default function OrderTable() {
 
   return (
     <div className="w-full">
-      {/* Header */}
-      <div className="flex justify-between items-center py-4 px-4">
+
+      {/* Top Row: Search + All Orders + Filter */}
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 px-4 py-3">
+        {/* Left Group: Search + All Orders */}
+        <div className="flex items-center w-full relative">
+          {/* Search Bar */}
+          <input
+            type="text"
+            placeholder="Search orders by ID, product, or store..."
+            className="bg-white/5 border border-white/10 text-white placeholder-gray-400 text-sm 
+                       rounded-md px-3 pl-9 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 
+                       focus:border-transparent w-full"
+          />
+          <div className="text-gray-500 absolute top-3 left-3"><Search className="w-4 h-4"  /></div>
+        </div>
+        <div className="flex gap-4 justify-center items-center">
+          <select
+            className="bg-white/5 border border-white/10 text-white text-sm rounded-md px-3 min-w-[150px] py-2 
+                       focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent
+                       w-full sm:w-auto"
+          >
+            <option>All Orders</option>
+            <option>Delivered</option>
+            <option>In Transit</option>
+            <option>Processing</option>
+          </select>
+        {/* Filter Button */}
+        <button
+          className="border border-white/10 text-white rounded-md px-4 py-1 
+                     hover:bg-white/10 transition-colors w-full min-w-[100px] justify-between flex items-center gap-2"
+        >
+          <Filter className="w-4 h-4" /> <span>Filter</span> 
+         </button>
+        </div>
+      </div>
+
+      {/* Second Row: "Recent Orders" & "Showing X of Y" */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center px-4 pb-4 gap-2">
         <h2 className="text-white text-xl font-medium">Recent Orders</h2>
         <p className="text-gray-400 text-sm">
           Showing {currentOrders.length} of {orders.length} orders
@@ -89,15 +125,16 @@ export default function OrderTable() {
         </span>
         <div className="flex space-x-2">
           <button
-            className="text-white border rounded-md px-4 py-2 border-white/20 hover:bg-white/5 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="text-white border rounded-md px-4 py-2 border-white/20 hover:bg-white/5 
+                       disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={currentPage === 1}
             onClick={() => setCurrentPage(currentPage - 1)}
           >
             Previous
           </button>
-
           <button
-            className="text-white border rounded-md px-4 py-2 border-white/20 hover:bg-white/5 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="text-white border rounded-md px-4 py-2 border-white/20 hover:bg-white/5 
+                       disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={currentPage === totalPages}
             onClick={() => setCurrentPage(currentPage + 1)}
           >
@@ -108,4 +145,3 @@ export default function OrderTable() {
     </div>
   )
 }
-
