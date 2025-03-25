@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import OrderCard from "@/components/OrderCard"
 import { Truck, CheckCircle, Clock } from "lucide-react"
+import OrderCard from "./OrderCard"
 
 const orders = [
   {

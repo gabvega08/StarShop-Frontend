@@ -1,7 +1,7 @@
 "use client";
 
 
-import OrderTable from "@/components/OrderTable";
+import OrderTable from "@/components/features/user/orders/OrderTable";
 
 
 export default function RecentOrders() {
