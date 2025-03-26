@@ -1,13 +1,14 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import {Star, Heart, Calendar, ArrowLeft, Package } from 'lucide-react';
-import OrderItem from './UserOrderItem';
-import StatCard from './StatCard';
-import DeliveryCalendar from './DeliveryCalendar';
-import UserInfoCard from './UserInfoCard';
-import GlowCard from './GlowCard';
-import Header from './Header';
+import Link from "next/link";
+import { Star, Heart, Calendar, ArrowLeft, Package } from "lucide-react";
+import OrderItem from "./UserOrderItem";
+import StatCard from "./StatCard";
+import DeliveryCalendar from "./DeliveryCalendar";
+import UserInfoCard from "./UserInfoCard";
+import GlowCard from "./GlowCard";
+import Header from "./Header";
+
 
 interface UserData {
   name: string;
@@ -35,62 +36,62 @@ interface UserData {
 const UserProfile = () => {
   // Placeholder data - to be replaced with real data from backend
   const userData: UserData = {
-    name: 'Kevin Latino',
-    membershipType: 'Premium Member',
-    avatar: '/images/user-profile/avatar.jpg',
+    name: "Kevin Latino",
+    membershipType: "Premium Member",
+    avatar: "/images/user-profile/avatar.jpg",
     stats: {
       totalOrders: 47,
       reviews: 32,
-      wishlist: 15
+      wishlist: 15,
     },
     recentOrders: [
       {
         id: "ORD-001",
-        title: 'Premium Hoodie',
-        date: 'March 05, 2024',
+        title: "Premium Hoodie",
+        date: "March 05, 2024",
         amount: 89.99,
-        status: "processing"
+        status: "processing",
       },
       {
         id: "ORD-002",
-        title: 'Urban Sneakers',
-        date: 'March 08, 2024',
+        title: "Urban Sneakers",
+        date: "March 08, 2024",
         amount: 129.99,
-        status: "delivered"
+        status: "delivered",
       },
       {
         id: "ORD-003",
-        title: 'Graphic T-Shirt',
-        date: 'March 12, 2024',
+        title: "Graphic T-Shirt",
+        date: "March 12, 2024",
         amount: 29.99,
-        status: "in-transit"
+        status: "in-transit",
       },
       {
         id: "ORD-004",
-        title: 'Graphic T-Shirt',
-        date: 'March 12, 2024',
+        title: "Graphic T-Shirt",
+        date: "March 12, 2024",
         amount: 29.99,
-        status: "cancelled"
-      }
+        status: "cancelled",
+      },
     ],
     deliveries: [
       {
         id: 1,
-        type: 'Package Arriving',
-        date: 'March 15, 2024',
+        type: "Package Arriving",
+        date: "March 15, 2024",
       },
       {
         id: 2,
-        type: 'Expected Delivery',
-        date: 'March 18, 2024',
-      }
-    ]
+        type: "Expected Delivery",
+        date: "March 18, 2024",
+      },
+    ],
   };
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
       {/* Header */}
-      <Header 
+      <Header
         title="My Profile"
         backLink="/dashboard"
         activeDate="March 2024"
@@ -108,11 +109,31 @@ const UserProfile = () => {
 
           {/* Shopping Activity */}
           <GlowCard>
-            <h3 className="text-lg font-bold text-white mb-4">Shopping Activity</h3>
+            <h3 className="text-lg font-bold text-white mb-4">
+              Shopping Activity
+            </h3>
             <div className="space-y-4">
-              <StatCard icon={Package} value={userData.stats.totalOrders} label="Total Orders" description="Currently listed" color="blue" />
-              <StatCard icon={Star} value={userData.stats.reviews} label="Reviews Given" description="Customer feedback" color="yellow" />
-              <StatCard icon={Heart} value={userData.stats.wishlist} label="Wishlist Items" description="Saved for later" color="red" />
+              <StatCard
+                icon={Package}
+                value={userData.stats.totalOrders}
+                label="Total Orders"
+                description="Currently listed"
+                color="blue"
+              />
+              <StatCard
+                icon={Star}
+                value={userData.stats.reviews}
+                label="Reviews Given"
+                description="Customer feedback"
+                color="yellow"
+              />
+              <StatCard
+                icon={Heart}
+                value={userData.stats.wishlist}
+                label="Wishlist Items"
+                description="Saved for later"
+                color="red"
+              />
             </div>
           </GlowCard>
         </div>
@@ -132,7 +153,13 @@ const UserProfile = () => {
                   title={order.title}
                   date={order.date}
                   amount={order.amount}
-                  status={order.status as "processing" | "delivered" | "cancelled" | "in-transit"}
+                  status={
+                    order.status as
+                      | "processing"
+                      | "delivered"
+                      | "cancelled"
+                      | "in-transit"
+                  }
                 />
               ))}
             </div>
@@ -155,9 +182,10 @@ const UserProfile = () => {
             </div>
           </GlowCard>
         </div>
+        
       </div>
     </div>
   );
 };
 
-export default UserProfile; 
+export default UserProfile;
