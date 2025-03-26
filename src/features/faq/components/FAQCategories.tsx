@@ -1,7 +1,21 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ChevronDown, ChevronUp, HelpCircle, ShoppingBag, Tag, CreditCard,Wallet, MessageSquare } from 'lucide-react';
+import { 
+  HelpCircle, 
+  ShoppingBag, 
+  Tag, 
+  CreditCard, 
+  Wallet, 
+  MessageSquare 
+} from 'lucide-react';
+
+import { useExpandableItems } from './useExpandableItems';
+import { Tabs } from './Tabs';
+import { ContentContainer } from './ContentContainer';
+import { ExpandableItem } from './ExpandableItem';
+
+// Interfaces
 export interface FAQItem {
   question: string;
   answer: string;
@@ -17,14 +31,7 @@ export interface CategoryData {
 
 const FAQCategories: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('general');
-  const [expandedQuestions, setExpandedQuestions] = useState<Record<string, boolean>>({});
-
-  const toggleQuestion = (question: string) => {
-    setExpandedQuestions(prev => ({
-      ...prev,
-      [question]: !prev[question]
-    }));
-  };
+  const { toggleItem, isItemExpanded } = useExpandableItems();
 
   const categories: CategoryData[] = [
     {
@@ -178,68 +185,32 @@ const FAQCategories: React.FC = () => {
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4 py-8">
-      {/* Category Tabs */}
-      <div className="flex flex-wrap gap-2 mb-6 justify-center">
-        {categories.map((category) => (
-          <button
-            key={category.id}
-            onClick={() => setActiveCategory(category.id)}
-            className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-              activeCategory === category.id
-                ? 'bg-purple-600 text-white'
-                : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-            }`}
-          >
-            {category.icon}
-            <span>{category.name}</span>
-            <span className="ml-1 bg-black bg-opacity-30 px-2 py-0.5 rounded-full text-xs">
-              {category.count}
-            </span>
-          </button>
+      <Tabs 
+        items={categories.map(cat => ({
+          id: cat.id,
+          name: cat.name,
+          icon: cat.icon,
+          count: cat.count
+        }))}
+        activeTab={activeCategory}
+        onTabChange={setActiveCategory}
+      />
+
+      <ContentContainer
+        icon={activeData.icon}
+        title={activeData.name}
+        description={`Frequently asked questions about ${activeData.name.toLowerCase()}`}
+      >
+        {activeData.faqs.map((faq) => (
+          <ExpandableItem
+            key={faq.question}
+            title={faq.question}
+            content={faq.answer}
+            isExpanded={isItemExpanded(faq.question)}
+            onToggle={() => toggleItem(faq.question)}
+          />
         ))}
-      </div>
-
-      {/* FAQ Content */}
-      <div className="bg-gray-900 bg-opacity-70 backdrop-blur-sm rounded-xl p-6  " style={{ border: "1px solid #333", padding: "1rem" }}>
-        <div className="flex items-center gap-2 mb-3">
-          <div className="text-purple-500">
-            {activeData.icon}
-          </div>
-          <h2 className="text-xl font-bold text-white">{activeData.name} Questions</h2>
-        </div>
-        <p className="text-gray-400 text-sm mb-6">
-          Frequently asked questions about {activeData.name.toLowerCase()}
-        </p>
-
-        {/* FAQ Accordion */}
-        <div className="space-y-4">
-          {activeData.faqs.map((faq) => (
-            <div 
-              key={faq.question} 
-              className="border-b pb-4 last:border-b-0" style={{ borderBottom: "1px solid #333", paddingBottom: "1rem" }}
-
-            >
-             <button
-  onClick={() => toggleQuestion(faq.question)}
-  className="flex justify-between items-center w-full text-left py-2"
->
-  <h3 className="text-white font-medium">{faq.question}</h3>
-  {expandedQuestions[faq.question] ? (
-    <ChevronUp className="text-purple-400" size={20} />
-  ) : (
-    <ChevronDown className="text-purple-400" size={20} />
-  )}
-</button>
-              
-              {expandedQuestions[faq.question] && (
-                <div className="pt-2 pb-1 text-gray-300 text-sm">
-                  {faq.answer}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
+      </ContentContainer>
     </div>
   );
 };
