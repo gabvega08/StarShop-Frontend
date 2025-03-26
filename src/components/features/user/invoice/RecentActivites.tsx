@@ -109,7 +109,7 @@ export default function RecentActivity({
         )}
       </div>
 
-      {events.length > maxDisplay && (
+      {events.length >= maxDisplay && (
         <div className="mt-8 text-center">
           <Link
             href="/activity"
