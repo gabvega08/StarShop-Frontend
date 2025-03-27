@@ -1,5 +1,5 @@
-import { FAQSupportSection } from "@/components/features/user/faq/FAQSupportSection";
-import Faq from './faq'
+import { FAQSupportSection } from "../../../components/features/user/faq/FAQSupportSection";
+import Faq from '../../../components/features/user/faq/faq/faq'
 
 
 export default function FaqPage() {

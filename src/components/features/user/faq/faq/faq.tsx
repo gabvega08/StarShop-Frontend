@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from 'react';
-import SearchBar from './components/search-bar';
-import QuickGuideCards from './components/quick-guide';
-import FAQAccordion from './components/faq-accordion';
-import { faqs } from './components/data';
+import SearchBar from './search-bar';
+import QuickGuideCards from './quick-guide';
+import FAQAccordion from './faq-accordion';
+import { faqs } from './data';
 
 const FAQPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
