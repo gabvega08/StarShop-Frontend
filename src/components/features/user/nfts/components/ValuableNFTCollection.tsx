@@ -40,7 +40,13 @@ const nfts = [
 
 const ValuableNFTCollection: React.FC = () => {
   return (
-    <section className="text-white w-full">
+    <section className="text-white w-full"
+    style={{
+      backgroundImage: "url('/background-image-starshop.png')",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+    }}>
       <div className="mx-[100px] flex flex-col">
         {/* Heading Section */}
         <div className="my-4 md:my-2 sm:my-0">
