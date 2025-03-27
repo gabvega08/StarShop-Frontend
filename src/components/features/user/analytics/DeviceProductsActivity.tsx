@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react';
-import { ChevronRight, Box, Star, Eye, Smartphone, Monitor, Tablet } from 'lucide-react';
+import { ChevronRight, ShoppingCart, Box, Star, Eye, Smartphone, Monitor, Tablet } from 'lucide-react';
 
 const DeviceProductsActivity = () => {
   const deviceData = [
@@ -21,7 +21,7 @@ const DeviceProductsActivity = () => {
       type: 'New Order', 
       details: 'Order #8832 - Premium Hoodie', 
       time: '2 hours ago',
-      icon: <Box className="text-green-500" />
+      icon: <ShoppingCart className="text-green-500" />
     },
     { 
       type: 'New Review', 
@@ -38,8 +38,8 @@ const DeviceProductsActivity = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <div className="p-6 rounded-lg border border-white/20 shadow-[0_0_8px_rgba(255,255,255,0.2)] bg-gray-900/50">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 m-10">
+      <div className="p-6 rounded-lg border border-white/5 shadow-[0_0_8px_rgba(255,255,255,0.2)]">
         <h3 className="text-white text-lg font-medium">Device Breakdown</h3>
         <p className="text-white/60 text-sm">Visitors by device type</p>
         
@@ -87,7 +87,7 @@ const DeviceProductsActivity = () => {
         </div>
       </div>
 
-      <div className="p-6 rounded-lg border border-white/20 shadow-[0_0_8px_rgba(255,255,255,0.2)] bg-gray-900/50">
+      <div className="p-6 rounded-lg border border-white/5 shadow-[0_0_8px_rgba(255,255,255,0.2)]">
         <h3 className="text-white text-lg font-medium">Top Products</h3>
         <p className="text-white/60 text-sm">Best selling items</p>
         
@@ -113,7 +113,7 @@ const DeviceProductsActivity = () => {
         </button>
       </div>
 
-      <div className="p-6 rounded-lg border border-white/20 shadow-[0_0_8px_rgba(255,255,255,0.2)] bg-gray-900/50">
+      <div className="p-6 rounded-lg border border-white/5 shadow-[0_0_8px_rgba(255,255,255,0.2)] ">
         <h3 className="text-white text-lg font-medium">Recent Activity</h3>
         <p className="text-white/60 text-sm">Latest store events</p>
         
