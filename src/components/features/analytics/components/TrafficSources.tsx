@@ -54,46 +54,6 @@ const TrafficSources = () => {
     }
   }, [])
 
-  // Custom render for pie chart
-  const renderCustomizedPie = () => {
-    return (
-      <PieChart>
-        {filteredTrafficData.map((entry, index) => {
-          // Calculate start and end angles based on the data
-          const total = filteredTrafficData.reduce((sum, item) => sum + item.value, 0)
-          const startAngle =
-            index === 0
-              ? 90
-              : 90 - (360 * filteredTrafficData.slice(0, index).reduce((sum, item) => sum + item.value, 0)) / total
-          const endAngle =
-            90 - (360 * filteredTrafficData.slice(0, index + 1).reduce((sum, item) => sum + item.value, 0)) / total
-
-          // Add a gap for the highest value segment
-          const gapAngle = index === highestValueIndex ? 10 : 0
-
-          return (
-            <Pie
-              key={`pie-${index}`}
-              data={[entry]}
-              cx="50%"
-              cy="50%"
-              innerRadius={0}
-              outerRadius={110}
-              startAngle={startAngle - gapAngle}
-              endAngle={endAngle + gapAngle}
-              paddingAngle={0}
-              dataKey="value"
-              stroke="#FFFFFF"
-              strokeWidth={2}
-              fill="transparent"
-            >
-              <Cell fill="transparent" stroke="#FFFFFF" strokeWidth={2} />
-            </Pie>
-          )
-        })}
-      </PieChart>
-    )
-  }
 
   return (
     <div className="rounded-lg p-6 border border-white/20 shadow-[0_0_8px_rgba(255,255,255,0.2)] bg-gray-900/50">
@@ -144,7 +104,7 @@ const TrafficSources = () => {
 
         <div className="space-y-6 w-1/2">
           {trafficData.map((source, index) => (
-            <div key={source.name} className="space-y-2">
+            <div key={source.name} className="space-y-2" id={index + crypto.randomUUID()}>
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <div className="w-3 h-3 rounded-full mr-2" style={{ backgroundColor: source.color }}></div>
