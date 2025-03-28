@@ -38,7 +38,7 @@ const FAQCategories: React.FC = () => {
     {
       id: 'general',
       name: 'General',
-      icon: <HelpCircle size={12} />,
+      icon: <HelpCircle size={14} />,
       iconLarge: <HelpCircle size={18} />,
       count: 4,
      
@@ -64,7 +64,7 @@ const FAQCategories: React.FC = () => {
     {
       id: 'buying',
       name: 'Buying',
-      icon: <ShoppingBag size={12} />,
+      icon: <ShoppingBag size={14} />,
       iconLarge: <ShoppingBag size={18} />,
       count: 4,
       faqs: [
@@ -89,7 +89,7 @@ const FAQCategories: React.FC = () => {
     {
       id: 'selling',
       name: 'Selling',
-      icon: <Tag size={12} />,
+      icon: <Tag size={14} />,
       iconLarge: <Tag size={18} />,
       count: 4,
       faqs: [
@@ -114,7 +114,7 @@ const FAQCategories: React.FC = () => {
     {
       id: 'payments',
       name: 'Payments',
-      icon: <Wallet size={12} />,
+      icon: <Wallet size={14} />,
       iconLarge: <Wallet size={18} />,
       count: 4,
       faqs: [
@@ -140,7 +140,7 @@ const FAQCategories: React.FC = () => {
       id: 'nfts',
       name: 'NFTs',
       iconLarge: <CreditCard size={18} />,
-      icon: <CreditCard size={12} />,
+      icon: <CreditCard size={14} />,
       count: 4,
       faqs: [
         {
@@ -164,7 +164,7 @@ const FAQCategories: React.FC = () => {
     {
       id: 'support',
       name: 'Support',
-      icon: <MessageSquare size={12} />,
+      icon: <MessageSquare size={14} />,
       iconLarge: <MessageSquare size={18} />,
       count: 4,
       faqs: [
