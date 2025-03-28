@@ -1,6 +1,12 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useMemo,
+  useCallback,
+} from "react";
 import {
   HelpCircle,
   ShoppingBag,
@@ -24,16 +30,22 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({ faqs, searchQuery }) => {
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const sliderRef = useRef<HTMLDivElement | null>(null);
 
-  const updateSliderPosition = React.useCallback(() => {
-    const categories: FAQCategory[] = [
-      "general",
-      "buying",
-      "selling",
-      "payments",
-      "nfts",
-      "support",
-    ];
-    const activeIndex = categories.indexOf(activeCategory);
+  const categories = useMemo(
+    () => [
+      { id: "general" as FAQCategory, label: "General", icon: HelpCircle },
+      { id: "buying" as FAQCategory, label: "Buying", icon: ShoppingBag },
+      { id: "selling" as FAQCategory, label: "Selling", icon: Tag },
+      { id: "payments" as FAQCategory, label: "Payments", icon: CreditCard },
+      { id: "nfts" as FAQCategory, label: "NFTs", icon: ImageIcon },
+      { id: "support" as FAQCategory, label: "Support", icon: MessageSquare },
+    ],
+    []
+  );
+
+  const updateSliderPosition = useCallback(() => {
+    const activeIndex = categories.findIndex(
+      (cat) => cat.id === activeCategory
+    );
     const activeTab = tabRefs.current[activeIndex];
     const slider = sliderRef.current;
 
@@ -41,11 +53,16 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({ faqs, searchQuery }) => {
       slider.style.width = `${activeTab.offsetWidth}px`;
       slider.style.transform = `translateX(${activeTab.offsetLeft}px)`;
     }
-  }, [activeCategory]);
+  }, [activeCategory, categories]);
 
   useEffect(() => {
     updateSliderPosition();
   }, [activeCategory, updateSliderPosition]);
+
+  useEffect(() => {
+    window.addEventListener("resize", updateSliderPosition);
+    return () => window.removeEventListener("resize", updateSliderPosition);
+  }, [updateSliderPosition]);
 
   useEffect(() => {
     if (searchQuery.trim() === "") {
@@ -66,175 +83,88 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({ faqs, searchQuery }) => {
       }
     }
   }, [searchQuery, activeCategory, faqs]);
-  useEffect(() => {
-    window.addEventListener("resize", updateSliderPosition);
-    return () => window.removeEventListener("resize", updateSliderPosition);
-  }, [updateSliderPosition]);
 
   const toggleQuestion = (index: number) => {
-    if (expandedQuestions.includes(index)) {
-      setExpandedQuestions(expandedQuestions.filter((i) => i !== index));
-    } else {
-      setExpandedQuestions([...expandedQuestions, index]);
-    }
+    setExpandedQuestions((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+    );
   };
 
-  const tabStyle = (isActive: boolean) =>
-    `flex items-center ${
-      isActive ? "text-white" : "text-gray-300"
-    } px-4 py-2 rounded-md relative z-10`;
+  const getVisibleCount = useCallback(
+    (category: FAQCategory) => {
+      if (searchQuery.trim() === "") {
+        return faqs.filter((faq) => faq.category === category).length;
+      }
+
+      const query = searchQuery.toLowerCase();
+      return faqs.filter(
+        (faq) =>
+          faq.category === category &&
+          (faq.question.toLowerCase().includes(query) ||
+            faq.answer.toLowerCase().includes(query))
+      ).length;
+    },
+    [faqs, searchQuery]
+  );
+
+  const tabStyle = useCallback(
+    (isActive: boolean) =>
+      `flex items-center ${
+        isActive ? "text-white" : "text-gray-300"
+      } px-4 py-2 rounded-md relative z-10`,
+    []
+  );
 
   const cardStyle =
     "p-6 rounded-2xl transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)] border border-white border-opacity-5 bg-black bg-opacity-5";
 
-  const getVisibleCount = (category: FAQCategory) => {
-    if (searchQuery.trim() === "") {
-      return faqs.filter((faq) => faq.category === category).length;
-    }
-
-    const query = searchQuery.toLowerCase();
-    return faqs.filter(
-      (faq) =>
-        faq.category === category &&
-        (faq.question.toLowerCase().includes(query) ||
-          faq.answer.toLowerCase().includes(query))
-    ).length;
-  };
-
-  const faqCounts = {
-    general: getVisibleCount("general"),
-    buying: getVisibleCount("buying"),
-    selling: getVisibleCount("selling"),
-    payments: getVisibleCount("payments"),
-    nfts: getVisibleCount("nfts"),
-    support: getVisibleCount("support"),
-  };
-
-  const totalSearchMatches =
-    searchQuery.trim() !== ""
-      ? faqs.filter(
-          (faq) =>
-            faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            faq.answer.toLowerCase().includes(searchQuery.toLowerCase())
-        ).length
-      : 0;
+  const totalSearchMatches = useMemo(
+    () =>
+      searchQuery.trim() !== ""
+        ? faqs.filter(
+            (faq) =>
+              faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              faq.answer.toLowerCase().includes(searchQuery.toLowerCase())
+          ).length
+        : 0,
+    [faqs, searchQuery]
+  );
 
   return (
     <>
       <div className="max-w-4xl w-full mb-8 mx-auto overflow-x-auto">
-        <div className="flex relative space-x-4 lg:space-x-0 min-w-max  pb-2 mx-auto bg-gray-900 bg-opacity-50 p-1 rounded-lg">
+        <div className="flex relative space-x-4 lg:space-x-0 min-w-max pb-2 mx-auto bg-gray-900 bg-opacity-50 p-1 rounded-lg">
           <div
             ref={sliderRef}
-            className="absolute h-[calc(100%-8px)] top-1 left-1 bg-purple-800 bg-opacity-70  rounded-md transition-all duration-300 ease-in-out"
+            className="absolute h-[calc(100%-8px)] top-1 left-1 bg-purple-800 bg-opacity-70 rounded-md transition-all duration-300 ease-in-out"
           />
 
-          <button
-            ref={(el) => {
-              tabRefs.current[0] = el;
-            }}
-            className={tabStyle(activeCategory === "general")}
-            onClick={() => setActiveCategory("general")}
-          >
-            <HelpCircle size={18} className="mr-2" />
-            General
-            <span
-              className={`ml-2 ${
-                activeCategory === "general" ? "bg-purple-700" : "bg-gray-700"
-              } px-2 py-1 rounded-full text-xs`}
-            >
-              {faqCounts.general}
-            </span>
-          </button>
+          {categories.map((category, index) => {
+            const CategoryIcon = category.icon;
+            const isActive = activeCategory === category.id;
+            const count = getVisibleCount(category.id);
 
-          <button
-            ref={(el) => {
-              tabRefs.current[1] = el;
-            }}
-            className={tabStyle(activeCategory === "buying")}
-            onClick={() => setActiveCategory("buying")}
-          >
-            <ShoppingBag size={18} className="mr-2" />
-            Buying
-            <span
-              className={`ml-2 ${
-                activeCategory === "buying" ? "bg-purple-700" : "bg-gray-700"
-              } px-2 py-1 rounded-full text-xs`}
-            >
-              {faqCounts.buying}
-            </span>
-          </button>
-
-          <button
-            ref={(el) => {
-              tabRefs.current[2] = el;
-            }}
-            className={tabStyle(activeCategory === "selling")}
-            onClick={() => setActiveCategory("selling")}
-          >
-            <Tag size={18} className="mr-2" />
-            Selling
-            <span
-              className={`ml-2 ${
-                activeCategory === "selling" ? "bg-purple-700" : "bg-gray-700"
-              } px-2 py-1 rounded-full text-xs`}
-            >
-              {faqCounts.selling}
-            </span>
-          </button>
-
-          <button
-            ref={(el) => {
-              tabRefs.current[3] = el;
-            }}
-            className={tabStyle(activeCategory === "payments")}
-            onClick={() => setActiveCategory("payments")}
-          >
-            <CreditCard size={18} className="mr-2" />
-            Payments
-            <span
-              className={`ml-2 ${
-                activeCategory === "payments" ? "bg-purple-700" : "bg-gray-700"
-              } px-2 py-1 rounded-full text-xs`}
-            >
-              {faqCounts.payments}
-            </span>
-          </button>
-
-          <button
-            ref={(el) => {
-              tabRefs.current[4] = el;
-            }}
-            className={tabStyle(activeCategory === "nfts")}
-            onClick={() => setActiveCategory("nfts")}
-          >
-            <ImageIcon size={18} className="mr-2" />
-            NFTs
-            <span
-              className={`ml-2 ${
-                activeCategory === "nfts" ? "bg-purple-700" : "bg-gray-700"
-              } px-2 py-1 rounded-full text-xs`}
-            >
-              {faqCounts.nfts}
-            </span>
-          </button>
-
-          <button
-            ref={(el) => {
-              tabRefs.current[5] = el;
-            }}
-            className={tabStyle(activeCategory === "support")}
-            onClick={() => setActiveCategory("support")}
-          >
-            <MessageSquare size={18} className="mr-2" />
-            Support
-            <span
-              className={`ml-2 ${
-                activeCategory === "support" ? "bg-purple-700" : "bg-gray-700"
-              } px-2 py-1 rounded-full text-xs`}
-            >
-              {faqCounts.support}
-            </span>
-          </button>
+            return (
+              <button
+                key={category.id}
+                ref={(el) => {
+                  tabRefs.current[index] = el;
+                }}
+                className={tabStyle(isActive)}
+                onClick={() => setActiveCategory(category.id)}
+              >
+                <CategoryIcon size={18} className="mr-2" />
+                {category.label}
+                <span
+                  className={`ml-2 ${
+                    isActive ? "bg-purple-700" : "bg-gray-700"
+                  } px-2 py-1 rounded-full text-xs`}
+                >
+                  {count}
+                </span>
+              </button>
+            );
+          })}
         </div>
       </div>
 
