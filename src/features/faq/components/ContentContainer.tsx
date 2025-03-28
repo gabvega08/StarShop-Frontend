@@ -1,14 +1,14 @@
 import React from 'react';
 
 interface ContentContainerProps {
-  icon: React.ReactNode;
+  iconLarge: React.ReactNode;
   title: string;
   description: string;
   children: React.ReactNode;
 }
 
 export const ContentContainer: React.FC<ContentContainerProps> = ({ 
-  icon, 
+  iconLarge, 
   title, 
   description, 
   children 
@@ -18,8 +18,8 @@ export const ContentContainer: React.FC<ContentContainerProps> = ({
     style={{ border: "1px solid #333", padding: "1rem" }}
   >
     <div className="flex items-center gap-2 mb-3">
-      <div className="text-purple-500">
-        {icon}
+      <div className="text-purple-500  ">
+        {iconLarge}
       </div>
       <h2 className="text-xl font-bold text-white">{title} Questions</h2>
     </div>

@@ -12,12 +12,12 @@ interface TabsProps {
 }
 
 export const Tabs: React.FC<TabsProps> = ({ items, activeTab, onTabChange }) => (
-  <div className="flex flex-wrap gap-2 mb-6 justify-center">
+  <div className="flex flex-wrap gap-4 mb-6 justify-center">
     {items.map((item) => (
       <button
         key={item.id}
         onClick={() => onTabChange(item.id)}
-        className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+        className={`flex items-center gap-2 px-2 py-2 rounded text-xs font-medium transition-colors ${
           activeTab === item.id
             ? 'bg-purple-600 text-white'
             : 'bg-gray-800 text-gray-300 hover:bg-gray-700'

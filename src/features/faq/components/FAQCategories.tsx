@@ -27,6 +27,7 @@ export interface CategoryData {
   icon: React.ReactNode;
   count: number;
   faqs: FAQItem[];
+  iconLarge: React.ReactNode;
 }
 
 const FAQCategories: React.FC = () => {
@@ -37,8 +38,10 @@ const FAQCategories: React.FC = () => {
     {
       id: 'general',
       name: 'General',
-      icon: <HelpCircle size={18} />,
+      icon: <HelpCircle size={12} />,
+      iconLarge: <HelpCircle size={18} />,
       count: 4,
+     
       faqs: [
         {
           question: 'What is StarShop Marketplace?',
@@ -61,7 +64,8 @@ const FAQCategories: React.FC = () => {
     {
       id: 'buying',
       name: 'Buying',
-      icon: <ShoppingBag size={18} />,
+      icon: <ShoppingBag size={12} />,
+      iconLarge: <ShoppingBag size={18} />,
       count: 4,
       faqs: [
         {
@@ -85,7 +89,8 @@ const FAQCategories: React.FC = () => {
     {
       id: 'selling',
       name: 'Selling',
-      icon: <Tag size={18} />,
+      icon: <Tag size={12} />,
+      iconLarge: <Tag size={18} />,
       count: 4,
       faqs: [
         {
@@ -109,7 +114,8 @@ const FAQCategories: React.FC = () => {
     {
       id: 'payments',
       name: 'Payments',
-      icon: <Wallet size={18} />,
+      icon: <Wallet size={12} />,
+      iconLarge: <Wallet size={18} />,
       count: 4,
       faqs: [
         {
@@ -133,8 +139,8 @@ const FAQCategories: React.FC = () => {
     {
       id: 'nfts',
       name: 'NFTs',
-      
-      icon: <CreditCard size={18} />,
+      iconLarge: <CreditCard size={18} />,
+      icon: <CreditCard size={12} />,
       count: 4,
       faqs: [
         {
@@ -158,7 +164,8 @@ const FAQCategories: React.FC = () => {
     {
       id: 'support',
       name: 'Support',
-      icon: <MessageSquare size={18} />,
+      icon: <MessageSquare size={12} />,
+      iconLarge: <MessageSquare size={18} />,
       count: 4,
       faqs: [
         {
@@ -197,7 +204,7 @@ const FAQCategories: React.FC = () => {
       />
 
       <ContentContainer
-        icon={activeData.icon}
+        iconLarge={activeData.iconLarge}
         title={activeData.name}
         description={`Frequently asked questions about ${activeData.name.toLowerCase()}`}
       >
