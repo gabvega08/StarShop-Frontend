@@ -3,10 +3,10 @@ import { LucideIcon } from "lucide-react";
 
 interface InputProps {
   label?: string;
-  id: string;
-  type: string;
+  id?: string;
+  type?: string;
   placeholder?: string;
-  name: string;
+  name?: string;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   icon?: LucideIcon;
