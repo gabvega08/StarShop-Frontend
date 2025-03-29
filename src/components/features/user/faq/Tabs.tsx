@@ -20,7 +20,7 @@ export const Tabs: React.FC<TabsProps> = ({ items, activeTab, onTabChange }) => 
         className={`flex items-center gap-2 px-2 py-2 rounded text-sm font-medium transition-colors ${
           activeTab === item.id
             ? 'bg-purple-600 text-white'
-            : 'bg-gray-700 text-gray-300 hover:bg-gray-700'
+            : 'bg-gray-900/60 text-gray-300 hover:bg-gray-900'
         }`}
       >
         {item.icon}

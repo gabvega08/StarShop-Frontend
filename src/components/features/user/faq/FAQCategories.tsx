@@ -9,8 +9,8 @@ import {
   Wallet, 
   MessageSquare 
 } from 'lucide-react';
-
 import { useExpandableItems } from './useExpandableItems';
+
 import { Tabs } from './Tabs';
 import { ContentContainer } from './ContentContainer';
 import { ExpandableItem } from './ExpandableItem';

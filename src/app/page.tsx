@@ -1,5 +1,5 @@
 import LandingPageComponent from "@/components/landing-page/LandingComponent";
-import FAQCategories from "@/features/faq/components/FAQCategories";
+import FAQCategories from "@/components/features/user/faq/FAQCategories";
 export default function LadingPage() {
   return (
     <>
