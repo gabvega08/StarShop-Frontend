@@ -1,16 +1,17 @@
 "use client"
-import {  useRef, useEffect } from "react"
-import {  Cell, Pie, PieChart, ResponsiveContainer } from "recharts"
-import {  Filter } from "lucide-react"
+import { useRef, useEffect } from "react"
+import dynamic from 'next/dynamic'
+import { Filter } from "lucide-react"
 
-
+const Chart = dynamic(() => import('react-apexcharts'), { ssr: false })
 
 const trafficData = [
     { name: "Direct", value: 50, color: "#8B5CF6" },
     { name: "Social", value: 30, color: "#3B82F6" },
     { name: "Search", value: 0, color: "#10B981" },
     { name: "Referral", value: 20, color: "#F59E0B" },
-  ]
+]
+
 const TrafficSources = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const filteredTrafficData = trafficData.filter((item) => item.value > 0)
@@ -54,6 +55,44 @@ const TrafficSources = () => {
     }
   }, [])
 
+  const chartOptions: ApexCharts.ApexOptions = {
+    chart: {
+      type: 'pie',
+      toolbar: { show: false },
+      animations: { enabled: false }
+    },
+    colors: filteredTrafficData.map(item => 'transparent'),
+    labels: filteredTrafficData.map(item => item.name),
+    dataLabels: { enabled: false },
+    stroke: {
+      show: true,
+      colors: ['#FFFFFF'],
+      width: 3,
+      dashArray: 0  
+    },
+    fill: {
+      type: 'solid',
+      opacity: 0
+    },
+    plotOptions: {
+      pie: {
+        startAngle: -90,
+        endAngle: 270,
+        expandOnClick: false,
+        customScale: 1,
+        offsetX: 0,
+        offsetY: 0,
+        donut: {
+          size: '0%',
+          background: 'transparent',
+        },
+      }
+    },
+    states: {
+      hover: { filter: { type: 'none' } }
+    },
+    legend: { show: false }
+  }
 
   return (
     <div className="rounded-lg p-6 border border-white/20 shadow-[0_0_8px_rgba(255,255,255,0.2)] bg-gray-900/50">
@@ -71,40 +110,19 @@ const TrafficSources = () => {
         <div className="relative h-[250px] w-[250px] mx-auto">
           <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ zIndex: 0 }} />
           <div className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }}>
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie
-                  data={filteredTrafficData}
-                  cx="50%"
-                  cy="50%"
-                  innerRadius={0}
-                  outerRadius={110}
-                  startAngle={90}
-                  endAngle={-270}
-                  paddingAngle={10}
-                  dataKey="value"
-                  stroke="#FFFFFF"
-                  strokeWidth={2}
-                  fill="transparent"
-                >
-                  {filteredTrafficData.map((entry, index) => (
-                    <Cell
-                      key={`cell-${index}`}
-                      fill="transparent"
-                      stroke="#FFFFFF"
-                      strokeWidth={2}
-                      {...(index === highestValueIndex && { cornerRadius: 6 })}
-                    />
-                  ))}
-                </Pie>
-              </PieChart>
-            </ResponsiveContainer>
+            <Chart 
+              type="pie" 
+              width="100%" 
+              height="100%" 
+              options={chartOptions} 
+              series={filteredTrafficData.map(item => item.value)}
+            />
           </div>
         </div>
 
         <div className="space-y-6 w-1/2">
           {trafficData.map((source, index) => (
-            <div key={source.name} className="space-y-2" id={index + crypto.randomUUID()}>
+            <div key={source.name} className="space-y-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <div className="w-3 h-3 rounded-full mr-2" style={{ backgroundColor: source.color }}></div>
@@ -132,4 +150,5 @@ const TrafficSources = () => {
     </div>
   )
 }
-export default TrafficSources;
+
+export default TrafficSources
