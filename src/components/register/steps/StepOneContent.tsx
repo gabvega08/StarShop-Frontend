@@ -2,7 +2,7 @@
 
 import React from "react";
 import UploadPhotoProfile from "@/components/ui/UploadPhotoProfile";
-import Input from "@/components/ui/input";
+import { Input } from "@/components/ui/Input"
 import StarShopCard from "@/components/ui/StarShopCard";
 import { User, Mail, MapPin } from "lucide-react";
 
