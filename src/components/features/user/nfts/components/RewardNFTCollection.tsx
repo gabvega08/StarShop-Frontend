@@ -95,7 +95,7 @@ const RewardNFTCollection: React.FC = () => {
 
   return (
     <>
-      <div className="max-w-6xl flex flex-col md:flex-row items-stretch md:items-center justify-between mb-6 gap-4">
+      <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between mb-6 gap-4">
         <SearchBar searchTerm={searchTerm} onSearchChange={(e) => setSearchTerm(e.target.value)} />
         <div className="flex space-x-2">
           <button
@@ -121,7 +121,7 @@ const RewardNFTCollection: React.FC = () => {
         </div>
       </div>
 
-      <div className="max-w-6xl rounded-2xl border border-white/60 shadow-[0_0_16px_rgba(255,255,255,0.25)] bg-transparent">
+      <div className="rounded-2xl border border-white/60 shadow-[0_0_16px_rgba(255,255,255,0.25)] bg-transparent">
         <section
           className="w-full text-white rounded-2xl p-6"
           style={{
