@@ -3,7 +3,6 @@
 import React from "react";
 import { useAuth } from "@/hooks/useAuth";
 import {
-  BarChart,
   LineChart,
   Package,
   ShoppingBag,
@@ -14,7 +13,7 @@ import {
 } from "lucide-react";
 
 export default function Dashboard() {
-  const { user, isAuthenticated } = useAuth();
+  const { user } = useAuth();
 
   // Stats cards data
   const statsCards = [
@@ -75,7 +74,7 @@ export default function Dashboard() {
           Welcome back, {user?.name || "User"}
         </h1>
         <p className="text-gray-400 mt-1">
-          Here's what's happening with your store today.
+          Here&apos;s what&apos;s happening with your store today.
         </p>
       </div>
 
