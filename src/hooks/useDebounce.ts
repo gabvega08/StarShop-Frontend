@@ -7,8 +7,8 @@ import { useState, useEffect } from "react";
  * @returns The debounced value
  *
  * This is how you can use this hook:
- * const [searchTerm, setSearchTerm] = useState('');
- * const debouncedSearchTerm = useDebounce(searchTerm, 300);
+ * const [searchQuery, setSearchQuery] = useState('');
+ * const debouncedSearchQuery = useDebounce(searchQuery, 300);
  */
 export function useDebounce<T>(value: T, delay: number = 500): T {
   const [debouncedValue, setDebouncedValue] = useState<T>(value);
