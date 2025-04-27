@@ -2,6 +2,7 @@
 
 import React, { createContext, useState, useEffect } from "react";
 import { UserSession } from "@/types/user.types";
+import { securelyStoreJWT, retrieveSecureJWT } from "@/utils/encryptJWT";
 
 interface AuthContextType {
   user: UserSession | null;
@@ -27,42 +28,89 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const [user, setUserState] = useState<UserSession | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
 
-  // Load user data from localStorage on component mount
+  // Load user data from localStorage and decrypt JWT on component mount
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
+    const loadUserData = async () => {
       try {
-        const parsedUser = JSON.parse(storedUser) as UserSession;
-        setUserState(parsedUser);
-        setIsAuthenticated(true);
+        // Try to retrieve and decrypt JWT token
+        const token = await retrieveSecureJWT();
+
+        if (token) {
+          // Get user data from localStorage
+          const storedUser = localStorage.getItem("user_data");
+
+          if (storedUser) {
+            const parsedUser = JSON.parse(storedUser) as UserSession;
+            // Verify token matches the one in user data
+            if (parsedUser.token === token) {
+              setUserState(parsedUser);
+              setIsAuthenticated(true);
+            }
+          }
+        } else {
+          // No valid token found, ensure user is logged out
+          setUserState(null);
+          setIsAuthenticated(false);
+          localStorage.removeItem("user_data");
+        }
       } catch (error) {
-        console.error("Failed to parse stored user:", error);
-        localStorage.removeItem("user");
+        console.error("Failed to load authenticated user:", error);
+        // Clean up in case of error
+        setUserState(null);
+        setIsAuthenticated(false);
+        localStorage.removeItem("user_data");
       }
-    }
+    };
+
+    loadUserData();
   }, []);
 
-  const login = (userData: UserSession) => {
-    setUserState(userData);
-    setIsAuthenticated(true);
-    localStorage.setItem("user", JSON.stringify(userData));
+  const login = async (userData: UserSession) => {
+    try {
+      // Store user data without the sensitive token
+      const userDataForStorage = { ...userData };
+      localStorage.setItem("user_data", JSON.stringify(userDataForStorage));
+
+      // Encrypt and store JWT token separately
+      await securelyStoreJWT(userData.token);
+
+      // Update state
+      setUserState(userData);
+      setIsAuthenticated(true);
+    } catch (error) {
+      console.error("Error during login:", error);
+      throw new Error("Authentication failed");
+    }
   };
 
   const logout = () => {
     setUserState(null);
     setIsAuthenticated(false);
-    localStorage.removeItem("user");
+
+    // Clear stored data
+    localStorage.removeItem("user_data");
+    localStorage.removeItem("encrypted_jwt");
   };
 
-  const setUser = (userData: UserSession) => {
-    setUserState(userData);
-    localStorage.setItem("user", JSON.stringify(userData));
+  const setUser = async (userData: UserSession) => {
+    try {
+      // Store user data
+      localStorage.setItem("user_data", JSON.stringify(userData));
+
+      // Encrypt and store JWT token
+      await securelyStoreJWT(userData.token);
+
+      // Update state
+      setUserState(userData);
+    } catch (error) {
+      console.error("Error updating user:", error);
+    }
   };
 
-  const setRole = (role: "admin" | "user" | "guest") => {
+  const setRole = async (role: "admin" | "user" | "guest") => {
     if (user) {
       const updatedUser = { ...user, role };
-      setUser(updatedUser);
+      await setUser(updatedUser);
     }
   };
 
