@@ -497,7 +497,7 @@ export default function InvoicesTable() {
       </Dialog>
 
       {/* Table Section */}
-      <div className="overflow-hidden rounded-2xl shadow-lg outline outline-1 outline-gray-700 text-gray-300" style={{ borderColor: "#FFFFFF4D", borderWidth: "1px" }} >
+      <div className="overflow-hidden rounded-2xl shadow-md shadow-gray-600 border border-gray-700 text-gray-300" >
         <div className="border-b border-gray-600 rounded-t-md p-8">
             <table className="w-full table-auto text-base">
             <thead className="">
@@ -574,7 +574,7 @@ export default function InvoicesTable() {
         </div>
 
         {/* Pagination */}
-        <div className="flex justify-between items-center p-4 py-3 border-b border-gray-600 rounded-b-lg">
+        <div className="flex justify-between items-center p-4 py-3 rounded-b-lg">
           <span className="text-sm">
             Showing {startEntry} - {endEntry} of {invoicesData.length} invoices
           </span>

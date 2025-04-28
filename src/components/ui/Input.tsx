@@ -11,7 +11,7 @@ interface InputProps {
   value?: string;
   min?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  icon?: LucideIcon;  // 👈 you'll use this
+  icon?: LucideIcon;
   className?: string;
   labelClassName?: string;
   centered?: boolean;
@@ -29,7 +29,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           type={type}
           className={cn(
             "flex h-9 w-full rounded-md border border-input bg-transparent py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
-            Icon && "pl-9", // 👈 Add left padding if there's an icon
+            Icon && "pl-9",
             className
           )}
           ref={ref}
