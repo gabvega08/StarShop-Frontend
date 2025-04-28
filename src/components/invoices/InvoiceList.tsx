@@ -2,13 +2,20 @@ import React, { useState } from 'react';
 import { Invoice } from '@/lib/types/invoice';
 import { formatDate } from '@/lib/utils/date';
 import { InvoiceDetails } from './InvoiceDetails';
-import RecentInvoicesTable from '@/features/user/invoices/components/RecentInvoicesTable';
+import RecentInvoicesTable from '../features/user/invoices/components/RecentInvoicesTable';
+import { UpcomingAndOverdueInvoices } from '@/features/user/invoices/components/UpcomingAndOverdueInvoices';
 
 interface InvoiceListProps {
   invoices: Invoice[];
+  upcomingInvoices?: Invoice[];
+  overdueInvoices?: Invoice[];
 }
 
-export const InvoiceList: React.FC<InvoiceListProps> = ({ invoices }) => {
+export const InvoiceList: React.FC<InvoiceListProps> = ({ 
+  invoices, 
+  upcomingInvoices = [], 
+  overdueInvoices = [] 
+}) => {
   const [selectedInvoice, setSelectedInvoice] = useState<Invoice | null>(null);
 
   const handleMarkAsPaid = (id: string) => {
@@ -41,7 +48,6 @@ export const InvoiceList: React.FC<InvoiceListProps> = ({ invoices }) => {
 
   return (
     <div className="space-y-8">
-
       <RecentInvoicesTable invoices={invoices} onInvoiceClick={handleInvoiceClick} />
 
       {selectedInvoice && (
@@ -53,6 +59,13 @@ export const InvoiceList: React.FC<InvoiceListProps> = ({ invoices }) => {
           onContactSeller={handleContactSeller}
         />
       )}
+
+      <UpcomingAndOverdueInvoices
+        upcomingInvoices={upcomingInvoices}
+        overdueInvoices={overdueInvoices}
+        onMarkAsPaid={handleMarkAsPaid}
+        onViewDetails={handleViewOrder}
+      />
     </div>
   );
 }; 
