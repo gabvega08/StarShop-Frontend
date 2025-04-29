@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Invoice } from '@/lib/types/invoice';
-
+import { formatDate } from "@/lib/utils/date";
 import { InvoiceDetails } from './InvoiceDetails';
 import RecentInvoicesTable from '../features/user/invoices/components/RecentInvoicesTable';
 import InvoicesTable from '../features/user/invoices/components/InvoicesTable';
