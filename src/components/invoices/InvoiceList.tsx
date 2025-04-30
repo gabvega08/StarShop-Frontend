@@ -20,22 +20,22 @@ export const InvoiceList: React.FC<InvoiceListProps> = ({
 
   const handleMarkAsPaid = (id: string) => {
     // TODO: Implement mark as paid functionality
-    console.log('Mark as paid:', id);
+    console.log("Mark as paid:", id);
   };
 
   const handleDownloadPDF = (id: string) => {
     // TODO: Implement PDF download functionality
-    console.log('Download PDF:', id);
+    console.log("Download PDF:", id);
   };
 
   const handleViewOrder = (id: string) => {
     // TODO: Implement view order functionality
-    console.log('View order:', id);
+    console.log("View order:", id);
   };
 
   const handleContactSeller = (id: string) => {
     // TODO: Implement contact seller functionality
-    console.log('Contact seller:', id);
+    console.log("Contact seller:", id);
   };
 
   const handleInvoiceClick = (invoice: Invoice) => {
@@ -48,7 +48,10 @@ export const InvoiceList: React.FC<InvoiceListProps> = ({
 
   return (
     <div className="space-y-8">
-      <RecentInvoicesTable invoices={invoices} onInvoiceClick={handleInvoiceClick} />
+      <RecentInvoicesTable
+        invoices={invoices}
+        onInvoiceClick={handleInvoiceClick}
+      />
 
       {selectedInvoice && (
         <InvoiceDetails
@@ -68,4 +71,4 @@ export const InvoiceList: React.FC<InvoiceListProps> = ({
       />
     </div>
   );
-}; 
+};

@@ -1,5 +1,5 @@
 import { Paperclip, Send, User } from "lucide-react";
-import Input from "@/components/ui/input";
+import { Input } from "@/components/ui/Input";
 
 export default function ChatInterface() {
   return (

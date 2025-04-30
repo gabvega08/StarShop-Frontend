@@ -96,31 +96,31 @@ const TransactionCard = ({
   const { bg, icon } = statusColors[status] || statusColors.Processing;
 
   return (
-      <div className="flex items-center p-4 sm:p-6 border-[#242332] border-y z-50">
-        {/* Icon Container */}
-        <div
-          className={`flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-lg ${bg}`}
-        >
-          <Cuboid className={`${icon} w-4 h-4 sm:w-5 sm:h-5`} />
-        </div>
-    
-        {/* Text Content */}
-        <div className="ml-3 sm:ml-4 flex-1">
-          <h4 className="text-sm sm:text-base md:text-xl font-medium text-white">
-            {product}
-          </h4>
-          <p className="text-xs sm:text-sm text-gray-400 md:text-base">{title}</p>
-        </div>
-    
-        {/* Amount and State */}
-        <div className="text-right">
-          <p className="text-base sm:text-lg font-semibold text-white">
-            ${Math.abs(amount).toFixed(2)}
-          </p>
-          <p className={`text-xs sm:text-sm ${getStateStyles(state)}`}>{state}</p>
-        </div>
+    <div className="flex items-center p-4 sm:p-6 border-[#242332] border-y z-50">
+      {/* Icon Container */}
+      <div
+        className={`flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-lg ${bg}`}
+      >
+        <Cuboid className={`${icon} w-4 h-4 sm:w-5 sm:h-5`} />
       </div>
-    );
+
+      {/* Text Content */}
+      <div className="ml-3 sm:ml-4 flex-1">
+        <h4 className="text-sm sm:text-base md:text-xl font-medium text-white">
+          {product}
+        </h4>
+        <p className="text-xs sm:text-sm text-gray-400 md:text-base">{title}</p>
+      </div>
+
+      {/* Amount and State */}
+      <div className="text-right">
+        <p className="text-base sm:text-lg font-semibold text-white">
+          ${Math.abs(amount).toFixed(2)}
+        </p>
+        <p className={`text-xs sm:text-sm ${getStateStyles(state)}`}>{state}</p>
+      </div>
+    </div>
+  );
 };
 
 const RecentOrders = () => {
