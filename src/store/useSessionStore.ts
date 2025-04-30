@@ -1,17 +1,6 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import { UserSession } from '@/lib/types/user'
-
-interface SessionState {
-  user: UserSession | null;
-  token: string | null;
-  isLoggedIn: boolean;
-  login: (user: UserSession) => void;
-  logout: () => void;
-  setUser: (user: UserSession) => void;
-  setToken: (token: string) => void;
-  setRole: (role: 'admin' | 'user' | 'guest') => void;
-}
+import { SessionState, UserSession } from '@/lib/types/user'
 
 export const useSessionStore = create<SessionState>()(
   persist(
