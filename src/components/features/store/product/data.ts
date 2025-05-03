@@ -1,4 +1,5 @@
-import type { Product } from "./types"
+import type { Product } from "./types";
+import { TopSellingProductProps } from "./types";
 
 // Sample data
 export const sampleProducts: Product[] = [
@@ -39,9 +40,8 @@ export const sampleProducts: Product[] = [
     price: 95,
     rating: 4.7,
     stock: 8,
-    status: ["Active"],    
+    status: ["Active"],
     image: "/images/store/3.jpg?height=200&width=200",
-
   },
   {
     id: "5",
@@ -62,7 +62,6 @@ export const sampleProducts: Product[] = [
     stock: 10,
     status: ["Draft"],
     image: "/images/store/5.jpg?height=200&width=200",
-
   },
   {
     id: "7",
@@ -84,4 +83,56 @@ export const sampleProducts: Product[] = [
     status: ["Active"],
     image: "/images/store/tanjiro.jpg?height=200&width=200",
   },
-]
+];
+export const topSellingProducts: TopSellingProductProps[] = [
+  {
+    id: 1,
+    image: "",
+    name: "Premium Hoodie",
+    color: "White",
+    sold: 24,
+    inStock: "2,040",
+    revenue: "XML",
+    growthPercentage: 15,
+  },
+  {
+    id: 2,
+    image: "",
+    name: "Urban Sneakers",
+    color: "Black",
+    sold: 38,
+    inStock: "1,200",
+    revenue: "XML",
+    growthPercentage: 22,
+  },
+  {
+    id: 3,
+    image: "",
+    name: "Classic T-Shirt",
+    color: "Blue",
+    sold: 59,
+    inStock: "3,530",
+    revenue: "XML",
+    growthPercentage: 33,
+  },
+  {
+    id: 4,
+    image: "",
+    name: "Stylish Jeans",
+    color: "Navy",
+    sold: 17,
+    inStock: "980",
+    revenue: "XML",
+    growthPercentage: 10,
+  },
+  {
+    id: 5,
+    image: "",
+    name: "Sport Cap",
+    color: "Red",
+    sold: 12,
+    inStock: "1,700",
+    revenue: "XML",
+    growthPercentage: 8,
+  },
+];
