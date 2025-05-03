@@ -5,6 +5,9 @@ import { Download, Plus } from "lucide-react";
 import ProductPerformance from "@/components/features/store/product/ProductPerformance";
 import InventoryStatus from "@/components/features/store/product/InventoryStatus";
 import QuickActions from "@/components/features/store/product/QuickActions";
+import { TopSellingProduct } from "@/components/features/store/product/TopSellingProduct";
+import { InventoryAlerts } from "@/components/features/store/product/InventoryAlerts";
+import { BulkAction } from "@/components/features/store/product/BulkAction";
 
 export default function ProductDashboard() {
   return (
@@ -33,6 +36,11 @@ export default function ProductDashboard() {
         <InventoryStatus />
         <QuickActions />
       </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+        <TopSellingProduct />
+        <InventoryAlerts />
+      </div>
+      <BulkAction />
     </div>
   );
 }
