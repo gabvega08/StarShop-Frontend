@@ -1,4 +1,3 @@
-// src/hooks/useFetchWithRetry.ts
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { AxiosRequestConfig, AxiosError } from 'axios';
 import { BaseApi } from '@/api/baseApi';
