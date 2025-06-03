@@ -10,10 +10,11 @@ import {
 import { Button } from '@/components/ui/button';
 import { Globe } from 'lucide-react';
 import { useState } from 'react';
+import { cn } from '@/lib/utils';
 
 const languages = [
-  { code: 'en', name: 'English' },
-  { code: 'es', name: 'Español' },
+  { code: 'en', name: 'English', flag: '🇺🇸' },
+  { code: 'es', name: 'Español', flag: '🇪🇸' },
 ];
 
 export function LanguageSwitcher() {
@@ -32,27 +33,38 @@ export function LanguageSwitcher() {
     }
   };
 
+  const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0];
+
   return (
     <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
       <DropdownMenuTrigger asChild>
         <Button 
-          variant="outline" 
-          size="icon"
-          className="bg-white hover:bg-gray-100 border border-gray-200"
+          variant="ghost" 
+          size="sm"
+          className="flex items-center gap-2 px-3 py-2 bg-[#0c0b1d] hover:bg-[#1a1a2e] border border-[#A855f7]/20 hover:border-[#A855f7]/40 transition-all duration-300 shadow-[0_0_15px_-3px_rgba(127,79,210,0.2)] hover:shadow-[0_0_15px_-3px_rgba(127,79,210,0.4)]"
         >
-          <Globe className="h-5 w-5 text-gray-700" />
+          <span className="text-lg">{currentLanguage.flag}</span>
+          <span className="text-sm font-medium text-white">
+            {currentLanguage.code.toUpperCase()}
+          </span>
+          <Globe className="h-4 w-4 text-[#A855f7]" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-32">
+      <DropdownMenuContent 
+        align="end" 
+        className="w-48 bg-[#0c0b1d] border border-[#A855f7]/20 shadow-[0_0_15px_-3px_rgba(127,79,210,0.2)]"
+      >
         {languages.map((language) => (
           <DropdownMenuItem
             key={language.code}
             onClick={() => changeLanguage(language.code)}
-            className={`cursor-pointer ${
-              i18n.language === language.code ? 'bg-accent' : ''
-            }`}
+            className={cn(
+              "flex items-center gap-2 cursor-pointer text-white hover:bg-[#1a1a2e] hover:text-white focus:bg-[#1a1a2e] focus:text-white",
+              i18n.language === language.code && "bg-[#1a1a2e] text-[#A855f7]"
+            )}
           >
-            {language.name}
+            <span className="text-lg">{language.flag}</span>
+            <span className="text-sm">{language.name}</span>
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
