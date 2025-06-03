@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { useState } from 'react';
 import { 
@@ -11,10 +11,10 @@ import {
 } from 'lucide-react';
 import { useExpandableItems } from './useExpandableItems';
 import { useTranslation } from 'react-i18next';
-
-import { Tabs } from './Tabs';
-import { ContentContainer } from './ContentContainer';
-import { ExpandableItem } from './ExpandableItem';
+import { Tabs } from "./Tabs";
+import { ContentContainer } from "./ContentContainer";
+import { ExpandableItem } from "./ExpandableItem";
+import { useIsFirstRender } from "@/hooks/useIsFirstRender";
 
 // Interfaces
 export interface FAQItem {
@@ -32,7 +32,8 @@ export interface CategoryData {
 }
 
 const FAQCategories: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState('general');
+  const isFirstRender = useIsFirstRender();
+  const [activeCategory, setActiveCategory] = useState("general");
   const { toggleItem, isItemExpanded } = useExpandableItems();
   const { t } = useTranslation('common');
 
@@ -189,16 +190,17 @@ const FAQCategories: React.FC = () => {
     }
   ];
 
-  const activeData = categories.find(cat => cat.id === activeCategory) || categories[0];
+  const activeData =
+    categories.find((cat) => cat.id === activeCategory) || categories[0];
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4 py-8">
-      <Tabs 
-        items={categories.map(cat => ({
+      <Tabs
+        items={categories.map((cat) => ({
           id: cat.id,
           name: cat.name,
           icon: cat.icon,
-          count: cat.count
+          count: cat.count,
         }))}
         activeTab={activeCategory}
         onTabChange={setActiveCategory}
