@@ -49,19 +49,10 @@ const LandingPageComponent: React.FC = () => {
             </article>
           </section>
         </section>
-        <section className='mx-auto xl:m-0 w-[400px] md:w-1/2 flex justify-center items-center px-4 my-[0px] '>
-          <Image
-            src={StarShopLanding}
-            alt={t('landing.logoAlt')}
-            width={700}
-            height={20}
-          />
-          <OfflineNotice/>
-        </section>
       </section>
     </main>
-      </>
-    </>
+     </>
+
   );
 };
 
