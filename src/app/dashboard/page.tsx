@@ -15,7 +15,6 @@ import {
 export default function Dashboard() {
   const { user } = useAuth();
 
-  // Stats cards data
   const statsCards = [
     {
       title: "Total Revenue",
@@ -144,7 +143,6 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Events card */}
         <div className="p-6 rounded-lg border border-white/10 bg-[#0F0E1D] shadow-[0_0_8px_rgba(255,255,255,0.1)]">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-lg font-semibold text-white">
