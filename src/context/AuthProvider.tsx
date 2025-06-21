@@ -28,27 +28,22 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const [user, setUserState] = useState<UserSession | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
 
-  // Load user data from localStorage and decrypt JWT on component mount
   useEffect(() => {
     const loadUserData = async () => {
       try {
-        // Try to retrieve and decrypt JWT token
         const token = await retrieveSecureJWT();
 
         if (token) {
-          // Get user data from localStorage
           const storedUser = localStorage.getItem("user_data");
 
           if (storedUser) {
             const parsedUser = JSON.parse(storedUser) as UserSession;
-            // Verify token matches the one in user data
             if (parsedUser.token === token) {
               setUserState(parsedUser);
               setIsAuthenticated(true);
             }
           }
         } else {
-          // No valid token found, ensure user is logged out
           setUserState(null);
           setIsAuthenticated(false);
           localStorage.removeItem("user_data");
