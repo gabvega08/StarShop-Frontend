@@ -5,7 +5,6 @@ import { Grid, List } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-
 import { ProductFilters } from "./ProductFilters"
 import { ProductSearch } from "./ProductSearch"
 import { ProductSortDropdown } from "./ProductSortDropdown"

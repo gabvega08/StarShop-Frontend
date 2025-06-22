@@ -1,9 +1,7 @@
 'use client';
-
-import { InvoiceList } from '@/components/invoices/InvoiceList';
+import { InvoiceList } from '@/features/store/invoices/components/InvoiceList';
 import { Invoice } from '@/lib/types/invoice';
 
-// Sample data - replace with actual data from your API
 const sampleInvoices: Invoice[] = [
   {
     id: "INV-2024-001",

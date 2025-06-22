@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Invoice } from '@/lib/types/invoice';
-
-import { formatDate } from "@/lib/utils/date";
+import { UpcomingAndOverdueInvoices } from '@/a/user/invoices/components/UpcomingAndOverdueInvoices';
 import { InvoiceDetails } from './InvoiceDetails';
-import RecentInvoicesTable from '../features/user/invoices/components/RecentInvoicesTable';
-import InvoicesTable from '../features/user/invoices/components/InvoicesTable';
+import RecentInvoicesTable from '@/components/features/user/invoices/components/RecentInvoicesTable';
+import InvoicesTable from '@/components/features/user/invoices/components/InvoicesTable';
 
 interface InvoiceListProps {
   invoices: Invoice[];
@@ -30,7 +29,6 @@ export const InvoiceList: React.FC<InvoiceListProps> = ({
   };
 
   const handleViewOrder = (id: string) => {
-    // TODO: Implement view order functionality
     console.log("View order:", id);
   };
 
