@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import SearchBar from "./search-bar";
 import QuickGuideCards from "./quick-guide";
 import FAQAccordion from "./faq-accordion";
 import { faqs } from "../constants/data";
@@ -11,7 +10,6 @@ const FAQPage: React.FC = () => {
 
   return (
     <div className="min-h-screen text-white px-4 py-8">
-      <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <QuickGuideCards />
       <FAQAccordion faqs={faqs} searchQuery={searchQuery} />
     </div>

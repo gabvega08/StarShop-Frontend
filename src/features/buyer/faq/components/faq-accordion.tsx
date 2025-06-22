@@ -116,7 +116,7 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({ faqs, searchQuery }) => {
   );
 
   const cardStyle =
-    "p-6 rounded-2xl transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)] border border-white border-opacity-5 bg-black bg-opacity-5";
+    "p-6 rounded-2xl transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)] border border-white border-opacity-5 bg-transparent bg-opacity-5";
 
   const totalSearchMatches = useMemo(
     () =>

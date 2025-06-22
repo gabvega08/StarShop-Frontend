@@ -14,7 +14,7 @@ export const ContentContainer: React.FC<ContentContainerProps> = ({
   children 
 }) => (
   <div 
-    className="bg-gray-900 bg-opacity-70 backdrop-blur-sm rounded-xl p-6"
+    className="bg-transparent bg-opacity-70 backdrop-blur-sm rounded-xl p-6"
     style={{ border: "1px solid #333", padding: "1rem" }}
   >
     <div className="flex items-center gap-2 mb-3">
