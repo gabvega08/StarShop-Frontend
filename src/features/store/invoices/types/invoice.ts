@@ -44,3 +44,27 @@ export interface Invoice {
   statusColor: string;
   details: InvoiceDetails;
 } 
+
+export interface InvoiceTable {
+  id: string;
+  client: string;
+  issueDate: string;
+  dueDate: string;
+  amount: string;
+  status: InvoiceStatus;
+}
+
+export interface Filter {
+  id: string;
+  type: "date" | "amount";
+  operator: string;
+  value: string;
+  display: string;
+  preset?: string;
+}
+
+
+export type InvoiceStatus = "Paid" | "Pending" | "Overdue";
+
+export type SortKey = keyof Invoice;
+export type SortOrder = "asc" | "desc";

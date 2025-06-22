@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Invoice } from '@/lib/types/invoice';
-import { UpcomingAndOverdueInvoices } from '@/a/user/invoices/components/UpcomingAndOverdueInvoices';
-import { InvoiceDetails } from './InvoiceDetails';
-import RecentInvoicesTable from '@/components/features/user/invoices/components/RecentInvoicesTable';
-import InvoicesTable from '@/components/features/user/invoices/components/InvoicesTable';
+import { Invoice } from '../types/invoice';
+import { UpcomingAndOverdueInvoices } from './upcoming-invoices';
+import { InvoiceDetails } from './invoice-details';
+import RecentInvoicesTable from './recent-invoices-table';
+import InvoicesTable from './invoices-table';
 
 interface InvoiceListProps {
   invoices: Invoice[];

@@ -7,7 +7,7 @@ import {
   Download,
   ChevronDown,
 } from "lucide-react";
-import { Invoice } from "@/lib/types/invoice";
+import { Invoice } from "../types/invoice";
 
 interface RecentInvoicesTableProps {
   invoices: Invoice[];

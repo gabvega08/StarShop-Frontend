@@ -27,63 +27,8 @@ import {
 } from "@/components/ui/tabs";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-
-type InvoiceStatus = "Paid" | "Pending" | "Overdue";
-
-interface Invoice {
-  id: string;
-  client: string;
-  issueDate: string;
-  dueDate: string;
-  amount: string;
-  status: InvoiceStatus;
-}
-
-interface Filter {
-  id: string;
-  type: "date" | "amount";
-  operator: string;
-  value: string;
-  display: string;
-  preset?: string;
-}
-
-const invoicesData: Invoice[] = [
-    { id: "INV-001", client: "Jane Doe", issueDate: "Mar 28, 2025", dueDate: "Apr 24, 2025", amount: "861.85 XLM", status: "Paid" },
-    { id: "INV-002", client: "Johnathan Lee", issueDate: "Feb 26, 2025", dueDate: "Mar 17, 2025", amount: "1447.64 XLM", status: "Overdue" },
-    { id: "INV-003", client: "Sophie Brooks", issueDate: "Apr 20, 2025", dueDate: "May 18, 2025", amount: "4252.72 XLM", status: "Paid" },
-    { id: "INV-004", client: "Smith Smith", issueDate: "Apr 26, 2025", dueDate: "May 15, 2025", amount: "222.55 XLM", status: "Paid" },
-    { id: "INV-005", client: "Paula Clark", issueDate: "Apr 27, 2025", dueDate: "May 19, 2025", amount: "573.91 XLM", status: "Pending" },
-    { id: "INV-006", client: "Mia Turner", issueDate: "Apr 20, 2025", dueDate: "May 05, 2025", amount: "4048.51 XLM", status: "Pending" },
-    { id: "INV-007", client: "Cornell Maze", issueDate: "Apr 20, 2025", dueDate: "May 20, 2025", amount: "4471.68 XLM", status: "Paid" },
-    { id: "INV-008", client: "Sophie Brooks", issueDate: "Apr 26, 2025", dueDate: "May 23, 2025", amount: "4048.51 XLM", status: "Overdue" },
-    { id: "INV-009", client: "Paula Clark", issueDate: "Mar 28, 2025", dueDate: "Apr 19, 2025", amount: "3415.83 XLM", status: "Pending" },
-    { id: "INV-010", client: "Evan Scott", issueDate: "Apr 20, 2025", dueDate: "May 01, 2025", amount: "526.0 XLM", status: "Paid" },
-    { id: "INV-011", client: "Jane Doe", issueDate: "Apr 20, 2025", dueDate: "May 12, 2025", amount: "1749.31 XLM", status: "Pending" },
-    { id: "INV-012", client: "Smith Smith", issueDate: "Feb 26, 2025", dueDate: "Mar 18, 2025", amount: "4471.68 XLM", status: "Paid" },
-    { id: "INV-013", client: "Mia Turner", issueDate: "Mar 28, 2025", dueDate: "Apr 11, 2025", amount: "230.03 XLM", status: "Pending" },
-    { id: "INV-014", client: "Evan Scott", issueDate: "Apr 25, 2025", dueDate: "May 10, 2025", amount: "3184.72 XLM", status: "Paid" },
-    { id: "INV-015", client: "Project Xtreme", issueDate: "Mar 20, 2025", dueDate: "Apr 14, 2025", amount: "1432.98 XLM", status: "Paid" },
-    { id: "INV-016", client: "Laura Johnson", issueDate: "Apr 18, 2025", dueDate: "May 02, 2025", amount: "1749.31 XLM", status: "Overdue" },
-    { id: "INV-017", client: "Smith Smith", issueDate: "Apr 05, 2025", dueDate: "Apr 25, 2025", amount: "861.85 XLM", status: "Paid" },
-    { id: "INV-018", client: "Laura Johnson", issueDate: "Mar 28, 2025", dueDate: "Apr 26, 2025", amount: "1749.31 XLM", status: "Paid" },
-    { id: "INV-019", client: "Johnathan Lee", issueDate: "Feb 26, 2025", dueDate: "Mar 22, 2025", amount: "230.03 XLM", status: "Overdue" },
-    { id: "INV-020", client: "Project Xtreme", issueDate: "Apr 27, 2025", dueDate: "May 10, 2025", amount: "2987.4 XLM", status: "Overdue" },
-    { id: "INV-021", client: "Evan Scott", issueDate: "Apr 20, 2025", dueDate: "May 20, 2025", amount: "4790.34 XLM", status: "Pending" },
-    { id: "INV-022", client: "Smith Smith", issueDate: "Mar 28, 2025", dueDate: "Apr 12, 2025", amount: "246.01 XLM", status: "Pending" },
-    { id: "INV-023", client: "Jane Doe", issueDate: "Apr 20, 2025", dueDate: "May 16, 2025", amount: "861.85 XLM", status: "Paid" },
-    { id: "INV-024", client: "Evan Scott", issueDate: "Apr 27, 2025", dueDate: "May 27, 2025", amount: "3058.26 XLM", status: "Pending" },
-    { id: "INV-025", client: "Evan Scott", issueDate: "Apr 26, 2025", dueDate: "May 10, 2025", amount: "131.84 XLM", status: "Pending" },
-    { id: "INV-026", client: "Laura Johnson", issueDate: "Feb 26, 2025", dueDate: "Mar 08, 2025", amount: "2987.4 XLM", status: "Overdue" },
-    { id: "INV-027", client: "Cornell Maze", issueDate: "Apr 27, 2025", dueDate: "May 10, 2025", amount: "2770.21 XLM", status: "Pending" },
-    { id: "INV-028", client: "Project Xtreme", issueDate: "Apr 27, 2025", dueDate: "May 14, 2025", amount: "526.0 XLM", status: "Overdue" },
-    { id: "INV-029", client: "Smith Smith", issueDate: "Mar 28, 2025", dueDate: "Apr 09, 2025", amount: "1447.64 XLM", status: "Overdue" },
-    { id: "INV-030", client: "Laura Johnson", issueDate: "Mar 28, 2025", dueDate: "Apr 24, 2025", amount: "3708.71 XLM", status: "Paid" }
-];
-  
-
-type SortKey = keyof Invoice;
-type SortOrder = "asc" | "desc";
+import { InvoiceStatus, SortKey, SortOrder, Filter } from "../types/invoice";
+import { invoicesData } from "../constants/invoices-table";
 
 export default function InvoicesTable() {
   const [filter, setFilter] = useState<"All" | InvoiceStatus>("All");
@@ -275,7 +220,6 @@ export default function InvoicesTable() {
 
   const totalPages = Math.ceil(filteredInvoices.length / invoicesPerPage);
 
-  // Reset to page 1 when filters change
   useEffect(() => {
     setCurrentPage(1);
   }, [appliedFilters, filter, search]);
@@ -573,7 +517,6 @@ export default function InvoicesTable() {
             </table>
         </div>
 
-        {/* Pagination */}
         <div className="flex justify-between items-center p-4 py-3 rounded-b-lg">
           <span className="text-sm">
             Showing {startEntry} - {endEntry} of {invoicesData.length} invoices
