@@ -1,5 +1,5 @@
 import React from 'react';
-import { Invoice } from '@/lib/types/invoice';
+import { Invoice } from '../types/invoice';
 import { formatDate } from '@/lib/utils/date';
 import { CheckCircleIcon, DownloadIcon, MessageCircleIcon, EyeIcon } from "lucide-react";
 

@@ -1,10 +1,6 @@
-'use client';
+import { Invoice } from "../types/invoice";
 
-import { InvoiceList } from '@/components/invoices/InvoiceList';
-import { Invoice } from '@/lib/types/invoice';
-
-// Sample data - replace with actual data from your API
-const sampleInvoices: Invoice[] = [
+export const sampleInvoices: Invoice[] = [
   {
     id: "INV-2024-001",
     item: "Premium Hoodie (Black)",
@@ -144,11 +140,3 @@ const sampleInvoices: Invoice[] = [
     }
   }
 ];
-
-export default function InvoicesPage() {
-  return (
-    <div className="container-fluid px-4 py-8">
-      <InvoiceList invoices={sampleInvoices} />
-    </div>
-  );
-} 

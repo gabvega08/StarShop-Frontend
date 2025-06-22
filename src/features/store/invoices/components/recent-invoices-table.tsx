@@ -7,7 +7,7 @@ import {
   Download,
   ChevronDown,
 } from "lucide-react";
-import { Invoice } from "@/lib/types/invoice";
+import { Invoice } from "../types/invoice";
 
 interface RecentInvoicesTableProps {
   invoices: Invoice[];
@@ -18,7 +18,6 @@ const RecentInvoicesTable = ({
   invoices,
   onInvoiceClick,
 }: RecentInvoicesTableProps) => {
-  // Function to render status icon based on status
   const renderStatusIcon = (status: string) => {
     switch (status) {
       case "Paid":
@@ -32,7 +31,6 @@ const RecentInvoicesTable = ({
     }
   };
 
-  // Function to determine background color for status indicator
   const getStatusBgColor = (status: string) => {
     switch (status) {
       case "Paid":
