@@ -1,4 +1,4 @@
-import RegisterComponent from "@/features/auth/register/RegisterComponent"
+import RegisterComponent from "@/features/shared/auth/register/RegisterComponent"
 
 export default function RegisterPage() {
     return (
