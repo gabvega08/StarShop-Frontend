@@ -3,7 +3,7 @@
 import { Check, Store, User} from "lucide-react"
 import { useState } from "react"
 import Image from "next/image"
-import StarShopLanding from "../../../../public/starshop-logos/StarShop-Logo-Landing.svg"
+import StarShopLanding from '../../../../../../public/starshop-logos/StarShop-Logo-Landing.svg'
 
 export default function StepTwoContent(): JSX.Element {
     const [activeProfile, setActiveProfile] = useState<"buyer" | "seller" | null>(null)

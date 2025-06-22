@@ -4,8 +4,8 @@ interface StatsCardProps {
   title: string;
   value: number | string;
   subtitle: string;
-  icon: LucideIcon;
-  iconColor: string;
+  // icon: LucideIcon;
+  // iconColor: string;
   borderColor: string;
 }
 
@@ -13,8 +13,8 @@ const StatsCard = ({
   title,
   value,
   subtitle,
-  icon: Icon,
-  iconColor,
+  // icon: Icon,
+  // iconColor,
   borderColor,
 }: StatsCardProps) => {
   return (
@@ -26,7 +26,7 @@ const StatsCard = ({
           <p className="text-gray-400 text-sm mt-1">{subtitle}</p>
         </div>
         <div className="bg-[#1a1c3d] p-2 rounded-lg">
-          <Icon className={iconColor} size={20} />
+          {/* <Icon className={iconColor} size={20} /> */}
         </div>
       </div>
       <div className={`absolute bottom-0 left-0 w-full h-1 ${borderColor}`}></div>
