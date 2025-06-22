@@ -1,5 +1,5 @@
-import { FAQSupportSection } from "../../../components/features/user/faq/FAQSupportSection";
-import Faq from "../../../components/features/user/faq/faq";
+import { FAQSupportSection } from "@/features/buyer/faq/components/faq-support";
+import FAQPage from "@/features/buyer/faq/components/faq";
 
 export default function FaqPage() {
   return (
@@ -13,7 +13,7 @@ export default function FaqPage() {
               assistance, our support team is here to help.
             </p>
           </div>
-          <Faq />
+          <FAQPage />
           <div className="mt-auto">
             <FAQSupportSection />
           </div>

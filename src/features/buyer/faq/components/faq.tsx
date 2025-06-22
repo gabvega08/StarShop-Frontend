@@ -4,7 +4,7 @@ import { useState } from "react";
 import SearchBar from "./search-bar";
 import QuickGuideCards from "./quick-guide";
 import FAQAccordion from "./faq-accordion";
-import { faqs } from "./data";
+import { faqs } from "../constants/data";
 
 const FAQPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");

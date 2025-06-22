@@ -16,7 +16,7 @@ import {
   MessageSquare,
   ChevronDown,
 } from "lucide-react";
-import { FAQ, FAQCategory } from "./data";
+import { FAQ, FAQCategory } from "../constants/data";
 
 interface FAQAccordionProps {
   faqs: FAQ[];
