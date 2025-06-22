@@ -22,7 +22,7 @@ const toXDR = (value: string): xdr.ScVal => {
 export const nftContract: NFTContract = {
   mint: async (user: string, metadata: string) => {
     try {
-      const result = await contract.call("mint", toXDR(user), toXDR(metadata));
+      const result = contract.call("mint", toXDR(user), toXDR(metadata));
       return result.toString();
     } catch (error) {
       console.error("Error minting NFT:", error);
