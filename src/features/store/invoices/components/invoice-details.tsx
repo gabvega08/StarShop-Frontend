@@ -1,6 +1,5 @@
 import React from 'react';
 import { Invoice } from '../types/invoice';
-import { formatDate } from '@/lib/utils/date';
 import { CheckCircleIcon, DownloadIcon, MessageCircleIcon, EyeIcon } from "lucide-react";
 
 interface InvoiceDetailsProps {
@@ -61,7 +60,7 @@ export const InvoiceDetails: React.FC<InvoiceDetailsProps> = ({
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="bg-white/5 p-4 rounded-lg">
           <p className="text-white/60">Invoice Date</p>
-          <p className="text-white">{formatDate(invoice.date)}</p>
+          <p className="text-white">{invoice.date}</p>
         </div>
         <div className="bg-white/5 p-4 rounded-lg">
           <p className="text-white/60">Store</p>
