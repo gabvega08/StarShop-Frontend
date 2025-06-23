@@ -1,6 +1,6 @@
 "use client"
 
-import TicketsList from "@/components/features/user/supportTickets/components/TicketList";
+import { TicketsList } from "@/features/buyer/support-tickets";
 
 export default function Tickets() {
   return (
