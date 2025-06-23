@@ -1,8 +1,8 @@
 "use client"
 
 import { useTickets } from "../hooks/useTickets"
-import { mockTickets } from "../constants/mockData"
-import TicketsTabs from "./TicketsTabs"
+import { mockTickets } from "../constants/mock-data"
+import TicketsTabs from "./tickets-tabs"
 import Pagination from "./Pagination"
 
 const TicketsList: React.FC = () => {

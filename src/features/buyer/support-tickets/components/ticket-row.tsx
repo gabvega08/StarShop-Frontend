@@ -3,7 +3,7 @@
 import { MessageCircle } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Ticket } from "../types/ticket"
-import { getStatusColor, getPriorityColor, getCategoryColor } from "../constants/colorMaps"
+import { getStatusColor, getPriorityColor, getCategoryColor } from "../constants/color-maps"
 
 interface TicketRowProps {
   ticket: Ticket

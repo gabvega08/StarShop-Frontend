@@ -1,7 +1,7 @@
 "use client"
 
 import { Ticket } from "../types/ticket"
-import TicketRow from "./TicketRow"
+import TicketRow from "./ticket-row"
 
 interface TicketsTableProps {
   tickets: Ticket[]

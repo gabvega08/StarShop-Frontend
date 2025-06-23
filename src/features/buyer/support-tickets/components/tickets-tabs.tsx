@@ -2,7 +2,7 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Ticket } from "../types/ticket"
-import TicketsTable from "./TicketsTable"
+import TicketsTable from "./tickets-table"
 
 interface TicketsTabsProps {
   tickets: Ticket[]
