@@ -27,7 +27,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
-} from "@/components/ui/sidebar"
+} from "@/shared/components/ui/sidebar"
 
 const overviewItems = [
   {
