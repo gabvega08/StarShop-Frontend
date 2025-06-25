@@ -126,3 +126,7 @@ We welcome contributions to StarShop! Check out our [Contributor's Guide](https:
 
 ## ⭐ Don't forget to Star this repo!!
 
+## 👤 Maintainer
+
+This repository is maintained by [KevinLatino](https://github.com/KevinLatino).
+
