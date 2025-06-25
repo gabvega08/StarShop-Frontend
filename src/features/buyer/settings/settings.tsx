@@ -20,9 +20,6 @@ const NewSettings: React.FC = () => {
           }`}
         >
           Store Settings
-          <span className="absolute inset-0 text-white blur-[4px] opacity-80 animate-pulse">
-            Store Settings
-          </span>
         </h1>
 
         <h2 className="text-2xl text-white font-semibold mb-8 text-left">
