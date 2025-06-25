@@ -25,8 +25,7 @@ export function BuyerSidebar() {
   const pathname = usePathname()
 
   return (
-    <aside className="w-64 h-screen text-white p-6 bg-starshopBackground" style={{ backgroundColor: "#0C0B1D" }}>
-
+    <aside className="w-64 h-screen p-6 bg-sidebar border-r border-sidebarBorder">
       <div className="mb-8 flex justify-center">
         <Image src="/starshop-logos/StarShop-Logo-Landing.svg" alt="StarShop Logo" width={100} height={100} />
       </div>
@@ -34,7 +33,7 @@ export function BuyerSidebar() {
       <nav className="space-y-6">
         {sections.map((section) => (
           <div key={section.title}>
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-3">{section.title}</h3>
+            <h3 className="text-sm font-semibold text-sidebarTitle uppercase tracking-wider mb-3">{section.title}</h3>
             <div className="space-y-1">
               {section.items.map((item) => {
                 const isActive = pathname === item.href
@@ -42,11 +41,7 @@ export function BuyerSidebar() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="flex items-center gap-3 px-3 py-2 rounded-lg transition-colors hover:bg-slate-800"
-                    style={{
-                      backgroundColor: isActive ? "#7E22CE" : "transparent",
-                      color: isActive ? "#FFFFFF" : "#9CA3AF",
-                    }}
+                    className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-colors hover:bg-sidebarActive/80 ${isActive ? 'bg-sidebarActive text-white' : 'text-sidebarText'}`}
                   >
                     <item.icon className="w-5 h-5" />
                     <span className="font-medium">{item.name}</span>
