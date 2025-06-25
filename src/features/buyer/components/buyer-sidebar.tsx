@@ -1,5 +1,5 @@
 "use client"
-
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
 import { User, CreditCard, ShoppingBag, Calendar, Heart, Diamond, MessageCircle, FileText } from "lucide-react"
@@ -28,9 +28,7 @@ export function BuyerSidebar() {
     <aside className="w-64 h-screen text-white p-6 bg-starshopBackground" style={{ backgroundColor: "#0C0B1D" }}>
 
       <div className="mb-8 flex justify-center">
-        <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center">
-          <span className="text-slate-900 font-bold text-xl italic">S</span>
-        </div>
+        <Image src="/starshop-logos/StarShop-Logo-Landing.svg" alt="StarShop Logo" width={100} height={100} />
       </div>
 
       <nav className="space-y-6">

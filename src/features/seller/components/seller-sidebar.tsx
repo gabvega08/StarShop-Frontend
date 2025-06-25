@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
 import {
@@ -50,9 +51,7 @@ export function SellerSidebar() {
       <div className="flex-1 p-6">
 
         <div className="mb-8 flex justify-center">
-          <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center">
-            <span className="text-slate-900 font-bold text-xl italic">S</span>
-          </div>
+          <Image src="/starshop-logos/StarShop-Logo-Landing.svg" alt="StarShop Logo" width={100} height={100} />
         </div>
 
         <nav className="space-y-6">

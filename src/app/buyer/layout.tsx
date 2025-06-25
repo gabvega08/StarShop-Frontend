@@ -1,5 +1,5 @@
 import type React from "react"
-import { BuyerSidebar } from "@/shared/components/sidebars/buyer-sidebar"
+import { BuyerSidebar } from "@/features/buyer/components/buyer-sidebar"
 export default function BuyerLayout({
 
     children,

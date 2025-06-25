@@ -6,71 +6,123 @@
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
 
+# 🌟 StarShop Frontend
 
-# 🌟 StarShop Frontend 
 StarShop is an innovative platform designed to empower small businesses and entrepreneurs by providing an easy-to-use marketplace infused with blockchain technology. The platform fosters transparency and trust by utilizing Non-Fungible Tokens (NFTs) to create unique digital experiences for customers and businesses alike.
 
+---
+
+## 📁 Project Structure
+
+```
+src/
+├── app/                          # Next.js App Router (routes, layouts, pages)
+│   ├── layout.tsx
+│   ├── page.tsx
+│   ├── not-found.tsx
+│   ├── buyer/                    # Buyer routes
+│   └── seller/                   # Seller routes
+│
+├── features/                     # Business domain modules
+│   ├── buyer/                    # Buyer logic (faq, profile, cart, ...)
+│   │   ├── faq/
+│   │   │   ├── api/
+│   │   │   ├── components/
+│   │   │   ├── hooks/
+│   │   │   ├── types/
+│   │   │   └── index.ts
+│   │   ├── profile/
+│   │   ├── cart/
+│   │   └── index.ts
+│   │
+│   ├── seller/                   # Seller logic (products, orders, ...)
+│   │   ├── products/
+│   │   │   ├── api/
+│   │   │   ├── components/
+│   │   │   ├── types/
+│   │   │   └── ...
+│   │   ├── orders/
+│   │   └── index.ts
+│
+├── shared/                       # Reusable elements
+│   ├── components/               # Global UI components (Navbar, Modal, etc.)
+│   │   ├── ui/                   # Atoms, Molecules, Organisms
+│   │   └── layout/
+│   ├── hooks/                    # Reusable hooks (useAuth, useDebounce, ...)
+│   ├── utils/                    # Pure utility functions
+│   ├── constants/                # App-wide constants
+│   ├── types/                    # Global types
+│   ├── styles/                   # Global styles (globals.css)
+│   └── api/                      # General reusable APIs (e.g. login)
+│
+├── providers/                    # Global context providers
+│   └── ...
+│
+├── i18n/                         # Internationalization
+│   └── i18n.ts
+│
+├── lib/                          # Non-UI business logic helpers
+│   └── ...
+│
+├── index.ts                      # Common exports entrypoint
+└── types.d.ts                    # Global ambient types
+```
+
+---
+
 ## 🚀 Features
-* 🛒 <b>Easy Product Registration:</b> Small businesses can quickly register and start selling their products.
-* 🔗 <b>Blockchain Transparency:</b> Builds trust through immutable and transparent blockchain transactions.
-* 🎟️ <b>NFTs for Purchases:</b> Customers receive a unique NFT for every purchase, serving as a digital collectible tied to the store.
-* 🏆 <b>Milestone NFTs for Businesses:</b> Businesses earn milestone NFTs based on their sales achievements, showcasing their growth and success.
-* 🤝 <b>Celebrating Growth and Connection:</b> Strengthens the relationship between businesses and customers through a marketplace that values trust, growth, and connection.
+* 🛒 **Easy Product Registration:** Small businesses can quickly register and start selling their products.
+* 🔗 **Blockchain Transparency:** Builds trust through immutable and transparent blockchain transactions.
+* 🎟️ **NFTs for Purchases:** Customers receive a unique NFT for every purchase, serving as a digital collectible tied to the store.
+* 🏆 **Milestone NFTs for Businesses:** Businesses earn milestone NFTs based on their sales achievements, showcasing their growth and success.
+* 🤝 **Celebrating Growth and Connection:** Strengthens the relationship between businesses and customers through a marketplace that values trust, growth, and connection.
+
+---
 
 ## ⚙ Technologies
-* ⚡ [Next.js](https://nextjs.org/) (TypeScript): Framework for building the user interface.
-* 🎨[TailwindCSS](https://tailwindcss.com/): Utility-first CSS framework for rapid UI development.
-* 🧩 [ShadCn](https://ui.shadcn.com): Pre-built components for a consistent and polished UI.
-* 🌠 [Lucide-React](https://lucide.dev/): We use Lucide for icons.
-* 🌐 [Zustand](https://zustand-demo.pmnd.rs/): State management for predictable data flow.
-* 📡 [Axios](https://axios-http.com/): Promise-based HTTP client for API requests.
-* 📊 [React Query](https://tanstack.com/query/latest): Efficient data fetching and caching.
+* ⚡ [Next.js](https://nextjs.org/) (TypeScript)
+* 🎨 [TailwindCSS](https://tailwindcss.com/)
+* 🧩 [ShadCn](https://ui.shadcn.com)
+* 🌠 [Lucide-React](https://lucide.dev/)
+* 🌐 [Zustand](https://zustand-demo.pmnd.rs/)
+* 📡 [Axios](https://axios-http.com/)
+* 📊 [React Query](https://tanstack.com/query/latest)
 
+---
 
-## Installation Guideline
+## 🛠️ Getting Started
 
-1️⃣ Fork the repository. <br>
-2️⃣ Clone the forked repository locally. <br>
-```bash
-git clone https://github.com/<your-username>/StarShop-Frontend.git
-```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/<your-username>/StarShop-Frontend.git
+   cd StarShop-Frontend
+   ```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+3. **Copy environment variables:**
+   ```bash
+   cp .env.example .env
+   ```
+4. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
 
-3️⃣ Navigate to the project directory:
-```bash
-cd StarShop-Frontend
-```
-4️⃣ Add the remote repository upstream:
+If you encounter installation issues, try:
+- `npm cache clean --force`
+- `rm -rf node_modules`
+- `rm package-lock.json`
+- `npm install`
+- Or: `npm install --legacy-peer-deps`
 
-```bash
-git remote add upstream https://github.com/StarShopCr/StarShop-Frontend.git
-```
-5️⃣ Run this command to install dependencies.
+---
 
-```bash
-npm install
-```
-6️⃣ Edit Environment Variables
-```bash
-cp .env.example .env
-```
-
-7️⃣ Start development server.
-```bash
-npm run dev
-```
-<b>Start Coding!</b>
-
-If you encounter installation issues, try these steps:
-
-* Clear npm cache: `npm cache clean --force`
-* Delete node_modules: `rm -rf node_modules`
-* Delete package-lock.json: `rm package-lock.json`
-* Retry installation: `npm i`
-* If issues persist, you can try npm i --legacy-peer-deps.
-
-
-## Contribute to StarShop
+## 🤝 Contributing
 We welcome contributions to StarShop! Check out our [Contributor's Guide](https://github.com/StarShopCr/contributors-guide) to get started.
 
-### ⭐ Don't forget to Star this repo!!
+---
+
+## ⭐ Don't forget to Star this repo!!
 
