@@ -1,224 +1,109 @@
 "use client"
 
-import type React from "react"
-
+import { usePathname } from "next/navigation"
+import Link from "next/link"
 import {
-  BarChart3,
+  User,
   CreditCard,
+  Home,
+  BarChart3,
+  Package,
   DollarSign,
   FileText,
-  HelpCircle,
-  Home,
   MessageCircle,
-  Package,
+  HelpCircle,
   Settings,
-  TicketIcon,
-  User,
 } from "lucide-react"
 
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarRail,
-} from "@/shared/components/ui/sidebar"
-
-const overviewItems = [
-  {
-    title: "Profile",
-    url: "/seller/profile",
-    icon: User,
-  },
-  {
-    title: "Dashboard",
-    url: "/seller/dashboard",
-    icon: Home,
-  },
-  {
-    title: "Analytics",
-    url: "/seller/analytics",
-    icon: BarChart3,
-  },
-  {
-    title: "Products",
-    url: "/seller/products",
-    icon: Package,
-  },
+const navigation = [
+  { name: "Profile", href: "/store/profile", icon: User },
+  { name: "Dashboard", href: "/store/dashboard", icon: Home },
+  { name: "Analytics", href: "/store/analytics", icon: BarChart3 },
+  { name: "Products", href: "/store/products", icon: Package },
+  { name: "Transactions", href: "/store/transactions", icon: CreditCard },
+  { name: "Invoices", href: "/store/invoices", icon: FileText },
+  { name: "Billing", href: "/store/billing", icon: DollarSign },
+  { name: "Chat", href: "/store/chat", icon: MessageCircle },
+  { name: "Support Tickets", href: "/store/tickets", icon: HelpCircle },
+  { name: "FAQ", href: "/store/faq", icon: HelpCircle },
 ]
 
-const financeItems = [
-  {
-    title: "Transactions",
-    url: "/seller/transactions",
-    icon: CreditCard,
-  },
-  {
-    title: "Invoices",
-    url: "/seller/invoices",
-    icon: FileText,
-  },
-  {
-    title: "Billing",
-    url: "/seller/billing",
-    icon: DollarSign,
-  },
+const bottomItems = [
+  { name: "Settings", href: "/store/settings", icon: Settings },
+  { name: "Help", href: "/store/help", icon: HelpCircle },
 ]
 
-const supportItems = [
-  {
-    title: "Chat",
-    url: "/seller/chat",
-    icon: MessageCircle,
-  },
-  {
-    title: "Support Tickets",
-    url: "/seller/support-tickets",
-    icon: TicketIcon,
-  },
-  {
-    title: "FAQ",
-    url: "/seller/faq",
-    icon: HelpCircle,
-  },
+const sections = [
+  { title: "OVERVIEW", items: navigation.slice(0, 4) },
+  { title: "FINANCE", items: navigation.slice(4, 7) },
+  { title: "SUPPORT", items: navigation.slice(7, 10) },
 ]
 
-const footerItems = [
-  {
-    title: "Settings",
-    url: "/seller/settings",
-    icon: Settings,
-  },
-  {
-    title: "Help",
-    url: "/seller/help",
-    icon: HelpCircle,
-  },
-]
-
-interface SellerSidebarProps {
-  currentPath?: string
-}
-
-export function SellerSidebar({ currentPath }: SellerSidebarProps) {
-  const isActive = (url: string) => currentPath === url
-
-  const getMenuButtonProps = (url: string) => ({
-    style: {
-      color: isActive(url) ? "#FFFFFF" : "#9CA3AF",
-      backgroundColor: isActive(url) ? "#7E22CE" : "transparent",
-    },
-    onMouseEnter: (e: React.MouseEvent<HTMLAnchorElement>) => {
-      if (!isActive(url)) {
-        e.currentTarget.style.backgroundColor = "rgba(126, 34, 206, 0.1)"
-      }
-    },
-    onMouseLeave: (e: React.MouseEvent<HTMLAnchorElement>) => {
-      if (!isActive(url)) {
-        e.currentTarget.style.backgroundColor = "transparent"
-      }
-    },
-  })
+export function SellerSidebar() {
+  const pathname = usePathname()
 
   return (
-    <Sidebar className="border-0" style={{ backgroundColor: "#0C0B1D" }}>
-      <SidebarContent style={{ backgroundColor: "#0C0B1D" }}>
-        <SidebarGroup>
-          <SidebarGroupLabel
-            className="font-semibold text-xs uppercase tracking-wider px-3 py-2"
-            style={{ color: "#FFFFFF" }}
-          >
-            Overview
-          </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {overviewItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild className="transition-colors duration-200 rounded-lg mx-2">
-                    <a href={item.url} {...getMenuButtonProps(item.url)}>
-                      <item.icon className="size-4" />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+    <aside
+      className="w-64 h-screen flex flex-col text-white bg-starshopBackground"
+      style={{ backgroundColor: "#0C0B1D" }}
+    >
+      <div className="flex-1 p-6">
 
-        <SidebarGroup>
-          <SidebarGroupLabel
-            className="font-semibold text-xs uppercase tracking-wider px-3 py-2"
-            style={{ color: "#FFFFFF" }}
-          >
-            Finance
-          </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {financeItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild className="transition-colors duration-200 rounded-lg mx-2">
-                    <a href={item.url} {...getMenuButtonProps(item.url)}>
-                      <item.icon className="size-4" />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+        <div className="mb-8 flex justify-center">
+          <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center">
+            <span className="text-slate-900 font-bold text-xl italic">S</span>
+          </div>
+        </div>
 
-        <SidebarGroup>
-          <SidebarGroupLabel
-            className="font-semibold text-xs uppercase tracking-wider px-3 py-2"
-            style={{ color: "#FFFFFF" }}
-          >
-            Support
-          </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {supportItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild className="transition-colors duration-200 rounded-lg mx-2">
-                    <a href={item.url} {...getMenuButtonProps(item.url)}>
-                      <item.icon className="size-4" />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-      </SidebarContent>
-
-      <SidebarFooter
-        className="border-t mt-auto"
-        style={{
-          backgroundColor: "#0C0B1D",
-          borderColor: "rgba(156, 163, 175, 0.2)",
-        }}
-      >
-        <SidebarMenu>
-          {footerItems.map((item) => (
-            <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton asChild className="transition-colors duration-200 rounded-lg mx-2">
-                <a href={item.url} {...getMenuButtonProps(item.url)}>
-                  <item.icon className="size-4" />
-                  <span>{item.title}</span>
-                </a>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
+        <nav className="space-y-6">
+          {sections.map((section) => (
+            <div key={section.title}>
+              <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-3">{section.title}</h3>
+              <div className="space-y-1">
+                {section.items.map((item) => {
+                  const isActive = pathname === item.href
+                  return (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className="flex items-center gap-3 px-3 py-2 rounded-lg transition-colors hover:bg-slate-800"
+                      style={{
+                        backgroundColor: isActive ? "#7E22CE" : "transparent",
+                        color: isActive ? "#FFFFFF" : "#9CA3AF",
+                      }}
+                    >
+                      <item.icon className="w-5 h-5" />
+                      <span className="font-medium">{item.name}</span>
+                    </Link>
+                  )
+                })}
+              </div>
+            </div>
           ))}
-        </SidebarMenu>
-      </SidebarFooter>
-      <SidebarRail />
-    </Sidebar>
+        </nav>
+      </div>
+
+      <div className="p-6 border-t border-gray-700">
+        <div className="space-y-1">
+          {bottomItems.map((item) => {
+            const isActive = pathname === item.href
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="flex items-center gap-3 px-3 py-2 rounded-lg transition-colors hover:bg-slate-800"
+                style={{
+                  backgroundColor: isActive ? "#7E22CE" : "transparent",
+                  color: isActive ? "#FFFFFF" : "#9CA3AF",
+                }}
+              >
+                <item.icon className="w-5 h-5" />
+                <span className="font-medium">{item.name}</span>
+              </Link>
+            )
+          })}
+        </div>
+      </div>
+    </aside>
   )
 }

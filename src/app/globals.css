@@ -94,6 +94,13 @@
   }
 }
 
+body {
+    background-image: url('/background-image-starshop.png') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+  }
+
 .custom-white-shadow {
   -webkit-box-shadow: -1px 1px 30px -13px rgba(255,255,255,1);
   -moz-box-shadow: -1px 1px 30px -13px rgba(255,255,255,1);

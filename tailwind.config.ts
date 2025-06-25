@@ -76,6 +76,9 @@ export default {
   				ring: 'hsl(var(--sidebar-ring))'
   			}
   		},
+      backgroundImage: {
+        starshopBackground: "url('/background-image-starshop.png')",
+      },
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',

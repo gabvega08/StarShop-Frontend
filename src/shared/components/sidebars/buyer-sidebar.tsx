@@ -1,184 +1,64 @@
 "use client"
 
-import type React from "react"
+import { usePathname } from "next/navigation"
+import Link from "next/link"
+import { User, CreditCard, ShoppingBag, Calendar, Heart, Diamond, MessageCircle, FileText } from "lucide-react"
 
-import { Calendar, CreditCard, Diamond, FileText, Heart, MessageCircle, ShoppingBag, User } from "lucide-react"
-
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarRail,
-} from "@/shared/components/ui/sidebar"
-
-const accountItems = [
-  {
-    title: "Profile",
-    url: "/buyer/profile",
-    icon: User,
-  },
-  {
-    title: "Billing",
-    url: "/buyer/billing",
-    icon: CreditCard,
-  },
+const navigation = [
+  { name: "Profile", href: "/buyer/profile", icon: User },
+  { name: "Billing", href: "/buyer/billing", icon: CreditCard },
+  { name: "Orders", href: "/buyer/orders", icon: ShoppingBag, badge: 3 },
+  { name: "Calendar", href: "/buyer/calendar", icon: Calendar },
+  { name: "Wishlist", href: "/buyer/wishlist", icon: Heart },
+  { name: "NFTs", href: "/buyer/nfts", icon: Diamond },
+  { name: "Messages", href: "/buyer/messages", icon: MessageCircle, badge: 5 },
+  { name: "Invoices", href: "/buyer/invoices", icon: FileText },
 ]
 
-const shoppingItems = [
-  {
-    title: "Orders",
-    url: "/buyer/orders",
-    icon: ShoppingBag,
-  },
-  {
-    title: "Calendar",
-    url: "/buyer/calendar",
-    icon: Calendar,
-  },
-  {
-    title: "Wishlist",
-    url: "/buyer/wishlist",
-    icon: Heart,
-  },
-  {
-    title: "NFTs",
-    url: "/buyer/nfts",
-    icon: Diamond,
-  },
+const sections = [
+  { title: "ACCOUNT", items: navigation.slice(0, 2) },
+  { title: "SHOPPING", items: navigation.slice(2, 6) },
+  { title: "COMMUNICATION", items: navigation.slice(6, 8) },
 ]
 
-const communicationItems = [
-  {
-    title: "Messages",
-    url: "/buyer/messages",
-    icon: MessageCircle,
-  },
-  {
-    title: "Invoices",
-    url: "/buyer/invoices",
-    icon: FileText,
-  },
-]
-
-interface BuyerSidebarProps {
-  currentPath?: string
-}
-
-export function BuyerSidebar({ currentPath }: BuyerSidebarProps) {
-  const isActive = (url: string) => currentPath === url
-
-  const getMenuButtonProps = (url: string) => ({
-    style: {
-      color: isActive(url) ? "#FFFFFF" : "#9CA3AF",
-      backgroundColor: isActive(url) ? "#7E22CE" : "transparent",
-    },
-    onMouseEnter: (e: React.MouseEvent<HTMLAnchorElement>) => {
-      if (!isActive(url)) {
-        e.currentTarget.style.backgroundColor = "rgba(126, 34, 206, 0.1)"
-      }
-    },
-    onMouseLeave: (e: React.MouseEvent<HTMLAnchorElement>) => {
-      if (!isActive(url)) {
-        e.currentTarget.style.backgroundColor = "transparent"
-      }
-    },
-  })
+export function BuyerSidebar() {
+  const pathname = usePathname()
 
   return (
-    <Sidebar className="border-0" style={{ backgroundColor: "#0C0B1D" }}>
-      <SidebarHeader
-        className="border-b"
-        style={{
-          backgroundColor: "#0C0B1D",
-          borderColor: "rgba(156, 163, 175, 0.2)",
-        }}
-      >
-        <div className="flex items-center justify-center py-4">
-          <div className="flex items-center justify-center w-12 h-12 bg-white rounded-lg">
-            <span className="text-2xl font-bold" style={{ color: "#0C0B1D" }}>
-              S
-            </span>
-          </div>
+    <aside className="w-64 h-screen text-white p-6 bg-starshopBackground" style={{ backgroundColor: "#0C0B1D" }}>
+
+      <div className="mb-8 flex justify-center">
+        <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center">
+          <span className="text-slate-900 font-bold text-xl italic">S</span>
         </div>
-      </SidebarHeader>
+      </div>
 
-      <SidebarContent style={{ backgroundColor: "#0C0B1D" }}>
-        <SidebarGroup>
-          <SidebarGroupLabel
-            className="font-semibold text-xs uppercase tracking-wider px-3 py-2"
-            style={{ color: "#FFFFFF" }}
-          >
-            Account
-          </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {accountItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild className="transition-colors duration-200 rounded-lg mx-2">
-                    <a href={item.url} {...getMenuButtonProps(item.url)}>
-                      <item.icon className="size-4" />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-
-        <SidebarGroup>
-          <SidebarGroupLabel
-            className="font-semibold text-xs uppercase tracking-wider px-3 py-2"
-            style={{ color: "#FFFFFF" }}
-          >
-            Shopping
-          </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {shoppingItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild className="transition-colors duration-200 rounded-lg mx-2">
-                    <a href={item.url} {...getMenuButtonProps(item.url)}>
-                      <item.icon className="size-4" />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-
-        <SidebarGroup>
-          <SidebarGroupLabel
-            className="font-semibold text-xs uppercase tracking-wider px-3 py-2"
-            style={{ color: "#FFFFFF" }}
-          >
-            Communication
-          </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {communicationItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild className="transition-colors duration-200 rounded-lg mx-2">
-                    <a href={item.url} {...getMenuButtonProps(item.url)}>
-                      <item.icon className="size-4" />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-      </SidebarContent>
-      <SidebarRail />
-    </Sidebar>
+      <nav className="space-y-6">
+        {sections.map((section) => (
+          <div key={section.title}>
+            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-3">{section.title}</h3>
+            <div className="space-y-1">
+              {section.items.map((item) => {
+                const isActive = pathname === item.href
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="flex items-center gap-3 px-3 py-2 rounded-lg transition-colors hover:bg-slate-800"
+                    style={{
+                      backgroundColor: isActive ? "#7E22CE" : "transparent",
+                      color: isActive ? "#FFFFFF" : "#9CA3AF",
+                    }}
+                  >
+                    <item.icon className="w-5 h-5" />
+                    <span className="font-medium">{item.name}</span>
+                  </Link>
+                )
+              })}
+            </div>
+          </div>
+        ))}
+      </nav>
+    </aside>
   )
 }
