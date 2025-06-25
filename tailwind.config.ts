@@ -15,6 +15,10 @@ export default {
   theme: {
     extend: {
       colors: {
+        "sidebar-bg": "#0C0B1D",
+        "sidebar-selected": "#7E22CE",
+        "sidebar-item": "#9CA3AF",
+        "sidebar-title": "#FFFFFF",
         "custom-light-purple": "#9354FF",
         "custom-dark-purple": "#09092f",
         "custom-light-card-border": "#3E3A77",
