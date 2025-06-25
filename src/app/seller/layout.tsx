@@ -1,5 +1,5 @@
 import type React from "react"
-import { SellerSidebar } from "@/shared/components/sidebars/seller-sidebar"
+import { SellerSidebar } from "@/features/seller/components/seller-sidebar"
 
 export default function SellerLayout({
   children,
