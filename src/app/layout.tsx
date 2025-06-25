@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import ReactQueryProvider from "@/providers/query-client-provider";
-import "@/shared/styles/globals.css";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "StarShop",
