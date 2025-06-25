@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import ReactQueryProvider from "@/providers/query-client-provider";
 import "./globals.css";
-import { SidebarConditional } from "@/components/ui/SidebarConditional";
 
 export const metadata: Metadata = {
   title: "StarShop",
@@ -19,7 +18,6 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-starshopBackground overflow-x-hidden">
             <div className="flex flex-col lg:flex-row min-h-screen w-full relative">
-              <SidebarConditional />
               <main className="flex-1 overflow-y-auto">
                   <ReactQueryProvider>{children}</ReactQueryProvider>
               </main>
