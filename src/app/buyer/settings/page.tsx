@@ -1,9 +1,7 @@
-"use client"
+'use client';
 
-import SettingsComponent from "@/features/buyer/settings/settings";
+import SettingsComponent from '@/features/buyer/settings/settings';
 
 export default function SettingsPage() {
-  return (
-    <SettingsComponent />
-  );
+  return <SettingsComponent />;
 }

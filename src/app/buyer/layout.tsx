@@ -1,15 +1,14 @@
-import type React from "react"
-import { BuyerSidebar } from "@/features/buyer/components/buyer-sidebar"
+import type React from 'react';
+import { BuyerSidebar } from '@/features/buyer/components/buyer-sidebar';
 export default function BuyerLayout({
-
-    children,
+  children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <div className="flex bg-starshopBackground min-h-screen">
       <BuyerSidebar />
       <main className="flex-1 bg-starshopBackground">{children}</main>
     </div>
-  )
+  );
 }

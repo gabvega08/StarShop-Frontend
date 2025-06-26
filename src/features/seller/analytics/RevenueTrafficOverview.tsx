@@ -1,12 +1,12 @@
-"use client"
+'use client';
 
-import { useState } from "react"
-import RevenueOverview from "./RevenueOverview"
-import TrafficSources from "./TrafficSources"
-import Tabs from "./Tabs"
+import { useState } from 'react';
+import RevenueOverview from './RevenueOverview';
+import TrafficSources from './TrafficSources';
+import Tabs from './Tabs';
 
 export default function RevenueTrafficOverview() {
-  const [activeTab, setActiveTab] = useState("Overview")
+  const [activeTab, setActiveTab] = useState('Overview');
 
   return (
     <div className="w-full">
@@ -16,6 +16,5 @@ export default function RevenueTrafficOverview() {
         <TrafficSources />
       </div>
     </div>
-  )
+  );
 }
-

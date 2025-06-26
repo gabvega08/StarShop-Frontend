@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 // Hook to debounce a value
 export function useDebounce<T>(value: T, delay: number = 500): T {

@@ -5,7 +5,7 @@ export const fakeUpcomingInvoices = [
     date: 'Mar 19, 2024',
     daysLeft: 4,
     amount: 65,
-    currency: 'XLM'
+    currency: 'XLM',
   },
   {
     id: 'INV-2024-004',
@@ -13,8 +13,8 @@ export const fakeUpcomingInvoices = [
     date: 'Mar 21, 2024',
     daysLeft: 6,
     amount: 95,
-    currency: 'XLM'
-  }
+    currency: 'XLM',
+  },
 ];
 
 export const fakeOverdueInvoices = [
@@ -24,7 +24,7 @@ export const fakeOverdueInvoices = [
     date: 'Mar 01, 2024',
     daysOverdue: 15,
     amount: 150,
-    currency: 'XLM'
+    currency: 'XLM',
   },
   {
     id: 'INV-2024-004',
@@ -32,6 +32,6 @@ export const fakeOverdueInvoices = [
     date: 'Mar 05, 2024',
     daysOverdue: 11,
     amount: 75,
-    currency: 'XLM'
-  }
+    currency: 'XLM',
+  },
 ];

@@ -11,7 +11,7 @@ const AnalyticsSummary: React.FC = () => {
       changePercentage: 12.5,
       target: '$38,000',
       achievedPercentage: 65,
-      iconBgColor: 'bg-purple-600'
+      iconBgColor: 'bg-purple-600',
     },
     {
       title: 'Total Orders',
@@ -20,7 +20,7 @@ const AnalyticsSummary: React.FC = () => {
       changePercentage: 8.2,
       target: '1,900',
       achievedPercentage: 78,
-      iconBgColor: 'bg-blue-600'
+      iconBgColor: 'bg-blue-600',
     },
     {
       title: 'Conversion Rate',
@@ -29,7 +29,7 @@ const AnalyticsSummary: React.FC = () => {
       changePercentage: -0.5,
       target: '5.0%',
       achievedPercentage: 64,
-      iconBgColor: 'bg-green-600'
+      iconBgColor: 'bg-green-600',
     },
     {
       title: 'Total Visitors',
@@ -38,8 +38,8 @@ const AnalyticsSummary: React.FC = () => {
       changePercentage: 18.3,
       target: '55,000',
       achievedPercentage: 85,
-      iconBgColor: 'bg-amber-600'
-    }
+      iconBgColor: 'bg-amber-600',
+    },
   ];
 
   return (

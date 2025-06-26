@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import React, { ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -17,9 +17,7 @@ type ProvidersProps = {
 
 const ReactQueryProvider: React.FC<ProvidersProps> = ({ children }) => {
   return (
-    <QueryClientProvider client={queryClient}>
-      {children}
-    </QueryClientProvider>
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   );
 };
 

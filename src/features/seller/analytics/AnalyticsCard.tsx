@@ -34,14 +34,21 @@ const AnalyticsCard: React.FC<AnalyticsCardProps> = ({
         </div>
 
         <div className="flex items-center gap-2">
-          <span className={`text-sm inline-flex ${changePercentage >= 0 ? 'text-green-500' : 'text-red-500'}`}>
-            {changePercentage >= 0 ? <ArrowUpRight size={16} /> : <ArrowDownRight size={16} />} {Math.abs(changePercentage)}% from last period
+          <span
+            className={`text-sm inline-flex ${changePercentage >= 0 ? 'text-green-500' : 'text-red-500'}`}
+          >
+            {changePercentage >= 0 ? (
+              <ArrowUpRight size={16} />
+            ) : (
+              <ArrowDownRight size={16} />
+            )}{' '}
+            {Math.abs(changePercentage)}% from last period
           </span>
         </div>
 
         <div className="space-y-2">
           <div className="w-full h-1.5 bg-gray-700 rounded-full overflow-hidden">
-            <div 
+            <div
               className={`h-full rounded-full ${iconBgColor}`}
               style={{ width: `${achievedPercentage}%` }}
             />
@@ -56,4 +63,4 @@ const AnalyticsCard: React.FC<AnalyticsCardProps> = ({
   );
 };
 
-export default AnalyticsCard; 
+export default AnalyticsCard;

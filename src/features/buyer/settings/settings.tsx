@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 const NewSettings: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -16,7 +16,7 @@ const NewSettings: React.FC = () => {
       <div className="w-full max-w-[70%] p-10 rounded-3xl">
         <h1
           className={`text-[2.8rem] font-normal text-white mb-2 relative text-left transition-opacity duration-700 ease-out ${
-            isVisible ? "opacity-100" : "opacity-0"
+            isVisible ? 'opacity-100' : 'opacity-0'
           }`}
         >
           Store Settings
@@ -65,8 +65,6 @@ const NewSettings: React.FC = () => {
               />
             </div>
           </div>
-
-         
 
           <div className="flex justify-start w-full">
             <button

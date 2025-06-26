@@ -1,7 +1,7 @@
-import { ArrowLeft } from "lucide-react";
-import StarShopLanding from "../../../../public/starshop-logos/StarShop-Logo-Landing.svg";
-import Link from "next/link";
-import Image from "next/image";
+import { ArrowLeft } from 'lucide-react';
+import StarShopLanding from '../../../../public/starshop-logos/StarShop-Logo-Landing.svg';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const Unauthorized = () => {
   return (

@@ -1,4 +1,4 @@
-import { useEffect, RefObject } from "react";
+import { useEffect, RefObject } from 'react';
 
 export function useInfiniteScroll(
   ref: RefObject<HTMLElement>,
@@ -8,7 +8,7 @@ export function useInfiniteScroll(
     const target = ref.current;
     if (!target) return;
 
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver(entries => {
       if (entries[0].isIntersecting) {
         callbackFn();
       }

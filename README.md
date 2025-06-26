@@ -71,22 +71,24 @@ src/
 ---
 
 ## 🚀 Features
-* 🛒 **Easy Product Registration:** Small businesses can quickly register and start selling their products.
-* 🔗 **Blockchain Transparency:** Builds trust through immutable and transparent blockchain transactions.
-* 🎟️ **NFTs for Purchases:** Customers receive a unique NFT for every purchase, serving as a digital collectible tied to the store.
-* 🏆 **Milestone NFTs for Businesses:** Businesses earn milestone NFTs based on their sales achievements, showcasing their growth and success.
-* 🤝 **Celebrating Growth and Connection:** Strengthens the relationship between businesses and customers through a marketplace that values trust, growth, and connection.
+
+- 🛒 **Easy Product Registration:** Small businesses can quickly register and start selling their products.
+- 🔗 **Blockchain Transparency:** Builds trust through immutable and transparent blockchain transactions.
+- 🎟️ **NFTs for Purchases:** Customers receive a unique NFT for every purchase, serving as a digital collectible tied to the store.
+- 🏆 **Milestone NFTs for Businesses:** Businesses earn milestone NFTs based on their sales achievements, showcasing their growth and success.
+- 🤝 **Celebrating Growth and Connection:** Strengthens the relationship between businesses and customers through a marketplace that values trust, growth, and connection.
 
 ---
 
 ## ⚙ Technologies
-* ⚡ [Next.js](https://nextjs.org/) (TypeScript)
-* 🎨 [TailwindCSS](https://tailwindcss.com/)
-* 🧩 [ShadCn](https://ui.shadcn.com)
-* 🌠 [Lucide-React](https://lucide.dev/)
-* 🌐 [Zustand](https://zustand-demo.pmnd.rs/)
-* 📡 [Axios](https://axios-http.com/)
-* 📊 [React Query](https://tanstack.com/query/latest)
+
+- ⚡ [Next.js](https://nextjs.org/) (TypeScript)
+- 🎨 [TailwindCSS](https://tailwindcss.com/)
+- 🧩 [ShadCn](https://ui.shadcn.com)
+- 🌠 [Lucide-React](https://lucide.dev/)
+- 🌐 [Zustand](https://zustand-demo.pmnd.rs/)
+- 📡 [Axios](https://axios-http.com/)
+- 📊 [React Query](https://tanstack.com/query/latest)
 
 ---
 
@@ -111,6 +113,7 @@ src/
    ```
 
 If you encounter installation issues, try:
+
 - `npm cache clean --force`
 - `rm -rf node_modules`
 - `rm package-lock.json`
@@ -120,6 +123,7 @@ If you encounter installation issues, try:
 ---
 
 ## 🤝 Contributing
+
 We welcome contributions to StarShop! Check out our [Contributor's Guide](https://github.com/StarShopCr/contributors-guide) to get started.
 
 ---
@@ -129,4 +133,3 @@ We welcome contributions to StarShop! Check out our [Contributor's Guide](https:
 ## 👤 Maintainer
 
 This repository is maintained by [KevinLatino](https://github.com/KevinLatino).
-

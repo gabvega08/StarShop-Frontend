@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import Unauthorized from "@/components/unauthorized/Unauthorized";
+import Unauthorized from '@/components/unauthorized/Unauthorized';
 
 export default function UnauthorizedPage() {
   return (

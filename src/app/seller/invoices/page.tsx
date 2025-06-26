@@ -8,4 +8,4 @@ export default function InvoicesPage() {
       <InvoiceList invoices={sampleInvoices} />
     </div>
   );
-} 
+}
