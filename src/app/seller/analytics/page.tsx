@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import AnalyticsSummary from '@/features/seller/analytics/AnalyticsSummary';
 import AnalyticsHeader from '@/features/seller/analytics/AnalyticsHeader';

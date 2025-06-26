@@ -11,9 +11,13 @@ interface TabsProps {
   onTabChange: (id: string) => void;
 }
 
-export const Tabs: React.FC<TabsProps> = ({ items, activeTab, onTabChange }) => (
+export const Tabs: React.FC<TabsProps> = ({
+  items,
+  activeTab,
+  onTabChange,
+}) => (
   <div className="flex flex-wrap gap-4 mb-6 justify-center">
-    {items.map((item) => (
+    {items.map(item => (
       <button
         key={item.id}
         onClick={() => onTabChange(item.id)}

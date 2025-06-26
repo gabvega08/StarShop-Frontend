@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, {
   useState,
@@ -6,7 +6,7 @@ import React, {
   useRef,
   useMemo,
   useCallback,
-} from "react";
+} from 'react';
 import {
   HelpCircle,
   ShoppingBag,
@@ -15,8 +15,8 @@ import {
   Image as ImageIcon,
   MessageSquare,
   ChevronDown,
-} from "lucide-react";
-import { FAQ, FAQCategory } from "../constants/data";
+} from 'lucide-react';
+import { FAQ, FAQCategory } from '../constants/data';
 
 interface FAQAccordionProps {
   faqs: FAQ[];
@@ -24,7 +24,7 @@ interface FAQAccordionProps {
 }
 
 const FAQAccordion: React.FC<FAQAccordionProps> = ({ faqs, searchQuery }) => {
-  const [activeCategory, setActiveCategory] = useState<FAQCategory>("general");
+  const [activeCategory, setActiveCategory] = useState<FAQCategory>('general');
   const [expandedQuestions, setExpandedQuestions] = useState<number[]>([]);
   const [filteredFAQs, setFilteredFAQs] = useState<FAQ[]>([]);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -32,20 +32,18 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({ faqs, searchQuery }) => {
 
   const categories = useMemo(
     () => [
-      { id: "general" as FAQCategory, label: "General", icon: HelpCircle },
-      { id: "buying" as FAQCategory, label: "Buying", icon: ShoppingBag },
-      { id: "selling" as FAQCategory, label: "Selling", icon: Tag },
-      { id: "payments" as FAQCategory, label: "Payments", icon: CreditCard },
-      { id: "nfts" as FAQCategory, label: "NFTs", icon: ImageIcon },
-      { id: "support" as FAQCategory, label: "Support", icon: MessageSquare },
+      { id: 'general' as FAQCategory, label: 'General', icon: HelpCircle },
+      { id: 'buying' as FAQCategory, label: 'Buying', icon: ShoppingBag },
+      { id: 'selling' as FAQCategory, label: 'Selling', icon: Tag },
+      { id: 'payments' as FAQCategory, label: 'Payments', icon: CreditCard },
+      { id: 'nfts' as FAQCategory, label: 'NFTs', icon: ImageIcon },
+      { id: 'support' as FAQCategory, label: 'Support', icon: MessageSquare },
     ],
     []
   );
 
   const updateSliderPosition = useCallback(() => {
-    const activeIndex = categories.findIndex(
-      (cat) => cat.id === activeCategory
-    );
+    const activeIndex = categories.findIndex(cat => cat.id === activeCategory);
     const activeTab = tabRefs.current[activeIndex];
     const slider = sliderRef.current;
 
@@ -60,17 +58,17 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({ faqs, searchQuery }) => {
   }, [activeCategory, updateSliderPosition]);
 
   useEffect(() => {
-    window.addEventListener("resize", updateSliderPosition);
-    return () => window.removeEventListener("resize", updateSliderPosition);
+    window.addEventListener('resize', updateSliderPosition);
+    return () => window.removeEventListener('resize', updateSliderPosition);
   }, [updateSliderPosition]);
 
   useEffect(() => {
-    if (searchQuery.trim() === "") {
-      setFilteredFAQs(faqs.filter((faq) => faq.category === activeCategory));
+    if (searchQuery.trim() === '') {
+      setFilteredFAQs(faqs.filter(faq => faq.category === activeCategory));
     } else {
       const query = searchQuery.toLowerCase();
       const results = faqs.filter(
-        (faq) =>
+        faq =>
           (faq.category === activeCategory || searchQuery.length > 2) &&
           (faq.question.toLowerCase().includes(query) ||
             faq.answer.toLowerCase().includes(query))
@@ -85,20 +83,20 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({ faqs, searchQuery }) => {
   }, [searchQuery, activeCategory, faqs]);
 
   const toggleQuestion = (index: number) => {
-    setExpandedQuestions((prev) =>
-      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+    setExpandedQuestions(prev =>
+      prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]
     );
   };
 
   const getVisibleCount = useCallback(
     (category: FAQCategory) => {
-      if (searchQuery.trim() === "") {
-        return faqs.filter((faq) => faq.category === category).length;
+      if (searchQuery.trim() === '') {
+        return faqs.filter(faq => faq.category === category).length;
       }
 
       const query = searchQuery.toLowerCase();
       return faqs.filter(
-        (faq) =>
+        faq =>
           faq.category === category &&
           (faq.question.toLowerCase().includes(query) ||
             faq.answer.toLowerCase().includes(query))
@@ -110,19 +108,19 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({ faqs, searchQuery }) => {
   const tabStyle = useCallback(
     (isActive: boolean) =>
       `flex items-center ${
-        isActive ? "text-white" : "text-gray-300"
+        isActive ? 'text-white' : 'text-gray-300'
       } px-4 py-2 rounded-md relative z-10`,
     []
   );
 
   const cardStyle =
-    "p-6 rounded-2xl transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)] border border-white border-opacity-5 bg-transparent bg-opacity-5";
+    'p-6 rounded-2xl transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)] border border-white border-opacity-5 bg-transparent bg-opacity-5';
 
   const totalSearchMatches = useMemo(
     () =>
-      searchQuery.trim() !== ""
+      searchQuery.trim() !== ''
         ? faqs.filter(
-            (faq) =>
+            faq =>
               faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
               faq.answer.toLowerCase().includes(searchQuery.toLowerCase())
           ).length
@@ -147,7 +145,7 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({ faqs, searchQuery }) => {
             return (
               <button
                 key={category.id}
-                ref={(el) => {
+                ref={el => {
                   tabRefs.current[index] = el;
                 }}
                 className={tabStyle(isActive)}
@@ -157,7 +155,7 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({ faqs, searchQuery }) => {
                 {category.label}
                 <span
                   className={`ml-2 ${
-                    isActive ? "bg-purple-700" : "bg-gray-700"
+                    isActive ? 'bg-purple-700' : 'bg-gray-700'
                   } px-2 py-1 rounded-full text-xs`}
                 >
                   {count}
@@ -172,7 +170,7 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({ faqs, searchQuery }) => {
         <div className="flex items-center mb-4">
           <HelpCircle className="text-purple-400 mr-3" size={24} />
           <h2 className="text-xl font-semibold">
-            {searchQuery.trim() !== ""
+            {searchQuery.trim() !== ''
               ? `Search Results (${totalSearchMatches})`
               : `${
                   activeCategory.charAt(0).toUpperCase() +
@@ -181,7 +179,7 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({ faqs, searchQuery }) => {
           </h2>
         </div>
 
-        {searchQuery.trim() !== "" ? (
+        {searchQuery.trim() !== '' ? (
           <p className="text-gray-300 mb-6">
             Showing results for &quot;{searchQuery}&quot;
           </p>
@@ -195,9 +193,9 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({ faqs, searchQuery }) => {
           {filteredFAQs.length > 0 ? (
             filteredFAQs.map((faq, index) => {
               const highlightMatch = (text: string) => {
-                if (searchQuery.trim() === "") return text;
+                if (searchQuery.trim() === '') return text;
 
-                const regex = new RegExp(`(${searchQuery})`, "gi");
+                const regex = new RegExp(`(${searchQuery})`, 'gi');
                 return text.replace(
                   regex,
                   '<mark class="bg-purple-900 bg-opacity-40 text-white px-1 rounded">$1</mark>'
@@ -219,7 +217,7 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({ faqs, searchQuery }) => {
                     <ChevronDown
                       size={20}
                       className={`transition-transform text-purple-600 ${
-                        expandedQuestions.includes(index) ? "rotate-180" : ""
+                        expandedQuestions.includes(index) ? 'rotate-180' : ''
                       }`}
                     />
                   </button>
@@ -236,9 +234,9 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({ faqs, searchQuery }) => {
             })
           ) : (
             <p className="text-gray-400">
-              {searchQuery.trim() !== ""
+              {searchQuery.trim() !== ''
                 ? `No results found for "${searchQuery}". Try a different search term.`
-                : "No questions found in this category."}
+                : 'No questions found in this category.'}
             </p>
           )}
         </div>

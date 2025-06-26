@@ -1,14 +1,13 @@
-"use client"
-import { DashboardHeader } from "./dashboard-header"
-import { StatsGrid } from "./stats-grid"
-import { SalesChart } from "./sales-chart"
-import { UpcomingEvents } from "./upcoming-events"
+'use client';
+import { DashboardHeader } from './dashboard-header';
+import { StatsGrid } from './stats-grid';
+import { SalesChart } from './sales-chart';
+import { UpcomingEvents } from './upcoming-events';
 
 export default function Dashboard() {
-
   return (
     <div className="container mx-auto p-6">
-      <DashboardHeader userName={"Kevin Latino"} />
+      <DashboardHeader userName={'Kevin Latino'} />
 
       <StatsGrid />
 
@@ -17,5 +16,5 @@ export default function Dashboard() {
         <UpcomingEvents />
       </div>
     </div>
-  )
+  );
 }

@@ -43,7 +43,7 @@ export interface Invoice {
   status: string;
   statusColor: string;
   details: InvoiceDetails;
-} 
+}
 
 export interface InvoiceTable {
   id: string;
@@ -56,15 +56,14 @@ export interface InvoiceTable {
 
 export interface Filter {
   id: string;
-  type: "date" | "amount";
+  type: 'date' | 'amount';
   operator: string;
   value: string;
   display: string;
   preset?: string;
 }
 
-
-export type InvoiceStatus = "Paid" | "Pending" | "Overdue";
+export type InvoiceStatus = 'Paid' | 'Pending' | 'Overdue';
 
 export type SortKey = keyof Invoice;
-export type SortOrder = "asc" | "desc";
+export type SortOrder = 'asc' | 'desc';

@@ -12,7 +12,7 @@ const AnalyticsHeader: React.FC<AnalyticsHeaderProps> = ({
   onPeriodChange,
   onExport,
   onRefresh,
-  onCustomDateChange
+  onCustomDateChange,
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
@@ -20,11 +20,7 @@ const AnalyticsHeader: React.FC<AnalyticsHeaderProps> = ({
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
 
-  const periods = [
-    'Last 30 days',
-    'Last month',
-    'Last year'
-  ];
+  const periods = ['Last 30 days', 'Last month', 'Last year'];
 
   const handleCustomDateChange = () => {
     if (startDate && endDate && onCustomDateChange) {
@@ -38,31 +34,37 @@ const AnalyticsHeader: React.FC<AnalyticsHeaderProps> = ({
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between text-white">
         <div>
           <h1 className="text-2xl font-bold">Analytics Dashboard</h1>
-          <p className="text-gray-400 text-sm">Track your store's performance and growth</p>
+          <p className="text-gray-400 text-sm">
+            Track your store&apos;s performance and growth
+          </p>
         </div>
-        
+
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
           <div className="flex items-center gap-2 w-full sm:w-auto">
             <label className="relative inline-flex items-center cursor-pointer">
               <input type="checkbox" className="sr-only peer" />
               <div className="w-11 h-6 bg-gray-800 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-800 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600"></div>
             </label>
-            <span className="text-sm text-gray-300">Compare with previous period</span>
+            <span className="text-sm text-gray-300">
+              Compare with previous period
+            </span>
           </div>
 
           <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
             <div className="relative flex-1 sm:flex-none">
-              <button 
+              <button
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 className="flex items-center justify-between gap-2 px-4 py-2 bg-transparent rounded-lg hover:bg-gray-800 transition-colors w-full sm:min-w-[180px] border border-white/20"
               >
                 <span className="truncate">{selectedPeriod}</span>
-                <ChevronDown className={`w-4 h-4 flex-shrink-0 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown
+                  className={`w-4 h-4 flex-shrink-0 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`}
+                />
               </button>
 
               {isDropdownOpen && (
                 <div className="absolute top-full left-0 mt-2 w-full bg-gray-900 rounded-lg shadow-lg overflow-hidden z-10">
-                  {periods.map((period) => (
+                  {periods.map(period => (
                     <button
                       key={period}
                       className="w-full px-4 py-2 text-left hover:bg-gray-700 transition-colors"
@@ -95,24 +97,24 @@ const AnalyticsHeader: React.FC<AnalyticsHeaderProps> = ({
                       <input
                         type="date"
                         value={startDate}
-                        onChange={(e) => setStartDate(e.target.value)}
+                        onChange={e => setStartDate(e.target.value)}
                         className="w-full sm:w-auto px-3 py-2 bg-gray-700 rounded-lg text-white border border-gray-600 focus:outline-none focus:border-purple-500 [color-scheme:dark]"
                         style={{
                           colorScheme: 'dark',
                           backgroundColor: 'bg-gray-700',
-                          color: 'white'
+                          color: 'white',
                         }}
                       />
                       <span className="text-gray-400">to</span>
                       <input
                         type="date"
                         value={endDate}
-                        onChange={(e) => setEndDate(e.target.value)}
+                        onChange={e => setEndDate(e.target.value)}
                         className="w-full sm:w-auto px-3 py-2 bg-gray-700 rounded-lg text-white border border-gray-600 focus:outline-none focus:border-purple-500 [color-scheme:dark]"
                         style={{
                           colorScheme: 'dark',
                           backgroundColor: 'bg-gray-700',
-                          color: 'white'
+                          color: 'white',
                         }}
                       />
                     </div>
@@ -126,8 +128,8 @@ const AnalyticsHeader: React.FC<AnalyticsHeaderProps> = ({
                 </div>
               )}
             </div>
-              
-            <button 
+
+            <button
               onClick={onExport}
               className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-800/30 transition-colors border border-white/20"
             >
@@ -148,4 +150,4 @@ const AnalyticsHeader: React.FC<AnalyticsHeaderProps> = ({
   );
 };
 
-export default AnalyticsHeader; 
+export default AnalyticsHeader;

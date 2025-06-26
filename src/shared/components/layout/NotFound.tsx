@@ -1,9 +1,9 @@
-"use client"
+'use client';
 
-import { ArrowLeft } from "lucide-react";
-import StarShopLanding from "../../../../public/starshop-logos/StarShop-Logo-Landing.svg";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { ArrowLeft } from 'lucide-react';
+import StarShopLanding from '../../../../public/starshop-logos/StarShop-Logo-Landing.svg';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const NotFound = () => {
   const router = useRouter();
@@ -18,7 +18,7 @@ const NotFound = () => {
         />
       </div>
       <h1 className="text-4xl">Oops! Page not found.</h1>
-      <p>Sorry, we couldn't find the page you're looking for.</p>
+      <p>Sorry, we couldn&apos;t find the page you&apos;re looking for.</p>
       <div className="mt-10  px-8 md:px-0">
         <button
           onClick={() => router.back()}

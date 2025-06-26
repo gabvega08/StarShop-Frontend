@@ -1,4 +1,4 @@
-import { LineChart } from "lucide-react"
+import { LineChart } from 'lucide-react';
 
 export function SalesChart() {
   return (
@@ -24,5 +24,5 @@ export function SalesChart() {
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -1,16 +1,16 @@
 export type ProductStatus =
-  | "All Products"
-  | "Active"
-  | "Draft"
-  | "Out of Stock";
+  | 'All Products'
+  | 'Active'
+  | 'Draft'
+  | 'Out of Stock';
 
 export type SortOption =
-  | "Newest"
-  | "Price: Low to High"
-  | "Price: High to Low"
-  | "Rating";
+  | 'Newest'
+  | 'Price: Low to High'
+  | 'Price: High to Low'
+  | 'Rating';
 
-export type ViewMode = "grid" | "list";
+export type ViewMode = 'grid' | 'list';
 
 export interface Product {
   id: string;

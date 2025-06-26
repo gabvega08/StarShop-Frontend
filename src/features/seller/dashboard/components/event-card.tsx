@@ -1,7 +1,7 @@
 interface EventCardProps {
-  title: string
-  date: string
-  description: string
+  title: string;
+  date: string;
+  description: string;
 }
 
 export function EventCard({ title, date, description }: EventCardProps) {
@@ -13,5 +13,5 @@ export function EventCard({ title, date, description }: EventCardProps) {
       </div>
       <p className="text-sm text-gray-400 mt-1">{description}</p>
     </div>
-  )
+  );
 }
