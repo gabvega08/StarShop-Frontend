@@ -34,7 +34,7 @@ export function BuyerSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-64 h-screen p-6 bg-sidebar border-r border-sidebarBorder">
+    <aside className="fixed w-64 h-screen p-6 bg-sidebar border-r border-sidebarBorder z-50">
       <div className="mb-8 flex justify-center">
         <Image
           src="/starshop-logos/StarShop-Logo-Landing.svg"

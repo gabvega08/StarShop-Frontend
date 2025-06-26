@@ -44,7 +44,7 @@ export function SellerSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-64 h-screen flex flex-col bg-sidebar border-r border-sidebarBorder">
+    <aside className="fixed top-0 left-0 w-64 h-screen flex flex-col bg-sidebar border-r border-sidebarBorder z-50">
       <div className="flex-1 p-6">
         <div className="mb-8 flex justify-center">
           <Image

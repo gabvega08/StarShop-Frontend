@@ -9,7 +9,7 @@ export default function SellerLayout({
   return (
     <div className="flex bg-starshopBackground min-h-screen">
       <SellerSidebar />
-      <main className="flex-1 bg-starshopBackground">{children}</main>
+      <main className="flex-1 bg-starshopBackground pl-64">{children}</main>
     </div>
   );
 }

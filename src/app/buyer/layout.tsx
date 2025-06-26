@@ -8,7 +8,7 @@ export default function BuyerLayout({
   return (
     <div className="flex bg-starshopBackground min-h-screen">
       <BuyerSidebar />
-      <main className="flex-1 bg-starshopBackground">{children}</main>
+      <main className="flex-1 bg-starshopBackground pl-64">{children}</main>
     </div>
   );
 }
