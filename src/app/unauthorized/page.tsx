@@ -1,6 +1,6 @@
 'use client';
 
-import Unauthorized from '@/components/unauthorized/Unauthorized';
+import Unauthorized from '@/shared/components/layout/Unauthorized';
 
 export default function UnauthorizedPage() {
   return (
