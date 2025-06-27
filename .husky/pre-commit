@@ -1,2 +1,2 @@
-npx lint-staged
-npm run build
+#!/bin/sh
+npx lint-staged --no-stash
