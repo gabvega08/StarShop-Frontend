@@ -9,8 +9,19 @@ interface Transaction {
   status: 'Completed' | 'Pending' | 'Failed';
 }
 
-export function TransactionHistory() {
-  const transactions: Transaction[] = [
+interface TransactionHistoryProps {
+  transactions?: Transaction[];
+  isLoading?: boolean;
+  onViewAll?: () => void;
+}
+
+export function TransactionHistory({
+  transactions = [],
+  isLoading = false,
+  onViewAll,
+}: TransactionHistoryProps) {
+  // Default transactions for demo purposes when no data is passed
+  const defaultTransactions: Transaction[] = [
     {
       id: '1',
       type: 'Premium Hoodie Purchase',
@@ -41,38 +52,75 @@ export function TransactionHistory() {
     },
   ];
 
+  // Use passed transactions or fall back to default ones
+  const displayTransactions =
+    transactions.length > 0 ? transactions : defaultTransactions;
+
   return (
     <div className="bg-[#0F0E1D]/50 rounded-lg p-6 border border-white/30 shadow-[0_0_10px_0_rgba(255,255,255,0.1)]">
       <h2 className="text-xl font-semibold text-white mb-6">
         Transaction History
       </h2>
 
-      <div className="space-y-4">
-        {transactions.map(transaction => (
-          <div
-            key={transaction.id}
-            className="flex items-center justify-between rounded-lg p-3 bg-white/5"
-          >
-            <div className="flex-1">
-              <div className="text-white font-medium mb-1">
-                {transaction.type}
+      {isLoading ? (
+        <div className="space-y-4">
+          {/* Loading skeleton */}
+          {[1, 2, 3, 4].map(i => (
+            <div
+              key={i}
+              className="flex items-center justify-between rounded-lg p-3 bg-white/5 animate-pulse"
+            >
+              <div className="flex-1">
+                <div className="h-4 bg-gray-600 rounded w-3/4 mb-2"></div>
+                <div className="h-3 bg-gray-700 rounded w-1/2"></div>
               </div>
-              <div className="text-gray-400 text-sm">{transaction.date}</div>
-            </div>
-            <div className="text-right">
-              <div className="font-semibold text-white">
-                {transaction.amount}
+              <div className="text-right">
+                <div className="h-4 bg-gray-600 rounded w-16 mb-2"></div>
+                <div className="h-3 bg-gray-700 rounded w-12"></div>
               </div>
-              <div className="text-green-400 text-sm">{transaction.status}</div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <div className="space-y-4">
+          {displayTransactions.map(transaction => (
+            <div
+              key={transaction.id}
+              className="flex items-center justify-between rounded-lg p-3 bg-white/5"
+            >
+              <div className="flex-1">
+                <div className="text-white font-medium mb-1">
+                  {transaction.type}
+                </div>
+                <div className="text-gray-400 text-sm">{transaction.date}</div>
+              </div>
+              <div className="text-right">
+                <div className="font-semibold text-white">
+                  {transaction.amount}
+                </div>
+                <div
+                  className={`text-sm ${
+                    transaction.status === 'Completed'
+                      ? 'text-green-400'
+                      : transaction.status === 'Pending'
+                        ? 'text-yellow-400'
+                        : 'text-red-400'
+                  }`}
+                >
+                  {transaction.status}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
 
       <div className="mt-6 text-center">
         <Button
           variant="ghost"
           className="w-full text-gray-400 hover:text-white hover:bg-gray-800"
+          onClick={onViewAll}
+          disabled={isLoading}
         >
           View All Transactions
         </Button>

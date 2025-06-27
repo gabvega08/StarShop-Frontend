@@ -2,7 +2,11 @@
 import { PlusIcon, Wallet } from 'lucide-react';
 import { Button } from '@/shared/components/ui/button';
 
-export function PaymentMethods() {
+interface PaymentMethodsProps {
+  onAddPaymentMethod?: () => void;
+}
+
+export function PaymentMethods({ onAddPaymentMethod }: PaymentMethodsProps) {
   return (
     <div className="bg-[#0F0E1D]/50 rounded-lg p-6 border border-white/30 shadow-[0_0_10px_0_rgba(255,255,255,0.1)]">
       <h2 className="text-xl font-semibold text-white mb-6">Payment Methods</h2>
@@ -29,6 +33,7 @@ export function PaymentMethods() {
       <Button
         variant="outline"
         className="w-full bg-transparent border-white/20 text-white hover:bg-gray-800 hover:text-white"
+        onClick={onAddPaymentMethod}
       >
         <PlusIcon className="h-5 w-5" />
         Add Payment Method

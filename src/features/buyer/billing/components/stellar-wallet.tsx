@@ -1,21 +1,64 @@
 'use client';
+import { useState } from 'react';
 import { Button } from '@/shared/components/ui/button';
 import { Copy, Plus, Wallet } from 'lucide-react';
 
-export function StellarWallet() {
-  const walletAddress = 'GBCXF...AQTLA';
-  const xlmBalance = '345.6789';
+interface StellarWalletProps {
+  walletAddress?: string;
+  xlmBalance?: string;
+  isLoading?: boolean;
+  onRefreshBalance?: () => void;
+  onAddFunds?: () => void;
+}
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(walletAddress);
+export function StellarWallet({
+  walletAddress = 'GBCXF...AQTLA',
+  xlmBalance = '345.6789',
+  isLoading = false,
+  onRefreshBalance,
+  onAddFunds,
+}: StellarWalletProps) {
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  // Function to copy wallet address to clipboard
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(walletAddress);
+      // Consider adding a toast notification here
+    } catch (error) {
+      console.error('Failed to copy wallet address:', error);
+      // Fallback: create a temporary input element
+      const input = document.createElement('input');
+      input.value = walletAddress;
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand('copy');
+      document.body.removeChild(input);
+    }
   };
 
-  const handleRefreshBalance = () => {
-    // Refresh balance logic
+  const handleRefreshBalance = async () => {
+    if (onRefreshBalance) {
+      onRefreshBalance();
+    } else {
+      // Default refresh simulation
+      setIsRefreshing(true);
+      try {
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        // TODO: Implement actual balance refresh logic
+      } finally {
+        setIsRefreshing(false);
+      }
+    }
   };
 
   const handleAddFunds = () => {
-    // Add funds logic
+    if (onAddFunds) {
+      onAddFunds();
+    } else {
+      // Default add funds logic
+      console.log('Add funds functionality');
+    }
   };
 
   return (
@@ -57,9 +100,10 @@ export function StellarWallet() {
             variant="default"
             size="sm"
             onClick={handleRefreshBalance}
+            disabled={isLoading || isRefreshing}
             className="hover:text-white hover:bg-gray-700 bg-[#0E0E1B] text-sm"
           >
-            Refresh Balance
+            {isRefreshing ? <>Refreshing...</> : <>Refresh Balance</>}
           </Button>
         </div>
       </div>
@@ -67,10 +111,11 @@ export function StellarWallet() {
       {/* Add Funds Button */}
       <Button
         onClick={handleAddFunds}
-        className="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-lg font-medium"
+        disabled={isLoading}
+        className="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-lg font-medium disabled:opacity-50"
       >
         <Plus className="h-5 w-5 mr-2" />
-        Add Funds
+        {isLoading ? 'Loading...' : 'Add Funds'}
       </Button>
     </div>
   );

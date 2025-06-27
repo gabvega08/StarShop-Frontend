@@ -2,6 +2,19 @@
 import { Button } from '@/shared/components/ui/button';
 
 export function Subscription() {
+  // This should come from props or API
+  const nextBillingDate = new Date('2024-04-01');
+
+  const formattedDate = nextBillingDate.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+
+  const handleManageSubscription = () => {
+    // Navigate to subscription management or open modal
+    console.log('Managing subscription...');
+  };
   return (
     <div className="bg-[#0F0E1D]/50 rounded-lg p-6 border border-white/30 shadow-[0_0_10px_0_rgba(255,255,255,0.1)]">
       <h2 className="text-xl font-semibold text-white mb-6">Subscription</h2>
@@ -27,12 +40,13 @@ export function Subscription() {
 
         <div className="flex items-center justify-between mt-4">
           <div className="text-gray-400 text-sm">
-            Next billing date: April 1, 2024
+            Next billing date: {formattedDate}
           </div>
           <Button
             variant="default"
             size="sm"
             className="hover:text-white hover:bg-gray-700 bg-[#0E0E1B] text-sm"
+            onClick={handleManageSubscription}
           >
             Manage
           </Button>
