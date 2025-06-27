@@ -65,5 +65,5 @@ export interface Filter {
 
 export type InvoiceStatus = 'Paid' | 'Pending' | 'Overdue';
 
-export type SortKey = keyof Invoice;
+export type SortKey = keyof InvoiceTable;
 export type SortOrder = 'asc' | 'desc';

@@ -166,9 +166,8 @@ export const InvoiceDetails: React.FC<InvoiceDetailsProps> = ({
             <span>Payment Received</span>
           </div>
           <p className="text-gray-400 mt-2">
-            Payment was received on{' '}
-            {formatDate(invoice.details.paymentDetails.date || '')} via{' '}
-            {invoice.details.paymentDetails.method}. Transaction ID:{' '}
+            Payment was received on {invoice.details.paymentDetails.date || ''}{' '}
+            via {invoice.details.paymentDetails.method}. Transaction ID:{' '}
             {invoice.details.paymentDetails.transactionId}
           </p>
         </div>

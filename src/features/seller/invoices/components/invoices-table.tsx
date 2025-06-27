@@ -7,7 +7,6 @@ import {
   X,
   Plus,
   ArrowUpDown,
-  Search,
   Eye,
   Ellipsis,
   MoveUp,
@@ -172,19 +171,8 @@ export default function InvoicesTable() {
   const sortedInvoices = [...invoicesData].sort((a, b) => {
     if (!sortKey) return 0;
 
-    let aValue = a[sortKey];
-    let bValue = b[sortKey];
-
-    if (sortKey === 'amount') {
-      aValue = parseFloat((aValue as string).replace(/[^0-9.-]+/g, ''));
-      bValue = parseFloat((bValue as string).replace(/[^0-9.-]+/g, ''));
-    } else if (sortKey === 'issueDate' || sortKey === 'dueDate') {
-      aValue = parseDate(aValue as string).getTime();
-      bValue = parseDate(bValue as string).getTime();
-    } else {
-      aValue = aValue.toString().toLowerCase();
-      bValue = bValue.toString().toLowerCase();
-    }
+    const aValue = a[sortKey];
+    const bValue = b[sortKey];
 
     if (aValue < bValue) return sortOrder === 'asc' ? -1 : 1;
     if (aValue > bValue) return sortOrder === 'asc' ? 1 : -1;
@@ -268,7 +256,6 @@ export default function InvoicesTable() {
             className="w-96 p-5 pl-10 outline-gray-600 border-gray-700 scale-105"
             value={search}
             onChange={e => setSearch(e.target.value)}
-            icon={Search}
           />
         </div>
       </div>
@@ -520,13 +507,13 @@ export default function InvoicesTable() {
                     <td className="p-4 w-1 text-center">
                       <span
                         className={cn(
-                          'px-2 py-1 rounded-full text-xs font-semibold ',
+                          'px-2 py-1 rounded-full text-xs font-semibold',
                           invoice.status === 'Paid' &&
-                            'bg-[#142324] text-green-600',
+                            'bg-green-900/20 text-green-400 border border-green-500/20',
                           invoice.status === 'Pending' &&
-                            'bg-[#2a1f1c] text-yellow-600',
+                            'bg-yellow-900/20 text-yellow-400 border border-yellow-500/20',
                           invoice.status === 'Overdue' &&
-                            'bg-[#291622] text-red-600'
+                            'bg-red-900/20 text-red-400 border border-red-500/20'
                         )}
                       >
                         {invoice.status}

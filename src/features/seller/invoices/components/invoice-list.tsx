@@ -66,7 +66,6 @@ export const InvoiceList: React.FC<InvoiceListProps> = ({
       <UpcomingAndOverdueInvoices
         upcomingInvoices={upcomingInvoices}
         overdueInvoices={overdueInvoices}
-        onMarkAsPaid={handleMarkAsPaid}
         onViewDetails={handleViewOrder}
       />
     </div>

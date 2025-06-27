@@ -1,41 +1,30 @@
 import React from 'react';
 import { CalendarIcon, SendIcon } from 'lucide-react';
-import {
-  fakeOverdueInvoices,
-  fakeUpcomingInvoices,
-} from '../constants/upcoming-invoices';
+import { Invoice } from '../types/invoice';
 
-export const UpcomingAndOverdueInvoices: React.FC = () => {
+interface UpcomingAndOverdueInvoicesProps {
+  upcomingInvoices: Invoice[];
+  overdueInvoices: Invoice[];
+  onViewDetails: (id: string) => void;
+}
+
+export const UpcomingAndOverdueInvoices: React.FC<
+  UpcomingAndOverdueInvoicesProps
+> = ({ upcomingInvoices, overdueInvoices, onViewDetails }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {/* Upcoming Section */}
-      <div
-        className="rounded-lg shadow-lg outline outline-1 outline-gray-700 p-6"
-        style={{ borderColor: '#FFFFFF4D', borderWidth: '1px' }}
-      >
+      <div className="rounded-lg shadow-lg border border-white/30 p-6">
         <h3 className="text-lg font-medium text-white mb-2">
           Upcoming Due Dates
         </h3>
         <p className="text-sm text-gray-400 mb-4">Invoices due soon</p>
         <div className="space-y-4">
-          {fakeUpcomingInvoices.map(invoice => (
+          {upcomingInvoices.map(invoice => (
             <div
               key={invoice.id}
-              className="flex items-center justify-between p-3 bg-white/5 rounded-[8px] transition-all duration-200 cursor-pointer"
-              style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                border: '1px solid transparent',
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.backgroundColor =
-                  'rgba(168, 85, 247, 0.1)';
-                e.currentTarget.style.borderColor = 'rgba(168, 85, 247, 0.2)';
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.backgroundColor =
-                  'rgba(255, 255, 255, 0.05)';
-                e.currentTarget.style.border = '1px solid transparent';
-              }}
+              className="flex items-center justify-between p-3 bg-white/5 rounded-lg transition-all duration-200 cursor-pointer hover:bg-purple-500/10 hover:border-purple-500/20 border border-transparent"
+              onClick={() => onViewDetails(invoice.id)}
             >
               <div>
                 <p className="font-medium text-white">{invoice.store}</p>
@@ -45,60 +34,39 @@ export const UpcomingAndOverdueInvoices: React.FC = () => {
               </div>
               <div className="text-right">
                 <p className="font-medium text-white">
-                  {invoice.amount} {invoice.currency}
+                  {invoice.details.items.reduce(
+                    (total, item) => total + item.amount,
+                    0
+                  )}{' '}
+                  {invoice.details.items[0]?.currency || 'USD'}
                 </p>
                 <p className="text-sm text-yellow-400">
-                  {invoice.daysLeft} days left
+                  {/* Calculate days left - this would need actual date calculation */}
+                  Due soon
                 </p>
               </div>
             </div>
           ))}
         </div>
-        <div className="w-full h-[1px] bg-white/10 mt-4"></div>
-        <button
-          className="mt-4 w-full flex items-center justify-center gap-2 rounded-lg border border-gray-700 py-2.5 text-white transition-all duration-200 cursor-pointer"
-          onMouseEnter={e => {
-            e.currentTarget.style.backgroundColor = 'rgba(168, 85, 247, 0.1)';
-            e.currentTarget.style.borderColor = 'rgba(168, 85, 247, 0.2)';
-          }}
-          onMouseLeave={e => {
-            e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
-            e.currentTarget.style.border = '1px solid transparent';
-          }}
-        >
+        <div className="w-full h-px bg-white/10 mt-4"></div>
+        <button className="mt-4 w-full flex items-center justify-center gap-2 rounded-lg border border-gray-700 py-2.5 text-white transition-all duration-200 cursor-pointer hover:bg-purple-500/10 hover:border-purple-500/20">
           <CalendarIcon className="w-5 h-5" />
           View Calendar
         </button>
       </div>
 
       {/* Overdue Section */}
-      <div
-        className="rounded-lg shadow-lg outline outline-1 outline-gray-700 p-6"
-        style={{ borderColor: '#FFFFFF4D', borderWidth: '1px' }}
-      >
+      <div className="rounded-lg shadow-lg border border-white/30 p-6">
         <h3 className="text-lg font-medium text-white mb-2">
           Overdue Invoices
         </h3>
         <p className="text-sm text-gray-400 mb-4">Invoices past due date</p>
         <div className="space-y-4">
-          {fakeOverdueInvoices.map(invoice => (
+          {overdueInvoices.map(invoice => (
             <div
               key={invoice.id}
-              className="flex items-center justify-between p-3 bg-white/5 rounded-[8px] transition-all duration-200 cursor-pointer"
-              style={{
-                backgroundColor: 'rgba(239, 68, 68, 0.1)',
-                border: '1px solid rgba(239, 68, 68, 0.2)',
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.backgroundColor =
-                  'rgba(239, 68, 68, 0.2)';
-                e.currentTarget.style.borderColor = 'rgba(239, 68, 68, 0.3)';
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.backgroundColor =
-                  'rgba(239, 68, 68, 0.1)';
-                e.currentTarget.style.borderColor = 'rgba(239, 68, 68, 0.2)';
-              }}
+              className="flex items-center justify-between p-3 bg-red-500/10 border border-red-500/20 rounded-lg transition-all duration-200 cursor-pointer hover:bg-red-500/20 hover:border-red-500/30"
+              onClick={() => onViewDetails(invoice.id)}
             >
               <div>
                 <p className="font-medium text-white">{invoice.store}</p>
@@ -108,16 +76,18 @@ export const UpcomingAndOverdueInvoices: React.FC = () => {
               </div>
               <div className="text-right">
                 <p className="font-medium text-white">
-                  {invoice.amount} {invoice.currency}
+                  {invoice.details.items.reduce(
+                    (total, item) => total + item.amount,
+                    0
+                  )}{' '}
+                  {invoice.details.items[0]?.currency || 'USD'}
                 </p>
-                <p className="text-sm text-red-500">
-                  {invoice.daysOverdue} days overdue
-                </p>
+                <p className="text-sm text-red-500">Overdue</p>
               </div>
             </div>
           ))}
         </div>
-        <div className="w-full h-[1px] bg-white/10 mt-4"></div>
+        <div className="w-full h-px bg-white/10 mt-4"></div>
         <button className="mt-4 w-full flex items-center justify-center gap-2 rounded-lg bg-purple-600 hover:bg-purple-700 py-2.5 text-white transition-colors">
           <SendIcon className="w-5 h-5" />
           Send Payment Reminders
