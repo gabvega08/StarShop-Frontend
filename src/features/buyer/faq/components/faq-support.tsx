@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/shared/components/ui/button';
 import { MessageSquare, ExternalLink } from 'lucide-react';
 
 export function FAQSupportSection() {
