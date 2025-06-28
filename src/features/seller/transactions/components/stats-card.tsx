@@ -13,7 +13,6 @@ export function StatsCard({ title, value, textColor }: StatsCardData) {
             style: 'currency',
             currency: 'USD',
           })}
-
         </p>
       </div>
     </div>
