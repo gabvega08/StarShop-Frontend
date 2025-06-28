@@ -1,23 +1,22 @@
-import { TransactionItem } from "./transaction-item"
+import { TransactionItem } from './transaction-item';
 
 export default function RecentTransactions() {
-
   const transactions = [
     {
       reference: 'TX123456',
       description: 'Order #8832 - Premium Hoodie',
-      amount: 156.00,
+      amount: 156.0,
       status: 'Completed',
       date: 'Mar 15, 2024',
-      type: 'credit'
+      type: 'credit',
     },
     {
       reference: 'TX123455',
       description: 'Weekly Payout',
-      amount: 890.00,
+      amount: 890.0,
       status: 'Processing',
       date: 'Mar 14, 2024',
-      type: 'debit'
+      type: 'debit',
     },
     {
       reference: 'TX123454',
@@ -25,7 +24,7 @@ export default function RecentTransactions() {
       amount: 89.99,
       status: 'Completed',
       date: 'Mar 13, 2024',
-      type: 'credit'
+      type: 'credit',
     },
     {
       reference: 'TX123453',
@@ -33,17 +32,17 @@ export default function RecentTransactions() {
       amount: 129.99,
       status: 'Completed',
       date: 'Mar 12, 2024',
-      type: 'credit'
+      type: 'credit',
     },
     {
       reference: 'TX123452',
       description: 'Weekly Payout',
-      amount: 750.00,
+      amount: 750.0,
       status: 'Completed',
       date: 'Mar 11, 2024',
-      type: 'debit'
-    }
-  ]
+      type: 'debit',
+    },
+  ];
 
   return (
     <div className="rounded-lg p-6 border border-white/20 shadow-[0_0_8px_rgba(255,255,255,0.2)] bg-[#FFFFFF01]">
@@ -51,11 +50,10 @@ export default function RecentTransactions() {
         <h3 className="text-white text-lg font-medium">Recent Transactions</h3>
       </div>
       <div className="flex flex-col gap-4">
-        {transactions.map((transaction) => (
+        {transactions.map(transaction => (
           <TransactionItem key={transaction.reference} {...transaction} />
         ))}
       </div>
     </div>
-  )
+  );
 }
-
