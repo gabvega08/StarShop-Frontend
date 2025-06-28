@@ -20,14 +20,10 @@ export function StellarWallet({
 }: StellarWalletProps) {
   const [isRefreshing, setIsRefreshing] = useState(false);
 
-  // Function to copy wallet address to clipboard
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(walletAddress);
-      // Consider adding a toast notification here
     } catch (error) {
-      console.error('Failed to copy wallet address:', error);
-      // Fallback: create a temporary input element
       const input = document.createElement('input');
       input.value = walletAddress;
       document.body.appendChild(input);
@@ -41,11 +37,9 @@ export function StellarWallet({
     if (onRefreshBalance) {
       onRefreshBalance();
     } else {
-      // Default refresh simulation
       setIsRefreshing(true);
       try {
         await new Promise(resolve => setTimeout(resolve, 1500));
-        // TODO: Implement actual balance refresh logic
       } finally {
         setIsRefreshing(false);
       }
@@ -56,7 +50,6 @@ export function StellarWallet({
     if (onAddFunds) {
       onAddFunds();
     } else {
-      // Default add funds logic
       console.log('Add funds functionality');
     }
   };
@@ -64,8 +57,6 @@ export function StellarWallet({
   return (
     <div className="bg-[#0F0E1D]/50 rounded-lg p-6 border border-white/30 shadow-[0_0_10px_0_rgba(255,255,255,0.1)]">
       <h2 className="text-xl font-semibold text-white mb-6">Stellar Wallet</h2>
-
-      {/* Wallet Address */}
       <div className="mb-6 ">
         <div className="flex items-center justify-between rounded-lg p-3 bg-white/5">
           <div className="flex items-center gap-x-4">
@@ -86,8 +77,6 @@ export function StellarWallet({
           </Button>
         </div>
       </div>
-
-      {/* XLM Balance */}
       <div className="mb-6 ">
         <div className="flex items-center justify-between rounded-lg p-3 bg-white/5">
           <div className="flex flex-col">
@@ -107,8 +96,6 @@ export function StellarWallet({
           </Button>
         </div>
       </div>
-
-      {/* Add Funds Button */}
       <Button
         onClick={handleAddFunds}
         disabled={isLoading}

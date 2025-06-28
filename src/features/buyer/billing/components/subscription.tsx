@@ -2,7 +2,6 @@
 import { Button } from '@/shared/components/ui/button';
 
 export function Subscription() {
-  // This should come from props or API
   const nextBillingDate = new Date('2024-04-01');
 
   const formattedDate = nextBillingDate.toLocaleDateString('en-US', {
@@ -12,7 +11,6 @@ export function Subscription() {
   });
 
   const handleManageSubscription = () => {
-    // Navigate to subscription management or open modal
     console.log('Managing subscription...');
   };
   return (

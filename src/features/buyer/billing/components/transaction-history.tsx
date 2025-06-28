@@ -20,7 +20,6 @@ export function TransactionHistory({
   isLoading = false,
   onViewAll,
 }: TransactionHistoryProps) {
-  // Default transactions for demo purposes when no data is passed
   const defaultTransactions: Transaction[] = [
     {
       id: '1',
@@ -52,7 +51,6 @@ export function TransactionHistory({
     },
   ];
 
-  // Use passed transactions or fall back to default ones
   const displayTransactions =
     transactions.length > 0 ? transactions : defaultTransactions;
 
@@ -64,7 +62,6 @@ export function TransactionHistory({
 
       {isLoading ? (
         <div className="space-y-4">
-          {/* Loading skeleton */}
           {[1, 2, 3, 4].map(i => (
             <div
               key={i}

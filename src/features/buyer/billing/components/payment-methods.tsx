@@ -11,7 +11,6 @@ export function PaymentMethods({ onAddPaymentMethod }: PaymentMethodsProps) {
     <div className="bg-[#0F0E1D]/50 rounded-lg p-6 border border-white/30 shadow-[0_0_10px_0_rgba(255,255,255,0.1)]">
       <h2 className="text-xl font-semibold text-white mb-6">Payment Methods</h2>
 
-      {/* Current Payment Method */}
       <div className="bg-[#A855F71A] rounded-lg p-4 border border-[#A855F71A]/20 mb-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
@@ -29,7 +28,6 @@ export function PaymentMethods({ onAddPaymentMethod }: PaymentMethodsProps) {
         </div>
       </div>
 
-      {/* Add Payment Method Button */}
       <Button
         variant="outline"
         className="w-full bg-transparent border-white/20 text-white hover:bg-gray-800 hover:text-white"
