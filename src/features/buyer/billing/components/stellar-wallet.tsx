@@ -23,7 +23,7 @@ export function StellarWallet({
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(walletAddress);
-    } catch (error) {
+    } catch {
       const input = document.createElement('input');
       input.value = walletAddress;
       document.body.appendChild(input);
