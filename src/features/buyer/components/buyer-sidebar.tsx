@@ -14,10 +14,15 @@ import {
 } from 'lucide-react';
 
 const navigation = [
-                              { name: 'Profile', href: '/buyer/profile', icon: User },
+                                                            { name: 'Profile', href: '/buyer/profile', icon: User },
   { name: 'Billing', href: '/buyer/billing', icon: CreditCard },
   { name: 'Orders', href: '/buyer/orders', icon: ShoppingBag, badge: 3 },
-  { name: 'Calendar', href: '/buyer/calendar', icon: Calendar },
+  { name: 'Calendar',
+    
+    
+    
+    
+    href: '/buyer/calendar', icon: Calendar },
   { name: 'Wishlist', href: '/buyer/wishlist', icon: Heart },
   { name: 'NFTs', href: '/buyer/nfts', icon: Diamond },
   { name: 'Messages', href: '/buyer/messages', icon: MessageCircle, badge: 5 },

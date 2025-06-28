@@ -1,4 +1,6 @@
 #!/bin/sh
-# Pre-commit hook - disabled, all validations moved to pre-push
-# This allows for quick commits during development
-echo "✅ Pre-commit passed (validations moved to pre-push)"
+# Pre-commit hook - runs prettier formatting
+echo "🎨 Running prettier formatting..."
+npm run format
+
+echo "✅ Pre-commit passed (code formatted)"
