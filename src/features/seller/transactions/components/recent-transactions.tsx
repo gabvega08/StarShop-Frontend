@@ -1,15 +1,7 @@
 import TransactionItem from './transaction-item';
+import type { Transaction } from '@/types/seller';
 
 export default function RecentTransactions() {
-  interface Transaction {
-    reference: string;
-    description: string;
-    amount: number;
-    status: string;
-    date: string;
-    type: 'credit' | 'debit';
-  }
-
   const transactions: Transaction[] = [
     {
       reference: 'TX123456',

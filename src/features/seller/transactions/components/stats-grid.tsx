@@ -1,27 +1,22 @@
 import { StatsCard } from './stats-card';
-
-interface StatsCardData {
-  title: string;
-  value: number;
-  color: string;
-}
+import type { StatsCardData } from '@/types/seller';
 
 export default function StatsGrid() {
   const statsCards: StatsCardData[] = [
     {
       title: 'Total Revenue',
       value: 12567.89,
-      color: '#10B981',
+      textColor: 'text-[#10B981]',
     },
     {
       title: 'Pending Payouts',
       value: 890.0,
-      color: '#3B82F6',
+      textColor: 'text-[#3B82F6]',
     },
     {
       title: 'Available Balance',
       value: 3456.78,
-      color: '#A855F7',
+      textColor: 'text-[#A855F7]',
     },
   ];
 

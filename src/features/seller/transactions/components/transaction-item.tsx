@@ -1,14 +1,6 @@
 import type React from 'react';
 import { ArrowDownLeft, ArrowUpRight } from 'lucide-react';
-
-interface TransactionItemProps {
-  reference: string;
-  description: string;
-  amount: number;
-  status: string;
-  date: string;
-  type: string;
-}
+import type { Transaction } from '@/types/seller';
 
 export default function TransactionItem({
   reference,
@@ -17,7 +9,7 @@ export default function TransactionItem({
   status,
   date,
   type,
-}: TransactionItemProps) {
+}: Transaction) {
   return (
     <div className="p-5 flex font-inter justify-between items-center rounded-lg bg-[#FFFFFF0D]">
       <div className="flex items-center gap-4">
