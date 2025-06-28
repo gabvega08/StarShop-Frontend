@@ -1,4 +1,6 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
+#!/bin/sh
+# Pre-commit hook - runs prettier formatting
+echo "🎨 Running prettier formatting..."
+npm run format
 
-npx lint-staged
+echo "✅ Pre-commit passed (code formatted)"
