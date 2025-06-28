@@ -36,7 +36,7 @@ export function TransactionItem({
       <div className="flex items-center justify-between">
         <div>
           <p
-            className={`font-medium text-white ${type === 'credit' ? 'text-[#4ADE80]' : 'text-[#F87171]'}`}
+            className={`font-medium ${type === 'credit' ? 'text-[#4ADE80]' : 'text-[#F87171]'}`}
           >
             {type === 'credit' ? '+' : '-'}
             {amount.toLocaleString('en-US', {
