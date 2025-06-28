@@ -1,13 +1,13 @@
 import { StatsCard } from './stats-card';
 
-interface StatsCard {
+interface StatsCardData {
   title: string;
   value: number;
   color: string;
 }
 
 export default function StatsGrid() {
-  const statsCards: StatsCard[] = [
+  const statsCards: StatsCardData[] = [
     {
       title: 'Total Revenue',
       value: 12567.89,

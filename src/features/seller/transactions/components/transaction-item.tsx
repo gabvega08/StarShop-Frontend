@@ -1,5 +1,5 @@
 import type React from 'react';
-import { ArrowDownLeft } from 'lucide-react';
+import { ArrowDownLeft, ArrowUpRight } from 'lucide-react';
 
 interface TransactionItemProps {
   reference: string;
@@ -10,7 +10,7 @@ interface TransactionItemProps {
   type: string;
 }
 
-export function TransactionItem({
+export default function TransactionItem({
   reference,
   description,
   amount,
@@ -21,9 +21,15 @@ export function TransactionItem({
   return (
     <div className="p-5 flex font-inter justify-between items-center rounded-lg bg-[#FFFFFF0D]">
       <div className="flex items-center gap-4">
-        <span className="bg-[#19282D]/50 p-3 rounded-lg">
-          <ArrowDownLeft className="w-6 h-6 text-[#22C55E]" />
-        </span>
+        {type === 'credit' ? (
+          <span className="bg-[#19282D]/50 p-3 rounded-lg">
+            <ArrowDownLeft className="w-6 h-6 text-[#22C55E]" />
+          </span>
+        ) : (
+          <span className="bg-[#EF44441A] p-3 rounded-lg">
+            <ArrowUpRight className="w-6 h-6 text-[#EF4444]" />
+          </span>
+        )}
         <div>
           <h3 className="text-white font-medium">{description}</h3>
           <p className="text-[#FFFFFF99] text-sm">

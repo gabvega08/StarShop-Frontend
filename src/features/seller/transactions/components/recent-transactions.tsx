@@ -1,4 +1,4 @@
-import { TransactionItem } from './transaction-item';
+import TransactionItem from './transaction-item';
 
 export default function RecentTransactions() {
   interface Transaction {
