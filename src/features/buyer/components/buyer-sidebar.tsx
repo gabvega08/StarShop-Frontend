@@ -11,7 +11,6 @@ import {
   Diamond,
   MessageCircle,
   FileText,
-  Search
 } from 'lucide-react';
 
 const navigation = [
