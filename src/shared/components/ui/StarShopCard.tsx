@@ -7,7 +7,7 @@ interface StatsCardProps {
 
 const StatsCard = ({ title, value, subtitle, borderColor }: StatsCardProps) => {
   return (
-    <div className="bg-[#170d243b] rounded-xl p-5 border border-[#1a1c3d] relative overflow-hidden">
+    <div className="bg-custom-card-background rounded-xl p-5 border border-[#1a1c3d] relative overflow-hidden">
       <div className="flex justify-between items-start">
         <div>
           <p className="text-gray-400 text-sm">{title}</p>

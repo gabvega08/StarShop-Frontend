@@ -1,10 +1,11 @@
 'use client';
 
-import { StellarWallet } from '@/features/buyer/billing/components/stellar-wallet';
-import { TransactionHistory } from '@/features/buyer/billing/components/transaction-history';
-import { PaymentMethods } from '@/features/buyer/billing/components/payment-methods';
-import { Subscription } from '@/features/buyer/billing/components/subscription';
-import { SendXLM } from '@/features/buyer/billing/components/send-xlm';
+import { 
+  StellarWallet, 
+  TransactionHistory, 
+  PaymentMethods, 
+  SendXLM 
+} from '@/features/buyer/billing';
 
 export default function Page() {
   return (
@@ -18,7 +19,6 @@ export default function Page() {
 
           <div className="lg:col-span-7 space-y-6">
             <TransactionHistory />
-            <Subscription />
             <SendXLM />
           </div>
         </div>

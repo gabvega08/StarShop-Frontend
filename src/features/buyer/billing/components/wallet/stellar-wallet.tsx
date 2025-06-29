@@ -55,7 +55,7 @@ export function StellarWallet({
   };
 
   return (
-    <div className="bg-[#0F0E1D]/50 rounded-lg p-6 border border-white/30 shadow-[0_0_10px_0_rgba(255,255,255,0.1)]">
+    <div className="bg-custom-card-background rounded-lg p-6 border border-white/30 shadow-[0_0_10px_0_rgba(255,255,255,0.1)]">
       <h2 className="text-xl font-semibold text-white mb-6">Stellar Wallet</h2>
       <div className="mb-6 ">
         <div className="flex items-center justify-between rounded-lg p-3 bg-white/5">

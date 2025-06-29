@@ -17,7 +17,7 @@ export function StatsCard({
   trend,
 }: StatsCardProps) {
   return (
-    <div className="p-6 rounded-lg border border-white/10 bg-[#0F0E1D] shadow-[0_0_8px_rgba(255,255,255,0.1)] hover:shadow-[0_0_12px_rgba(255,255,255,0.2)] transition-shadow">
+    <div className="p-6 rounded-lg border border-white/10 bg-custom-card-background shadow-[0_0_8px_rgba(255,255,255,0.1)] hover:shadow-[0_0_12px_rgba(255,255,255,0.2)] transition-shadow">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-gray-400 font-medium">{title}</h2>
         {icon}

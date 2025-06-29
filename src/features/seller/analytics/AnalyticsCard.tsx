@@ -21,7 +21,7 @@ const AnalyticsCard: React.FC<AnalyticsCardProps> = ({
   iconBgColor,
 }) => {
   return (
-    <div className="mt-6 p-6 rounded-lg border border-white/20 shadow-[0_0_8px_rgba(255,255,255,0.2)] bg-gray-900/50">
+    <div className="mt-6 p-6 rounded-lg border border-white/20 shadow-[0_0_8px_rgba(255,255,255,0.2)] bg-custom-card-background">
       <div className="space-y-4">
         <div className="flex justify-between items-start">
           <div>
