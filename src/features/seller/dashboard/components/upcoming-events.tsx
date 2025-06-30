@@ -21,7 +21,7 @@ export function UpcomingEvents() {
   ];
 
   return (
-    <div className="p-6 rounded-lg border border-white/10 bg-[#0F0E1D] shadow-[0_0_8px_rgba(255,255,255,0.1)]">
+    <div className="p-6 rounded-lg border border-white/10 bg-custom-card-background shadow-[0_0_8px_rgba(255,255,255,0.1)]">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-lg font-semibold text-white">Upcoming Events</h2>
         <Calendar className="w-5 h-5 text-purple-400" />
