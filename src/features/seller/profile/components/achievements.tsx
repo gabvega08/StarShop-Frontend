@@ -1,9 +1,10 @@
 import React from 'react';
 import { Card, CardContent } from '@/shared/components/ui/card';
 import { Shield, Star, Truck, Crown } from 'lucide-react';
+import { Achievement } from '../constants/profile-constants';
 
 const Achievements = () => {
-  const achievements = [
+  const achievements: Achievement[] = [
     {
       title: 'Verified Seller',
       description: 'Authenticated business',
@@ -32,7 +33,7 @@ const Achievements = () => {
 
   return (
     <div>
-      <Card className=" bg-[#0F0E1D] shadow-[0_0_8px_rgba(255,255,255,0.1)] border-slate-700">
+      <Card className=" bg-custom-card-background shadow-[0_0_8px_rgba(255,255,255,0.1)] border-slate-700">
         <CardContent className="p-6">
           <h2 className="text-xl font-semibold text-white mb-6">
             Achievements

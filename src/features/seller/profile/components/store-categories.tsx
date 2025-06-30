@@ -1,9 +1,10 @@
 import React from 'react';
 import { Card, CardContent } from '@/shared/components/ui/card';
 import { Badge } from '@/shared/components/ui/badge';
+import { Category } from '../constants/profile-constants';
 
 const StoreCategories = () => {
-  const categories = [
+  const categories: Category[] = [
     {
       name: 'Streetwear',
       color: 'bg-red-500/20 text-red-400 border-red-500/30',
@@ -33,7 +34,7 @@ const StoreCategories = () => {
   return (
     <div>
       {' '}
-      <Card className=" bg-[#0F0E1D] shadow-[0_0_8px_rgba(255,255,255,0.1)] border-slate-700">
+      <Card className="bg-custom-card-background shadow-[0_0_8px_rgba(255,255,255,0.1)] border-slate-700">
         <CardContent className="p-6">
           <h2 className="text-xl font-semibold text-white mb-5">
             Store Categories

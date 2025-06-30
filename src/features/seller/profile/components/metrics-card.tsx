@@ -1,8 +1,9 @@
 import React from 'react';
 import { Card, CardContent } from '@/shared/components/ui/card';
+import { Metric } from '../constants/profile-constants';
 
 const MetricsCard = () => {
-  const metrics = [
+  const metrics: Metric[] = [
     { label: 'Total Products', value: '156' },
     { label: 'Active Orders', value: '23' },
     { label: 'Customer Rating', value: '4.8/5.0' },
@@ -14,7 +15,7 @@ const MetricsCard = () => {
         {metrics.map((metric, index) => (
           <Card
             key={index}
-            className=" bg-[#0F0E1D] shadow-[0_0_8px_rgba(255,255,255,0.1)] border-slate-700"
+            className=" bg-custom-card-background shadow-[0_0_8px_rgba(255,255,255,0.1)] border-slate-700"
           >
             <CardContent className="p-4 md:p-7">
               <div className="space-y-3">
