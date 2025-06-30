@@ -1,8 +1,6 @@
 import { useState, useCallback } from 'react';
 import type {
-  Transaction,
   PaymentMethod,
-  Subscription,
   SendXLMForm,
 } from '../types/billing';
 
