@@ -26,7 +26,6 @@ export default {
         'custom-light-card-background': '#312E56',
         'custom-card-background': '[#0F0E1D]/50',
         'custom-light-wrapper-background': '#0F0E2C',
-        'custom-card-background': '#0F0E1D',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         'primary-purple': '#9150D1',
