@@ -19,4 +19,4 @@ export type {
 } from './types/billing';
 
 // Hooks
-export { useBilling } from './hooks/useBilling'; 
+export { useBilling } from './hooks/useBilling';

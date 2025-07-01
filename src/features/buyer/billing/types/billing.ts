@@ -33,4 +33,4 @@ export interface SendXLMForm {
   recipientAddress: string;
   amount: string;
   memo?: string;
-} 
+}

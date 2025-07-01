@@ -1,10 +1,10 @@
 'use client';
 
-import { 
-  StellarWallet, 
-  TransactionHistory, 
-  PaymentMethods, 
-  SendXLM 
+import {
+  StellarWallet,
+  TransactionHistory,
+  PaymentMethods,
+  SendXLM,
 } from '@/features/buyer/billing';
 
 export default function Page() {
