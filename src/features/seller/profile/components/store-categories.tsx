@@ -1,36 +1,9 @@
 import React from 'react';
 import { Card, CardContent } from '@/shared/components/ui/card';
 import { Badge } from '@/shared/components/ui/badge';
-import { Category } from '../constants/profile-constants';
+import { categories } from '../constants/profile-constants';
 
 const StoreCategories = () => {
-  const categories: Category[] = [
-    {
-      name: 'Streetwear',
-      color: 'bg-red-500/20 text-red-400 border-red-500/30',
-    },
-    {
-      name: 'Urban Fashion',
-      color: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
-    },
-    {
-      name: 'Accessories',
-      color: 'bg-green-500/20 text-green-400 border-green-500/30',
-    },
-    {
-      name: 'Footwear',
-      color: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
-    },
-    {
-      name: 'Limited Editions',
-      color: 'bg-purple-500/10 text-purple-400 border-purple-500/30',
-    },
-    {
-      name: 'Sustainable',
-      color: 'bg-teal-500/20 text-teal-400 border-teal-500/30',
-    },
-  ];
-
   return (
     <div>
       {' '}

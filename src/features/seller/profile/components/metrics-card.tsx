@@ -1,14 +1,8 @@
 import React from 'react';
 import { Card, CardContent } from '@/shared/components/ui/card';
-import { Metric } from '../constants/profile-constants';
+import { metrics } from '../constants/profile-constants';
 
 const MetricsCard = () => {
-  const metrics: Metric[] = [
-    { label: 'Total Products', value: '156' },
-    { label: 'Active Orders', value: '23' },
-    { label: 'Customer Rating', value: '4.8/5.0' },
-  ];
-
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">

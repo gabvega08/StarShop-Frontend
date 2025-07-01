@@ -1,36 +1,8 @@
 import React from 'react';
 import { Card, CardContent } from '@/shared/components/ui/card';
-import { Shield, Star, Truck, Crown } from 'lucide-react';
-import { Achievement } from '../constants/profile-constants';
+import { achievements } from '../constants/profile-constants';
 
 const Achievements = () => {
-  const achievements: Achievement[] = [
-    {
-      title: 'Verified Seller',
-      description: 'Authenticated business',
-      icon: Shield,
-      color: 'text-green-400',
-    },
-    {
-      title: 'Top Rated',
-      description: 'Consistent 5-star ratings',
-      icon: Star,
-      color: 'text-yellow-400',
-    },
-    {
-      title: 'Fast Shipper',
-      description: 'Quick delivery times',
-      icon: Truck,
-      color: 'text-blue-400',
-    },
-    {
-      title: 'Premium Store',
-      description: 'Quality products & service',
-      icon: Crown,
-      color: 'text-purple-400',
-    },
-  ];
-
   return (
     <div>
       <Card className=" bg-custom-card-background shadow-[0_0_8px_rgba(255,255,255,0.1)] border-slate-700">
