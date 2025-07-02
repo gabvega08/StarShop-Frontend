@@ -1,32 +1,51 @@
 import { Download, Eye } from 'lucide-react';
 import type { Invoice } from '../types';
+import { getStatusColor } from '../utils';
 
 interface InvoiceDetailsProps {
   invoice: Invoice;
+  onDownloadPDF: (id: string) => void;
+  onMarkAsPaid: (id: string) => void;
+  onViewOrder: (id: string) => void;
+  onContactSeller: (id: string) => void;
 }
 
-export function InvoiceDetails({ invoice }: InvoiceDetailsProps) {
+export function InvoiceDetails({
+  invoice,
+  onDownloadPDF,
+  onMarkAsPaid,
+  onViewOrder,
+  onContactSeller,
+}: InvoiceDetailsProps) {
   return (
-    <div className="bg-white/5 border border-white/10 rounded-lg">
-      <div className="p-4 border-b border-white/10">
-        <div className="flex items-center justify-between">
+    <div className="space-y-6">
+      <div className="flex items-center justify-between pb-4 border-b border-white/10">
           <div>
             <h3 className="text-white font-medium">Invoice Details</h3>
             <p className="text-gray-400 text-sm">{invoice.invoiceNumber}</p>
           </div>
           <div className="flex items-center gap-2">
-            <button className="flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm hover:bg-white/10 transition-colors">
+            <button
+              aria-label="Download PDF"
+              onClick={() => onDownloadPDF(invoice.id)}
+              className="flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm hover:bg-white/10 transition-colors"
+            >
               <Download className="w-4 h-4" />
               Download PDF
             </button>
-            <button className="flex items-center gap-2 px-3 py-2 bg-purple-600 rounded-lg text-white text-sm hover:bg-purple-700 transition-colors">
-              Mark as Paid
-            </button>
+            {invoice.status !== 'Paid' && (
+              <button
+                aria-label="Mark as Paid"
+                onClick={() => onMarkAsPaid(invoice.id)}
+                className="flex items-center gap-2 px-3 py-2 bg-purple-600 rounded-lg text-white text-sm hover:bg-purple-700 transition-colors"
+              >
+                Mark as Paid
+              </button>
+            )}
           </div>
         </div>
-      </div>
 
-      <div className="p-4 space-y-6">
+      <div className="space-y-6 pt-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <p className="text-gray-400 text-sm mb-1">Invoice Date</p>
@@ -38,7 +57,7 @@ export function InvoiceDetails({ invoice }: InvoiceDetailsProps) {
           </div>
           <div>
             <p className="text-gray-400 text-sm mb-1">Status</p>
-            <p className="text-green-400">{invoice.status}</p>
+            <p className={getStatusColor(invoice.status)}>{invoice.status}</p>
           </div>
         </div>
 
@@ -107,11 +126,19 @@ export function InvoiceDetails({ invoice }: InvoiceDetailsProps) {
         </div>
 
         <div className="flex items-center justify-between pt-4 border-t border-white/10">
-          <button className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+          <button
+            aria-label="View Related Order"
+            onClick={() => onViewOrder(invoice.id)}
+            className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+          >
             <Eye className="w-4 h-4" />
             View Related Order
           </button>
-          <button className="text-gray-400 hover:text-white transition-colors">
+          <button
+            aria-label="Contact Seller"
+            onClick={() => onContactSeller(invoice.id)}
+            className="text-gray-400 hover:text-white transition-colors"
+          >
             Contact Seller
           </button>
         </div>
