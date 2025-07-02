@@ -13,6 +13,22 @@ export function InvoicesPage() {
     MOCK_INVOICES[0]
   );
 
+  const handleDownloadPDF = (id: string) => {
+    console.log('Download PDF', id);
+  };
+
+  const handleMarkAsPaid = (id: string) => {
+    console.log('Mark as paid', id);
+  };
+
+  const handleViewOrder = (id: string) => {
+    console.log('View order', id);
+  };
+
+  const handleContactSeller = (id: string) => {
+    console.log('Contact seller', id);
+  };
+
   return (
     <div className="p-6 space-y-6">
       <InvoicesHeader />
@@ -22,7 +38,13 @@ export function InvoicesPage() {
         selectedInvoice={selectedInvoice}
         onSelectInvoice={setSelectedInvoice}
       />
-      <InvoiceDetails invoice={selectedInvoice} />
+      <InvoiceDetails
+        invoice={selectedInvoice}
+        onDownloadPDF={handleDownloadPDF}
+        onMarkAsPaid={handleMarkAsPaid}
+        onViewOrder={handleViewOrder}
+        onContactSeller={handleContactSeller}
+      />
     </div>
   );
 }
