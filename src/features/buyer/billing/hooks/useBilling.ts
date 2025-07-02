@@ -1,10 +1,5 @@
 import { useState, useCallback } from 'react';
-import type {
-  Transaction,
-  PaymentMethod,
-  Subscription,
-  SendXLMForm,
-} from '../types/billing';
+import type { PaymentMethod, SendXLMForm } from '../types/billing';
 
 export const useBilling = () => {
   const [isLoading, setIsLoading] = useState(false);
