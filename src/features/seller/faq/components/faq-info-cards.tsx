@@ -11,7 +11,7 @@ import FAQInfoCard from './faq-info-card';
 
 export default function FAQInfoCards() {
   return (
-    <div className="flex flex-col gap-4 lg:flex-row lg:justify-evenly lg:gap-0 lg:max-w-[1400px] lg:mx-auto">
+    <div className="flex flex-col gap-6 lg:flex-row lg:justify-evenly lg:max-w-[1400px] lg:mx-auto">
       <FAQInfoCard
         icon={<Search />}
         title="New to StarShop?"
