@@ -7,7 +7,7 @@ interface ContentContainerProps {
   children: React.ReactNode;
 }
 
-export default function SellerFAQContentContainer({
+export default function FAQContentContainer({
   iconLarge,
   title,
   description,

@@ -3,9 +3,6 @@
 import { useExpandableItems } from '@/features/buyer/faq/hooks/useExpandableItem';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import SellerFAQTabs from './seller-faq-tabs';
-import SellerFAQContentContainer from './seller-faq-content-container';
-import SellerFAQExpandableItem from './seller-faq-expandable-item';
 import {
   CreditCard,
   HelpCircle,
@@ -14,21 +11,10 @@ import {
   Tag,
   Wallet,
 } from 'lucide-react';
-
-export interface FAQItem {
-  question: string;
-  answer: string;
-}
-
-export interface CategoryData {
-  id: string;
-  name: string;
-  description: string;
-  icon: React.ReactNode;
-  count: number;
-  faqs: FAQItem[];
-  iconLarge: React.ReactNode;
-}
+import { CategoryData } from '../types/seller-faq';
+import FAQTabs from './faq-tabs';
+import FAQContentContainer from './faq-content-container';
+import FAQExpandableItem from './faq-expandable-item';
 
 export default function FAQCategoriesFilter() {
   const [activeCategory, setActiveCategory] = useState('general');
@@ -36,6 +22,7 @@ export default function FAQCategoriesFilter() {
   const { t } = useTranslation('common');
 
   const categories: CategoryData[] = [
+    //TODO: FAQ data to come from a backend at some point.
     {
       id: 'general',
       name: t('General'),
@@ -45,19 +32,19 @@ export default function FAQCategoriesFilter() {
       count: 4,
       faqs: [
         {
-          question: t('What is StarShop Marketplace?'),
+          question: t('faq.general.whatIs.question'),
           answer: t('faq.general.whatIs.answer'),
         },
         {
-          question: t('How do I create an account?'),
+          question: t('faq.general.createAccount.question'),
           answer: t('faq.general.createAccount.answer'),
         },
         {
-          question: t('Is StarShop available worldwide?'),
+          question: t('faq.general.availability.question'),
           answer: t('faq.general.availability.answer'),
         },
         {
-          question: t('What currencies are accepted on StarShop?'),
+          question: t('faq.general.currencies.question'),
           answer: t('faq.general.currencies.answer'),
         },
       ],
@@ -71,19 +58,19 @@ export default function FAQCategoriesFilter() {
       count: 4,
       faqs: [
         {
-          question: t('What can I buy on StarShop?'),
+          question: t('faq.buying.howToBuy.question'),
           answer: t('faq.buying.howToBuy.answer'),
         },
         {
-          question: t('How do I buy on StarShop?'),
+          question: t('faq.buying.fees.question'),
           answer: t('faq.buying.fees.answer'),
         },
         {
-          question: t('Can I buy from anywhere in the world?'),
+          question: t('faq.buying.cancelPurchase.question'),
           answer: t('faq.buying.cancelPurchase.answer'),
         },
         {
-          question: t('What currencies can I buy with on StarShop?'),
+          question: t('faq.buying.receiveItems.question'),
           answer: t('faq.buying.receiveItems.answer'),
         },
       ],
@@ -91,7 +78,7 @@ export default function FAQCategoriesFilter() {
     {
       id: 'selling',
       name: t('Selling'),
-      description: 'Frequently asked questions about general',
+      description: 'Frequently asked questions about selling on StarShop',
       icon: <Tag size={14} />,
       iconLarge: <Tag size={18} />,
       count: 4,
@@ -117,7 +104,8 @@ export default function FAQCategoriesFilter() {
     {
       id: 'payments',
       name: t('Payments'),
-      description: 'Frequently asked questions about general',
+      description:
+        'Frequently asked questions about payment methods and transactions',
       icon: <Wallet size={14} />,
       iconLarge: <Wallet size={18} />,
       count: 4,
@@ -143,7 +131,7 @@ export default function FAQCategoriesFilter() {
     {
       id: 'nfts',
       name: t('NFTs'),
-      description: 'Frequently asked questions about general',
+      description: 'Frequently asked questions about NFTs and digital assets',
       iconLarge: <CreditCard size={18} />,
       icon: <CreditCard size={14} />,
       count: 4,
@@ -169,7 +157,7 @@ export default function FAQCategoriesFilter() {
     {
       id: 'support',
       name: t('Support'),
-      description: 'Frequently asked questions about general',
+      description: 'Frequently asked questions about customer support',
       icon: <MessageSquare size={14} />,
       iconLarge: <MessageSquare size={18} />,
       count: 4,
@@ -198,35 +186,39 @@ export default function FAQCategoriesFilter() {
     categories.find(cat => cat.id === activeCategory) || categories[0];
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 py-8">
-      <SellerFAQTabs
-        items={categories.map(cat => ({
-          id: cat.id,
-          name: cat.name,
-          icon: cat.icon,
-          count: cat.count,
-        }))}
-        activeTab={activeCategory}
-        onTabChange={setActiveCategory}
-      />
+    <div className="w-full">
+      <div className="max-w-4xl mx-auto">
+        <FAQTabs
+          items={categories.map(cat => ({
+            id: cat.id,
+            name: cat.name,
+            icon: cat.icon,
+            count: cat.count,
+          }))}
+          activeTab={activeCategory}
+          onTabChange={setActiveCategory}
+        />
+      </div>
 
-      <SellerFAQContentContainer
-        iconLarge={activeData.iconLarge}
-        title={activeData.name}
-        description={t(activeData.description, {
-          category: activeData.name.toLowerCase(),
-        })}
-      >
-        {activeData.faqs.map(faq => (
-          <SellerFAQExpandableItem
-            key={faq.question}
-            title={faq.question}
-            content={faq.answer}
-            isExpanded={isItemExpanded(faq.question)}
-            onToggle={() => toggleItem(faq.question)}
-          />
-        ))}
-      </SellerFAQContentContainer>
+      <div className="max-w-5xl mx-auto">
+        <FAQContentContainer
+          iconLarge={activeData.iconLarge}
+          title={activeData.name}
+          description={t(activeData.description, {
+            category: activeData.name.toLowerCase(),
+          })}
+        >
+          {activeData.faqs.map(faq => (
+            <FAQExpandableItem
+              key={faq.question}
+              title={faq.question}
+              content={faq.answer}
+              isExpanded={isItemExpanded(faq.question)}
+              onToggle={() => toggleItem(faq.question)}
+            />
+          ))}
+        </FAQContentContainer>
+      </div>
     </div>
   );
 }

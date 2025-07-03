@@ -8,7 +8,7 @@ interface ExpandableItemProps {
   onToggle: () => void;
 }
 
-export default function SellerFAQExpandableItem({
+export default function FAQExpandableItem({
   title,
   content,
   isExpanded,

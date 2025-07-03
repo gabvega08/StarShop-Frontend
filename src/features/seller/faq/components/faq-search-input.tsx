@@ -6,7 +6,7 @@ export default function FAQSearchInput() {
       <Search className="text-sidebarText" />
       <Input
         placeholder="Search for answers..."
-        className="bg-transparent !focus:ring-0 !focus:outline-none !outline-none !ring-0 border-none text-white text-md"
+        className="bg-transparent !border-none !outline-none !ring-0 !ring-offset-0 focus:!ring-0 focus:!outline-none focus:!border-none focus-visible:!ring-0 focus-visible:!outline-none focus-visible:!border-none text-white text-md shadow-none"
       />
     </div>
   );

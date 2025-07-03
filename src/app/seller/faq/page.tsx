@@ -1,7 +1,7 @@
 import FAQCategoriesFilter from '@/features/seller/faq/components/faq-categories-filter';
 import FAQHeader from '@/features/seller/faq/components/faq-header';
 import FAQInfoCards from '@/features/seller/faq/components/faq-info-cards';
-import SellerFAQFooter from '@/features/seller/faq/components/seller-faq-footer';
+import FAQFooter from '@/features/seller/faq/components/faq-footer';
 
 export default function SellerFAQPage() {
   return (
@@ -9,7 +9,7 @@ export default function SellerFAQPage() {
       <FAQHeader />
       <FAQInfoCards />
       <FAQCategoriesFilter />
-      <SellerFAQFooter />
+      <FAQFooter />
     </div>
   );
 }

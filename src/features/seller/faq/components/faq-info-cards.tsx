@@ -1,3 +1,5 @@
+'use client';
+
 import {
   ArrowRight,
   ExternalLink,
@@ -9,7 +11,7 @@ import FAQInfoCard from './faq-info-card';
 
 export default function FAQInfoCards() {
   return (
-    <div className="flex justify-evenly gap-4">
+    <div className="flex flex-col gap-4 lg:flex-row lg:justify-evenly lg:gap-0">
       <FAQInfoCard
         icon={<Search />}
         title="New to StarShop?"
