@@ -1,6 +1,6 @@
 'use client';
 
-import { useExpandableItems } from '@/features/buyer/faq/hooks/useExpandableItem';
+import { useExpandableItems } from '@/shared/hooks/useExpandableItem';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
