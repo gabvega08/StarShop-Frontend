@@ -36,17 +36,16 @@ export default function FAQInfoCard({
       <p className="text-gray-300 mb-2 text-xs lg:text-sm">{description}</p>
       <p className="text-gray-300 mb-6 text-xs lg:text-sm">{longDescription}</p>
 
-      <div className="w-full">
-        <Link href={linkHref}>
-          <Button
-            variant={`${isPrimary ? 'primary' : 'transparent'}`}
-            rightIcon={linkIcon}
-            className="text-xs lg:text-sm"
-          >
-            {linkText}
-          </Button>
-        </Link>
-      </div>
+      <Link href={linkHref}>
+        <Button
+          variant={`${isPrimary ? 'primary' : 'transparent'}`}
+          rightIcon={linkIcon}
+          className="text-xs lg:text-sm"
+          size="lg"
+        >
+          {linkText}
+        </Button>
+      </Link>
     </div>
   );
 }

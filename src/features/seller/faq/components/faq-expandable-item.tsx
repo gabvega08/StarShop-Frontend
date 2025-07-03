@@ -15,10 +15,7 @@ export default function FAQExpandableItem({
   onToggle,
 }: ExpandableItemProps) {
   return (
-    <div
-      className="border-b pb-4 last:border-b-0"
-      style={{ borderBottom: '1px solid #333', paddingBottom: '1rem' }}
-    >
+    <div className="border-b border-[#333] pb-4 last:border-b-1">
       <button
         onClick={onToggle}
         className="flex justify-between items-center w-full text-left py-2"
