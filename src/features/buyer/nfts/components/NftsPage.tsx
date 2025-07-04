@@ -9,12 +9,7 @@ import { NFTTabs } from './NFTTabs';
 import { NFTGrid } from './NFTGrid';
 import { ExclusiveRewards } from './ExclusiveRewards';
 import { ValuableCollection } from './ValuableCollection';
-import {
-  NFTStats,
-  NFTFilter,
-  NFTTab,
-  NFT as NFTType,
-} from '../types/nft';
+import { NFTStats, NFTFilter, NFTTab, NFT as NFTType } from '../types/nft';
 
 interface NftsPageProps {
   stats: NFTStats[];
@@ -23,12 +18,7 @@ interface NftsPageProps {
   nfts: NFTType[];
 }
 
-export function NftsPage({
-  stats,
-  filters,
-  tabs,
-  nfts,
-}: NftsPageProps) {
+export function NftsPage({ stats, filters, tabs, nfts }: NftsPageProps) {
   const [currentFilters, setCurrentFilters] = useState<NFTFilter[]>(filters);
   const [currentTabs, setCurrentTabs] = useState<NFTTab[]>(tabs);
   const [searchValue, setSearchValue] = useState('');

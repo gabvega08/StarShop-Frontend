@@ -17,8 +17,6 @@ export default function Page() {
       filters={NFT_FILTERS}
       tabs={NFT_TABS}
       nfts={MOCK_NFTS}
-      exclusiveRewards={MOCK_EXCLUSIVE_REWARDS}
-      valuableNfts={MOCK_VALUABLE_NFTS}
     />
   );
 }
