@@ -6,8 +6,6 @@ import {
   NFT_FILTERS,
   NFT_TABS,
   MOCK_NFTS,
-  MOCK_EXCLUSIVE_REWARDS,
-  MOCK_VALUABLE_NFTS,
 } from '@/features/buyer/nfts';
 
 export default function Page() {
