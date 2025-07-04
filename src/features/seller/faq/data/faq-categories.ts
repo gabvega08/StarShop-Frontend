@@ -9,90 +9,88 @@ import {
   Wallet,
 } from 'lucide-react';
 
-export const getFAQCategories = (
-  t: (key: string) => string
-): CategoryData[] => [
+export const getFAQCategories = (): CategoryData[] => [
   {
     id: 'general',
-    name: t('General'),
+    name: 'General',
     description: 'Frequently asked questions about general',
     icon: HelpCircle,
     iconLarge: HelpCircle,
     count: 4,
     faqs: [
       {
-        question: t('faq.general.whatIs.question'),
-        answer: t('faq.general.whatIs.answer'),
+        question: 'faq.general.whatIs.question',
+        answer: 'faq.general.whatIs.answer',
       },
       {
-        question: t('faq.general.createAccount.question'),
-        answer: t('faq.general.createAccount.answer'),
+        question: 'faq.general.createAccount.question',
+        answer: 'faq.general.createAccount.answer',
       },
       {
-        question: t('faq.general.availability.question'),
-        answer: t('faq.general.availability.answer'),
+        question: 'faq.general.availability.question',
+        answer: 'faq.general.availability.answer',
       },
       {
-        question: t('faq.general.currencies.question'),
-        answer: t('faq.general.currencies.answer'),
+        question: 'faq.general.currencies.question',
+        answer: 'faq.general.currencies.answer',
       },
     ],
   },
   {
     id: 'buying',
-    name: t('Buying'),
+    name: 'Buying',
     description: 'Frequently asked questions about buying on StarShop',
     icon: ShoppingBag,
     iconLarge: ShoppingBag,
     count: 4,
     faqs: [
       {
-        question: t('faq.buying.howToBuy.question'),
-        answer: t('faq.buying.howToBuy.answer'),
+        question: 'faq.buying.howToBuy.question',
+        answer: 'faq.buying.howToBuy.answer',
       },
       {
-        question: t('faq.buying.fees.question'),
-        answer: t('faq.buying.fees.answer'),
+        question: 'faq.buying.fees.question',
+        answer: 'faq.buying.fees.answer',
       },
       {
-        question: t('faq.buying.cancelPurchase.question'),
-        answer: t('faq.buying.cancelPurchase.answer'),
+        question: 'faq.buying.cancelPurchase.question',
+        answer: 'faq.buying.cancelPurchase.answer',
       },
       {
-        question: t('faq.buying.receiveItems.question'),
-        answer: t('faq.buying.receiveItems.answer'),
+        question: 'faq.buying.receiveItems.question',
+        answer: 'faq.buying.receiveItems.answer',
       },
     ],
   },
   {
     id: 'selling',
-    name: t('Selling'),
+    name: 'Selling',
     description: 'Frequently asked questions about selling on StarShop',
     icon: Tag,
     iconLarge: Tag,
     count: 4,
     faqs: [
       {
-        question: t('faq.selling.howToSell.question'),
-        answer: t('faq.selling.howToSell.answer'),
+        question: 'faq.selling.howToSell.question',
+        answer: 'faq.selling.howToSell.answer',
       },
       {
-        question: t('faq.selling.fees.question'),
-        answer: t('faq.selling.fees.answer'),
+        question: 'faq.selling.fees.question',
+        answer: 'faq.selling.fees.answer',
       },
       {
-        question: t('faq.selling.listingDuration.question'),
-        answer: t('faq.selling.listingDuration.answer'),
+        question: 'faq.selling.listingDuration.question',
+        answer: 'faq.selling.listingDuration.answer',
       },
       {
-        question: t('faq.selling.editListing.question'),
-        answer: t('faq.selling.editListing.answer'),
+        question: 'faq.selling.editListing.question',
+        answer: 'faq.selling.editListing.answer',
       },
     ],
   },
   {
     id: 'payments',
-    name: t('Payments'),
+    name: 'Payments',
     description:
       'Frequently asked questions about payment methods and transactions',
     icon: Wallet,
@@ -100,72 +98,72 @@ export const getFAQCategories = (
     count: 4,
     faqs: [
       {
-        question: t('faq.payments.methods.question'),
-        answer: t('faq.payments.methods.answer'),
+        question: 'faq.payments.methods.question',
+        answer: 'faq.payments.methods.answer',
       },
       {
-        question: t('faq.payments.processingTime.question'),
-        answer: t('faq.payments.processingTime.answer'),
+        question: 'faq.payments.processingTime.question',
+        answer: 'faq.payments.processingTime.answer',
       },
       {
-        question: t('faq.payments.withdrawalLimits.question'),
-        answer: t('faq.payments.withdrawalLimits.answer'),
+        question: 'faq.payments.withdrawalLimits.question',
+        answer: 'faq.payments.withdrawalLimits.answer',
       },
       {
-        question: t('faq.payments.taxes.question'),
-        answer: t('faq.payments.taxes.answer'),
+        question: 'faq.payments.taxes.question',
+        answer: 'faq.payments.taxes.answer',
       },
     ],
   },
   {
     id: 'nfts',
-    name: t('NFTs'),
+    name: 'NFTs',
     description: 'Frequently asked questions about NFTs and digital assets',
     iconLarge: CreditCard,
     icon: CreditCard,
     count: 4,
     faqs: [
       {
-        question: t('faq.nfts.blockchains.question'),
-        answer: t('faq.nfts.blockchains.answer'),
+        question: 'faq.nfts.blockchains.question',
+        answer: 'faq.nfts.blockchains.answer',
       },
       {
-        question: t('faq.nfts.create.question'),
-        answer: t('faq.nfts.create.answer'),
+        question: 'faq.nfts.create.question',
+        answer: 'faq.nfts.create.answer',
       },
       {
-        question: t('faq.nfts.fileTypes.question'),
-        answer: t('faq.nfts.fileTypes.answer'),
+        question: 'faq.nfts.fileTypes.question',
+        answer: 'faq.nfts.fileTypes.answer',
       },
       {
-        question: t('faq.nfts.royalties.question'),
-        answer: t('faq.nfts.royalties.answer'),
+        question: 'faq.nfts.royalties.question',
+        answer: 'faq.nfts.royalties.answer',
       },
     ],
   },
   {
     id: 'support',
-    name: t('Support'),
+    name: 'Support',
     description: 'Frequently asked questions about customer support',
     icon: MessageSquare,
     iconLarge: MessageSquare,
     count: 4,
     faqs: [
       {
-        question: t('faq.support.contact.question'),
-        answer: t('faq.support.contact.answer'),
+        question: 'faq.support.contact.question',
+        answer: 'faq.support.contact.answer',
       },
       {
-        question: t('faq.support.hours.question'),
-        answer: t('faq.support.hours.answer'),
+        question: 'faq.support.hours.question',
+        answer: 'faq.support.hours.answer',
       },
       {
-        question: t('faq.support.knowledgeBase.question'),
-        answer: t('faq.support.knowledgeBase.answer'),
+        question: 'faq.support.knowledgeBase.question',
+        answer: 'faq.support.knowledgeBase.answer',
       },
       {
-        question: t('faq.support.reportProblem.question'),
-        answer: t('faq.support.reportProblem.answer'),
+        question: 'faq.support.reportProblem.question',
+        answer: 'faq.support.reportProblem.answer',
       },
     ],
   },

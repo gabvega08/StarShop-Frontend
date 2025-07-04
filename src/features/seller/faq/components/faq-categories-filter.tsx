@@ -2,7 +2,6 @@
 
 import { useExpandableItems } from '@/shared/hooks/useExpandableItem';
 import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import FAQTabs from './faq-tabs';
 import FAQContentContainer from './faq-content-container';
 import FAQExpandableItem from './faq-expandable-item';
@@ -11,9 +10,8 @@ import { getFAQCategories } from '../data/faq-categories';
 export default function FAQCategoriesFilter() {
   const [activeCategory, setActiveCategory] = useState('general');
   const { toggleItem, isItemExpanded } = useExpandableItems();
-  const { t } = useTranslation('common');
 
-  const categories = getFAQCategories(t);
+  const categories = getFAQCategories();
 
   const activeData =
     categories.find(cat => cat.id === activeCategory) || categories[0];
@@ -37,9 +35,7 @@ export default function FAQCategoriesFilter() {
         <FAQContentContainer
           iconLarge={activeData.iconLarge}
           title={activeData.name}
-          description={t(activeData.description, {
-            category: activeData.name.toLowerCase(),
-          })}
+          description={activeData.description}
         >
           {activeData.faqs.map(faq => (
             <FAQExpandableItem
