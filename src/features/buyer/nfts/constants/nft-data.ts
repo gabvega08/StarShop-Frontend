@@ -1,4 +1,11 @@
-import { NFT, NFTStats, NFTFilter, NFTTab, ExclusiveReward, ValuableNFT } from '../types/nft';
+import {
+  NFT,
+  NFTStats,
+  NFTFilter,
+  NFTTab,
+  ExclusiveReward,
+  ValuableNFT,
+} from '../types/nft';
 
 export const MOCK_STATS: NFTStats[] = [
   {
@@ -148,4 +155,4 @@ export const MOCK_VALUABLE_NFTS: ValuableNFT[] = [
     image: '/api/placeholder/200/150',
     color: 'bg-gradient-to-r from-orange-500 to-yellow-500',
   },
-]; 
+];

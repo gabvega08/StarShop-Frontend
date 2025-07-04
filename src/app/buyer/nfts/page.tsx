@@ -21,4 +21,4 @@ export default function Page() {
       valuableNfts={MOCK_VALUABLE_NFTS}
     />
   );
-} 
+}

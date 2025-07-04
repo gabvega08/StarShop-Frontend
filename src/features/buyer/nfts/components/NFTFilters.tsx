@@ -1,7 +1,6 @@
 'use client';
 
 import { Input } from '@/shared/components/ui/Input';
-import { Button } from '@/shared/components/ui/button';
 import { NFTFilter } from '../types/nft';
 import { Search, Grid3X3, List, Filter } from 'lucide-react';
 
@@ -12,7 +11,12 @@ interface NFTFiltersProps {
   onSearchChange: (value: string) => void;
 }
 
-export function NFTFilters({ filters, onFilterChange, searchValue, onSearchChange }: NFTFiltersProps) {
+export function NFTFilters({
+  filters,
+  onFilterChange,
+  searchValue,
+  onSearchChange,
+}: NFTFiltersProps) {
   return (
     <div className="flex flex-col sm:flex-row gap-4 mb-6 w-full">
       {/* Search bar */}
@@ -22,23 +26,27 @@ export function NFTFilters({ filters, onFilterChange, searchValue, onSearchChang
           <Input
             placeholder="Search NFTs..."
             value={searchValue}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => onSearchChange(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              onSearchChange(e.target.value)
+            }
             className="pl-10 bg-white/5 border border-white/20 text-white placeholder:text-white/50 focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:border-purple-500 transition"
           />
         </div>
       </div>
       {/* Filter buttons */}
       <div className="flex gap-2 items-center">
-        {filters.map((filter) => (
+        {filters.map(filter => (
           <button
             key={filter.id}
             type="button"
             onClick={() => onFilterChange(filter.id)}
             className={`
               flex items-center justify-center w-10 h-10 rounded-lg border
-              ${filter.active
-                ? 'bg-purple-600 border-purple-600 text-white shadow-lg'
-                : 'bg-transparent border-white/20 text-white/70 hover:bg-white/10'}
+              ${
+                filter.active
+                  ? 'bg-purple-600 border-purple-600 text-white shadow-lg'
+                  : 'bg-transparent border-white/20 text-white/70 hover:bg-white/10'
+              }
               transition
             `}
             aria-label={filter.label}
@@ -61,4 +69,4 @@ export function NFTFilters({ filters, onFilterChange, searchValue, onSearchChang
       </div>
     </div>
   );
-} 
+}

@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import { NFTFilter, NFTTab, NFT } from '../types/nft';
 
-export function useNfts(initialFilters: NFTFilter[], initialTabs: NFTTab[], initialNfts: NFT[]) {
+export function useNfts(
+  initialFilters: NFTFilter[],
+  initialTabs: NFTTab[],
+  initialNfts: NFT[]
+) {
   const [filters, setFilters] = useState<NFTFilter[]>(initialFilters);
   const [tabs, setTabs] = useState<NFTTab[]>(initialTabs);
   const [searchValue, setSearchValue] = useState('');
@@ -24,10 +28,11 @@ export function useNfts(initialFilters: NFTFilter[], initialTabs: NFTTab[], init
     );
   };
 
-  const filteredNfts = initialNfts.filter(nft =>
-    nft.title.toLowerCase().includes(searchValue.toLowerCase()) ||
-    nft.store.toLowerCase().includes(searchValue.toLowerCase()) ||
-    nft.category.toLowerCase().includes(searchValue.toLowerCase())
+  const filteredNfts = initialNfts.filter(
+    nft =>
+      nft.title.toLowerCase().includes(searchValue.toLowerCase()) ||
+      nft.store.toLowerCase().includes(searchValue.toLowerCase()) ||
+      nft.category.toLowerCase().includes(searchValue.toLowerCase())
   );
 
   return {
@@ -39,4 +44,4 @@ export function useNfts(initialFilters: NFTFilter[], initialTabs: NFTTab[], init
     handleTabChange,
     setSearchValue,
   };
-} 
+}

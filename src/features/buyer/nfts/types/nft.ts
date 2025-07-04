@@ -45,4 +45,4 @@ export interface ValuableNFT {
   currency: string;
   image: string;
   color: string;
-} 
+}

@@ -2,22 +2,25 @@
 
 import { useState } from 'react';
 import { Button } from '@/shared/components/ui/button';
-import { ArrowLeft, User } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { NFTStatsCards } from './NFTStatsCards';
 import { NFTFilters } from './NFTFilters';
 import { NFTTabs } from './NFTTabs';
 import { NFTGrid } from './NFTGrid';
 import { ExclusiveRewards } from './ExclusiveRewards';
 import { ValuableCollection } from './ValuableCollection';
-import { NFTStats, NFTFilter, NFTTab, NFT as NFTType, ExclusiveReward, ValuableNFT } from '../types/nft';
+import {
+  NFTStats,
+  NFTFilter,
+  NFTTab,
+  NFT as NFTType,
+} from '../types/nft';
 
 interface NftsPageProps {
   stats: NFTStats[];
   filters: NFTFilter[];
   tabs: NFTTab[];
   nfts: NFTType[];
-  exclusiveRewards: ExclusiveReward[];
-  valuableNfts: ValuableNFT[];
 }
 
 export function NftsPage({
@@ -25,8 +28,6 @@ export function NftsPage({
   filters,
   tabs,
   nfts,
-  exclusiveRewards,
-  valuableNfts,
 }: NftsPageProps) {
   const [currentFilters, setCurrentFilters] = useState<NFTFilter[]>(filters);
   const [currentTabs, setCurrentTabs] = useState<NFTTab[]>(tabs);
@@ -50,10 +51,11 @@ export function NftsPage({
     );
   };
 
-  const filteredNfts = nfts.filter(nft =>
-    nft.title.toLowerCase().includes(searchValue.toLowerCase()) ||
-    nft.store.toLowerCase().includes(searchValue.toLowerCase()) ||
-    nft.category.toLowerCase().includes(searchValue.toLowerCase())
+  const filteredNfts = nfts.filter(
+    nft =>
+      nft.title.toLowerCase().includes(searchValue.toLowerCase()) ||
+      nft.store.toLowerCase().includes(searchValue.toLowerCase()) ||
+      nft.category.toLowerCase().includes(searchValue.toLowerCase())
   );
 
   return (
@@ -94,4 +96,4 @@ export function NftsPage({
       </div>
     </div>
   );
-} 
+}

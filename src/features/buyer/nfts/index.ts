@@ -21,7 +21,14 @@ export type {
 } from './types/nft';
 
 // Constants
-export { NFT_TABS, NFT_FILTERS, MOCK_NFTS, MOCK_STATS, MOCK_EXCLUSIVE_REWARDS, MOCK_VALUABLE_NFTS } from './constants/nft-data';
+export {
+  NFT_TABS,
+  NFT_FILTERS,
+  MOCK_NFTS,
+  MOCK_STATS,
+  MOCK_EXCLUSIVE_REWARDS,
+  MOCK_VALUABLE_NFTS,
+} from './constants/nft-data';
 
 // Hooks
-export { useNfts } from './hooks/useNfts'; 
+export { useNfts } from './hooks/useNfts';

@@ -15,8 +15,12 @@ export function NFTTabs({ tabs, onTabChange }: NFTTabsProps) {
     <div className="mb-6">
       <Tabs value={activeTab} onValueChange={onTabChange}>
         <TabsList className="grid w-full grid-cols-4 bg-white/10 text-white">
-          {tabs.map((tab) => (
-            <TabsTrigger key={tab.id} value={tab.id} className="data-[state=active]:bg-[#7E22CE] data-[state=active]:text-white">
+          {tabs.map(tab => (
+            <TabsTrigger
+              key={tab.id}
+              value={tab.id}
+              className="data-[state=active]:bg-[#7E22CE] data-[state=active]:text-white"
+            >
               {tab.label}
             </TabsTrigger>
           ))}
@@ -24,4 +28,4 @@ export function NFTTabs({ tabs, onTabChange }: NFTTabsProps) {
       </Tabs>
     </div>
   );
-} 
+}
