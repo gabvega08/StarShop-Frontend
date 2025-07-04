@@ -20,6 +20,7 @@ export default {
         sidebarText: '#9CA3AF',
         sidebarTitle: '#FFFFFF',
         sidebarBorder: '#374151',
+        tabBackground: '#13111E',
         'custom-light-purple': '#9354FF',
         'custom-dark-purple': '#09092f',
         'custom-light-card-border': '#3E3A77',

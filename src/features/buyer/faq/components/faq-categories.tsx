@@ -9,7 +9,7 @@ import {
   Wallet,
   MessageSquare,
 } from 'lucide-react';
-import { useExpandableItems } from '../hooks/useExpandableItem';
+import { useExpandableItems } from '@/shared/hooks/useExpandableItem';
 import { useTranslation } from 'react-i18next';
 import { Tabs } from './Tabs';
 import { ContentContainer } from './content-container';
