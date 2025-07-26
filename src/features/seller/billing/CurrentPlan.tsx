@@ -1,8 +1,8 @@
-import { Button } from "@/shared/components/ui/button"
-import type { Plan } from "../../../types/billing"
+import { Button } from '@/shared/components/ui/button';
+import type { Plan } from '../../../types/billing';
 
 interface CurrentPlanProps {
-  plan: Plan
+  plan: Plan;
 }
 
 export function CurrentPlan({ plan }: CurrentPlanProps) {
@@ -18,14 +18,18 @@ export function CurrentPlan({ plan }: CurrentPlanProps) {
           </div>
           <div className="text-right">
             <p className="text-purple-400 font-bold text-lg">{plan.price}</p>
-            <Button className="bg-slate-700 hover:bg-slate-600 text-white mt-2">Change Plan</Button>
+            <Button className="bg-slate-700 hover:bg-slate-600 text-white mt-2">
+              Change Plan
+            </Button>
           </div>
         </div>
 
         <div className="pt-4 border-t border-slate-700/50">
-          <p className="text-gray-400 text-sm">Next billing date: {plan.nextBillingDate}</p>
+          <p className="text-gray-400 text-sm">
+            Next billing date: {plan.nextBillingDate}
+          </p>
         </div>
       </div>
     </div>
-  )
+  );
 }
