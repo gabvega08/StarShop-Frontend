@@ -13,7 +13,7 @@ export function TopSellingProducts() {
         </div>
       </div>
       <div className="space-y-4">
-        {MOCK_TOP_SELLING.map((product) => (
+        {MOCK_TOP_SELLING.map(product => (
           <div
             key={product.name}
             className="flex items-center gap-4 p-3 bg-white/5 rounded-lg"
