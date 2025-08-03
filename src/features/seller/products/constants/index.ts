@@ -1,7 +1,6 @@
 import {
   Product,
   ProductPerformance,
-  InventoryStatus,
   TopSellingProduct,
   InventoryAlert,
 } from '../types';
