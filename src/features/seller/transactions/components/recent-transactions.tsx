@@ -1,5 +1,5 @@
 import TransactionItem from './transaction-item';
-import type { Transaction } from '@/types/seller';
+import type { Transaction } from '@/shared/types/seller';
 
 export default function RecentTransactions() {
   const transactions: Transaction[] = [

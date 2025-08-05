@@ -1,6 +1,6 @@
 import type React from 'react';
 import { ArrowDownLeft, ArrowUpRight } from 'lucide-react';
-import type { Transaction } from '@/types/seller';
+import type { Transaction } from '@/shared/types/seller';
 
 export default function TransactionItem({
   reference,

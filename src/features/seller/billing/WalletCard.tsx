@@ -2,7 +2,7 @@
 
 import { Copy, ExternalLink, RefreshCw, Wallet } from 'lucide-react';
 import { Button } from '@/shared/components/ui/button';
-import type { WalletInfo } from '../../../types/billing';
+import type { WalletInfo } from './types';
 
 interface WalletCardProps {
   wallet: WalletInfo;

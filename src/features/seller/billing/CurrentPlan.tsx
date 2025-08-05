@@ -1,5 +1,5 @@
 import { Button } from '@/shared/components/ui/button';
-import type { Plan } from '../../../types/billing';
+import type { Plan } from './types';
 
 interface CurrentPlanProps {
   plan: Plan;

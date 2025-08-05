@@ -1,5 +1,5 @@
 import { StatsCard } from './stats-card';
-import type { StatsCardData } from '@/types/seller';
+import type { StatsCardData } from '@/shared/types/seller';
 
 export default function StatsGrid() {
   const statsCards: StatsCardData[] = [
