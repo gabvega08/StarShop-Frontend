@@ -1,5 +1,5 @@
 import type React from 'react';
-import type { StatsCardData } from '@/types/seller';
+import type { StatsCardData } from '@/shared/types/seller';
 
 export function StatsCard({ title, value, textColor }: StatsCardData) {
   return (

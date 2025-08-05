@@ -1,7 +1,7 @@
 'use client';
 
 import { ExternalLink } from 'lucide-react';
-import type { Transaction } from '../../../types/billing';
+import type { Transaction } from './types';
 
 interface TransactionHistoryProps {
   transactions: Transaction[];
