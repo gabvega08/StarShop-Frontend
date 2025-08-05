@@ -10,7 +10,7 @@ export function SupportTicketsHeader() {
         <h1 className="text-3xl font-bold text-white">Support Tickets</h1>
         <p className="text-gray-300">Manage and track your support requests</p>
       </div>
-      
+
       <div className="flex items-center space-x-4">
         <div className="relative w-80">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
@@ -33,4 +33,4 @@ export function SupportTicketsHeader() {
       </div>
     </div>
   );
-} 
+}

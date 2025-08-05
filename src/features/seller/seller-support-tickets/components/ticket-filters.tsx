@@ -32,7 +32,7 @@ export function TicketFilters({ onFilterChange }: TicketFiltersProps) {
 
   return (
     <div className="inline-flex space-x-1 p-1 rounded-lg border border-white/10 bg-[#0F0E1D]/30 shadow-[0_0_8px_rgba(255,255,255,0.1)]">
-      {ticketFilters.map((filter) => (
+      {ticketFilters.map(filter => (
         <button
           key={filter.type}
           onClick={() => handleFilterClick(filter.type)}
@@ -42,14 +42,20 @@ export function TicketFilters({ onFilterChange }: TicketFiltersProps) {
               : 'text-gray-400 hover:text-white hover:bg-gray-700'
           }`}
         >
-          <span>{filter.type.charAt(0).toUpperCase() + filter.type.slice(1)}</span>
-          <div className={`w-6 h-6 rounded-full ${getFilterColor(filter.type).bg} flex items-center justify-center text-xs font-bold ${
-            activeFilter === filter.type ? 'text-white' : getFilterColor(filter.type).text
-          }`}>
+          <span>
+            {filter.type.charAt(0).toUpperCase() + filter.type.slice(1)}
+          </span>
+          <div
+            className={`w-6 h-6 rounded-full ${getFilterColor(filter.type).bg} flex items-center justify-center text-xs font-bold ${
+              activeFilter === filter.type
+                ? 'text-white'
+                : getFilterColor(filter.type).text
+            }`}
+          >
             {filter.count}
           </div>
         </button>
       ))}
     </div>
   );
-} 
+}

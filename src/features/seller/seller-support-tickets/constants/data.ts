@@ -39,7 +39,8 @@ export const supportTickets: SupportTicket[] = [
     category: 'technical',
     timeAgo: '1 day ago',
     messageCount: 5,
-    description: 'Error occurs when trying to upload new products to the store.',
+    description:
+      'Error occurs when trying to upload new products to the store.',
   },
   {
     id: 'TK-1232',
@@ -72,6 +73,7 @@ export const supportTickets: SupportTicket[] = [
     category: 'billing',
     timeAgo: '4 days ago',
     messageCount: 2,
-    description: 'Customer requesting refund for order #45678 due to damaged item.',
+    description:
+      'Customer requesting refund for order #45678 due to damaged item.',
   },
-]; 
+];

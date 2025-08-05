@@ -48,24 +48,39 @@ export function StatsCards() {
         >
           <div className="flex items-start justify-between mb-4">
             <div>
-              <h3 className="text-gray-400 text-sm font-medium">{stat.title}</h3>
-              <p className={`text-2xl font-bold mt-1 ${
-                stat.title === 'Open' ? 'text-yellow-500' : 
-                stat.title === 'In Progress' ? 'text-blue-500' :
-                stat.title === 'Resolved' ? 'text-green-500' :
-                'text-white'
-              }`}>{stat.value}</p>
+              <h3 className="text-gray-400 text-sm font-medium">
+                {stat.title}
+              </h3>
+              <p
+                className={`text-2xl font-bold mt-1 ${
+                  stat.title === 'Open'
+                    ? 'text-yellow-500'
+                    : stat.title === 'In Progress'
+                      ? 'text-blue-500'
+                      : stat.title === 'Resolved'
+                        ? 'text-green-500'
+                        : 'text-white'
+                }`}
+              >
+                {stat.value}
+              </p>
               <p className="text-gray-300 text-sm mt-1">
                 {stat.change || stat.detail}
               </p>
             </div>
-            <div className={`${
-              stat.title === 'Total Tickets' ? 'text-primary-purple' : 
-              stat.title === 'Open' ? 'text-yellow-500' : 
-              stat.title === 'In Progress' ? 'text-blue-500' :
-              stat.title === 'Resolved' ? 'text-green-500' :
-              'text-gray-400'
-            }`}>
+            <div
+              className={`${
+                stat.title === 'Total Tickets'
+                  ? 'text-primary-purple'
+                  : stat.title === 'Open'
+                    ? 'text-yellow-500'
+                    : stat.title === 'In Progress'
+                      ? 'text-blue-500'
+                      : stat.title === 'Resolved'
+                        ? 'text-green-500'
+                        : 'text-gray-400'
+              }`}
+            >
               <stat.icon className="w-6 h-6" />
             </div>
           </div>
@@ -78,4 +93,4 @@ export function StatsCards() {
       ))}
     </div>
   );
-} 
+}

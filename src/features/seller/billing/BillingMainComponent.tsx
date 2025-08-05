@@ -4,7 +4,7 @@ import { WalletCard } from './WalletCard';
 import { TransactionHistory } from './TransactionHistory';
 import { CurrentPlan } from './CurrentPlan';
 import { ManualPayment } from './ManualPayment';
-import { MOCK_WALLET, MOCK_TRANSACTIONS, CURRENT_PLAN } from './constans/index';
+import { MOCK_WALLET, MOCK_TRANSACTIONS, CURRENT_PLAN } from './constants';
 
 export function BillingMainComponent() {
   return (

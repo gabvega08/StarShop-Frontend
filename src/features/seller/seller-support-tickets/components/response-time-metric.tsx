@@ -12,23 +12,29 @@ export function ResponseTimeMetric() {
           <h3 className="text-white font-semibold">Response Time</h3>
         </div>
       </div>
-      
+
       <div className="mb-4">
         <p className="text-gray-300">
           Average time to first response:{' '}
-          <span className="text-white font-bold">{ticketStats.avgResponseTime}</span>
+          <span className="text-white font-bold">
+            {ticketStats.avgResponseTime}
+          </span>
         </p>
       </div>
-      
+
       <div className="relative h-2 bg-gray-700 rounded-full overflow-hidden mb-4">
-        <div className="absolute inset-0 bg-gradient-to-r from-yellow-500 via-orange-500 to-pink-500 rounded-full" 
-             style={{ width: '60%' }} />
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-yellow-500 via-orange-500 to-pink-500 rounded-full"
+          style={{ width: '60%' }}
+        />
       </div>
-      
+
       <div className="flex items-center justify-between text-sm">
-        <span className="text-gray-400">Target: {ticketStats.targetResponseTime}</span>
+        <span className="text-gray-400">
+          Target: {ticketStats.targetResponseTime}
+        </span>
         <span className="text-gray-400">SLA: {ticketStats.slaTime}</span>
       </div>
     </div>
   );
-} 
+}

@@ -24,4 +24,4 @@ export interface TicketStats {
 export interface TicketFilter {
   type: 'all' | 'open' | 'in-progress' | 'resolved';
   count: number;
-} 
+}

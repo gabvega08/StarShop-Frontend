@@ -16,9 +16,10 @@ export function Pagination({
   return (
     <div className="flex items-center justify-between">
       <div className="text-sm text-gray-400">
-        Showing <span className="font-bold text-white">{itemsPerPage}</span> of <span className="font-bold text-white">24</span> tickets
+        Showing <span className="font-bold text-white">{itemsPerPage}</span> of{' '}
+        <span className="font-bold text-white">24</span> tickets
       </div>
-      
+
       <div className="flex items-center space-x-2">
         <button
           onClick={() => onPageChange(currentPage - 1)}
@@ -27,7 +28,7 @@ export function Pagination({
         >
           Previous
         </button>
-        
+
         <button
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
@@ -38,4 +39,4 @@ export function Pagination({
       </div>
     </div>
   );
-} 
+}

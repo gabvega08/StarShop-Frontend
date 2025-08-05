@@ -52,21 +52,21 @@ export function SupportTicketsMainComponent() {
   return (
     <div className="flex flex-col w-full min-h-screen p-4 md:p-6 lg:p-8 gap-8">
       <SupportTicketsHeader />
-      
+
       <StatsCards />
-      
+
       <ResponseTimeMetric />
-      
+
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-6">
           <TicketFilters onFilterChange={handleFilterChange} />
-          
+
           <TicketList
             tickets={paginatedTickets}
             selectedTicket={selectedTicket}
             onTicketSelect={handleTicketSelect}
           />
-          
+
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}
@@ -74,7 +74,7 @@ export function SupportTicketsMainComponent() {
             onPageChange={handlePageChange}
           />
         </div>
-        
+
         <div className="lg:col-span-1">
           <div className="p-6 rounded-lg border border-white/10 bg-[#0F0E1D]/30 shadow-[0_0_8px_rgba(255,255,255,0.1)] h-full">
             <TicketDetails selectedTicket={selectedTicketData} />
@@ -83,4 +83,4 @@ export function SupportTicketsMainComponent() {
       </div>
     </div>
   );
-} 
+}

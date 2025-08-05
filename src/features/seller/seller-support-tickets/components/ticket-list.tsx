@@ -9,7 +9,11 @@ interface TicketListProps {
   onTicketSelect: (ticketId: string) => void;
 }
 
-export function TicketList({ tickets, selectedTicket, onTicketSelect }: TicketListProps) {
+export function TicketList({
+  tickets,
+  selectedTicket,
+  onTicketSelect,
+}: TicketListProps) {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'open':
@@ -62,48 +66,63 @@ export function TicketList({ tickets, selectedTicket, onTicketSelect }: TicketLi
           }`}
         >
           {index !== tickets.length - 1 && (
-            <div className="absolute bottom-0 left-0 right-0 h-px bg-white/10" style={{ marginLeft: '-1rem', marginRight: '-1rem' }}></div>
+            <div
+              className="absolute bottom-0 left-0 right-0 h-px bg-white/10"
+              style={{ marginLeft: '-1rem', marginRight: '-1rem' }}
+            ></div>
           )}
           <div className="flex items-center space-x-4">
             {/* Left Column - ID and Date */}
             <div className="flex flex-col items-start min-w-[80px]">
-              <span className="text-sm font-medium text-white">{ticket.id}</span>
+              <span className="text-sm font-medium text-white">
+                {ticket.id}
+              </span>
               <span className="text-xs text-gray-400 mt-1">{ticket.date}</span>
             </div>
-            
+
             <div className="flex-1">
               <div className="flex items-start justify-between mb-1">
                 <h3 className="text-white font-medium">{ticket.title}</h3>
                 <div className="flex items-center space-x-4">
-                  <span className="text-sm text-gray-400">{ticket.timeAgo}</span>
+                  <span className="text-sm text-gray-400">
+                    {ticket.timeAgo}
+                  </span>
                   <div className="flex items-center space-x-1 text-gray-400 rounded-full px-2 py-1 border border-gray-400/30">
                     <MessageSquare className="w-3 h-3" />
                     <span className="text-xs">{ticket.messageCount}</span>
                   </div>
                 </div>
               </div>
-              
+
               <div className="flex justify-end mb-1">
                 <div className="w-5 h-5 rounded-full bg-white"></div>
               </div>
-              
+
               <div className="flex items-center space-x-2 -mt-1">
-                <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(ticket.status).bg} ${getStatusColor(ticket.status).text}`}>
-                  {ticket.status.charAt(0).toUpperCase() + ticket.status.slice(1)}
+                <span
+                  className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(ticket.status).bg} ${getStatusColor(ticket.status).text}`}
+                >
+                  {ticket.status.charAt(0).toUpperCase() +
+                    ticket.status.slice(1)}
                 </span>
-                <span className={`px-2 py-1 rounded-full text-xs font-medium ${getPriorityColor(ticket.priority).bg} ${getPriorityColor(ticket.priority).text}`}>
-                  {ticket.priority.charAt(0).toUpperCase() + ticket.priority.slice(1)} Priority
+                <span
+                  className={`px-2 py-1 rounded-full text-xs font-medium ${getPriorityColor(ticket.priority).bg} ${getPriorityColor(ticket.priority).text}`}
+                >
+                  {ticket.priority.charAt(0).toUpperCase() +
+                    ticket.priority.slice(1)}{' '}
+                  Priority
                 </span>
-                <span className={`px-2 py-1 rounded-full text-xs font-medium ${getCategoryColor(ticket.category).bg} ${getCategoryColor(ticket.category).text}`}>
-                  {ticket.category.charAt(0).toUpperCase() + ticket.category.slice(1)}
+                <span
+                  className={`px-2 py-1 rounded-full text-xs font-medium ${getCategoryColor(ticket.category).bg} ${getCategoryColor(ticket.category).text}`}
+                >
+                  {ticket.category.charAt(0).toUpperCase() +
+                    ticket.category.slice(1)}
                 </span>
               </div>
             </div>
-            
-
           </div>
         </div>
       ))}
     </div>
   );
-} 
+}

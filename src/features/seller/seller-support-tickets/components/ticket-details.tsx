@@ -14,9 +14,12 @@ export function TicketDetails({ selectedTicket }: TicketDetailsProps) {
         <div className="text-primary-purple mb-4">
           <MessageSquare className="w-16 h-16" />
         </div>
-        <h3 className="text-xl font-bold text-white mb-2">No Ticket Selected</h3>
+        <h3 className="text-xl font-bold text-white mb-2">
+          No Ticket Selected
+        </h3>
         <p className="text-gray-400 mb-6 max-w-md">
-          Select a ticket from the list to view its details and respond to customer inquiries.
+          Select a ticket from the list to view its details and respond to
+          customer inquiries.
         </p>
         <button className="flex items-center space-x-2 px-6 py-3 bg-primary-purple text-white rounded-lg hover:bg-purple-600 transition-colors">
           <Plus className="w-5 h-5" />
@@ -30,27 +33,35 @@ export function TicketDetails({ selectedTicket }: TicketDetailsProps) {
     <div className="h-full flex flex-col">
       <div className="border-b border-custom-light-card-border pb-4 mb-6">
         <div className="flex items-center justify-between mb-2">
-          <h2 className="text-xl font-bold text-white">{selectedTicket.title}</h2>
+          <h2 className="text-xl font-bold text-white">
+            {selectedTicket.title}
+          </h2>
           <span className="text-sm text-gray-400">{selectedTicket.id}</span>
         </div>
         <p className="text-gray-300">{selectedTicket.description}</p>
       </div>
-      
+
       <div className="flex-1">
         <div className="p-4 rounded-lg border border-white/10 bg-[#0F0E1D]/30 shadow-[0_0_8px_rgba(255,255,255,0.1)] mb-4">
           <h3 className="text-white font-semibold mb-2">Ticket Information</h3>
           <div className="space-y-2 text-sm">
             <div className="flex justify-between">
               <span className="text-gray-400">Status:</span>
-              <span className="text-white capitalize">{selectedTicket.status}</span>
+              <span className="text-white capitalize">
+                {selectedTicket.status}
+              </span>
             </div>
             <div className="flex justify-between">
               <span className="text-gray-400">Priority:</span>
-              <span className="text-white capitalize">{selectedTicket.priority}</span>
+              <span className="text-white capitalize">
+                {selectedTicket.priority}
+              </span>
             </div>
             <div className="flex justify-between">
               <span className="text-gray-400">Category:</span>
-              <span className="text-white capitalize">{selectedTicket.category}</span>
+              <span className="text-white capitalize">
+                {selectedTicket.category}
+              </span>
             </div>
             <div className="flex justify-between">
               <span className="text-gray-400">Created:</span>
@@ -62,7 +73,7 @@ export function TicketDetails({ selectedTicket }: TicketDetailsProps) {
             </div>
           </div>
         </div>
-        
+
         <div className="p-4 rounded-lg border border-white/10 bg-[#0F0E1D]/30 shadow-[0_0_8px_rgba(255,255,255,0.1)]">
           <h3 className="text-white font-semibold mb-4">Messages</h3>
           <div className="text-center py-8">
@@ -73,4 +84,4 @@ export function TicketDetails({ selectedTicket }: TicketDetailsProps) {
       </div>
     </div>
   );
-} 
+}
