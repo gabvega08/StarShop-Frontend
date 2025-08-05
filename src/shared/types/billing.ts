@@ -16,4 +16,4 @@ export interface Plan {
 export interface WalletInfo {
   address: string;
   balance: string;
-}
+} 

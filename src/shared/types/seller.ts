@@ -11,4 +11,4 @@ export interface Transaction {
   status: string;
   date: string;
   type: 'credit' | 'debit';
-}
+} 
