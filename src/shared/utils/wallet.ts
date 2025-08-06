@@ -4,7 +4,7 @@ import {
   FreighterModule,
   ISupportedWallet,
   FREIGHTER_ID,
-} from "@creit.tech/stellar-wallets-kit";
+} from '@creit.tech/stellar-wallets-kit';
 
 let kit: StellarWalletsKit | null = null;
 
@@ -48,14 +48,14 @@ export function disconnectWallet() {
 
 export async function signTransaction(
   xdr: string,
-  network: string,
+  network: string
 ): Promise<string> {
   const walletKit = getKit();
   const { address } = await walletKit.getAddress();
   const { signedTxXdr } = await walletKit.signTransaction(xdr, {
     address,
     networkPassphrase:
-      network === "TESTNET" ? WalletNetwork.TESTNET : WalletNetwork.PUBLIC,
+      network === 'TESTNET' ? WalletNetwork.TESTNET : WalletNetwork.PUBLIC,
   });
   return signedTxXdr;
-} 
+}

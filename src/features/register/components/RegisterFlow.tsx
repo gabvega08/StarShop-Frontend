@@ -25,7 +25,12 @@ export const RegisterFlow: React.FC = () => {
     handleSubmit,
   } = useRegisterFlow();
 
-  const currentStepNumber = currentStep === 'select-profile' ? 1 : currentStep === 'register-form' ? 2 : 3;
+  const currentStepNumber =
+    currentStep === 'select-profile'
+      ? 1
+      : currentStep === 'register-form'
+        ? 2
+        : 3;
 
   return (
     <div className="min-h-screen">
@@ -65,10 +70,14 @@ export const RegisterFlow: React.FC = () => {
         <div className="mt-6">
           <StepNavigation
             onBack={handleBack}
-            onNext={currentStep === 'connect-wallet' ? handleSubmit : handleNext}
+            onNext={
+              currentStep === 'connect-wallet' ? handleSubmit : handleNext
+            }
             canGoBack={canGoBack}
             canGoNext={
-              currentStep === 'connect-wallet' ? Boolean(canSubmit) : Boolean(canGoNext)
+              currentStep === 'connect-wallet'
+                ? Boolean(canSubmit)
+                : Boolean(canGoNext)
             }
             isLastStep={currentStep === 'connect-wallet'}
           />

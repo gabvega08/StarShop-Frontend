@@ -66,7 +66,11 @@ export const useRegisterFlow = () => {
   const handleNext = () => {
     if (currentStep === 'select-profile' && selectedProfile) {
       setCurrentStep('register-form');
-    } else if (currentStep === 'register-form' && formData.name.trim() && formData.email.trim()) {
+    } else if (
+      currentStep === 'register-form' &&
+      formData.name.trim() &&
+      formData.email.trim()
+    ) {
       setCurrentStep('connect-wallet');
     }
   };
@@ -85,10 +89,13 @@ export const useRegisterFlow = () => {
   };
 
   const canProceed = selectedProfile !== null;
-  const canGoBack = currentStep === 'register-form' || currentStep === 'connect-wallet';
+  const canGoBack =
+    currentStep === 'register-form' || currentStep === 'connect-wallet';
   const canGoNext =
     (currentStep === 'select-profile' && selectedProfile !== null) ||
-    (currentStep === 'register-form' && formData.name.trim() && formData.email.trim());
+    (currentStep === 'register-form' &&
+      formData.name.trim() &&
+      formData.email.trim());
   const canSubmit =
     currentStep === 'connect-wallet' && formData.walletAddress.trim();
 

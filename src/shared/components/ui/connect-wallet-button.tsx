@@ -1,8 +1,12 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Wallet } from 'lucide-react';
-import { connectWallet, disconnectWallet, getPublicKey } from '@/shared/utils/wallet';
+import {
+  connectWallet,
+  disconnectWallet,
+  getPublicKey,
+} from '@/shared/utils/wallet';
 import { useSetWalletAddress } from '@/shared/stores';
 
 interface ConnectWalletButtonProps {
@@ -24,19 +28,6 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
   const setWalletAddressStore = useSetWalletAddress();
 
   // Removed automatic connection check to prevent auto-connecting
-
-  const checkConnection = async () => {
-    try {
-      const address = await getPublicKey();
-      if (address) {
-        setIsConnected(true);
-        setWalletAddress(address);
-        setWalletAddressStore(address);
-      }
-    } catch (error) {
-      console.error('Error checking wallet connection:', error);
-    }
-  };
 
   const handleConnect = async () => {
     try {
@@ -68,8 +59,9 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
   };
 
   const getButtonClasses = () => {
-    const baseClasses = 'flex items-center gap-2 font-medium transition-all duration-200 rounded-lg';
-    
+    const baseClasses =
+      'flex items-center gap-2 font-medium transition-all duration-200 rounded-lg';
+
     const sizeClasses = {
       sm: 'px-3 py-1.5 text-sm',
       md: 'px-4 py-2 text-base',
@@ -97,13 +89,7 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
     return 'Connect Wallet';
   };
 
-  const handleClick = () => {
-    if (isConnected) {
-      handleDisconnect();
-    } else {
-      handleConnect();
-    }
-  };
+
 
   const getWalletAddress = () => {
     if (!walletAddress) return '';
@@ -120,7 +106,7 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
         <Wallet className={`w-4 h-4 ${size === 'lg' ? 'w-5 h-5' : ''}`} />
         {getButtonText()}
       </button>
-      
+
       {isConnected && walletAddress && (
         <div className="text-xs text-gray-400 bg-custom-light-card-background px-2 py-1 rounded">
           {getWalletAddress()}
@@ -128,4 +114,4 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
       )}
     </div>
   );
-}; 
+};

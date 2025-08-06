@@ -1,4 +1,7 @@
-export type RegisterStep = 'select-profile' | 'register-form' | 'connect-wallet';
+export type RegisterStep =
+  | 'select-profile'
+  | 'register-form'
+  | 'connect-wallet';
 
 export type UserProfile = 'buyer' | 'seller';
 

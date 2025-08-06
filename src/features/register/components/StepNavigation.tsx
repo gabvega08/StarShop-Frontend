@@ -70,7 +70,12 @@ export const StepNavigation: React.FC<StepNavigationProps> = ({
   return (
     <div className={`flex items-center justify-between w-full ${className}`}>
       <StepButton direction="back" onClick={onBack} disabled={!canGoBack} />
-      <StepButton direction="next" onClick={onNext} disabled={!canGoNext} isLastStep={isLastStep} />
+      <StepButton
+        direction="next"
+        onClick={onNext}
+        disabled={!canGoNext}
+        isLastStep={isLastStep}
+      />
     </div>
   );
 };
