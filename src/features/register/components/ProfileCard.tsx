@@ -13,7 +13,6 @@ interface ProfileCardProps {
 }
 
 export const ProfileCard: React.FC<ProfileCardProps> = ({
-  type,
   title,
   description,
   features,
@@ -26,9 +25,10 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
       onClick={onSelect}
       className={`
         p-6 rounded-xl border-2 cursor-pointer transition-all duration-300
-        ${isSelected
-          ? 'border-sidebarActive shadow-lg shadow-sidebarActive/20'
-          : 'border-sidebarBorder hover:border-sidebarActive/50'
+        ${
+          isSelected
+            ? 'border-sidebarActive shadow-lg shadow-sidebarActive/20'
+            : 'border-sidebarBorder hover:border-sidebarActive/50'
         }
       `}
     >
@@ -38,9 +38,9 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
         </div>
         <h3 className="text-xl font-semibold text-white">{title}</h3>
       </div>
-      
+
       <p className="text-gray-300 mb-4">{description}</p>
-      
+
       <ul className="space-y-2">
         {features.map((feature, index) => (
           <li key={index} className="flex items-center text-sm text-gray-300">
@@ -51,4 +51,4 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
       </ul>
     </div>
   );
-}; 
+};

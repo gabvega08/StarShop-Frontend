@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { User, Store } from 'lucide-react';
 import { UserProfile } from '../types/register';
 import { ProfileCard } from './ProfileCard';
@@ -19,9 +20,11 @@ export const ProfileSelection: React.FC<ProfileSelectionProps> = ({
       <div className="max-w-4xl w-full">
         <div className="text-center mb-8">
           <div className="inline-flex items-center bg justify-center w-16 h-16 mb-4">
-            <img
+            <Image
               src="/starshop-logos/StarShop-Logo-Landing.svg"
               alt="StarShop Logo"
+              width={48}
+              height={48}
               className="w-12 h-12"
             />
           </div>
@@ -65,4 +68,4 @@ export const ProfileSelection: React.FC<ProfileSelectionProps> = ({
       </div>
     </div>
   );
-}; 
+};

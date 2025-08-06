@@ -3,12 +3,22 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { RegisterStep, UserProfile, RegisterData } from '../types/register';
-import { useSetRole, useSetName, useSetEmail, useUserRole, useUserName, useUserEmail } from '@/shared/stores';
+import {
+  useSetRole,
+  useSetName,
+  useSetEmail,
+  useUserRole,
+  useUserName,
+  useUserEmail,
+} from '@/shared/stores';
 
 export const useRegisterFlow = () => {
   const router = useRouter();
-  const [currentStep, setCurrentStep] = useState<RegisterStep>('select-profile');
-  const [selectedProfile, setSelectedProfile] = useState<UserProfile | null>(null);
+  const [currentStep, setCurrentStep] =
+    useState<RegisterStep>('select-profile');
+  const [selectedProfile, setSelectedProfile] = useState<UserProfile | null>(
+    null
+  );
   const [formData, setFormData] = useState<RegisterData>({
     profile: null,
     name: '',
@@ -56,9 +66,12 @@ export const useRegisterFlow = () => {
     }
   };
 
-  const updateFormData = (field: keyof Omit<RegisterData, 'profile'>, value: string) => {
+  const updateFormData = (
+    field: keyof Omit<RegisterData, 'profile'>,
+    value: string
+  ) => {
     setFormData(prev => ({ ...prev, [field]: value }));
-    
+
     if (field === 'name') {
       setName(value);
     } else if (field === 'email') {
@@ -68,14 +81,18 @@ export const useRegisterFlow = () => {
 
   const canProceed = selectedProfile !== null;
   const canGoBack = currentStep === 'register-form';
-  const canGoNext = currentStep === 'select-profile' && selectedProfile !== null;
-  const canSubmit = currentStep === 'register-form' && formData.name.trim() && formData.email.trim();
+  const canGoNext =
+    currentStep === 'select-profile' && selectedProfile !== null;
+  const canSubmit =
+    currentStep === 'register-form' &&
+    formData.name.trim() &&
+    formData.email.trim();
 
   const handleSubmit = () => {
     if (canSubmit) {
       setName(formData.name.trim());
       setEmail(formData.email.trim());
-      
+
       if (selectedProfile === 'buyer') {
         router.push('/buyer/dashboard');
       } else {
@@ -98,4 +115,4 @@ export const useRegisterFlow = () => {
     updateFormData,
     handleSubmit,
   };
-}; 
+};

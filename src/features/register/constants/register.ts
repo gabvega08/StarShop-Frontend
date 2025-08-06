@@ -29,4 +29,4 @@ export const REGISTRATION_CONSTANTS = {
     LOADING_TEXT: 'Creating account...',
     SUBMIT_BUTTON_TEXT: 'Create Account',
   },
-}; 
+};

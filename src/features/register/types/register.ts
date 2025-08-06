@@ -13,4 +13,4 @@ export interface StepperStep {
   title: string;
   description: string;
   step: RegisterStep;
-} 
+}

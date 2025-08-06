@@ -31,11 +31,12 @@ export const Stepper: React.FC<StepperProps> = ({
                   disabled={!isClickable}
                   className={`
                     w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300
-                    ${isCompleted 
-                      ? 'bg-sidebarActive shadow-lg shadow-sidebarActive/30' 
-                      : isCurrent 
-                        ? 'bg-sidebarActive ring-4 ring-sidebarActive/20 shadow-lg' 
-                        : 'bg-custom-light-card-background border-2 border-sidebarBorder'
+                    ${
+                      isCompleted
+                        ? 'bg-sidebarActive shadow-lg shadow-sidebarActive/30'
+                        : isCurrent
+                          ? 'bg-sidebarActive ring-4 ring-sidebarActive/20 shadow-lg'
+                          : 'bg-custom-light-card-background border-2 border-sidebarBorder'
                     }
                     ${isClickable ? 'cursor-pointer hover:scale-105' : 'cursor-default'}
                   `}
@@ -43,26 +44,32 @@ export const Stepper: React.FC<StepperProps> = ({
                   {isCompleted ? (
                     <Check className="w-5 h-5 text-white" />
                   ) : (
-                    <span className={`
+                    <span
+                      className={`
                       text-xs font-semibold
                       ${isCurrent ? 'text-white' : 'text-sidebarText'}
-                    `}>
+                    `}
+                    >
                       {step.id}
                     </span>
                   )}
                 </button>
-                
+
                 <div className="mt-2 text-center max-w-24">
-                  <h3 className={`
+                  <h3
+                    className={`
                     text-xs font-semibold mb-0.5
                     ${isCompleted || isCurrent ? 'text-white' : 'text-sidebarText'}
-                  `}>
+                  `}
+                  >
                     {step.title}
                   </h3>
-                  <p className={`
+                  <p
+                    className={`
                     text-xs
                     ${isCompleted || isCurrent ? 'text-gray-300' : 'text-sidebarText/70'}
-                  `}>
+                  `}
+                  >
                     {step.description}
                   </p>
                 </div>
@@ -70,13 +77,12 @@ export const Stepper: React.FC<StepperProps> = ({
 
               {index < steps.length - 1 && (
                 <div className="flex-1 mx-4">
-                  <div className={`
+                  <div
+                    className={`
                     h-0.5 rounded-full transition-all duration-300
-                    ${isCompleted 
-                      ? 'bg-sidebarActive' 
-                      : 'bg-sidebarBorder'
-                    }
-                  `} />
+                    ${isCompleted ? 'bg-sidebarActive' : 'bg-sidebarBorder'}
+                  `}
+                  />
                 </div>
               )}
             </React.Fragment>
@@ -85,4 +91,4 @@ export const Stepper: React.FC<StepperProps> = ({
       </div>
     </div>
   );
-}; 
+};

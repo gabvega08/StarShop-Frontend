@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { UserProfile } from '../types/register';
 import { REGISTRATION_CONSTANTS } from '../constants/register';
 
@@ -23,9 +24,11 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 mb-4">
-            <img
+            <Image
               src="/starshop-logos/StarShop-Logo-Landing.svg"
               alt="StarShop Logo"
+              width={48}
+              height={48}
               className="w-12 h-12"
             />
           </div>
@@ -83,4 +86,4 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
       </div>
     </div>
   );
-}; 
+};

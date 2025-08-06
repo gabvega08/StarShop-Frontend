@@ -31,13 +31,13 @@ export const RegisterFlow: React.FC = () => {
         <Stepper
           currentStep={currentStepNumber}
           steps={REGISTER_STEPS}
-          onStepClick={(stepId) => {
+          onStepClick={stepId => {
             if (stepId === 1) {
               handleBack();
             }
           }}
         />
-        
+
         <div className="mt-4">
           {currentStep === 'select-profile' ? (
             <ProfileSelection
@@ -52,16 +52,18 @@ export const RegisterFlow: React.FC = () => {
             />
           )}
         </div>
-        
+
         <div className="mt-6">
           <StepNavigation
             onBack={handleBack}
             onNext={currentStep === 'register-form' ? handleSubmit : handleNext}
             canGoBack={canGoBack}
-            canGoNext={currentStep === 'register-form' ? Boolean(canSubmit) : canGoNext}
+            canGoNext={
+              currentStep === 'register-form' ? Boolean(canSubmit) : canGoNext
+            }
           />
         </div>
       </div>
     </div>
   );
-}; 
+};
