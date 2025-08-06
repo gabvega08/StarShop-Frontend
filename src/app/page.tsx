@@ -1,5 +1,5 @@
 'use client';
-import Hero from '@/features/shared/landing/components/hero';
+import Hero from "@/features/common/landing/components/hero";
 
 export default function LandingPage() {
   return (
