@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { OppiaLogoIcon } from '@/OppiaIcon';
+import { OppiaLogoIcon } from '../icon/OppiaIcon';
 
 export default function Hero() {
   return (

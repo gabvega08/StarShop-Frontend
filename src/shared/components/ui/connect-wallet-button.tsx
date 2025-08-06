@@ -23,7 +23,6 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
   const [walletAddress, setWalletAddress] = useState<string>('');
   const setWalletAddressStore = useSetWalletAddress();
 
-
   const handleConnect = async () => {
     try {
       setIsConnecting(true);
@@ -96,7 +95,7 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
         disabled={isConnecting}
         className={getButtonClasses()}
       >
-        <Wallet className={`w-4 h-4 ${size === 'lg' ? 'w-5 h-5' : ''}`} />
+        <Wallet className={`w-4 h-4 ${size === 'lg' ? 'w-3 h-3' : ''}`} />
         {getButtonText()}
       </button>
 
