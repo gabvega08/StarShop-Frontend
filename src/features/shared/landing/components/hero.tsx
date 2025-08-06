@@ -1,5 +1,4 @@
 import React from 'react';
-import StarShopLanding from '../../../../public/starshop-logos/StarShop-Logo-Landing.svg';
 import Link from 'next/link';
 import Image from 'next/image';
 import { OppiaLogoIcon } from '@/OppiaIcon';
@@ -53,7 +52,7 @@ export default function Hero() {
       </div>
       <section className="mx-auto xl:m-0 w-[400px] md:w-1/2 flex justify-center items-center px-4 my-[0px] ">
         <Image
-          src={StarShopLanding}
+          src="/starshop-logos/StarShop-Logo-Landing.svg"
           alt="StarShop Logo"
           width={700}
           height={20}
