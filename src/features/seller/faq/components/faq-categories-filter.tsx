@@ -1,6 +1,6 @@
 'use client';
 
-import { useExpandableItems } from '@/shared/hooks/useExpandableItem';
+import { useExpandableItems } from '@/features/buyer/faq/hooks/useExpandableItem';
 import { useState } from 'react';
 import FAQTabs from './faq-tabs';
 import FAQContentContainer from './faq-content-container';
