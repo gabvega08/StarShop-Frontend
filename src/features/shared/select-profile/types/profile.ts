@@ -6,4 +6,4 @@ export interface ProfileCardProps {
   icon: React.ReactNode;
   isSelected: boolean;
   onSelect: () => void;
-} 
+}
