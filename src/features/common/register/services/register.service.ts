@@ -1,11 +1,28 @@
-import { axiosInstance } from '@/shared/api/baseApi';
+import { BaseApi } from '@/shared/api/baseApi';
 import { RegisterData, RegisterResponse } from '../types/register';
 
-export class RegisterService {
-  private static readonly BASE_URL_AUTH = '/api/v1/auth';
-  private static readonly REGISTER_ENDPOINT = `${this.BASE_URL_AUTH}/register`;
+export class RegisterService extends BaseApi {
+  private static instance: RegisterService;
+
+  protected constructor() {
+    super();
+  }
+
+  public static getInstance(): RegisterService {
+    if (!RegisterService.instance) {
+      RegisterService.instance = new RegisterService();
+    }
+    return RegisterService.instance;
+  }
 
   static async register(registerData: RegisterData): Promise<RegisterResponse> {
+    const instance = RegisterService.getInstance();
+    return instance.registerInstance(registerData);
+  }
+
+  private async registerInstance(
+    registerData: RegisterData
+  ): Promise<RegisterResponse> {
     try {
       const { profile, ...rest } = registerData;
       const transformedData = {
@@ -13,8 +30,8 @@ export class RegisterService {
         role: profile,
       };
 
-      const response = await axiosInstance.post<RegisterResponse>(
-        this.REGISTER_ENDPOINT,
+      const response = await this.post<RegisterResponse>(
+        '/api/v1/auth/register',
         transformedData
       );
 
