@@ -52,6 +52,7 @@ export const useUserEmail = () => useUserStore(state => state.email);
 export const useIsAuthenticated = () =>
   useUserStore(state => state.isAuthenticated());
 
+// ! Attention: This hook causes infinite re-renders when used, instead I've created a getSavedUser
 export const useUser = () =>
   useUserStore(state => ({
     walletAddress: state.walletAddress,
@@ -79,3 +80,14 @@ export const useUserActions = () => ({
   setName: useUserStore.getState().setName,
   setEmail: useUserStore.getState().setEmail,
 });
+
+export const getSavedUser = () => {
+  const state = useUserStore.getState();
+  return {
+    walletAddress: state.walletAddress,
+    role: state.role,
+    name: state.name,
+    email: state.email,
+    isAuthenticated: state.isAuthenticated(),
+  };
+};
