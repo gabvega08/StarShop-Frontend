@@ -22,9 +22,9 @@ export const ProfileSelection: React.FC = () => {
     if (selectedProfile) {
       setRole(selectedProfile);
       if (selectedProfile === 'buyer') {
-        router.push('/buyer/register');
+        router.push('/register/buyer');
       } else {
-        router.push('/seller/register');
+        router.push('/register/seller');
       }
     }
   };
