@@ -8,6 +8,7 @@ interface StepButtonProps {
   onClick: () => void;
   disabled?: boolean;
   className?: string;
+  isLastStep?: boolean;
 }
 
 const StepButton: React.FC<StepButtonProps> = ({
@@ -15,6 +16,7 @@ const StepButton: React.FC<StepButtonProps> = ({
   onClick,
   disabled = false,
   className = '',
+  isLastStep = false,
 }) => {
   const isBack = direction === 'back';
 
@@ -40,7 +42,7 @@ const StepButton: React.FC<StepButtonProps> = ({
         </>
       ) : (
         <>
-          Next
+          {isLastStep ? 'Finish' : 'Next'}
           <ChevronRight className="w-4 h-4" />
         </>
       )}
@@ -54,6 +56,7 @@ interface StepNavigationProps {
   canGoBack?: boolean;
   canGoNext?: boolean;
   className?: string;
+  isLastStep?: boolean;
 }
 
 export const StepNavigation: React.FC<StepNavigationProps> = ({
@@ -62,11 +65,12 @@ export const StepNavigation: React.FC<StepNavigationProps> = ({
   canGoBack = true,
   canGoNext = true,
   className = '',
+  isLastStep = false,
 }) => {
   return (
     <div className={`flex items-center justify-between w-full ${className}`}>
       <StepButton direction="back" onClick={onBack} disabled={!canGoBack} />
-      <StepButton direction="next" onClick={onNext} disabled={!canGoNext} />
+      <StepButton direction="next" onClick={onNext} disabled={!canGoNext} isLastStep={isLastStep} />
     </div>
   );
 };

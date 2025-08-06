@@ -23,6 +23,7 @@ export const useRegisterFlow = () => {
     profile: null,
     name: '',
     email: '',
+    walletAddress: '',
   });
 
   const setRole = useSetRole();
@@ -57,12 +58,16 @@ export const useRegisterFlow = () => {
   const handleBack = () => {
     if (currentStep === 'register-form') {
       setCurrentStep('select-profile');
+    } else if (currentStep === 'connect-wallet') {
+      setCurrentStep('register-form');
     }
   };
 
   const handleNext = () => {
     if (currentStep === 'select-profile' && selectedProfile) {
       setCurrentStep('register-form');
+    } else if (currentStep === 'register-form' && formData.name.trim() && formData.email.trim()) {
+      setCurrentStep('connect-wallet');
     }
   };
 
@@ -80,13 +85,16 @@ export const useRegisterFlow = () => {
   };
 
   const canProceed = selectedProfile !== null;
-  const canGoBack = currentStep === 'register-form';
+  const canGoBack = currentStep === 'register-form' || currentStep === 'connect-wallet';
   const canGoNext =
-    currentStep === 'select-profile' && selectedProfile !== null;
+    (currentStep === 'select-profile' && selectedProfile !== null) ||
+    (currentStep === 'register-form' && formData.name.trim() && formData.email.trim());
   const canSubmit =
-    currentStep === 'register-form' &&
-    formData.name.trim() &&
-    formData.email.trim();
+    currentStep === 'connect-wallet' && formData.walletAddress.trim();
+
+  const handleWalletConnected = (address: string) => {
+    setFormData(prev => ({ ...prev, walletAddress: address }));
+  };
 
   const handleSubmit = () => {
     if (canSubmit) {
@@ -113,6 +121,7 @@ export const useRegisterFlow = () => {
     handleBack,
     handleNext,
     updateFormData,
+    handleWalletConnected,
     handleSubmit,
   };
 };

@@ -21,7 +21,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
 }) => {
   return (
     <div className="flex items-center justify-center p-4">
-      <div className="max-w-md w-full">
+      <div className="max-w-2xl w-full border border-sidebarActive rounded-lg p-12">
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 mb-4">
             <Image

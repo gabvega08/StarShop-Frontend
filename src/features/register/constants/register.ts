@@ -13,6 +13,12 @@ export const REGISTER_STEPS: StepperStep[] = [
     description: 'Your info',
     step: 'register-form',
   },
+  {
+    id: 3,
+    title: 'Connect Wallet',
+    description: 'Stellar wallet',
+    step: 'connect-wallet',
+  },
 ];
 
 export const REGISTRATION_CONSTANTS = {

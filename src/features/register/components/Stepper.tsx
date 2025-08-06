@@ -8,15 +8,17 @@ interface StepperProps {
   currentStep: number;
   steps: StepperStep[];
   onStepClick?: (step: number) => void;
+  containerWidth?: string;
 }
 
 export const Stepper: React.FC<StepperProps> = ({
   currentStep,
   steps,
   onStepClick,
+  containerWidth = 'max-w-lg',
 }) => {
   return (
-    <div className="w-full max-w-lg mx-auto mb-6">
+    <div className={`w-full ${containerWidth} mx-auto mb-6`}>
       <div className="flex items-center justify-between">
         {steps.map((step, index) => {
           const isCompleted = currentStep > step.id;
