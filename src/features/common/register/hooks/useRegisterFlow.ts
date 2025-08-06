@@ -11,6 +11,7 @@ import {
   useUserName,
   useUserEmail,
 } from '@/shared/stores';
+import { useRegisterMutation } from './useRegisterMutations';
 
 export const useRegisterFlow = () => {
   const router = useRouter();
@@ -19,6 +20,7 @@ export const useRegisterFlow = () => {
   const [selectedProfile, setSelectedProfile] = useState<UserProfile | null>(
     null
   );
+  const { mutate: register, isSuccess, isError, error } = useRegisterMutation();
   const [formData, setFormData] = useState<RegisterData>({
     profile: null,
     name: '',
@@ -48,6 +50,36 @@ export const useRegisterFlow = () => {
       setFormData(prev => ({ ...prev, email: savedEmail }));
     }
   }, [savedName, savedEmail]);
+
+  // Handle successful registration
+  useEffect(() => {
+    if (isSuccess) {
+      setName(formData.name.trim());
+      setEmail(formData.email.trim());
+
+      if (selectedProfile === 'buyer') {
+        router.push('/buyer/dashboard');
+      } else {
+        router.push('/seller/dashboard');
+      }
+    }
+  }, [
+    isSuccess,
+    formData.name,
+    formData.email,
+    selectedProfile,
+    router,
+    setName,
+    setEmail,
+  ]);
+
+  // Handle registration error
+  useEffect(() => {
+    if (isError) {
+      console.error('Registration failed:', error);
+      // @kevin you can show a toast here
+    }
+  }, [isError, error]);
 
   const handleProfileSelect = (profile: UserProfile) => {
     setSelectedProfile(profile);
@@ -105,14 +137,8 @@ export const useRegisterFlow = () => {
 
   const handleSubmit = () => {
     if (canSubmit) {
-      setName(formData.name.trim());
-      setEmail(formData.email.trim());
-
-      if (selectedProfile === 'buyer') {
-        router.push('/buyer/dashboard');
-      } else {
-        router.push('/seller/dashboard');
-      }
+      // Register user
+      register(formData);
     }
   };
 
