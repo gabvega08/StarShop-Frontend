@@ -2,10 +2,7 @@
 
 import React, { useState } from 'react';
 import { Wallet } from 'lucide-react';
-import {
-  connectWallet,
-  disconnectWallet,
-} from '@/shared/utils/wallet';
+import { connectWallet, disconnectWallet } from '@/shared/utils/wallet';
 import { useSetWalletAddress } from '@/shared/stores';
 
 interface ConnectWalletButtonProps {
@@ -26,7 +23,6 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
   const [walletAddress, setWalletAddress] = useState<string>('');
   const setWalletAddressStore = useSetWalletAddress();
 
-  // Removed automatic connection check to prevent auto-connecting
 
   const handleConnect = async () => {
     try {
