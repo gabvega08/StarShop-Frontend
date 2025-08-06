@@ -1,3 +1,5 @@
+import { User } from '@/shared/types';
+
 export type RegisterStep =
   | 'select-profile'
   | 'register-form'
@@ -10,6 +12,17 @@ export interface RegisterData {
   name: string;
   email: string;
   walletAddress: string;
+}
+
+export interface RegisterResponse {
+  success: boolean;
+  data: {
+    user: {
+      id: number; // ! Important: @santi @kevin. You shouldnt return the id from the db
+      User: User;
+    };
+    expiresIn: number;
+  };
 }
 
 export interface StepperStep {
