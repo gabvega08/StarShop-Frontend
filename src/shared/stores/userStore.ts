@@ -70,12 +70,12 @@ export const useSetRole = () => useUserStore(state => state.setRole);
 export const useSetName = () => useUserStore(state => state.setName);
 export const useSetEmail = () => useUserStore(state => state.setEmail);
 
-// export const useUserActions = () => ({
-//   setUser: useUserStore.getState().setUser,
-//   updateUser: useUserStore.getState().updateUser,
-//   clearUser: useUserStore.getState().clearUser,
-//   setWalletAddress: useUserStore.getState().setWalletAddress,
-//   setRole: useUserStore.getState().setRole,
-//   setName: useUserStore.getState().setName,
-//   setEmail: useUserStore.getState().setEmail,
-// });
+export const useUserActions = () => ({
+  setUser: useUserStore.getState().setUser,
+  updateUser: useUserStore.getState().updateUser,
+  clearUser: useUserStore.getState().clearUser,
+  setWalletAddress: useUserStore.getState().setWalletAddress,
+  setRole: useUserStore.getState().setRole,
+  setName: useUserStore.getState().setName,
+  setEmail: useUserStore.getState().setEmail,
+});
