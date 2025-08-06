@@ -5,7 +5,6 @@ import { Wallet } from 'lucide-react';
 import {
   connectWallet,
   disconnectWallet,
-  getPublicKey,
 } from '@/shared/utils/wallet';
 import { useSetWalletAddress } from '@/shared/stores';
 
@@ -88,8 +87,6 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
     if (isConnected) return 'Disconnect Wallet';
     return 'Connect Wallet';
   };
-
-
 
   const getWalletAddress = () => {
     if (!walletAddress) return '';
