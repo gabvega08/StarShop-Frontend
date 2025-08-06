@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import ReactQueryProvider from '@/shared/provider/query-client-provider';
+import ReactQueryProvider from '@/provider/query-client-provider';
 import './globals.css';
 
 export const metadata: Metadata = {
