@@ -1,44 +1,28 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { useSetRole } from '@/shared/stores';
+import React from 'react';
 import { User, Store } from 'lucide-react';
+import { UserProfile } from '../types/register';
 import { ProfileCard } from './ProfileCard';
-import Image from 'next/image';
 
-export const ProfileSelection: React.FC = () => {
-  const [selectedProfile, setSelectedProfile] = useState<
-    'buyer' | 'seller' | null
-  >(null);
-  const setRole = useSetRole();
-  const router = useRouter();
+interface ProfileSelectionProps {
+  selectedProfile: UserProfile | null;
+  onProfileSelect: (profile: UserProfile) => void;
+}
 
-  const handleProfileSelect = (profile: 'buyer' | 'seller') => {
-    setSelectedProfile(profile);
-  };
-
-  const handleContinue = () => {
-    if (selectedProfile) {
-      setRole(selectedProfile);
-      if (selectedProfile === 'buyer') {
-        router.push('/register/buyer');
-      } else {
-        router.push('/register/seller');
-      }
-    }
-  };
-
+export const ProfileSelection: React.FC<ProfileSelectionProps> = ({
+  selectedProfile,
+  onProfileSelect,
+}) => {
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
+    <div className="flex items-center justify-center">
       <div className="max-w-4xl w-full">
         <div className="text-center mb-8">
           <div className="inline-flex items-center bg justify-center w-16 h-16 mb-4">
-            <Image
+            <img
               src="/starshop-logos/StarShop-Logo-Landing.svg"
               alt="StarShop Logo"
-              width={48}
-              height={48}
+              className="w-12 h-12"
             />
           </div>
           <h1 className="text-4xl font-bold text-white mb-2">
@@ -61,7 +45,7 @@ export const ProfileSelection: React.FC = () => {
             ]}
             icon={<User className="w-6 h-6 text-sidebarActive" />}
             isSelected={selectedProfile === 'buyer'}
-            onSelect={() => handleProfileSelect('buyer')}
+            onSelect={() => onProfileSelect('buyer')}
           />
 
           <ProfileCard
@@ -75,27 +59,10 @@ export const ProfileSelection: React.FC = () => {
             ]}
             icon={<Store className="w-6 h-6 text-sidebarActive" />}
             isSelected={selectedProfile === 'seller'}
-            onSelect={() => handleProfileSelect('seller')}
+            onSelect={() => onProfileSelect('seller')}
           />
-        </div>
-
-        <div className="text-center">
-          <button
-            onClick={handleContinue}
-            disabled={!selectedProfile}
-            className={`
-              px-8 py-3 rounded-lg font-semibold text-lg transition-all duration-300
-              ${
-                selectedProfile
-                  ? 'bg-sidebarActive hover:bg-sidebarActive/80 text-white shadow-lg shadow-sidebarActive/25'
-                  : 'bg-sidebarBorder text-sidebarText cursor-not-allowed'
-              }
-            `}
-          >
-            Continue
-          </button>
         </div>
       </div>
     </div>
   );
-};
+}; 

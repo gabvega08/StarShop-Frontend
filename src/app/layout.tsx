@@ -19,7 +19,9 @@ export default function RootLayout({
       <body className="bg-starshopBackground overflow-x-hidden">
         <div className="flex flex-col lg:flex-row min-h-screen w-full relative">
           <main className="flex-1 overflow-y-auto">
-            <ReactQueryProvider>{children}</ReactQueryProvider>
+            <ReactQueryProvider>
+              {children}
+            </ReactQueryProvider>
           </main>
         </div>
       </body>

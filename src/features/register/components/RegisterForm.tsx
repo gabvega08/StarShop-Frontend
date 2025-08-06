@@ -1,47 +1,32 @@
 'use client';
 
-import { useState } from 'react';
-import { useRegistration } from '../hooks/useRegistration';
-import { REGISTRATION_CONSTANTS } from '../constants';
-import Image from 'next/image';
+import React from 'react';
+import { UserProfile } from '../types/register';
+import { REGISTRATION_CONSTANTS } from '../constants/register';
 
 interface RegisterFormProps {
-  userType: 'buyer' | 'seller';
+  userType: UserProfile;
+  formData: {
+    name: string;
+    email: string;
+  };
+  onUpdateFormData: (field: 'name' | 'email', value: string) => void;
 }
 
-export const RegisterForm: React.FC<RegisterFormProps> = ({ userType }) => {
-  const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const { handleRegistration } = useRegistration();
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!fullName.trim() || !email.trim()) {
-      return;
-    }
-
-    setIsLoading(true);
-
-    // Simular un pequeño delay para mostrar el loading
-    setTimeout(() => {
-      setIsLoading(false);
-      handleRegistration(fullName.trim(), email.trim(), userType);
-    }, 1000);
-  };
-
+export const RegisterForm: React.FC<RegisterFormProps> = ({
+  userType,
+  formData,
+  onUpdateFormData,
+}) => {
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-starshopBackground">
+    <div className="flex items-center justify-center p-4">
       <div className="max-w-md w-full">
-        {/* Logo */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 mb-4">
-            <Image
+            <img
               src="/starshop-logos/StarShop-Logo-Landing.svg"
               alt="StarShop Logo"
-              width={48}
-              height={48}
+              className="w-12 h-12"
             />
           </div>
           <h1 className="text-3xl font-bold text-white mb-2">
@@ -52,8 +37,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({ userType }) => {
           </p>
         </div>
 
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form className="space-y-6">
           <div>
             <label
               htmlFor="fullName"
@@ -66,8 +50,8 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({ userType }) => {
             <input
               type="text"
               id="fullName"
-              value={fullName}
-              onChange={e => setFullName(e.target.value)}
+              value={formData.name}
+              onChange={e => onUpdateFormData('name', e.target.value)}
               placeholder={
                 userType === 'buyer'
                   ? REGISTRATION_CONSTANTS.FORM.BUYER.NAME_PLACEHOLDER
@@ -88,32 +72,15 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({ userType }) => {
             <input
               type="email"
               id="email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
+              value={formData.email}
+              onChange={e => onUpdateFormData('email', e.target.value)}
               placeholder={REGISTRATION_CONSTANTS.FORM.EMAIL_PLACEHOLDER}
               className="w-full px-4 py-3 bg-sidebar text-white border border-sidebarBorder rounded-lg focus:outline-none focus:ring-2 focus:ring-sidebarActive focus:border-transparent placeholder-gray-400"
               required
             />
           </div>
-
-          <button
-            type="submit"
-            disabled={isLoading || !fullName.trim() || !email.trim()}
-            className={`
-              w-full py-3 px-6 rounded-lg font-semibold text-lg transition-all duration-300
-              ${
-                isLoading || !fullName.trim() || !email.trim()
-                  ? 'bg-sidebarBorder text-sidebarText cursor-not-allowed'
-                  : 'bg-sidebarActive hover:bg-sidebarActive/80 text-white shadow-lg shadow-sidebarActive/25'
-              }
-            `}
-          >
-            {isLoading
-              ? REGISTRATION_CONSTANTS.FORM.LOADING_TEXT
-              : REGISTRATION_CONSTANTS.FORM.SUBMIT_BUTTON_TEXT}
-          </button>
         </form>
       </div>
     </div>
   );
-};
+}; 
