@@ -1,15 +1,9 @@
-import axios, { AxiosInstance } from 'axios';
+import axios from 'axios';
 
-export class BaseApi {
-  protected axios: AxiosInstance;
-
-  constructor(baseUrl = process.env.NEXT_PUBLIC_BASE_URL) {
-    this.axios = axios.create({
-      baseURL: baseUrl,
-      timeout: 10000,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-  }
-}
+export const axiosInstance = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_API_URL, 
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  withCredentials: false, 
+});
