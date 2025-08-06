@@ -13,7 +13,7 @@ export const useUserStore = create<UserStore>()(
   persist(
     (set, get) => ({
       ...initialState,
-      
+
       setUser: user => set(state => ({ ...state, ...user })),
       updateUser: updates => set(state => ({ ...state, ...updates })),
       clearUser: () => set(initialState),
@@ -44,27 +44,38 @@ export const useUserStore = create<UserStore>()(
   )
 );
 
-export const useUserWalletAddress = () => useUserStore(state => state.walletAddress);
+export const useUserWalletAddress = () =>
+  useUserStore(state => state.walletAddress);
 export const useUserRole = () => useUserStore(state => state.role);
 export const useUserName = () => useUserStore(state => state.name);
 export const useUserEmail = () => useUserStore(state => state.email);
-export const useIsAuthenticated = () => useUserStore(state => state.isAuthenticated());
+export const useIsAuthenticated = () =>
+  useUserStore(state => state.isAuthenticated());
 
-// Hooks
-export const useUser = () => useUserStore(state => ({
-  walletAddress: state.walletAddress,
-  role: state.role,
-  name: state.name,
-  email: state.email,
-  isAuthenticated: state.isAuthenticated(),
-}));
+export const useUser = () =>
+  useUserStore(state => ({
+    walletAddress: state.walletAddress,
+    role: state.role,
+    name: state.name,
+    email: state.email,
+    isAuthenticated: state.isAuthenticated(),
+  }));
 
-export const useUserActions = () => useUserStore(state => ({
-  setUser: state.setUser,
-  updateUser: state.updateUser,
-  clearUser: state.clearUser,
-  setWalletAddress: state.setWalletAddress,
-  setRole: state.setRole,
-  setName: state.setName,
-  setEmail: state.setEmail,
-})); 
+export const useSetUser = () => useUserStore(state => state.setUser);
+export const useUpdateUser = () => useUserStore(state => state.updateUser);
+export const useClearUser = () => useUserStore(state => state.clearUser);
+export const useSetWalletAddress = () =>
+  useUserStore(state => state.setWalletAddress);
+export const useSetRole = () => useUserStore(state => state.setRole);
+export const useSetName = () => useUserStore(state => state.setName);
+export const useSetEmail = () => useUserStore(state => state.setEmail);
+
+export const useUserActions = () => ({
+  setUser: useUserStore.getState().setUser,
+  updateUser: useUserStore.getState().updateUser,
+  clearUser: useUserStore.getState().clearUser,
+  setWalletAddress: useUserStore.getState().setWalletAddress,
+  setRole: useUserStore.getState().setRole,
+  setName: useUserStore.getState().setName,
+  setEmail: useUserStore.getState().setEmail,
+});
