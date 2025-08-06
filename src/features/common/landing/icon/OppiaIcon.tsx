@@ -1,5 +1,5 @@
 import { LucideProps } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { cn } from '@/shared/utils/utils';
 
 export const OppiaLogoIcon = ({ className, ...props }: LucideProps) => (
   <svg

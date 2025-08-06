@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { cn } from '@/lib/utils';
+import { cn } from '@/shared/utils/utils';
 import { Button } from '@/shared/components/ui/button';
 import {
   X,

@@ -67,7 +67,7 @@ export const RegisterFlow: React.FC = () => {
           )}
         </div>
 
-        <div className="mt-6">
+        <div className="mt-8 px-[18rem]">
           <StepNavigation
             onBack={handleBack}
             onNext={
