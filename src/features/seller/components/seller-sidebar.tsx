@@ -13,8 +13,8 @@ import {
   FileText,
   MessageCircle,
   HelpCircle,
-  Settings,
 } from 'lucide-react';
+import { UserWalletMenu } from '@/shared/components/ui/user-wallet-menu';
 
 const navigation = [
   { name: 'Profile', href: '/seller/profile', icon: User },
@@ -31,11 +31,6 @@ const navigation = [
     icon: HelpCircle,
   },
   { name: 'FAQ', href: '/seller/faq', icon: HelpCircle },
-];
-
-const bottomItems = [
-  { name: 'Settings', href: '/seller/settings', icon: Settings },
-  { name: 'Help', href: '/seller/help', icon: HelpCircle },
 ];
 
 const sections = [
@@ -86,21 +81,7 @@ export function SellerSidebar() {
       </div>
 
       <div className="p-6 border-t border-sidebarBorder">
-        <div className="space-y-1">
-          {bottomItems.map(item => {
-            const isActive = pathname === item.href;
-            return (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-colors hover:bg-sidebarActive/80 ${isActive ? 'bg-sidebarActive text-white' : 'text-sidebarText'}`}
-              >
-                <item.icon className="w-5 h-5" />
-                <span className="font-medium">{item.name}</span>
-              </Link>
-            );
-          })}
-        </div>
+        <UserWalletMenu />
       </div>
     </aside>
   );
