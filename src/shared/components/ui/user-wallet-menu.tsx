@@ -22,7 +22,9 @@ interface UserWalletMenuProps {
   className?: string;
 }
 
-export const UserWalletMenu: React.FC<UserWalletMenuProps> = ({ className = '' }) => {
+export const UserWalletMenu: React.FC<UserWalletMenuProps> = ({
+  className = '',
+}) => {
   const walletAddress = useUserWalletAddress();
   const userName = useUserName();
   const setWalletAddress = useSetWalletAddress();
