@@ -1,14 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { OppiaLogoIcon } from '../icon/OppiaIcon';
 
 export default function Hero() {
   return (
     <section className="p-0 flex flex-col-reverse md:flex-row w-full xl:my-[35px] xl:pl-[100px] px-[10px] md:px-[50px] pb-[100px] text-white max-w-[1600px] m-auto">
       <div className="w-full md:w-1/2 xl:max-w-[700px]">
         <h1 className="uppercase text-white text-[50px] md:text-[64px] font-extrabold leading-[50px] md:leading-[64px]">
-          <OppiaLogoIcon className="w-10 h-10" />
           Marketplace built on stellar blockchain
         </h1>
         <p className="text-white text-lg sm:text-sm mt-[20px] md:mt-[35px]">
