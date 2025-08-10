@@ -7,7 +7,7 @@ import { UpcomingEvents } from './upcoming-events';
 export default function Dashboard() {
   return (
     <div className="container mx-auto p-6">
-      <DashboardHeader userName={'Kevin Latino'} />
+      <DashboardHeader />
 
       <StatsGrid />
 

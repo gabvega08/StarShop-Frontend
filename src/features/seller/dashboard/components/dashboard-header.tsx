@@ -1,8 +1,9 @@
-interface DashboardHeaderProps {
-  userName?: string;
-}
+'use client';
 
-export function DashboardHeader({ userName }: DashboardHeaderProps) {
+import { useUserName } from '@/shared/stores';
+
+export function DashboardHeader() {
+  const userName = useUserName();
   return (
     <div className="mb-8">
       <h1 className="text-3xl font-bold text-white">
