@@ -18,15 +18,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="overflow-x-hidden">
-        {/* StarShop Starfield Background - matches your PNG exactly */}
-        <Background 
+        
+        <Background
           variant="starfield"
           starDensity="medium"
           opacity={1}
-          // Optional: Enable twinkling animation
-          // animated={true}
+          
         />
-        
+
         <div className="flex flex-col lg:flex-row min-h-screen w-full relative">
           <main className="flex-1 overflow-y-auto">
             <ReactQueryProvider>{children}</ReactQueryProvider>
