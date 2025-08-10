@@ -1,10 +1,10 @@
 'use client';
 
-import * as React from "react";
-import { cn } from "@/shared/utils/utils";
-import { BackgroundProps } from "./background/types";
-import { Starfield } from "./background/starfield";
-import { Gradient } from "./background/gradient";
+import * as React from 'react';
+import { cn } from '@/shared/utils/utils';
+import { BackgroundProps } from './background/types';
+import { Starfield } from './background/starfield';
+import { Gradient } from './background/gradient';
 
 export function Background({
   className,
@@ -15,9 +15,10 @@ export function Background({
   starDensity = 'medium',
   ...rest
 }: BackgroundProps) {
-  const showGradient = variant === "gradient" || variant === "both" || variant === "all";
-  const showMesh = variant === "mesh" || variant === "all";
-  const showStarfield = variant === "starfield" || variant === "both" || variant === "all";
+  const showGradient =
+    variant === 'gradient' || variant === 'both' || variant === 'all';
+  const showStarfield =
+    variant === 'starfield' || variant === 'both' || variant === 'all';
 
   return (
     <div
@@ -36,11 +37,7 @@ export function Background({
       )}
 
       {/* Gradient Background */}
-      {showGradient && (
-        <Gradient intensity={intensity} animated={animated} />
-      )}
-
+      {showGradient && <Gradient intensity={intensity} animated={animated} />}
     </div>
   );
 }
-

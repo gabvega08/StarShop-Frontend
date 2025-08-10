@@ -39,11 +39,10 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
 
     /* StarShop Starfield Background Colors */
-    --starfield-base: #0C0B1D; /* Deep navy */
+    --starfield-base: #0c0b1d; /* Deep navy */
     --starfield-dark: #0f1123; /* Deeper space */
     --starfield-star: #ffffff; /* Pure white stars */
   }
-
 }
 
 @layer base {

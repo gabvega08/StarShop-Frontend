@@ -1,9 +1,9 @@
 'use client';
 
-import * as React from "react";
-import { cn } from "@/shared/utils/utils";
-import { Star, StarDensity } from "./types";
-import { STAR_CONFIGS } from "./constants";
+import * as React from 'react';
+import { cn } from '@/shared/utils/utils';
+import { Star, StarDensity } from './types';
+import { STAR_CONFIGS } from './constants';
 
 interface StarfieldProps {
   starDensity: StarDensity;
@@ -11,7 +11,6 @@ interface StarfieldProps {
 }
 
 export function Starfield({ starDensity, animated }: StarfieldProps) {
-
   const [stars, setStars] = React.useState<Star[]>([]);
   const [mounted, setMounted] = React.useState(false);
 
@@ -31,7 +30,10 @@ export function Starfield({ starDensity, animated }: StarfieldProps) {
   return (
     <>
       {/* Base starfield color */}
-      <div className="absolute inset-0" style={{ backgroundColor: 'var(--starfield-base)' }} />
+      <div
+        className="absolute inset-0"
+        style={{ backgroundColor: 'var(--starfield-base)' }}
+      />
 
       {/* Scattered stars */}
       {mounted && (
@@ -51,7 +53,9 @@ export function Starfield({ starDensity, animated }: StarfieldProps) {
                 opacity: star.opacity,
                 backgroundColor: 'var(--starfield-star)',
                 animationDelay: animated ? `${Math.random() * 3}s` : undefined,
-                animationDuration: animated ? `${2 + Math.random() * 3}s` : undefined,
+                animationDuration: animated
+                  ? `${2 + Math.random() * 3}s`
+                  : undefined,
               }}
             />
           ))}
@@ -61,9 +65,9 @@ export function Starfield({ starDensity, animated }: StarfieldProps) {
       {/* Depth gradient overlay */}
       <div
         className="absolute inset-0"
-        style={{ 
+        style={{
           background: `linear-gradient(to bottom, transparent, rgba(12, 11, 29, 0.5), var(--starfield-dark))`,
-          opacity: 0.7 
+          opacity: 0.7,
         }}
       />
     </>

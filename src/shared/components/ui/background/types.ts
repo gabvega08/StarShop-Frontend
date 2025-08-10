@@ -1,6 +1,11 @@
-import * as React from "react";
+import * as React from 'react';
 
-export type BackgroundVariant = 'starfield' | 'gradient' | 'mesh' | 'both' | 'all';
+export type BackgroundVariant =
+  | 'starfield'
+  | 'gradient'
+  | 'mesh'
+  | 'both'
+  | 'all';
 export type StarDensity = 'low' | 'medium' | 'high';
 export type Intensity = 'subtle' | 'normal' | 'vibrant';
 
