@@ -1,8 +1,7 @@
-import * as React from 'react';
+'use client';
 
-function cn(...classes: (string | undefined | false | null)[]) {
-  return classes.filter(Boolean).join(' ');
-}
+import * as React from "react";
+import { cn } from "@/shared/utils/utils";
 
 type BackgroundProps = React.HTMLAttributes<HTMLDivElement> & {
   variant?: 'starfield' | 'gradient' | 'mesh' | 'both' | 'all';
@@ -25,10 +24,9 @@ export function Background({
   starDensity = 'medium',
   ...rest
 }: BackgroundProps) {
-  const showGradient =
-    variant === 'gradient' || variant === 'both' || variant === 'all';
-  const showMesh = variant === 'mesh' || variant === 'all';
-  const showStarfield = variant === 'starfield';
+  const showGradient = variant === "gradient" || variant === "both" || variant === "all";
+  const showMesh = variant === "mesh" || variant === "all";
+  const showStarfield = variant === "starfield" || variant === "both" || variant === "all";
 
   const getIntensityOpacity = (base: number) => {
     const multiplier =

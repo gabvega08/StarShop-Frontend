@@ -18,14 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="overflow-x-hidden">
-        
-        <Background
-          variant="starfield"
-          starDensity="medium"
-          opacity={1}
-          
-        />
-
+        <Background variant="starfield" starDensity="medium" opacity={1} />
         <div className="flex flex-col lg:flex-row min-h-screen w-full relative">
           <main className="flex-1 overflow-y-auto">
             <ReactQueryProvider>{children}</ReactQueryProvider>
