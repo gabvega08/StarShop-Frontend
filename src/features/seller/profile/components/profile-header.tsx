@@ -3,8 +3,12 @@ import { Card, CardContent } from '@/shared/components/ui/card';
 import { Edit, MapPin, Globe, Mail } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
+import { useUserName, useUserEmail } from '@/shared/stores/userStore';
 
 const ProfileHeader = () => {
+  const userName = useUserName();
+  const userEmail = useUserEmail();
+
   return (
     <div>
       <Card className=" bg-[#0F0E1D] shadow-[0_0_8px_rgba(255,255,255,0.1)] border-slate-700">
@@ -25,7 +29,7 @@ const ProfileHeader = () => {
 
               <div className="flex-1 space-y-3.5">
                 <h1 className="text-2xl md:text-3xl font-bold text-white">
-                  STRAB
+                  {userName || "Name not available"}
                 </h1>
                 <p className="text-lg text-purple-400">
                   Premium Fashion Destination
@@ -54,7 +58,7 @@ const ProfileHeader = () => {
                 </div>
                 <div className="flex items-center gap-2 text-slate-400">
                   <Mail className="w-4 h-4" />
-                  <span>contact@strab.com</span>
+                  <span>{userEmail || "Email not available"}</span>
                 </div>
               </div>
             </div>
