@@ -29,7 +29,7 @@ const ProfileHeader = () => {
 
               <div className="flex-1 space-y-3.5">
                 <h1 className="text-2xl md:text-3xl font-bold text-white">
-                  {userName || "Name not available"}
+                  {userName || 'Name not available'}
                 </h1>
                 <p className="text-lg text-purple-400">
                   Premium Fashion Destination
@@ -58,7 +58,7 @@ const ProfileHeader = () => {
                 </div>
                 <div className="flex items-center gap-2 text-slate-400">
                   <Mail className="w-4 h-4" />
-                  <span>{userEmail || "Email not available"}</span>
+                  <span>{userEmail || 'Email not available'}</span>
                 </div>
               </div>
             </div>

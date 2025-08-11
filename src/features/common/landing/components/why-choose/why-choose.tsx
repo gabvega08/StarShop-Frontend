@@ -1,4 +1,4 @@
-export function WhyChooseSection() {
+export function WhyChoose() {
   const features = [
     {
       icon: "🔗",
@@ -62,21 +62,19 @@ export function WhyChooseSection() {
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="relative bg-[#252433] border border-slate-700 rounded-2xl p-8 backdrop-blur-sm hover:bg-slate-800/70 transition-colors duration-300 overflow-hidden"
+              className="bg-[#252433] border border-slate-700 rounded-2xl p-8 hover:bg-slate-800/70 transition-colors duration-300"
             >
-              <div className="relative z-10">
-                <div className={`w-12 h-12 ${feature.iconBg} rounded-xl flex items-center justify-center mb-6`}>
-                  <span className="text-2xl">{feature.icon}</span>
-                </div>
-
-                <h3 className="text-xl font-bold text-white mb-4">{feature.title}</h3>
-
-                <p className="text-slate-400 leading-relaxed">{feature.description}</p>
+              <div className={`w-12 h-12 ${feature.iconBg} rounded-xl flex items-center justify-center mb-6`}>
+                <span className="text-2xl">{feature.icon}</span>
               </div>
+
+              <h3 className="text-lg font-semibold text-white mb-4">{feature.title}</h3>
+
+              <p className="text-slate-400 text-sm leading-relaxed">{feature.description}</p>
             </div>
           ))}
         </div>
