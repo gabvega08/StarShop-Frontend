@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <section className="p-0 flex flex-col-reverse md:flex-row w-full xl:my-[35px] xl:pl-[100px] px-[10px] md:px-[50px] pb-[100px] text-white max-w-[1600px] m-auto">
+    <section className="p-0 flex flex-col-reverse md:flex-row w-full xl:my-[35px] xl:pl-[100px] px-[10px] md:px-[50px] pb-[20px] text-white max-w-[1600px] m-auto">
       <div className="w-full md:w-1/2 xl:max-w-[700px]">
         <h1 className="uppercase text-white text-[50px] md:text-[64px] font-extrabold leading-[50px] md:leading-[64px]">
           Marketplace built on stellar blockchain

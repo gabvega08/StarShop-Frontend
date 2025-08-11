@@ -1,12 +1,12 @@
 'use client';
-import Hero from '@/features/common/landing/components/hero';
-import { WhyChoose } from '@/features/common/landing/components/why-choose';
+import Hero from '@/features/common/landing/content/hero';
+import { FeaturesShowcase } from '@/features/common/landing/content/features-showcase/FeaturesShowcase';
 
 export default function LandingPage() {
   return (
-    <main>
+    <main className='flex flex-col justify-center items-center mt-[7rem]'>
       <Hero />
-      <WhyChoose />
+      <FeaturesShowcase />
     </main>
   );
 }
