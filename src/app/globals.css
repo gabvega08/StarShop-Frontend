@@ -42,15 +42,163 @@
     --starfield-base: #0c0b1d; /* Deep navy */
     --starfield-dark: #0f1123; /* Deeper space */
     --starfield-star: #ffffff; /* Pure white stars */
+
+    /* Custom Scrollbar Colors */
+    --scrollbar-thumb: #c084fc;
+    --scrollbar-thumb-hover: #a855f7;
+    --scrollbar-track: transparent;
   }
 }
 
 @layer base {
   * {
     @apply border-border;
+    /* Performance optimizations */
+    backface-visibility: hidden;
+    perspective: 1000px;
   }
+  
   body {
     @apply bg-background text-foreground;
+    /* Enable smooth scrolling globally */
+    scroll-behavior: smooth;
+  }
+
+  /* Custom Scrollbar Styling */
+  
+  /* WebKit browsers (Chrome, Safari, Edge) */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  }
+
+  /* Hide scrollbar by default, show on hover */
+  html, body {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: none;
+  }
+
+  html:hover::-webkit-scrollbar,
+  body:hover::-webkit-scrollbar {
+    display: block;
+  }
+
+  html:hover {
+    scrollbar-width: thin;
+  }
+}
+
+/* Animation Utilities */
+@layer utilities {
+  /* Respect user's motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Float Animation */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Pulse Glow Animation */
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulse-glow {
+    from {
+      box-shadow: 0 0 5px var(--scrollbar-thumb), 0 0 10px var(--scrollbar-thumb), 0 0 15px var(--scrollbar-thumb);
+    }
+    to {
+      box-shadow: 0 0 10px var(--scrollbar-thumb), 0 0 20px var(--scrollbar-thumb), 0 0 30px var(--scrollbar-thumb);
+    }
+  }
+
+  /* Fade In Up Animation */
+  .animate-fadeInUp {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Animation Delays */
+  .animate-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animate-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animate-delay-500 {
+    animation-delay: 500ms;
+  }
+
+  .animate-delay-700 {
+    animation-delay: 700ms;
+  }
+
+  .animate-delay-1000 {
+    animation-delay: 1000ms;
   }
 }
 
