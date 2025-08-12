@@ -4,7 +4,7 @@ import { FeaturesShowcase } from '@/features/common/landing/content/features-sho
 
 export default function LandingPage() {
   return (
-    <main className='flex flex-col justify-center items-center mt-[7rem]'>
+    <main className="flex flex-col justify-center items-center mt-[7rem]">
       <Hero />
       <FeaturesShowcase />
     </main>
