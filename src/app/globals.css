@@ -61,6 +61,11 @@
     scroll-behavior: smooth;
   }
 
+  /* Avoid layout shift when scrollbars appear */
+  html {
+    scrollbar-gutter: stable both-edges;
+  }
+
   /* Custom Scrollbar Styling */
   
   /* WebKit browsers (Chrome, Safari, Edge) */
@@ -93,26 +98,6 @@
     scrollbar-width: thin;
     scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
   }
-
-  /* Hide scrollbar by default, show on hover */
-  html, body {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
-  }
-
-  html::-webkit-scrollbar,
-  body::-webkit-scrollbar {
-    display: none;
-  }
-
-  html:hover::-webkit-scrollbar,
-  body:hover::-webkit-scrollbar {
-    display: block;
-  }
-
-  html:hover {
-    scrollbar-width: thin;
-  }
 }
 
 /* Animation Utilities */
@@ -122,9 +107,8 @@
     *,
     *::before,
     *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
+      animation: none !important;
+      transition: none !important;
       scroll-behavior: auto !important;
     }
   }
@@ -132,6 +116,23 @@
   /* GPU hint utility for animated elements */
   .gpu-hint {
     will-change: transform, opacity;
+  }
+
+  /* Opt-in hover-reveal scrollbars for specific scroll containers */
+  .scrollbar-hover {
+    scrollbar-width: none;           /* Firefox: hide by default */
+    -ms-overflow-style: none;        /* IE 10/11 */
+  }
+  .scrollbar-hover::-webkit-scrollbar {
+    width: 0;                        /* WebKit: hide by default */
+    height: 0;
+  }
+  .scrollbar-hover:hover {
+    scrollbar-width: thin;           /* Firefox: show on hover */
+  }
+  .scrollbar-hover:hover::-webkit-scrollbar {
+    width: 8px;                      /* WebKit: show on hover */
+    height: 8px;
   }
 
   /* Float Animation */
