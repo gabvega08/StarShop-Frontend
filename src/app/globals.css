@@ -53,9 +53,6 @@
 @layer base {
   * {
     @apply border-border;
-    /* Performance optimizations */
-    backface-visibility: hidden;
-    perspective: 1000px;
   }
   
   body {
@@ -132,6 +129,11 @@
     }
   }
 
+  /* GPU hint utility for animated elements */
+  .gpu-hint {
+    will-change: transform, opacity;
+  }
+
   /* Float Animation */
   .animate-float {
     animation: float 3s ease-in-out infinite;
@@ -146,18 +148,26 @@
     }
   }
 
-  /* Pulse Glow Animation */
+  /* Pulse Glow Animation (performant via pseudo-element) */
   .animate-pulse-glow {
-    animation: pulse-glow 2s ease-in-out infinite alternate;
+    position: relative;
+  }
+  .animate-pulse-glow::after {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border-radius: inherit;
+    background: radial-gradient(closest-side, var(--scrollbar-thumb), transparent 70%);
+    opacity: 0.5;
+    filter: blur(8px);
+    transform: scale(0.98);
+    pointer-events: none;
+    animation: glowPulse 2s ease-in-out infinite alternate;
   }
 
-  @keyframes pulse-glow {
-    from {
-      box-shadow: 0 0 5px var(--scrollbar-thumb), 0 0 10px var(--scrollbar-thumb), 0 0 15px var(--scrollbar-thumb);
-    }
-    to {
-      box-shadow: 0 0 10px var(--scrollbar-thumb), 0 0 20px var(--scrollbar-thumb), 0 0 30px var(--scrollbar-thumb);
-    }
+  @keyframes glowPulse {
+    from { opacity: .4; transform: scale(.98); }
+    to   { opacity: .8; transform: scale(1.02); }
   }
 
   /* Fade In Up Animation */
@@ -177,29 +187,12 @@
   }
 
   /* Animation Delays */
-  .animate-delay-100 {
-    animation-delay: 100ms;
-  }
-
-  .animate-delay-200 {
-    animation-delay: 200ms;
-  }
-
-  .animate-delay-300 {
-    animation-delay: 300ms;
-  }
-
-  .animate-delay-500 {
-    animation-delay: 500ms;
-  }
-
-  .animate-delay-700 {
-    animation-delay: 700ms;
-  }
-
-  .animate-delay-1000 {
-    animation-delay: 1000ms;
-  }
+  .animate-delay-100 { animation-delay: 100ms; }
+  .animate-delay-200 { animation-delay: 200ms; }
+  .animate-delay-300 { animation-delay: 300ms; }
+  .animate-delay-500 { animation-delay: 500ms; }
+  .animate-delay-700 { animation-delay: 700ms; }
+  .animate-delay-1000 { animation-delay: 1000ms; }
 }
 
 .custom-white-shadow {
