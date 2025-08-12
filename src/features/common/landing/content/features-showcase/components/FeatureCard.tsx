@@ -9,7 +9,7 @@ export function FeatureCard({ feature }: FeatureCardProps) {
   
   return (
     <div className="bg-[#252433] border border-slate-700 rounded-2xl p-8 hover:bg-slate-800/70 transition-colors duration-300">
-      <div className={w-12 h-12 ${feature.iconBg} rounded-xl flex items-center justify-center mb-6}>
+      <div className={`w-12 h-12 ${feature.iconBg} rounded-xl flex items-center justify-center mb-6`}>
         <IconComponent className="w-6 h-6 text-white" />
       </div>
 
