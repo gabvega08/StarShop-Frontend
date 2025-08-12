@@ -42,6 +42,11 @@
     --starfield-base: #0c0b1d; /* Deep navy */
     --starfield-dark: #0f1123; /* Deeper space */
     --starfield-star: #ffffff; /* Pure white stars */
+
+    /* Custom Scrollbar Colors */
+    --scrollbar-thumb: #c084fc;
+    --scrollbar-thumb-hover: #a855f7;
+    --scrollbar-track: transparent;
   }
 }
 
@@ -49,9 +54,146 @@
   * {
     @apply border-border;
   }
+  
   body {
     @apply bg-background text-foreground;
+    /* Enable smooth scrolling globally */
+    scroll-behavior: smooth;
   }
+
+  /* Avoid layout shift when scrollbars appear */
+  html {
+    scrollbar-gutter: stable both-edges;
+  }
+
+  /* Custom Scrollbar Styling */
+  
+  /* WebKit browsers (Chrome, Safari, Edge) */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  }
+}
+
+/* Animation Utilities */
+@layer utilities {
+  /* Respect user's motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* GPU hint utility for animated elements */
+  .gpu-hint {
+    will-change: transform, opacity;
+  }
+
+  /* Opt-in hover-reveal scrollbars for specific scroll containers */
+  .scrollbar-hover {
+    scrollbar-width: none;           /* Firefox: hide by default */
+    -ms-overflow-style: none;        /* IE 10/11 */
+  }
+  .scrollbar-hover::-webkit-scrollbar {
+    width: 0;                        /* WebKit: hide by default */
+    height: 0;
+  }
+  .scrollbar-hover:hover {
+    scrollbar-width: thin;           /* Firefox: show on hover */
+  }
+  .scrollbar-hover:hover::-webkit-scrollbar {
+    width: 8px;                      /* WebKit: show on hover */
+    height: 8px;
+  }
+
+  /* Float Animation */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Pulse Glow Animation (performant via pseudo-element) */
+  .animate-pulse-glow {
+    position: relative;
+  }
+  .animate-pulse-glow::after {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border-radius: inherit;
+    background: radial-gradient(closest-side, var(--scrollbar-thumb), transparent 70%);
+    opacity: 0.5;
+    filter: blur(8px);
+    transform: scale(0.98);
+    pointer-events: none;
+    animation: glowPulse 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes glowPulse {
+    from { opacity: .4; transform: scale(.98); }
+    to   { opacity: .8; transform: scale(1.02); }
+  }
+
+  /* Fade In Up Animation */
+  .animate-fadeInUp {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Animation Delays */
+  .animate-delay-100 { animation-delay: 100ms; }
+  .animate-delay-200 { animation-delay: 200ms; }
+  .animate-delay-300 { animation-delay: 300ms; }
+  .animate-delay-500 { animation-delay: 500ms; }
+  .animate-delay-700 { animation-delay: 700ms; }
+  .animate-delay-1000 { animation-delay: 1000ms; }
 }
 
 .custom-white-shadow {
