@@ -20,7 +20,7 @@ const buttonVariants = cva(
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
         primary:
-          'w-full flex items-center bg-primary-purple text-white rounded-lg hover:bg-primary-purple/70',
+          'w-full flex items-center bg-brand text-white rounded-lg hover:bg-brand/70',
         transparent:
           'w-full flex items-center bg-transparent text-white rounded-lg hover:bg-white hover:bg-opacity-5 border border-white border-opacity-5',
       },

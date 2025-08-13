@@ -29,9 +29,9 @@ export default {
         cardBorder: '#3E3A77',
         
         // Brand colors
-        primary: '#9150D1',
-        primaryLight: '#9354FF',
-        primaryDark: '#09092f',
+        brand: '#9150D1',
+        brandLight: '#9354FF',
+        brandDark: '#09092f',
         
         // System colors (shadcn/ui compatible)
         background: 'hsl(var(--background))',
