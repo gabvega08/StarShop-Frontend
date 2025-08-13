@@ -7,10 +7,14 @@ export const useRegistration = () => {
   const { setUser } = useUserStore();
   const router = useRouter();
 
-  const handleRegistration = (fullName: string, email: string, role: 'buyer' | 'seller') => {
+  const handleRegistration = (
+    fullName: string,
+    email: string,
+    role: 'buyer' | 'seller'
+  ) => {
     // Validar los datos
     const validation = validateRegistrationData(fullName, email, role);
-    
+
     if (!validation.isValid) {
       console.error('Validation errors:', validation.errors);
       return;
@@ -34,4 +38,4 @@ export const useRegistration = () => {
   return {
     handleRegistration,
   };
-}; 
+};

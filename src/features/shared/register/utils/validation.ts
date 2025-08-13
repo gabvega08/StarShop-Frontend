@@ -8,8 +8,8 @@ export const validateName = (name: string): boolean => {
 };
 
 export const validateRegistrationData = (
-  name: string, 
-  email: string, 
+  name: string,
+  email: string,
   userType: 'buyer' | 'seller'
 ): {
   isValid: boolean;
@@ -30,4 +30,4 @@ export const validateRegistrationData = (
     isValid: errors.length === 0,
     errors,
   };
-}; 
+};

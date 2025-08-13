@@ -17,13 +17,13 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({ userType }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!fullName.trim() || !email.trim()) {
       return;
     }
 
     setIsLoading(true);
-    
+
     // Simular un pequeño delay para mostrar el loading
     setTimeout(() => {
       setIsLoading(false);
@@ -55,20 +55,23 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({ userType }) => {
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="fullName" className="block text-white text-sm font-medium mb-2">
-              {userType === 'buyer' 
-                ? REGISTRATION_CONSTANTS.FORM.BUYER.NAME_LABEL 
-                : REGISTRATION_CONSTANTS.FORM.SELLER.NAME_LABEL
-              }
+            <label
+              htmlFor="fullName"
+              className="block text-white text-sm font-medium mb-2"
+            >
+              {userType === 'buyer'
+                ? REGISTRATION_CONSTANTS.FORM.BUYER.NAME_LABEL
+                : REGISTRATION_CONSTANTS.FORM.SELLER.NAME_LABEL}
             </label>
             <input
               type="text"
               id="fullName"
               value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-              placeholder={userType === 'buyer' 
-                ? REGISTRATION_CONSTANTS.FORM.BUYER.NAME_PLACEHOLDER 
-                : REGISTRATION_CONSTANTS.FORM.SELLER.NAME_PLACEHOLDER
+              onChange={e => setFullName(e.target.value)}
+              placeholder={
+                userType === 'buyer'
+                  ? REGISTRATION_CONSTANTS.FORM.BUYER.NAME_PLACEHOLDER
+                  : REGISTRATION_CONSTANTS.FORM.SELLER.NAME_PLACEHOLDER
               }
               className="w-full px-4 py-3 bg-sidebar text-white border border-sidebarBorder rounded-lg focus:outline-none focus:ring-2 focus:ring-sidebarActive focus:border-transparent placeholder-gray-400"
               required
@@ -76,14 +79,17 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({ userType }) => {
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-white text-sm font-medium mb-2">
+            <label
+              htmlFor="email"
+              className="block text-white text-sm font-medium mb-2"
+            >
               Email
             </label>
             <input
               type="email"
               id="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={e => setEmail(e.target.value)}
               placeholder={REGISTRATION_CONSTANTS.FORM.EMAIL_PLACEHOLDER}
               className="w-full px-4 py-3 bg-sidebar text-white border border-sidebarBorder rounded-lg focus:outline-none focus:ring-2 focus:ring-sidebarActive focus:border-transparent placeholder-gray-400"
               required
@@ -102,10 +108,12 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({ userType }) => {
               }
             `}
           >
-            {isLoading ? REGISTRATION_CONSTANTS.FORM.LOADING_TEXT : REGISTRATION_CONSTANTS.FORM.SUBMIT_BUTTON_TEXT}
+            {isLoading
+              ? REGISTRATION_CONSTANTS.FORM.LOADING_TEXT
+              : REGISTRATION_CONSTANTS.FORM.SUBMIT_BUTTON_TEXT}
           </button>
         </form>
       </div>
     </div>
   );
-}; 
+};

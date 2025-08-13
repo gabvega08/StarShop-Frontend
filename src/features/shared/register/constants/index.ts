@@ -13,4 +13,4 @@ export const REGISTRATION_CONSTANTS = {
     LOADING_TEXT: 'Creating account...',
   },
   REDIRECT_DELAY: 1000, // 1 second
-} as const; 
+} as const;

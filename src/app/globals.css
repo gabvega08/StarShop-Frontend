@@ -54,7 +54,7 @@
   * {
     @apply border-border;
   }
-  
+
   body {
     @apply bg-background text-foreground;
     /* Enable smooth scrolling globally */
@@ -67,7 +67,7 @@
   }
 
   /* Custom Scrollbar Styling */
-  
+
   /* WebKit browsers (Chrome, Safari, Edge) */
   ::-webkit-scrollbar {
     width: 8px;
@@ -120,18 +120,18 @@
 
   /* Opt-in hover-reveal scrollbars for specific scroll containers */
   .scrollbar-hover {
-    scrollbar-width: none;           /* Firefox: hide by default */
-    -ms-overflow-style: none;        /* IE 10/11 */
+    scrollbar-width: none; /* Firefox: hide by default */
+    -ms-overflow-style: none; /* IE 10/11 */
   }
   .scrollbar-hover::-webkit-scrollbar {
-    width: 0;                        /* WebKit: hide by default */
+    width: 0; /* WebKit: hide by default */
     height: 0;
   }
   .scrollbar-hover:hover {
-    scrollbar-width: thin;           /* Firefox: show on hover */
+    scrollbar-width: thin; /* Firefox: show on hover */
   }
   .scrollbar-hover:hover::-webkit-scrollbar {
-    width: 8px;                      /* WebKit: show on hover */
+    width: 8px; /* WebKit: show on hover */
     height: 8px;
   }
 
@@ -141,7 +141,8 @@
   }
 
   @keyframes float {
-    0%, 100% {
+    0%,
+    100% {
       transform: translateY(0px);
     }
     50% {
@@ -154,11 +155,15 @@
     position: relative;
   }
   .animate-pulse-glow::after {
-    content: "";
+    content: '';
     position: absolute;
     inset: -8px;
     border-radius: inherit;
-    background: radial-gradient(closest-side, var(--scrollbar-thumb), transparent 70%);
+    background: radial-gradient(
+      closest-side,
+      var(--scrollbar-thumb),
+      transparent 70%
+    );
     opacity: 0.5;
     filter: blur(8px);
     transform: scale(0.98);
@@ -167,8 +172,14 @@
   }
 
   @keyframes glowPulse {
-    from { opacity: .4; transform: scale(.98); }
-    to   { opacity: .8; transform: scale(1.02); }
+    from {
+      opacity: 0.4;
+      transform: scale(0.98);
+    }
+    to {
+      opacity: 0.8;
+      transform: scale(1.02);
+    }
   }
 
   /* Fade In Up Animation */
@@ -188,12 +199,24 @@
   }
 
   /* Animation Delays */
-  .animate-delay-100 { animation-delay: 100ms; }
-  .animate-delay-200 { animation-delay: 200ms; }
-  .animate-delay-300 { animation-delay: 300ms; }
-  .animate-delay-500 { animation-delay: 500ms; }
-  .animate-delay-700 { animation-delay: 700ms; }
-  .animate-delay-1000 { animation-delay: 1000ms; }
+  .animate-delay-100 {
+    animation-delay: 100ms;
+  }
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animate-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animate-delay-500 {
+    animation-delay: 500ms;
+  }
+  .animate-delay-700 {
+    animation-delay: 700ms;
+  }
+  .animate-delay-1000 {
+    animation-delay: 1000ms;
+  }
 }
 
 .custom-white-shadow {
