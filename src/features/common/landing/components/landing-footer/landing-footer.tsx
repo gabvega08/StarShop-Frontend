@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from "next/image";
+import Image from 'next/image';
 import { Button } from '@/shared/components/ui/button';
-import {FaDiscord, FaGithub, FaLinkedin} from 'react-icons/fa';
-import { SiX } from "react-icons/si"; 
+import { FaDiscord, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { SiX } from 'react-icons/si';
 
 const socialLinks = [
   {
@@ -96,24 +96,25 @@ export default function LandingFooter() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
           {/* Brand Block */}
           <div className="col-span-2 md:col-span-3 lg:col-span-1 space-y-4">
-          <Link href="/" className="inline-flex items-center gap-2 group">
-            <Image
-              src="./starshop-logos/StarShop-Logo.svg"
-              alt="StarShop Logo"
-              width={24}
-              height={24}
-              className="group-hover:opacity-80 transition-opacity"
-            />
-            <span className="font-bold text-xl">StarShop</span>
-          </Link>
+            <Link href="/" className="inline-flex items-center gap-2 group">
+              <Image
+                src="/starshop-logos/StarShop-Logo.svg"
+                alt="StarShop Logo"
+                width={24}
+                height={24}
+                className="group-hover:opacity-80 transition-opacity"
+              />
+              <span className="font-bold text-xl">StarShop</span>
+            </Link>
             <p className="text-sm text-slate-400 leading-relaxed">
-              Blockchain marketplace for transparent commerce and NFT rewards. Building the future of decentralized e-commerce.
+              Blockchain marketplace for transparent commerce and NFT rewards.
+              Building the future of decentralized e-commerce.
             </p>
             <div className="flex items-center gap-2">
-              {socialLinks.map((social) => (
-                <Link 
-                  key={social.name} 
-                  href={social.href} 
+              {socialLinks.map(social => (
+                <Link
+                  key={social.name}
+                  href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -131,11 +132,13 @@ export default function LandingFooter() {
           </div>
 
           {/* Link Columns */}
-          {footerLinkColumns.map((column) => (
+          {footerLinkColumns.map(column => (
             <div key={column.title} className="space-y-3">
-              <h3 className="font-semibold text-white text-sm">{column.title}</h3>
+              <h3 className="font-semibold text-white text-sm">
+                {column.title}
+              </h3>
               <ul className="space-y-2">
-                {column.links.map((link) => (
+                {column.links.map(link => (
                   <li key={link.label}>
                     <Link
                       href={link.href}

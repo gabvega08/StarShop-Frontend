@@ -1,1 +1,1 @@
-export * from './landing-footer';
+export { default as LandingFooter } from './landing-footer';
