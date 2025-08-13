@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { ChevronsUpDown, Copy } from 'lucide-react';
+import copy from 'copy-to-clipboard';
 import { ConnectWalletButton } from '@/shared/components/ui';
 import {
   DropdownMenu,
@@ -17,7 +18,7 @@ import {
   useSetWalletAddress,
 } from '@/shared/stores/userStore';
 import { disconnectWallet } from '@/shared/utils/wallet';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 interface UserWalletMenuProps {
   className?: string;
@@ -31,30 +32,47 @@ export const UserWalletMenu: React.FC<UserWalletMenuProps> = ({
   const setWalletAddress = useSetWalletAddress();
 
   const [copied, setCopied] = useState(false);
+  const [copyError, setCopyError] = useState<string | null>(null);
 
-  const handleCopy = (text: string) =>
-    navigator.clipboard
-      .writeText(text)
-      .then(() => {
-        console.log('Copied!');
-        setCopied(true);
-        setTimeout(() => setCopied(false), 3000);
-      })
-      .catch(err => {
-        console.error('Failed to copy: ', err);
+  const handleCopy = useCallback((text: string) => {
+    if (!text) {
+      setCopyError('No text to copy');
+      return;
+    }
+
+    setCopyError(null);
+    
+    try {
+      const success = copy(text, {
+        format: 'text/plain',
+        onCopy: () => {
+          setCopied(true);
+          setTimeout(() => setCopied(false), 3000);
+        }
       });
+      
+      if (!success) {
+        setCopyError('Failed to copy address');
+      }
+    } catch (error) {
+      console.error('Failed to copy text to clipboard:', error);
+      setCopyError('Failed to copy address');
+    }
+  }, []);
 
-  const formatAddress = (addr: string) =>
-    addr ? `${addr.slice(0, 6)}...${addr.slice(-4)}` : 'Not connected';
+  const formatAddress = useCallback((addr: string) =>
+    addr ? `${addr.slice(0, 6)}...${addr.slice(-4)}` : 'Not connected',
+    []
+  );
 
-  const handleDisconnect = async () => {
+  const handleDisconnect = useCallback(async () => {
     try {
       await disconnectWallet();
       setWalletAddress('');
-    } catch {
-      console.error('Failed to disconnect wallet');
+    } catch (error) {
+      console.error('Failed to disconnect wallet:', error);
     }
-  };
+  }, [setWalletAddress]);
 
   return (
     <>
@@ -88,10 +106,11 @@ export const UserWalletMenu: React.FC<UserWalletMenuProps> = ({
                   {walletAddress && (
                     <button
                       onClick={() => handleCopy(walletAddress)}
-                      className="p-1.5 rounded-md hover:bg-sidebarActive/20"
+                      className="p-1.5 rounded-md hover:bg-sidebarActive/20 transition-colors duration-200"
                       aria-label="Copy address"
+                      disabled={copied}
                     >
-                      <Copy className="h-4 w-4 text-sidebarText" />
+                      <Copy className={`h-4 w-4 ${copied ? 'text-green-400' : 'text-sidebarText'}`} />
                     </button>
                   )}
                 </div>
@@ -106,7 +125,7 @@ export const UserWalletMenu: React.FC<UserWalletMenuProps> = ({
               <DropdownMenuItem asChild>
                 <button
                   onClick={handleDisconnect}
-                  className="flex w-full items-center gap-3 px-4 py-2 text-left text-red-400 hover:text-red-300"
+                  className="flex w-full items-center gap-3 px-4 py-2 text-left text-red-400 hover:text-red-300 transition-colors duration-200"
                 >
                   Disconnect
                 </button>
@@ -123,12 +142,22 @@ export const UserWalletMenu: React.FC<UserWalletMenuProps> = ({
           )}
         </DropdownMenuContent>
       </DropdownMenu>
+      
       {copied && (
         <div
-          className="fixed bottom-4 right-10 bg-gray-900 text-white px-8 py-6 rounded shadow-lg text-[20px] animate-fade-in"
+          className="fixed bottom-4 right-10 bg-tabBackground border-white border text-white px-6 py-3 rounded-lg shadow-lg text-sm font-medium animate-in slide-in-from-bottom-2 duration-300"
           style={{ zIndex: 9999 }}
         >
-          Address Copied!
+          Address copied to clipboard!
+        </div>
+      )}
+      
+      {copyError && (
+        <div
+          className="fixed bottom-4 right-10 bg-red-600 text-white px-6 py-3 rounded-lg shadow-lg text-sm font-medium animate-in slide-in-from-bottom-2 duration-300"
+          style={{ zIndex: 9999 }}
+        >
+          {copyError}
         </div>
       )}
     </>
