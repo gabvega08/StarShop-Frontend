@@ -12,20 +12,20 @@ interface WalletCardProps {
   onRefreshBalance?: () => void;
 }
 
-export function WalletCard({ 
-  wallet, 
-  isLoading = false, 
+export function WalletCard({
+  wallet,
+  isLoading = false,
   isRealData = false,
-  onRefreshBalance 
+  onRefreshBalance,
 }: WalletCardProps) {
   const [copySuccess, setCopySuccess] = useState(false);
 
   // Handle copy wallet address
   const handleCopyAddress = async () => {
     if (!wallet?.address) return;
-    
+
     const addressToCopy = wallet.address;
-    
+
     try {
       await navigator.clipboard.writeText(addressToCopy);
       setCopySuccess(true);
@@ -38,7 +38,7 @@ export function WalletCard({
   // Handle view on explorer
   const handleViewOnExplorer = () => {
     if (!wallet?.address) return;
-    
+
     const addressToView = wallet.address;
     const explorerUrl = `https://stellar.expert/explorer/public/account/${addressToView}`;
     window.open(explorerUrl, '_blank');
@@ -164,12 +164,15 @@ export function WalletCard({
               {isLoading ? (
                 <div className="flex items-center gap-2">
                   <Loader2 className="w-6 h-6 text-purple-400 animate-spin" />
-                  <p className="text-purple-400 text-3xl font-bold">Loading...</p>
+                  <p className="text-purple-400 text-3xl font-bold">
+                    Loading...
+                  </p>
                 </div>
               ) : (
                 <p className="text-purple-400 text-3xl font-bold">
-                  {typeof wallet.balance === 'string' && wallet.balance.includes('XLM') 
-                    ? wallet.balance 
+                  {typeof wallet.balance === 'string' &&
+                  wallet.balance.includes('XLM')
+                    ? wallet.balance
                     : `${wallet.balance} XLM`}
                 </p>
               )}

@@ -35,10 +35,9 @@ export const ConnectWalletStep: React.FC<ConnectWalletStepProps> = ({
             {isWalletConnected ? 'Wallet Connected' : 'Connect Your Wallet'}
           </h1>
           <p className="text-gray-300 text-base">
-            {isWalletConnected 
+            {isWalletConnected
               ? 'Your Stellar wallet is connected and ready to use'
-              : 'Connect your Stellar wallet to complete your registration'
-            }
+              : 'Connect your Stellar wallet to complete your registration'}
           </p>
         </div>
 
@@ -58,7 +57,7 @@ export const ConnectWalletStep: React.FC<ConnectWalletStepProps> = ({
                   <Shield className="w-5 h-5" />
                   Wallet Connected
                 </div>
-                
+
                 <div className="flex justify-center">
                   <ConnectWalletButton
                     variant="outline"

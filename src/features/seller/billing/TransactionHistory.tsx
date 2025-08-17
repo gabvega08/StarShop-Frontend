@@ -66,10 +66,10 @@ interface StellarTransactionsResponse {
   };
 }
 
-export function TransactionHistory({ 
-  transactions, 
+export function TransactionHistory({
+  transactions,
   walletConnected = false,
-  walletAddress 
+  walletAddress,
 }: TransactionHistoryProps) {
   const [realTransactions, setRealTransactions] = useState<Transaction[]>([]);
   const [isLoadingTransactions, setIsLoadingTransactions] = useState(false);
@@ -89,16 +89,16 @@ export function TransactionHistory({
       console.log('Fetching transactions for address:', walletAddress);
 
       const horizonUrl = 'https://horizon.stellar.org';
-      
+
       const response = await fetch(
         `${horizonUrl}/accounts/${walletAddress}/transactions?limit=20&order=desc&include_failed=true`,
         {
           method: 'GET',
           headers: {
-            'Accept': 'application/hal+json',
+            Accept: 'application/hal+json',
             'Content-Type': 'application/json',
           },
-          signal: AbortSignal.timeout(15000)
+          signal: AbortSignal.timeout(15000),
         }
       );
 
@@ -108,66 +108,74 @@ export function TransactionHistory({
           setRealTransactions([]);
           return;
         }
-        throw new Error(`Horizon API error: ${response.status} ${response.statusText}`);
+        throw new Error(
+          `Horizon API error: ${response.status} ${response.statusText}`
+        );
       }
 
       const data: StellarTransactionsResponse = await response.json();
       console.log('Transactions data received:', data);
 
-      if (!data._embedded || !data._embedded.records || data._embedded.records.length === 0) {
+      if (
+        !data._embedded ||
+        !data._embedded.records ||
+        data._embedded.records.length === 0
+      ) {
         console.log('No transactions found for this account');
         setRealTransactions([]);
         return;
       }
 
       const transformedTransactions: Transaction[] = await Promise.all(
-        data._embedded.records.slice(0, 10).map(async (tx: StellarTransaction) => {
-          let transactionName = 'XLM Transaction';
-          let amount = '0.0000';
+        data._embedded.records
+          .slice(0, 10)
+          .map(async (tx: StellarTransaction) => {
+            let transactionName = 'XLM Transaction';
+            let amount = '0.0000';
 
-          try {
-            const opsResponse = await fetch(tx._links.operations.href, {
-              headers: {
-                'Accept': 'application/hal+json',
-              },
-              signal: AbortSignal.timeout(10000)
-            });
+            try {
+              const opsResponse = await fetch(tx._links.operations.href, {
+                headers: {
+                  Accept: 'application/hal+json',
+                },
+                signal: AbortSignal.timeout(10000),
+              });
 
-            if (opsResponse.ok) {
-              const opsData = await opsResponse.json();
-              if (opsData._embedded && opsData._embedded.records.length > 0) {
-                const operation = opsData._embedded.records[0] as StellarOperation;
-                transactionName = getTransactionName(operation.type);
-                amount = operation.amount || '0.0000';
+              if (opsResponse.ok) {
+                const opsData = await opsResponse.json();
+                if (opsData._embedded && opsData._embedded.records.length > 0) {
+                  const operation = opsData._embedded
+                    .records[0] as StellarOperation;
+                  transactionName = getTransactionName(operation.type);
+                  amount = operation.amount || '0.0000';
+                }
               }
+            } catch (opError) {
+              console.warn('Failed to fetch operation details:', opError);
             }
-          } catch (opError) {
-            console.warn('Failed to fetch operation details:', opError);
-          }
 
-          return {
-            id: tx.hash,
-            name: transactionName,
-            date: new Date(tx.created_at).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'short',
-              day: 'numeric',
-              hour: '2-digit',
-              minute: '2-digit'
-            }),
-            amount: parseFloat(amount).toFixed(4),
-            status: tx.successful ? 'Confirmed' : 'Failed',
-            hash: tx.hash
-          };
-        })
+            return {
+              id: tx.hash,
+              name: transactionName,
+              date: new Date(tx.created_at).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+              }),
+              amount: parseFloat(amount).toFixed(4),
+              status: tx.successful ? 'Confirmed' : 'Failed',
+              hash: tx.hash,
+            };
+          })
       );
 
       console.log('Transformed transactions:', transformedTransactions);
       setRealTransactions(transformedTransactions);
-
     } catch (error: any) {
       console.error('Error fetching transactions:', error);
-      
+
       if (error.name === 'TimeoutError') {
         setError('Request timeout - Stellar network may be slow');
       } else if (error.message?.includes('fetch')) {
@@ -182,24 +190,27 @@ export function TransactionHistory({
 
   const getTransactionName = (type: string): string => {
     const typeMap: { [key: string]: string } = {
-      'payment': 'XLM Payment',
-      'create_account': 'Account Created',
-      'change_trust': 'Trust Line Changed',
-      'allow_trust': 'Trust Allowed',
-      'account_merge': 'Account Merged',
-      'manage_data': 'Data Management',
-      'bump_sequence': 'Sequence Bumped',
-      'manage_buy_offer': 'Buy Offer',
-      'manage_sell_offer': 'Sell Offer',
-      'create_passive_sell_offer': 'Passive Sell Offer',
-      'path_payment_strict_receive': 'Path Payment (Receive)',
-      'path_payment_strict_send': 'Path Payment (Send)',
-      'set_options': 'Account Options',
-      'inflation': 'Inflation',
-      'manage_offer': 'Manage Offer',
-      'path_payment': 'Path Payment',
+      payment: 'XLM Payment',
+      create_account: 'Account Created',
+      change_trust: 'Trust Line Changed',
+      allow_trust: 'Trust Allowed',
+      account_merge: 'Account Merged',
+      manage_data: 'Data Management',
+      bump_sequence: 'Sequence Bumped',
+      manage_buy_offer: 'Buy Offer',
+      manage_sell_offer: 'Sell Offer',
+      create_passive_sell_offer: 'Passive Sell Offer',
+      path_payment_strict_receive: 'Path Payment (Receive)',
+      path_payment_strict_send: 'Path Payment (Send)',
+      set_options: 'Account Options',
+      inflation: 'Inflation',
+      manage_offer: 'Manage Offer',
+      path_payment: 'Path Payment',
     };
-    return typeMap[type] || `${type.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}`;
+    return (
+      typeMap[type] ||
+      `${type.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}`
+    );
   };
 
   const handleViewTransaction = (hash?: string) => {
@@ -213,7 +224,7 @@ export function TransactionHistory({
       const timer = setTimeout(() => {
         fetchRealTransactions();
       }, 1000);
-      
+
       return () => clearTimeout(timer);
     }
   }, [walletConnected, walletAddress]);
@@ -248,7 +259,7 @@ export function TransactionHistory({
             )}
           </div>
         </div>
-        
+
         {walletConnected && (
           <Button
             variant="outline"
@@ -270,7 +281,8 @@ export function TransactionHistory({
       {!walletConnected && (
         <div className="mb-6 p-4 bg-yellow-100 border border-yellow-300 text-yellow-800 rounded-lg">
           <p className="text-sm">
-            <strong>Wallet not connected.</strong> Connect your wallet to view transaction history.
+            <strong>Wallet not connected.</strong> Connect your wallet to view
+            transaction history.
           </p>
         </div>
       )}
@@ -302,11 +314,13 @@ export function TransactionHistory({
                   border: '1px solid transparent',
                 }}
                 onMouseEnter={e => {
-                  e.currentTarget.style.backgroundColor = 'rgba(168, 85, 247, 0.1)';
+                  e.currentTarget.style.backgroundColor =
+                    'rgba(168, 85, 247, 0.1)';
                   e.currentTarget.style.borderColor = 'rgba(168, 85, 247, 0.2)';
                 }}
                 onMouseLeave={e => {
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                  e.currentTarget.style.backgroundColor =
+                    'rgba(255, 255, 255, 0.05)';
                   e.currentTarget.style.border = '1px solid transparent';
                 }}
               >
@@ -324,17 +338,23 @@ export function TransactionHistory({
                     <p className="text-white font-medium">
                       {transaction.amount} XLM
                     </p>
-                    <p className={`text-sm ${
-                      transaction.status === 'Confirmed' ? 'text-green-400' : 
-                      transaction.status === 'Failed' ? 'text-red-400' : 
-                      'text-yellow-400'
-                    }`}>
+                    <p
+                      className={`text-sm ${
+                        transaction.status === 'Confirmed'
+                          ? 'text-green-400'
+                          : transaction.status === 'Failed'
+                            ? 'text-red-400'
+                            : 'text-yellow-400'
+                      }`}
+                    >
                       {transaction.status}
                     </p>
                   </div>
-                  <ExternalLink 
-                    className="w-4 h-4 text-gray-400 hover:text-white cursor-pointer" 
-                    onClick={() => handleViewTransaction((transaction as any).hash)}
+                  <ExternalLink
+                    className="w-4 h-4 text-gray-400 hover:text-white cursor-pointer"
+                    onClick={() =>
+                      handleViewTransaction((transaction as any).hash)
+                    }
                   />
                 </div>
               </div>
@@ -342,10 +362,9 @@ export function TransactionHistory({
           ) : (
             <div className="text-center py-12">
               <p className="text-gray-400 text-lg">
-                {walletConnected 
-                  ? 'No transactions found for this wallet.' 
-                  : 'Connect your wallet to view transaction history.'
-                }
+                {walletConnected
+                  ? 'No transactions found for this wallet.'
+                  : 'Connect your wallet to view transaction history.'}
               </p>
             </div>
           )}

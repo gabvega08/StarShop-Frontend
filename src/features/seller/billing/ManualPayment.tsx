@@ -13,11 +13,11 @@ interface ManualPaymentProps {
   onPaymentSent?: (txHash: string) => void;
 }
 
-export function ManualPayment({ 
-  walletConnected = false, 
+export function ManualPayment({
+  walletConnected = false,
   walletAddress,
   walletBalance,
-  onPaymentSent 
+  onPaymentSent,
 }: ManualPaymentProps) {
   const [amount, setAmount] = useState('');
   const [memo, setMemo] = useState('');
@@ -27,7 +27,8 @@ export function ManualPayment({
   const [success, setSuccess] = useState('');
 
   // Default destination address for payments (replace with your actual address)
-  const DEFAULT_DESTINATION = 'GCZJM35NKGVK47BB4SPBDV25477PZYIYPVVG453LPYFNXLS3FGHDXOCM';
+  const DEFAULT_DESTINATION =
+    'GCZJM35NKGVK47BB4SPBDV25477PZYIYPVVG453LPYFNXLS3FGHDXOCM';
 
   // Validate XLM amount
   const isValidAmount = (value: string): boolean => {
@@ -45,12 +46,12 @@ export function ManualPayment({
   // Check if user has sufficient balance
   const hasSufficientBalance = (): boolean => {
     if (!walletBalance || !amount) return false;
-    
+
     const balance = parseFloat(walletBalance.replace(' XLM', ''));
     const paymentAmount = parseFloat(amount);
-    
+
     // Account for transaction fee (typically 0.00001 XLM)
-    return balance >= (paymentAmount + 0.00001);
+    return balance >= paymentAmount + 0.00001;
   };
 
   // Handle payment submission
@@ -87,11 +88,13 @@ export function ManualPayment({
         from: walletAddress,
         to: destination,
         amount: amount,
-        memo: memo
+        memo: memo,
       });
 
-      setSuccess(`Payment sent successfully! Transaction hash: ${txHash.slice(0, 8)}...`);
-      
+      setSuccess(
+        `Payment sent successfully! Transaction hash: ${txHash.slice(0, 8)}...`
+      );
+
       // Reset form
       setAmount('');
       setMemo('');
@@ -101,7 +104,6 @@ export function ManualPayment({
       if (onPaymentSent) {
         onPaymentSent(txHash);
       }
-
     } catch (error: unknown) {
       if (error instanceof Error) {
         setError(`Payment failed: ${error.message}`);
@@ -151,7 +153,7 @@ export function ManualPayment({
     const result = await server.submitTransaction(transaction);
     return result.hash;
     */
-    
+
     // For demo purposes, simulate delay and return mock hash
     await new Promise(resolve => setTimeout(resolve, 2000));
     return `mock_tx_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
@@ -180,7 +182,9 @@ export function ManualPayment({
           <AlertTriangle className="w-5 h-5 mt-0.5 flex-shrink-0" />
           <div>
             <p className="font-medium">Wallet Not Connected</p>
-            <p className="text-sm">Please connect your Stellar wallet to make payments.</p>
+            <p className="text-sm">
+              Please connect your Stellar wallet to make payments.
+            </p>
           </div>
         </div>
       )}
@@ -222,7 +226,7 @@ export function ManualPayment({
               </p>
             )}
           </div>
-          
+
           <div>
             <label className="text-gray-400 text-sm block mb-2">
               Memo (Optional)
@@ -260,7 +264,9 @@ export function ManualPayment({
         {/* Transaction Summary */}
         {amount && parseFloat(amount) > 0 && (
           <div className="p-4 bg-slate-800/50 rounded-lg border border-slate-600">
-            <h3 className="text-white text-sm font-medium mb-2">Transaction Summary</h3>
+            <h3 className="text-white text-sm font-medium mb-2">
+              Transaction Summary
+            </h3>
             <div className="space-y-1 text-sm">
               <div className="flex justify-between text-gray-300">
                 <span>Payment Amount:</span>
@@ -272,20 +278,23 @@ export function ManualPayment({
               </div>
               <div className="flex justify-between text-white font-medium pt-1 border-t border-slate-600">
                 <span>Total:</span>
-                <span>{(parseFloat(amount) + parseFloat(estimatedFee)).toFixed(7)} XLM</span>
+                <span>
+                  {(parseFloat(amount) + parseFloat(estimatedFee)).toFixed(7)}{' '}
+                  XLM
+                </span>
               </div>
             </div>
           </div>
         )}
 
         {/* Send Button */}
-        <Button 
+        <Button
           className="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed"
           onClick={handleSendPayment}
           disabled={
-            !walletConnected || 
-            isSending || 
-            !amount || 
+            !walletConnected ||
+            isSending ||
+            !amount ||
             !isValidAmount(amount) ||
             !hasSufficientBalance()
           }

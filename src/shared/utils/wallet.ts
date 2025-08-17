@@ -19,10 +19,12 @@ function getKit(): StellarWalletsKit {
   return kit;
 }
 
-export async function connectWallet(onConnected?: (address: string) => void): Promise<void> {
+export async function connectWallet(
+  onConnected?: (address: string) => void
+): Promise<void> {
   try {
     const walletKit = getKit();
-    
+
     return new Promise((resolve, reject) => {
       walletKit.openModal({
         onWalletSelected: async (option: ISupportedWallet) => {
@@ -38,7 +40,7 @@ export async function connectWallet(onConnected?: (address: string) => void): Pr
             reject(error);
           }
         },
-        onClosed: (reason) => {
+        onClosed: reason => {
           if (typeof reason === 'string' && reason === 'wallet-not-supported') {
             reject(new Error('Wallet not supported'));
           } else if (typeof reason === 'string' && reason === 'user-closed') {

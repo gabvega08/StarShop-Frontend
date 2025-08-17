@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect } from 'react';
@@ -44,7 +44,9 @@ interface StellarAccountResponse {
 }
 
 export function BillingMainComponent() {
-  const [realWalletData, setRealWalletData] = useState<RealWalletData | null>(null);
+  const [realWalletData, setRealWalletData] = useState<RealWalletData | null>(
+    null
+  );
   const [isLoadingBalance, setIsLoadingBalance] = useState(false);
   const [apiError, setApiError] = useState<string>('');
   const storedWalletAddress = useUserWalletAddress();
@@ -53,7 +55,7 @@ export function BillingMainComponent() {
     try {
       setIsLoadingBalance(true);
       setApiError('');
-      
+
       if (!walletAddress || !walletAddress.match(/^G[A-Z2-7]{55}$/)) {
         throw new Error('Invalid Stellar address format');
       }
@@ -64,18 +66,22 @@ export function BillingMainComponent() {
       const response = await fetch(`${horizonUrl}/accounts/${walletAddress}`, {
         method: 'GET',
         headers: {
-          'Accept': 'application/hal+json',
+          Accept: 'application/hal+json',
           'Content-Type': 'application/json',
         },
-        signal: AbortSignal.timeout(10000)
+        signal: AbortSignal.timeout(10000),
       });
 
       if (!response.ok) {
         if (response.status === 404) {
-          console.warn('Account not found on Stellar network - may be unfunded');
+          console.warn(
+            'Account not found on Stellar network - may be unfunded'
+          );
           return '0.0000';
         }
-        throw new Error(`Horizon API error: ${response.status} ${response.statusText}`);
+        throw new Error(
+          `Horizon API error: ${response.status} ${response.statusText}`
+        );
       }
 
       const accountData: StellarAccountResponse = await response.json();
@@ -118,13 +124,13 @@ export function BillingMainComponent() {
 
   const verifyWalletConnection = async (address: string) => {
     try {
-      const timeoutPromise = new Promise<never>((_, reject) => 
+      const timeoutPromise = new Promise<never>((_, reject) =>
         setTimeout(() => reject(new Error('Wallet verification timeout')), 5000)
       );
-      
+
       const verifyPromise = getPublicKey();
       const publicKey = await Promise.race([verifyPromise, timeoutPromise]);
-      
+
       const isValid = publicKey === address;
       console.log('Wallet verification:', { publicKey, address, isValid });
       return isValid;
@@ -137,34 +143,34 @@ export function BillingMainComponent() {
   // Handle wallet connection
   const handleWalletConnected = async (address: string) => {
     console.log('Wallet connected:', address);
-    
+
     setRealWalletData({
       address: address,
       balance: '0.0000',
       isConnected: true,
-      isVerified: false
+      isVerified: false,
     });
 
     try {
       const [balance, isVerified] = await Promise.allSettled([
         fetchXLMBalance(address),
-        verifyWalletConnection(address)
+        verifyWalletConnection(address),
       ]);
 
       setRealWalletData({
         address: address,
         balance: balance.status === 'fulfilled' ? balance.value : '0.0000',
         isConnected: true,
-        isVerified: isVerified.status === 'fulfilled' ? isVerified.value : false
+        isVerified:
+          isVerified.status === 'fulfilled' ? isVerified.value : false,
       });
-
     } catch (error) {
       console.error('Error during wallet setup:', error);
       setRealWalletData({
         address: address,
         balance: '0.0000',
         isConnected: true,
-        isVerified: false
+        isVerified: false,
       });
     }
   };
@@ -173,7 +179,7 @@ export function BillingMainComponent() {
     if (realWalletData?.address) {
       try {
         const balance = await fetchXLMBalance(realWalletData.address);
-        setRealWalletData(prev => prev ? {...prev, balance} : null);
+        setRealWalletData(prev => (prev ? { ...prev, balance } : null));
       } catch (error) {
         console.error('Error refreshing balance:', error);
       }
@@ -203,7 +209,7 @@ export function BillingMainComponent() {
       const timer = setTimeout(() => {
         handleWalletConnected(storedWalletAddress);
       }, 500);
-      
+
       return () => clearTimeout(timer);
     }
   }, [storedWalletAddress, realWalletData]);
@@ -223,7 +229,7 @@ export function BillingMainComponent() {
       balance: realWalletData.balance,
       isConnected: realWalletData.isConnected,
       isVerified: realWalletData.isVerified,
-      fullAddress: realWalletData.address
+      fullAddress: realWalletData.address,
     };
   };
 
@@ -239,7 +245,7 @@ export function BillingMainComponent() {
         {/* Header */}
         <div className="max-w-6xl mt-3 mx-auto flex items-center justify-between mb-8">
           <h1 className="text-white text-2xl font-bold">Stellar XLM Billing</h1>
-          
+
           {/* Replace the old button with ConnectWalletButton */}
           <div className="flex items-center gap-4">
             {isWalletConnected && walletDisplayData && (
@@ -251,7 +257,7 @@ export function BillingMainComponent() {
                 )}
               </div>
             )}
-            
+
             <ConnectWalletButton
               className="bg-purple-600 hover:bg-purple-700"
               size="md"
@@ -277,7 +283,8 @@ export function BillingMainComponent() {
           <div className="max-w-6xl mx-auto mb-6">
             <div className="bg-yellow-100 border border-yellow-300 text-yellow-800 px-4 py-3 rounded-lg">
               <p className="text-sm">
-                <strong>Wallet not connected.</strong> Please connect your Stellar wallet to view real balance and transaction data.
+                <strong>Wallet not connected.</strong> Please connect your
+                Stellar wallet to view real balance and transaction data.
               </p>
             </div>
           </div>
@@ -286,15 +293,15 @@ export function BillingMainComponent() {
         {/* Main Content */}
         <div className="space-y-6">
           {/* Connected Wallet - Show real data if connected, mock data otherwise */}
-          <WalletCard 
-            wallet={walletDisplayData} 
+          <WalletCard
+            wallet={walletDisplayData}
             isLoading={isLoadingBalance}
             isRealData={isWalletConnected}
             onRefreshBalance={handleRefreshBalance}
           />
 
           {/* Transaction History - You may want to fetch real transactions here too */}
-          <TransactionHistory 
+          <TransactionHistory
             transactions={[]}
             walletConnected={isWalletConnected}
             walletAddress={realWalletData?.address}
@@ -304,10 +311,12 @@ export function BillingMainComponent() {
           <CurrentPlan plan={CURRENT_PLAN} />
 
           {/* Manual Payment - Pass wallet info if needed */}
-          <ManualPayment 
+          <ManualPayment
             walletConnected={isWalletConnected}
             walletAddress={realWalletData?.address}
-            walletBalance={realWalletData ? `${realWalletData.balance} XLM` : undefined}
+            walletBalance={
+              realWalletData ? `${realWalletData.balance} XLM` : undefined
+            }
             onPaymentSent={handlePaymentSent}
           />
         </div>

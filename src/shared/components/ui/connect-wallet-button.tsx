@@ -3,7 +3,11 @@
 
 import React, { useState, useEffect } from 'react';
 import { Wallet, Loader2 } from 'lucide-react';
-import { connectWallet, disconnectWallet, getPublicKey } from '@/shared/utils/wallet';
+import {
+  connectWallet,
+  disconnectWallet,
+  getPublicKey,
+} from '@/shared/utils/wallet';
 import { useSetWalletAddress, useUserWalletAddress } from '@/shared/stores';
 
 interface ConnectWalletButtonProps {
@@ -103,7 +107,11 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
 
   const getIcon = () => {
     if (isConnecting) {
-      return <Loader2 className={`w-4 h-4 animate-spin ${size === 'lg' ? 'w-5 h-5' : ''}`} />;
+      return (
+        <Loader2
+          className={`w-4 h-4 animate-spin ${size === 'lg' ? 'w-5 h-5' : ''}`}
+        />
+      );
     }
     return <Wallet className={`w-4 h-4 ${size === 'lg' ? 'w-5 h-5' : ''}`} />;
   };
