@@ -14,6 +14,7 @@ export interface Plan {
 }
 
 export interface WalletInfo {
+  isVerified: boolean;
   address: string;
   balance: string;
 }

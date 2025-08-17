@@ -1,15 +1,17 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 
-import React, { useState } from 'react';
-import { Wallet } from 'lucide-react';
-import { connectWallet, disconnectWallet } from '@/shared/utils/wallet';
-import { useSetWalletAddress } from '@/shared/stores';
+import React, { useState, useEffect } from 'react';
+import { Wallet, Loader2 } from 'lucide-react';
+import { connectWallet, disconnectWallet, getPublicKey } from '@/shared/utils/wallet';
+import { useSetWalletAddress, useUserWalletAddress } from '@/shared/stores';
 
 interface ConnectWalletButtonProps {
   className?: string;
   variant?: 'default' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   onWalletConnected?: (address: string) => void;
+  onWalletDisconnected?: () => void;
 }
 
 export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
@@ -17,18 +19,27 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
   variant = 'default',
   size = 'md',
   onWalletConnected,
+  onWalletDisconnected,
 }) => {
-  const [isConnected, setIsConnected] = useState(false);
   const [isConnecting, setIsConnecting] = useState(false);
-  const [walletAddress, setWalletAddress] = useState<string>('');
+  const [localWalletAddress, setLocalWalletAddress] = useState<string>('');
   const setWalletAddressStore = useSetWalletAddress();
+  const storedWalletAddress = useUserWalletAddress();
+
+  const isConnected = Boolean(localWalletAddress || storedWalletAddress);
+  const displayAddress = localWalletAddress || storedWalletAddress;
+
+  useEffect(() => {
+    if (storedWalletAddress) {
+      setLocalWalletAddress(storedWalletAddress);
+    }
+  }, [storedWalletAddress]);
 
   const handleConnect = async () => {
     try {
       setIsConnecting(true);
       await connectWallet((address: string) => {
-        setIsConnected(true);
-        setWalletAddress(address);
+        setLocalWalletAddress(address);
         setWalletAddressStore(address);
         if (onWalletConnected) {
           onWalletConnected(address);
@@ -44,9 +55,11 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
   const handleDisconnect = async () => {
     try {
       disconnectWallet();
-      setIsConnected(false);
-      setWalletAddress('');
+      setLocalWalletAddress('');
       setWalletAddressStore('');
+      if (onWalletDisconnected) {
+        onWalletDisconnected();
+      }
     } catch (error) {
       console.error('Failed to disconnect wallet:', error);
     }
@@ -54,7 +67,7 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
 
   const getButtonClasses = () => {
     const baseClasses =
-      'flex items-center gap-2 font-medium transition-all duration-200 rounded-lg';
+      'flex items-center gap-2 font-medium transition-all duration-200 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed';
 
     const sizeClasses = {
       sm: 'px-3 py-1.5 text-sm',
@@ -84,8 +97,15 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
   };
 
   const getWalletAddress = () => {
-    if (!walletAddress) return '';
-    return `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`;
+    if (!displayAddress) return '';
+    return `${displayAddress.slice(0, 6)}...${displayAddress.slice(-4)}`;
+  };
+
+  const getIcon = () => {
+    if (isConnecting) {
+      return <Loader2 className={`w-4 h-4 animate-spin ${size === 'lg' ? 'w-5 h-5' : ''}`} />;
+    }
+    return <Wallet className={`w-4 h-4 ${size === 'lg' ? 'w-5 h-5' : ''}`} />;
   };
 
   return (
@@ -95,11 +115,11 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
         disabled={isConnecting}
         className={getButtonClasses()}
       >
-        <Wallet className={`w-4 h-4 ${size === 'lg' ? 'w-3 h-3' : ''}`} />
+        {getIcon()}
         {getButtonText()}
       </button>
 
-      {isConnected && walletAddress && (
+      {isConnected && displayAddress && (
         <div className="text-xs text-gray-400 bg-custom-light-card-background px-2 py-1 rounded">
           {getWalletAddress()}
         </div>
