@@ -15,21 +15,27 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Sidebar and navigation colors
         sidebar: '#0C0B1D',
         sidebarActive: '#7E22CE',
         sidebarText: '#9CA3AF',
         sidebarTitle: '#FFFFFF',
         sidebarBorder: '#374151',
         tabBackground: '#13111E',
-        'custom-light-purple': '#9354FF',
-        'custom-dark-purple': '#09092f',
-        'custom-light-card-border': '#3E3A77',
-        'custom-light-card-background': '#312E56',
-        'custom-card-background': '[#0F0E1D]/50',
-        'custom-light-wrapper-background': '#0F0E2C',
+
+        // Card and component backgrounds
+        cardBackground: '[#0F0E1D]/50',
+        cardLightBackground: '#312E56',
+        cardBorder: '#3E3A77',
+
+        // Brand colors
+        brand: '#9150D1',
+        brandLight: '#9354FF',
+        brandDark: '#09092f',
+
+        // System colors (shadcn/ui compatible)
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
-        'primary-purple': '#9150D1',
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',

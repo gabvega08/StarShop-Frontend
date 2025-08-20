@@ -5,6 +5,8 @@ interface FeatureCardProps {
 }
 
 export function FeatureCard({ feature }: FeatureCardProps) {
+  const IconComponent = feature.icon;
+
   return (
     <div className="bg-[#252433] border border-slate-700 rounded-2xl p-8 hover:bg-slate-800/70 transition-colors duration-300">
       <div

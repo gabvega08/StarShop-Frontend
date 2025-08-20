@@ -1,5 +1,7 @@
+import { Link, Palette, Shield, Zap, Globe, BarChart3 } from 'lucide-react';
+
 export interface Feature {
-  icon: string;
+  icon: React.ComponentType<{ className?: string }>;
   iconBg: string;
   title: string;
   description: string;
@@ -7,42 +9,42 @@ export interface Feature {
 
 export const FEATURES: Feature[] = [
   {
-    icon: '🔗',
+    icon: Link,
     iconBg: 'bg-gradient-to-br from-[#925ff7] to-[#5478f6]',
     title: 'Blockchain Powered',
     description:
       'Built on Stellar blockchain for maximum security, transparency, and trust in every transaction.',
   },
   {
-    icon: '🎨',
+    icon: Palette,
     iconBg: 'bg-gradient-to-br from-[#348ee5] to-[#1cadb6]',
     title: 'Exclusive NFTs',
     description:
       'Receive unique digital collectibles with every purchase. Build your collection while shopping.',
   },
   {
-    icon: '🛡️',
+    icon: Shield,
     iconBg: 'bg-gradient-to-br from-[#17bb98] to-[#1fc265]',
     title: 'Verified Sellers',
     description:
       'All sellers are verified and earn milestone NFTs that showcase their credibility and success.',
   },
   {
-    icon: '⚡',
+    icon: Zap,
     iconBg: 'bg-gradient-to-br from-[#54614a] to-[#b0b821]',
     title: 'Instant Transactions',
     description:
       "Lightning-fast payments with minimal fees thanks to Stellar's efficient blockchain technology.",
   },
   {
-    icon: '🌐',
+    icon: Globe,
     iconBg: 'bg-gradient-to-br from-[#eda60a] to-[#f58413]',
     title: 'Global Marketplace',
     description:
       'Connect with buyers and sellers worldwide in a truly decentralized marketplace ecosystem.',
   },
   {
-    icon: '📊',
+    icon: BarChart3,
     iconBg: 'bg-gradient-to-br from-[#f76822] to-[#f14f3a]',
     title: 'Analytics Dashboard',
     description:
