@@ -12,7 +12,7 @@ export function FeatureCard({ feature }: FeatureCardProps) {
       <div
         className={`w-12 h-12 ${feature.iconBg} rounded-xl flex items-center justify-center mb-6`}
       >
-        <IconComponent className="w-6 h-6 text-white" />
+        <span className="text-2xl">{feature.icon}</span>
       </div>
 
       <h3 className="text-lg font-semibold text-white mb-4">{feature.title}</h3>
