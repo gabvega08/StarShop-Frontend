@@ -46,7 +46,7 @@ export const CommunityStats = React.memo(function CommunityStats() {
 
             {/* Metrics Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-              {COMMUNITY_METRICS.map((metric) => (
+              {COMMUNITY_METRICS.map(metric => (
                 <div key={metric.label} className="text-center">
                   <div
                     className="text-3xl sm:text-4xl font-bold text-white mb-2"
