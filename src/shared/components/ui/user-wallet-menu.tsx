@@ -3,6 +3,7 @@
 import React from 'react';
 import { ChevronsUpDown, Copy } from 'lucide-react';
 import copy from 'copy-to-clipboard';
+import { useRouter } from 'next/navigation';
 import { ConnectWalletButton } from '@/shared/components/ui';
 import {
   DropdownMenu,
@@ -15,7 +16,7 @@ import {
 import {
   useUserWalletAddress,
   useUserName,
-  useSetWalletAddress,
+  useClearUser,
 } from '@/shared/stores/userStore';
 import { disconnectWallet } from '@/shared/utils/wallet';
 import { useState, useCallback } from 'react';
@@ -27,9 +28,10 @@ interface UserWalletMenuProps {
 export const UserWalletMenu: React.FC<UserWalletMenuProps> = ({
   className = '',
 }) => {
+  const router = useRouter();
   const walletAddress = useUserWalletAddress();
   const userName = useUserName();
-  const setWalletAddress = useSetWalletAddress();
+  const clearUser = useClearUser();
 
   const [copied, setCopied] = useState(false);
   const [copyError, setCopyError] = useState<string | null>(null);
@@ -68,12 +70,21 @@ export const UserWalletMenu: React.FC<UserWalletMenuProps> = ({
 
   const handleDisconnect = useCallback(async () => {
     try {
+      // Disconnect the wallet
       await disconnectWallet();
-      setWalletAddress('');
+      
+      // Clear all user data from the store (this will also clear localStorage due to persistence)
+      clearUser();
+      
+      // Redirect to home page
+      router.push('/');
     } catch (error) {
       console.error('Failed to disconnect wallet:', error);
+      // Even if wallet disconnect fails, we should still clear user data and redirect
+      clearUser();
+      router.push('/');
     }
-  }, [setWalletAddress]);
+  }, [clearUser, router]);
 
   return (
     <>
