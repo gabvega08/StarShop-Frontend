@@ -22,12 +22,8 @@ export function InteractiveCards({ cards }: InteractiveCardsProps) {
                   <span className="text-2xl">{card.icon}</span>
                 </div>
                 <div>
-                  <h3 className="text-white font-bold text-lg">
-                    {card.title}
-                  </h3>
-                  <p className="text-white/80 text-sm">
-                    {card.description}
-                  </p>
+                  <h3 className="text-white font-bold text-lg">{card.title}</h3>
+                  <p className="text-white/80 text-sm">{card.description}</p>
                 </div>
               </div>
             </div>

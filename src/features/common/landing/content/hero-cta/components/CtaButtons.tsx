@@ -9,11 +9,7 @@ export function CtaButtons({ buttons }: CtaButtonsProps) {
   return (
     <div className="flex flex-col sm:flex-row gap-4">
       {buttons.map((button, index) => (
-        <Link
-          key={index}
-          href={button.href}
-          className={button.className}
-        >
+        <Link key={index} href={button.href} className={button.className}>
           {button.variant === 'primary' ? (
             <span className="relative z-10 flex items-center">
               {button.text}

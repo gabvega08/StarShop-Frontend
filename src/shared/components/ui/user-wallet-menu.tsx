@@ -72,10 +72,10 @@ export const UserWalletMenu: React.FC<UserWalletMenuProps> = ({
     try {
       // Disconnect the wallet
       await disconnectWallet();
-      
+
       // Clear all user data from the store (this will also clear localStorage due to persistence)
       clearUser();
-      
+
       // Redirect to home page
       router.push('/');
     } catch (error) {
