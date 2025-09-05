@@ -6,14 +6,16 @@ export function NetworkPerformance() {
   return (
     <>
       {/* Live Indicator */}
-      <LiveStatusIndicator liveStatus={NETWORK_PERFORMANCE_CONTENT.liveStatus} />
-
+      <LiveStatusIndicator
+        liveStatus={NETWORK_PERFORMANCE_CONTENT.liveStatus}
+      />
       {/* Additional Metrics */}
       <NetworkMetrics
         title={NETWORK_PERFORMANCE_CONTENT.title}
         description={NETWORK_PERFORMANCE_CONTENT.description}
         metrics={NETWORK_PERFORMANCE_CONTENT.metrics}
       />
-    </>
-  );
+          
+    </>
+  );
 }

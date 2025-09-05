@@ -54,16 +54,17 @@ const CountUpNumber = ({
   return <span>{displayValue.toLocaleString()}</span>;
 };
 
-export function NetworkMetrics({ title, description, metrics }: NetworkMetricsProps) {
+export function NetworkMetrics({
+  title,
+  description,
+  metrics,
+}: NetworkMetricsProps) {
   return (
     <div className="mt-16 bg-gradient-to-r from-purple-600 via-blue-600 to-teal-600 rounded-3xl p-12 text-white">
       <div className="text-center mb-8">
         <h3 className="text-3xl font-bold mb-4">{title}</h3>
-        <p className="text-xl opacity-90">
-          {description}
-        </p>
+        <p className="text-xl opacity-90">{description}</p>
       </div>
-
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
         {metrics.map((metric, index) => (
           <div key={index}>
@@ -76,6 +77,7 @@ export function NetworkMetrics({ title, description, metrics }: NetworkMetricsPr
           </div>
         ))}
       </div>
-    </div>
-  );
+         
+    </div>
+  );
 }
